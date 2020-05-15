@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 May 2020 07:35:42 GMT</lastBuildDate><item><title><![CDATA[在小手机已经消失的时代，我选择了Galaxy S20]]></title><link>https://ddadaal.me/articles/when-small-phones-disappear-i-choose-galaxy-s20/cn</link><guid isPermaLink="false">/articles/when-small-phones-disappear-i-choose-galaxy-s20/cn</guid><category><![CDATA[hands-on]]></category><pubDate>Fri, 15 May 2020 07:30:00 GMT</pubDate><content:encoded>&lt;h1&gt;小款手机已经消失了&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 May 2020 13:55:52 GMT</lastBuildDate><item><title><![CDATA[在小手机已经消失的时代，我选择了Galaxy S20]]></title><link>https://ddadaal.me/articles/when-small-phones-disappear-i-choose-galaxy-s20/cn</link><guid isPermaLink="false">/articles/when-small-phones-disappear-i-choose-galaxy-s20/cn</guid><category><![CDATA[hands-on]]></category><pubDate>Fri, 15 May 2020 07:30:00 GMT</pubDate><content:encoded>&lt;h1&gt;小款手机已经消失了&lt;/h1&gt;
 &lt;p&gt;我曾记得，当我第一次拿到一台HTC Desire HD（G10）时，那4.3寸的屏幕带给我的震撼。&lt;/p&gt;
 &lt;p&gt;我曾记得，当三星刚推出5.3寸的Galaxy Note时，众人对这“巨大”的屏幕的感叹。&lt;/p&gt;
 &lt;p&gt;我曾记得，当苹果第一次推出4.7和5.5寸的iPhone 6和6s时，网络上对未来的iPhone的调侃。&lt;/p&gt;
@@ -318,6 +318,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;下图两张图为小米9SE（宽度70.5mm）和iPhone 11（宽度75.7mm）在正常单手持机打字时的区别，可以体验到9SE单手打字会比iPhone 11轻松很多。两张图里手姿不太一样，这是我试验过后得到的握持两个手机最正常的姿势：若将9 SE的姿势用在iPhone 11上，确实可以更轻松地够到另外一边，但是那时候手机已经拿不稳了。&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -329,8 +330,8 @@
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;小米9SE轻松单手打字&quot;
-        title=&quot;小米9SE轻松单手打字&quot;
+        alt=&quot;小米9SE（宽度70.5）轻松单手打字&quot;
+        title=&quot;小米9SE（宽度70.5）轻松单手打字&quot;
         src=&quot;/static/384658c1454280278e0b242555d0dde0/65ac4/mi-9-se-single-hand-typing.jpg&quot;
         srcset=&quot;/static/384658c1454280278e0b242555d0dde0/65031/mi-9-se-single-hand-typing.jpg 285w,
 /static/384658c1454280278e0b242555d0dde0/fd252/mi-9-se-single-hand-typing.jpg 570w,
@@ -343,7 +344,32 @@
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9SE轻松单手打字&lt;/figcaption&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9SE（宽度70.5）轻松单手打字&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgMF/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEDAv/aAAwDAQACEAMQAAABTtvauERcjRy3M2CQE//EAB0QAAICAQUAAAAAAAAAAAAAAAIDAREABBASEyH/2gAIAQEAAQUCWuTGQ6slxXpzuHlYT5Kz4LYwSDL3/8QAFREBAQAAAAAAAAAAAAAAAAAAIEL/2gAIAQMBAT8Bof/EABgRAAIDAAAAAAAAAAAAAAAAAAEREiAx/9oACAECAQE/AWI5T//EAB0QAAICAQUAAAAAAAAAAAAAAAABETEQEiAhQWH/2gAIAQEABj8Cc2ajgb9K7xSISh7f/8QAGxAAAwEAAwEAAAAAAAAAAAAAAAERITFBURD/2gAIAQEAAT8heV69hDhy7pQiIc8Wv0SeGezYSGmJPtCVpLwPRMuGL5//2gAMAwEAAgADAAAAEKAFcf/EABgRAQEAAwAAAAAAAAAAAAAAAAEAEBEh/9oACAEDAQE/EEXhtQDj/8QAFxEBAQEBAAAAAAAAAAAAAAAAARAhQf/aAAgBAgEBPxAwvEVJ/8QAHBABAQEBAAIDAAAAAAAAAAAAAREAITFBUYGx/9oACAEBAAE/EPGNi0klwlyCVdH1kMLPhxdm5OfBPekrXThMJ+9blQgkBv3jIgVB+5CriugfF5kvvO//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;iPhone 11（宽度75.7）有点吃力&quot;
+        title=&quot;iPhone 11（宽度75.7）有点吃力&quot;
+        src=&quot;/static/d7c1296f9c8b4ad91cf379f52d80d989/65ac4/iphone-11-single-hand-typing.jpg&quot;
+        srcset=&quot;/static/d7c1296f9c8b4ad91cf379f52d80d989/65031/iphone-11-single-hand-typing.jpg 285w,
+/static/d7c1296f9c8b4ad91cf379f52d80d989/fd252/iphone-11-single-hand-typing.jpg 570w,
+/static/d7c1296f9c8b4ad91cf379f52d80d989/65ac4/iphone-11-single-hand-typing.jpg 1140w,
+/static/d7c1296f9c8b4ad91cf379f52d80d989/32c7d/iphone-11-single-hand-typing.jpg 1512w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;iPhone 11（宽度75.7）有点吃力&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;h1&gt;2020年选择&lt;/h1&gt;
 &lt;p&gt;2019年中，我的米6突然出了问题，电源键卡住，机器完全无法使用。正好，米6的夜拍确实比较垃圾，我正好有换手机的欲望。于是，经过一番对比，我在米9和米9 SE中选择了米9 SE，其中最重要的原因，就是尺寸：米9的宽度为74.67mm，9 SE的宽度为70.5。另外，我本来打算在2020年换5G手机，9 SE便宜的售价正好可以用来当作用一年的过渡机。所以当时走到了学校旁边的一个小米之家，现场提了小米9 SE。&lt;/p&gt;
@@ -3999,8 +4025,8 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;但是呢，经过这半个月的使用，我发现这个名称有几个问题，最终促使我使用&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;来代替：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;读音不合我意。&lt;code class=&quot;language-text&quot;&gt;cheen&lt;/code&gt;这个词所有人第一反应是读&lt;code class=&quot;language-text&quot;&gt;chin&lt;/code&gt;而不是&lt;code class=&quot;language-text&quot;&gt;chen&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;太长。&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;有8个字节，而&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;是7个（其实我理想中的是&lt;code class=&quot;language-text&quot;&gt;daddal&lt;/code&gt;的，但是这个名字已经被人使用了，所以只好再加一个字符）&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;确实不像拼音不像英文，看上去确实挺奇怪的&lt;/li&gt;
+&lt;li&gt;太长。&lt;code class=&quot;language-text&quot;&gt;daacheen&lt;/code&gt;有8个字节，而&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;是7个（其实我理想中的是&lt;code class=&quot;language-text&quot;&gt;daddal&lt;/code&gt;的，但是这个名字已经被人使用了，所以只好再加一个字符）&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;daacheen&lt;/code&gt;确实不像拼音不像英文，看上去确实挺奇怪的&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;而&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;这个词呢，是&lt;code class=&quot;language-text&quot;&gt;达达&lt;/code&gt;的魔改，正好我更喜欢用达来表示自己（以及初中高中的时候大家都是这么叫我的）；同时这个词具有上面所说的所有特征，所以感觉用&lt;code class=&quot;language-text&quot;&gt;ddadaal&lt;/code&gt;可能更加合适。&lt;/p&gt;
 &lt;h1&gt;改名遇到的问题&lt;/h1&gt;
