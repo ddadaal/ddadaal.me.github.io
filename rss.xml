@@ -1,4 +1,796 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 25 Apr 2020 15:52:01 GMT</lastBuildDate><item><title><![CDATA[使用PowerShell脚本让UWP应用使用localhost上的系统代理]]></title><link>https://ddadaal.me/articles/make-uwp-apps-use-loopback-system-proxy-using-powershell-script/cn</link><guid isPermaLink="false">/articles/make-uwp-apps-use-loopback-system-proxy-using-powershell-script/cn</guid><category><![CDATA[Windows]]></category><category><![CDATA[problem-investigation]]></category><pubDate>Sat, 25 Apr 2020 15:40:00 GMT</pubDate><content:encoded>&lt;h1&gt;问题&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 15 May 2020 07:35:42 GMT</lastBuildDate><item><title><![CDATA[在小手机已经消失的时代，我选择了Galaxy S20]]></title><link>https://ddadaal.me/articles/when-small-phones-disappear-i-choose-galaxy-s20/cn</link><guid isPermaLink="false">/articles/when-small-phones-disappear-i-choose-galaxy-s20/cn</guid><category><![CDATA[hands-on]]></category><pubDate>Fri, 15 May 2020 07:30:00 GMT</pubDate><content:encoded>&lt;h1&gt;小款手机已经消失了&lt;/h1&gt;
+&lt;p&gt;我曾记得，当我第一次拿到一台HTC Desire HD（G10）时，那4.3寸的屏幕带给我的震撼。&lt;/p&gt;
+&lt;p&gt;我曾记得，当三星刚推出5.3寸的Galaxy Note时，众人对这“巨大”的屏幕的感叹。&lt;/p&gt;
+&lt;p&gt;我曾记得，当苹果第一次推出4.7和5.5寸的iPhone 6和6s时，网络上对未来的iPhone的调侃。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 300px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 124.56140350877192%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDAgT/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQP/2gAMAwEAAhADEAAAAc5eGUVLHeN81ziND//EABwQAAICAgMAAAAAAAAAAAAAAAECABEDMRIzQf/aAAgBAQABBQIm1LWs8IlRYnBskbWPrO//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAgEBPwEj/8QAHRAAAQQCAwAAAAAAAAAAAAAAAQAQETECgjJxcv/aAAgBAQAGPwIzPIqmPortt1ONNsX/AP/EABwQAAMBAAIDAAAAAAAAAAAAAAABESEQMUFRcf/aAAgBAQABPyHQWktMzCXk2EpWCVtSeuEq/RgylOuRNlO/iuw//9oADAMBAAIAAwAAABCAOE3/xAAXEQEBAQEAAAAAAAAAAAAAAAABEBFB/9oACAEDAQE/EEcWcn//xAAWEQEBAQAAAAAAAAAAAAAAAAABEEH/2gAIAQIBAT8QQBHJ/8QAIBABAAICAQQDAAAAAAAAAAAAAQARIVFBEDGh8GGRsf/aAAgBAQABPxBwAgssdtwgICO2CFgpSgpqNHrirgj1jlxwG/wZnmMGol74mD9rKHHPwP30e80Tv+7nkT//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;iPhone 20（图片来源：https://www.zhihu.com/question/25216924/answer/3035342）&quot;
+        title=&quot;iPhone 20（图片来源：https://www.zhihu.com/question/25216924/answer/3035342）&quot;
+        src=&quot;/static/70242086e7fe8ab35f3c7a46ab3da001/37e03/iphone-20-sword.jpg&quot;
+        srcset=&quot;/static/70242086e7fe8ab35f3c7a46ab3da001/65031/iphone-20-sword.jpg 285w,
+/static/70242086e7fe8ab35f3c7a46ab3da001/37e03/iphone-20-sword.jpg 300w&quot;
+        sizes=&quot;(max-width: 300px) 100vw, 300px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;iPhone 20（图片来源：https://www.zhihu.com/question/25216924/answer/3035342）&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可是，从2018年起，手机越来越大、越来越重的趋势无法阻挡了。&lt;/p&gt;
+&lt;p&gt;或者更准确地说，&lt;strong&gt;小款&lt;/strong&gt;的手机已经消失了。&lt;/p&gt;
+&lt;p&gt;2017时，一种&lt;strong&gt;宽度在70mm以下，重量在160g左右&lt;/strong&gt;的版本占据了手机市场的半壁江山。在16:9屏幕的非全面屏时代，这个尺寸大小的手机一般为5寸屏。而占据另一半的手机，宽度普遍在75mm左右，而除了iPhone的Plus款以外，大款的重量也一般控制在180g左右。在非全面屏时代，这个尺寸一般是5.5寸屏。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;年份&lt;/th&gt;
+&lt;th&gt;手机型号&lt;/th&gt;
+&lt;th&gt;高度(mm)&lt;/th&gt;
+&lt;th&gt;宽度(mm)&lt;/th&gt;
+&lt;th&gt;厚度(mm)&lt;/th&gt;
+&lt;th&gt;重量(g)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;小米6&lt;/td&gt;
+&lt;td&gt;145.17&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;70.49&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;7.45&lt;/td&gt;
+&lt;td&gt;168（玻璃后盖）、182（陶瓷后盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;华为P10&lt;/td&gt;
+&lt;td&gt;145&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;69.3&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;6.98&lt;/td&gt;
+&lt;td&gt;145&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;华为P10 Plus&lt;/td&gt;
+&lt;td&gt;153.5&lt;/td&gt;
+&lt;td&gt;74.2&lt;/td&gt;
+&lt;td&gt;6.96&lt;/td&gt;
+&lt;td&gt;165&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;三星S8&lt;/td&gt;
+&lt;td&gt;148.9&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;68.1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;8.0&lt;/td&gt;
+&lt;td&gt;152&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;三星S8 Plus&lt;/td&gt;
+&lt;td&gt;159.5&lt;/td&gt;
+&lt;td&gt;73.4&lt;/td&gt;
+&lt;td&gt;8.1&lt;/td&gt;
+&lt;td&gt;173&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;iPhone 8&lt;/td&gt;
+&lt;td&gt;138.4&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;67.3&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;7.3&lt;/td&gt;
+&lt;td&gt;148&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;iPhone 8 Plus&lt;/td&gt;
+&lt;td&gt;158.4&lt;/td&gt;
+&lt;td&gt;78.1&lt;/td&gt;
+&lt;td&gt;7.5&lt;/td&gt;
+&lt;td&gt;202&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2016&lt;/td&gt;
+&lt;td&gt;一加3&lt;/td&gt;
+&lt;td&gt;152.7&lt;/td&gt;
+&lt;td&gt;74.7&lt;/td&gt;
+&lt;td&gt;7.35&lt;/td&gt;
+&lt;td&gt;158&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;而到了2020年，旗舰款手机的三围和重量却变成了下面这样。宽度除了S20已经没有低于70mm的了，而同样除了S20之外，所有手机的重量都在180g左右（P40）或以上。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;年份&lt;/th&gt;
+&lt;th&gt;手机型号&lt;/th&gt;
+&lt;th&gt;高度(mm)&lt;/th&gt;
+&lt;th&gt;宽度(mm)&lt;/th&gt;
+&lt;th&gt;厚度(mm)&lt;/th&gt;
+&lt;th&gt;重量(g)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;小米10&lt;/td&gt;
+&lt;td&gt;162.6&lt;/td&gt;
+&lt;td&gt;74.8&lt;/td&gt;
+&lt;td&gt;8.96&lt;/td&gt;
+&lt;td&gt;208&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;华为P40&lt;/td&gt;
+&lt;td&gt;148.9&lt;/td&gt;
+&lt;td&gt;71.1&lt;/td&gt;
+&lt;td&gt;8.5&lt;/td&gt;
+&lt;td&gt;175&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;华为P40 Pro&lt;/td&gt;
+&lt;td&gt;158.2&lt;/td&gt;
+&lt;td&gt;72.6&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;209&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;三星S20&lt;/td&gt;
+&lt;td&gt;151.7&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;69.1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;7.9&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;163&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;三星S20+&lt;/td&gt;
+&lt;td&gt;161.9&lt;/td&gt;
+&lt;td&gt;73.7&lt;/td&gt;
+&lt;td&gt;7.8&lt;/td&gt;
+&lt;td&gt;186-188&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;三星S20 Ultra&lt;/td&gt;
+&lt;td&gt;166.9&lt;/td&gt;
+&lt;td&gt;76&lt;/td&gt;
+&lt;td&gt;8.8&lt;/td&gt;
+&lt;td&gt;222&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2019&lt;/td&gt;
+&lt;td&gt;iPhone 11&lt;/td&gt;
+&lt;td&gt;150.9&lt;/td&gt;
+&lt;td&gt;75.7&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;194&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2019&lt;/td&gt;
+&lt;td&gt;iPhone 11 Pro&lt;/td&gt;
+&lt;td&gt;144.0&lt;/td&gt;
+&lt;td&gt;71.4&lt;/td&gt;
+&lt;td&gt;8.1&lt;/td&gt;
+&lt;td&gt;188&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;一加8&lt;/td&gt;
+&lt;td&gt;160.2&lt;/td&gt;
+&lt;td&gt;72.9&lt;/td&gt;
+&lt;td&gt;8.0&lt;/td&gt;
+&lt;td&gt;180&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;一加8 Pro&lt;/td&gt;
+&lt;td&gt;165.3&lt;/td&gt;
+&lt;td&gt;74.3&lt;/td&gt;
+&lt;td&gt;8.5&lt;/td&gt;
+&lt;td&gt;199&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;OPPO Find X2 Pro&lt;/td&gt;
+&lt;td&gt;165.2&lt;/td&gt;
+&lt;td&gt;74.4&lt;/td&gt;
+&lt;td&gt;8.8/9.5&lt;/td&gt;
+&lt;td&gt;217/200&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;和2017年的手机相对比，可以发现，当时占据半壁江山的宽度70mm以下、重量160g左右的小款手机，已经消失了。&lt;/p&gt;
+&lt;h1&gt;临界点&lt;/h1&gt;
+&lt;p&gt;手机尺寸经过这么长时间的发展，最终稳定在75mm宽、重量200g左右这个水平，说明了一件事：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这个尺寸已经是大多数人能够接受的手机尺寸的临界点&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这就和屏幕分辨率一样：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2010年左右流行800*480&lt;/li&gt;
+&lt;li&gt;2012年就飙到了1080P（2012年HTC Bufferfly，2013年成为主流）&lt;/li&gt;
+&lt;li&gt;2014年OPPO Find 7、魅族MX4 Pro就已经开始尝试2K屏，甚至还有索尼的4K屏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是之后，只有三星仍然在坚持使用2K屏，其他厂商除了少许机器（如2017年Mate 10），主流分辨率一直被锁死在1080P，直到2019年一加7Pro采用2K90屏幕之后才激起人们对分辨率和刷新率的关注。而很多人通过实验已经说明，在手机屏幕的尺寸上，1080P和2K屏对于绝大多数人影响不大。市场固定在1080P这一事实也从市场层面说明了这一事实：1080P已经是大多数人能够接受的分辨率的临界点。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分辨率级别&lt;/th&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th&gt;代表机型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;800*480&lt;/td&gt;
+&lt;td&gt;2010-2011&lt;/td&gt;
+&lt;td&gt;HTC Desire HD，小米1（2011年发布）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1280*720/800&lt;/td&gt;
+&lt;td&gt;2011-2013&lt;/td&gt;
+&lt;td&gt;小米2，三星Galaxy Note&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1920*1080&lt;/td&gt;
+&lt;td&gt;2013-现在&lt;/td&gt;
+&lt;td&gt;首款为2012年的HTC Bufferfly，这个时间段的&lt;strong&gt;几乎所有手机&lt;/strong&gt;均采用这个分辨率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2560*1440&lt;/td&gt;
+&lt;td&gt;2014-现在&lt;/td&gt;
+&lt;td&gt;首款为2014年的OPPO Find 7，之后只有三星在主流机型上配置2K屏幕&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1&gt;小手怎么买手机？&lt;/h1&gt;
+&lt;p&gt;很多人能够适应这个大小，所以大多数实惠的、为了走量的手机也会采用这个尺寸以满足更多人的需求。对大多数人来说，这是好事。&lt;/p&gt;
+&lt;p&gt;但对我不是。&lt;/p&gt;
+&lt;p&gt;我空有180cm的身高，但是手的大小却在身高对应的正常范围里偏小。我的手从中指指尖到手腕长约19cm，左右最宽只有10.3cm；数字可能不直观，但是在电子琴上，我最大只能按下9度：一个普通的170cm左右身高的人也应该能按下9度。&lt;/p&gt;
+&lt;p&gt;由于知道这个事实，同时因为我对单手操作一直情有独钟，所以一直以来，我的手机都尽量选择的是小款，&lt;strong&gt;宽度控制在70mm左右&lt;/strong&gt;。而2016年一加3从反面证明：对于这样的手掌大小和使用习惯，75mm左右的宽度太宽了。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;年份&lt;/th&gt;
+&lt;th&gt;手机型号&lt;/th&gt;
+&lt;th&gt;高度(mm)&lt;/th&gt;
+&lt;th&gt;宽度(mm)&lt;/th&gt;
+&lt;th&gt;厚度(mm)&lt;/th&gt;
+&lt;th&gt;重量(g)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2013&lt;/td&gt;
+&lt;td&gt;Google Nexus 5&lt;/td&gt;
+&lt;td&gt;137.84&lt;/td&gt;
+&lt;td&gt;69.17&lt;/td&gt;
+&lt;td&gt;8.59&lt;/td&gt;
+&lt;td&gt;130&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2014&lt;/td&gt;
+&lt;td&gt;HTC One M8&lt;/td&gt;
+&lt;td&gt;146.4&lt;/td&gt;
+&lt;td&gt;70.6&lt;/td&gt;
+&lt;td&gt;9.4&lt;/td&gt;
+&lt;td&gt;160&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2016&lt;/td&gt;
+&lt;td&gt;三星S7&lt;/td&gt;
+&lt;td&gt;142.4&lt;/td&gt;
+&lt;td&gt;69.6&lt;/td&gt;
+&lt;td&gt;7.9&lt;/td&gt;
+&lt;td&gt;152&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2016&lt;/td&gt;
+&lt;td&gt;一加3&lt;/td&gt;
+&lt;td&gt;152.7&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;74.7&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;7.35&lt;/td&gt;
+&lt;td&gt;158&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2017&lt;/td&gt;
+&lt;td&gt;小米6陶瓷&lt;/td&gt;
+&lt;td&gt;145.17&lt;/td&gt;
+&lt;td&gt;70.49&lt;/td&gt;
+&lt;td&gt;7.45&lt;/td&gt;
+&lt;td&gt;182&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2019&lt;/td&gt;
+&lt;td&gt;小米9 SE&lt;/td&gt;
+&lt;td&gt;147.5&lt;/td&gt;
+&lt;td&gt;70.5&lt;/td&gt;
+&lt;td&gt;7.45&lt;/td&gt;
+&lt;td&gt;155&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAAMEBQEC/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAID/9oADAMBAAIQAxAAAAGHRRWdEmFZDo6dTDwRX//EAB4QAAICAgIDAAAAAAAAAAAAAAECAAMEEhAyERMz/9oACAEBAAEFAqKvfFrFI8zA6ZPxU7LUxEbcwND2Q8f/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEh/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAh/9oACAECAQE/AUyLP//EAB4QAAIBAwUAAAAAAAAAAAAAAAABAhExcRAgITKB/9oACAEBAAY/Am5yfBe+k8npUopNHZtZ2//EABsQAAMAAwEBAAAAAAAAAAAAAAABESExUUGh/9oACAEBAAE/IVrctMC3umjo48PgG58QiC3W8MK+psOSiZi86Ma2PZ//2gAMAwEAAgADAAAAEKcTDP/EABYRAQEBAAAAAAAAAAAAAAAAAAEQMf/aAAgBAwEBPxA2AZ//xAAXEQEBAQEAAAAAAAAAAAAAAAABABAR/9oACAECAQE/EAZyQz//xAAcEAEBAQEAAgMAAAAAAAAAAAABEQAhQXFRkfD/2gAIAQEAAT8QmcQUeTCwwUAdbNTCsfweMYCiknvEk1TvfOBo+ooPxk4vLTH1uPB7wC8gg0o1iCm//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;小米9SE轻松单手打字&quot;
+        title=&quot;小米9SE轻松单手打字&quot;
+        src=&quot;/static/384658c1454280278e0b242555d0dde0/65ac4/mi-9-se-single-hand-typing.jpg&quot;
+        srcset=&quot;/static/384658c1454280278e0b242555d0dde0/65031/mi-9-se-single-hand-typing.jpg 285w,
+/static/384658c1454280278e0b242555d0dde0/fd252/mi-9-se-single-hand-typing.jpg 570w,
+/static/384658c1454280278e0b242555d0dde0/65ac4/mi-9-se-single-hand-typing.jpg 1140w,
+/static/384658c1454280278e0b242555d0dde0/b2dda/mi-9-se-single-hand-typing.jpg 1710w,
+/static/384658c1454280278e0b242555d0dde0/48919/mi-9-se-single-hand-typing.jpg 2280w,
+/static/384658c1454280278e0b242555d0dde0/03643/mi-9-se-single-hand-typing.jpg 3024w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9SE轻松单手打字&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h1&gt;2020年选择&lt;/h1&gt;
+&lt;p&gt;2019年中，我的米6突然出了问题，电源键卡住，机器完全无法使用。正好，米6的夜拍确实比较垃圾，我正好有换手机的欲望。于是，经过一番对比，我在米9和米9 SE中选择了米9 SE，其中最重要的原因，就是尺寸：米9的宽度为74.67mm，9 SE的宽度为70.5。另外，我本来打算在2020年换5G手机，9 SE便宜的售价正好可以用来当作用一年的过渡机。所以当时走到了学校旁边的一个小米之家，现场提了小米9 SE。&lt;/p&gt;
+&lt;p&gt;（找了很久还是没找到图）&lt;/p&gt;
+&lt;p&gt;刚用9SE的时候还是比较舒服的，因为全面屏和6的16:9还是区别很大的；但是它&lt;strong&gt;垃圾的震动马达&lt;/strong&gt;（官方说是线性马达，但是明显感觉有开始震动的过程，感觉就是转子马达）、&lt;strong&gt;羸弱的处理器和硬件配置&lt;/strong&gt;（SoC是712，连米6米的835都不如，日常操作比米6慢多了）、以及升级MIUI 12的&lt;strong&gt;夸张的掉帧&lt;/strong&gt;让我不得不换手机，并且确定只能买旗舰CPU的手机。&lt;/p&gt;
+&lt;p&gt;而2020年，满足我的手要求的宽度的要求的旗舰手机（其实可以去掉旗舰手机的要求，因为连红米等都早已没有了小手机），只有以下几款可选：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型号&lt;/th&gt;
+&lt;th&gt;高度&lt;/th&gt;
+&lt;th&gt;宽度&lt;/th&gt;
+&lt;th&gt;厚度&lt;/th&gt;
+&lt;th&gt;重量&lt;/th&gt;
+&lt;th&gt;亮点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;th&gt;价格&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;三星S20&lt;/td&gt;
+&lt;td&gt;151.7&lt;/td&gt;
+&lt;td&gt;69.1&lt;/td&gt;
+&lt;td&gt;7.9&lt;/td&gt;
+&lt;td&gt;163&lt;/td&gt;
+&lt;td&gt;轻薄小，堆料足&lt;/td&gt;
+&lt;td&gt;较贵，电池较小，软件本地化比MIUI弱，且后续更新慢&lt;/td&gt;
+&lt;td&gt;5150（港版，4月29日，12+128）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华为P40&lt;/td&gt;
+&lt;td&gt;148.9&lt;/td&gt;
+&lt;td&gt;71.1&lt;/td&gt;
+&lt;td&gt;8.5&lt;/td&gt;
+&lt;td&gt;175&lt;/td&gt;
+&lt;td&gt;软件体验更贴合国内需求&lt;/td&gt;
+&lt;td&gt;堆料太少，阉割太严重，无线充电、高刷都没有&lt;/td&gt;
+&lt;td&gt;4488（8+128）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;一加8&lt;/td&gt;
+&lt;td&gt;160.2&lt;/td&gt;
+&lt;td&gt;72.9&lt;/td&gt;
+&lt;td&gt;8.0&lt;/td&gt;
+&lt;td&gt;180&lt;/td&gt;
+&lt;td&gt;系统简单，价格较便宜，外观还行&lt;/td&gt;
+&lt;td&gt;没有无线充电&lt;/td&gt;
+&lt;td&gt;3999（8+128）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;iPhone SE 2&lt;/td&gt;
+&lt;td&gt;138.4&lt;/td&gt;
+&lt;td&gt;67.3&lt;/td&gt;
+&lt;td&gt;7.3&lt;/td&gt;
+&lt;td&gt;148&lt;/td&gt;
+&lt;td&gt;很轻薄很小巧，而且还有A13处理器，还便宜&lt;/td&gt;
+&lt;td&gt;不想进入苹果生态，除了处理器之外的配置都复古&lt;/td&gt;
+&lt;td&gt;3799（128G）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;在这几款手机中，对我来说P40、一加8的问题是一样的：它们都阉割了&lt;strong&gt;无线充电&lt;/strong&gt;，并且华为P40连&lt;strong&gt;高刷屏&lt;/strong&gt;都阉割了。&lt;/p&gt;
+&lt;p&gt;而根据我的使用习惯，无线充电能够给我带来很大的好处：我基本一直坐在电脑前，无线充电使得手机可以一直放在充电板上，随时保持满电，并可以随用随取，比插拔线缆更方便。所以自从2014年开始一直没能用上无线充电的我，这次再怎么说也得用无线充电的手机。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1014px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.10526315789473%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsSAAALEgHS3X78AAABAElEQVQY03WQzU6EMBSFefvxDdQ4IU4yvoO4YIkP4LBmA3SAtrTlp0ARPBSHoNFv0dzcn3PvqTPfmKZpHMdPizGm7/thGLTWvQWxMQN65h3OOoaXEOK9ekHw7nlvvu8/n06u6x7uDvcPj+fzy9PxGAQBRLf+7+EVFNq2HSxYJZWiFiGkEKIsy67r5p84+7MZ53Ec44Qoisj1ConcUtd1mhKU/jh7BVaVUowxbEuSJAzDj8uFsgXkIZHl+e/hyWL/w+xrndZQ2UyisrWt1hA4uK1pmtiSpinnHEsoZVIqxFmWISnlYru4AV9IIrOcDRkMlEJklrwoaEGrqsIM3M7/8wVxscPkHZbRQwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;其实……P40也有无线充电？(https://www.zhihu.com/question/383288772)&quot;
+        title=&quot;其实……P40也有无线充电？(https://www.zhihu.com/question/383288772)&quot;
+        src=&quot;/static/e3efa4f203481e578cd1c0f8fd83b185/1c989/p40-wireless.png&quot;
+        srcset=&quot;/static/e3efa4f203481e578cd1c0f8fd83b185/5459c/p40-wireless.png 285w,
+/static/e3efa4f203481e578cd1c0f8fd83b185/2cee3/p40-wireless.png 570w,
+/static/e3efa4f203481e578cd1c0f8fd83b185/1c989/p40-wireless.png 1014w&quot;
+        sizes=&quot;(max-width: 1014px) 100vw, 1014px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;其实……P40也有无线充电？(https://www.zhihu.com/question/383288772)&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;另外，高刷屏确实是用了就回不去的那种东西，60Hz到90Hz的体验变化是巨大的，而90Hz和120Hz倒是可以不太在意。&lt;/p&gt;
+&lt;p&gt;而S20在这里面，堆料是所有手机里最猛的，无线充电、120Hz高刷屏、4000mAh电池一应俱全，并且更难得的是，S20的三围和重量还是这些手机（除了SE）外最小最轻的。&lt;/p&gt;
+&lt;p&gt;S20在国内的一个最大的劣势是价格：6999的起步价，对于一个Others厂商来说，确实有点过分了。&lt;/p&gt;
+&lt;p&gt;但是嘿，买三星为什么要买国行？港行刷国行固件，它不香吗？😄️&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1044px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 21.052631578947366%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAIAAAABPYjBAAAACXBIWXMAAAsSAAALEgHS3X78AAAAqUlEQVQI11WMuQ7CMBBE8/9fBR0UFCAhEEhQRCiJ4ys+1nZ8sUkaeMUUuzOv4WIaCCWEjGQJIaWaJq0UY5RRasD3fauHpwUwWhljtNaYUkpsN8/z8XrYjYR1Xcc5X95KOQBr7TzPtVY6UiGkD+H16VNKuDHGlpJDCM37cbpd9i25K63Q6r2PMWKprOAYLd65mAvRAQ8AsEmRBlxIGY+h/oPivI43NtFvIl9czOTaSqYMOwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;4月29日的价格，5月15日已经到5050了&quot;
+        title=&quot;4月29日的价格，5月15日已经到5050了&quot;
+        src=&quot;/static/e077de3a761e01fcf6b4a4cfcb1e4d11/4e07d/s20-taobao.png&quot;
+        srcset=&quot;/static/e077de3a761e01fcf6b4a4cfcb1e4d11/5459c/s20-taobao.png 285w,
+/static/e077de3a761e01fcf6b4a4cfcb1e4d11/2cee3/s20-taobao.png 570w,
+/static/e077de3a761e01fcf6b4a4cfcb1e4d11/4e07d/s20-taobao.png 1044w&quot;
+        sizes=&quot;(max-width: 1044px) 100vw, 1044px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;4月29日的价格，5月15日已经到5050了&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h1&gt;Galaxy S20简单体验&lt;/h1&gt;
+&lt;h2&gt;大小对比&lt;/h2&gt;
+&lt;p&gt;下图为S20和小米9SE对比，可以看到其实二者宽度差不多，但是高度上S20会高上一头。从数据也可以看出这个区别。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型号&lt;/th&gt;
+&lt;th&gt;高度&lt;/th&gt;
+&lt;th&gt;宽度&lt;/th&gt;
+&lt;th&gt;厚度&lt;/th&gt;
+&lt;th&gt;重量&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;三星S20&lt;/td&gt;
+&lt;td&gt;151.7&lt;/td&gt;
+&lt;td&gt;69.1&lt;/td&gt;
+&lt;td&gt;7.9&lt;/td&gt;
+&lt;td&gt;163&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;小米9 SE&lt;/td&gt;
+&lt;td&gt;147.5&lt;/td&gt;
+&lt;td&gt;70.5&lt;/td&gt;
+&lt;td&gt;7.45&lt;/td&gt;
+&lt;td&gt;155&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.01754385964912%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAVABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQDBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAGSqeksaI4u4WA//8QAHBAAAgIDAQEAAAAAAAAAAAAAAQIDEQASMRMi/9oACAEBAAEFAvV7SysfFxORAalawfKwsdf/xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAwEBPwEj/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAGRABAAIDAAAAAAAAAAAAAAAAAQAyEBEg/9oACAEBAAY/ArM2rivX/8QAHRAAAwACAgMAAAAAAAAAAAAAAAERITFBcVFhwf/aAAgBAQABPyFt+sesHXyXfZG8/ORd5FWPN2VNVY9DtC3yUez/2gAMAwEAAgADAAAAEGjgQP/EABgRAQEAAwAAAAAAAAAAAAAAAAEAEBEh/9oACAEDAQE/EA7k7GP/xAAXEQEAAwAAAAAAAAAAAAAAAAARAAEQ/9oACAECAQE/ELDWf//EAB0QAQEAAwEAAwEAAAAAAAAAAAERACExQVFhobH/2gAIAQEAAT8QayFeRh9A2KvcYNV363wyZSjaOsNcEYPjeM7bf8McZlJa3+4+0o5JL5mipt+fRn//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;小米9SE（左）和三星S20（右）对比&quot;
+        title=&quot;小米9SE（左）和三星S20（右）对比&quot;
+        src=&quot;/static/9d330d817c27b1963c6bc6260fabb9e3/65ac4/mi9se-s20.jpg&quot;
+        srcset=&quot;/static/9d330d817c27b1963c6bc6260fabb9e3/65031/mi9se-s20.jpg 285w,
+/static/9d330d817c27b1963c6bc6260fabb9e3/fd252/mi9se-s20.jpg 570w,
+/static/9d330d817c27b1963c6bc6260fabb9e3/65ac4/mi9se-s20.jpg 1140w,
+/static/9d330d817c27b1963c6bc6260fabb9e3/e904c/mi9se-s20.jpg 1503w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9SE（左）和三星S20（右）对比&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;S20的宽度也保证了就算戴着保护套，也可以单手打字：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAQT/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAHOpOCoCjG5TpfToNEEP//EAB8QAAIBAgcAAAAAAAAAAAAAAAIDAQARBBITISIxQv/aAAgBAQABBQJIxpDFipE5lP2WJXHDugQeUEsD4+R6r//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/AYE//8QAFhEBAQEAAAAAAAAAAAAAAAAAARBB/9oACAECAQE/Aciz/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAEQEQISIWH/2gAIAQEABj8CxtSmX6JmtHIU/wD/xAAaEAADAQEBAQAAAAAAAAAAAAAAAREhMUGx/9oACAEBAAE/IXpHPUIXMtQjPJW/paExpRdTqEB8dpGNaxygWTNbEf/aAAwDAQACAAMAAAAQDCYx/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAERMf/aAAgBAwEBPxCdYhWv/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/ELNNVjH/xAAcEAEAAwEBAQEBAAAAAAAAAAABABEhQTGRUXH/2gAIAQEAAT8Q0ZegP1legBAKvIBLp+xlwrAc1G/qUTnsfWtM7GRIWh3ZvWDDn9ga3YnyK37Et6yYKMJ//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;S20带保护壳单手打字&quot;
+        title=&quot;S20带保护壳单手打字&quot;
+        src=&quot;/static/b9872a46b4b0ec75437c25418de25456/65ac4/s20-single-hand-typing.jpg&quot;
+        srcset=&quot;/static/b9872a46b4b0ec75437c25418de25456/65031/s20-single-hand-typing.jpg 285w,
+/static/b9872a46b4b0ec75437c25418de25456/fd252/s20-single-hand-typing.jpg 570w,
+/static/b9872a46b4b0ec75437c25418de25456/65ac4/s20-single-hand-typing.jpg 1140w,
+/static/b9872a46b4b0ec75437c25418de25456/9d81f/s20-single-hand-typing.jpg 1500w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;S20带保护壳单手打字&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;One UI&lt;/h2&gt;
+&lt;p&gt;y1s1，确实没有任意一个Android UI可以和MIUI相比，尤其是当MIUI 12发布后，那动画效果、那设计、那功能，啧啧。&lt;/p&gt;
+&lt;p&gt;但是其实One UI也挺好用的，各种功能也比较完善，设计也比较质朴耐看，动画也和MIUI 11差不多（当然比不上MIUI 12），当作日常使用也是非常合格的，配上120Hz屏幕和865处理器自然是丝版顺滑。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 222.10526315789477%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAsCAIAAADqwg+aAAAACXBIWXMAAAsSAAALEgHS3X78AAAKcklEQVRIxxWSeVTSCQLHf3/tMW92rjQFOeVGQAQE5EZUQAXEGwUvEEnFC/FITNFE8CBvTfHIDjPLoxo7tbKmGs3MnCabaXemnerVtrUzNtXUbMs2733//b7v5/veB9gOZqIw4XhiFAoXgSXJIKgIf7jEHx6NwGcgCHoo3oSj1TFFPej0G+I9L/eefDVUcS1XMShXD4enHAJAUK4/NMwvIMwHzN4G5m2HicBIOQyTgCJmBAYZAilWEsOJVC1R7L+0Xnsz5vw2g7eXI+6WpR0oyzgK+MM+lP+IL0TgB5d+2AQhYlFBWWSWlRJmx4Y04SKnUZZn5tW3h6Yem4QzUTKP1jBt0x7OjRwGfAM4MHQECCECIaIhaCWOrCHTc0IF5RROPU3Yiw2fRGX/kLv0evD2mx79kfFGeVXZhLtkPks5TOYPAF+AuFRmgkS2Izm9msrKkqmqdYbO5Ew3XeggicegqZuK4f/s/fltd92dqrT9R9utu7MOpsYMEThdKK4H2A6LhqBihZF56Vl2dnhRTPJuQ/EBjWGEq5jEqK/CWl44nr3znHvSoL1YbThdqpo1aMZliUNi9RgytBPwh8fCsYkYihZJ1JCZ+YKoWolyICrlCENxFlT6KGPz9cCPr93tm478JYN0NDqySxY/KI4b4Cv6kaENAASTTGPrOWITP7IoMtYWo95NF7YzIg+BUzcY5960b/zsWnzhqFouz5mUx3ZwIttoQgcvys6XtyBCbACBtgNJzAIh1XC8Bh9ixlJLsME1eOE0cmTLsrHVcuzRzsmn6aJJMt0JI1cH4AoCsFlQvBFBKkZSrQBN0EKgl6JJOgwpG0sxYmnlRG4v3HAn4d7vbd2blrknhspVMtkNJpb5o3R+yES/wEQwNhNGMCHIpQCJVUNhWRC4JBBSgSEbKKx6guoi8eRv1QtPd5hWdXO/iGKnIYSd2xHxvlCJD0TiC4sGY3RQvAFGzAPQRF0QoxyOS8WFFNNEzmCmG15yV/Xd+7zCVVXNPZXnKYE3Csbl+0IjvwCxtgVw/WByEFqLIOUGYNOBQGI6jmoKYpTRBE5mRBeWd4g4t5U19TApbjGqYk3g2ETS3CCU9oN/28BMn4AwMDIaRsiAEHICsKlAYFAmlloQSDLCiVlYci0m87Lw67dxpuvSmCP0zFNUy3UotmI7QukD+eAvxxfC80dIwRgNFJ+FIGYD/khFAFYLRcVD0GmBlPaggUeS8Wdq7bUQphudeJCoPw5GZvsi5D4BPF8I1w8qhCAVCFwyBJMCw2UCf5yByv8Ei/kIkQGLPEw68VK48ydm0sI2VAlKPYRNHQMHKLb7s3xBdH8ozxcu+hsm+lNcnD8qDoFLAz6HRGCgEhuSbYeKaIXngibfmtOOdYZps9GywJguTNxAANcJUo6DqNk+ECYeJjF/LC36SE6AKaFELfAXmNyBYnqLC71mY3exi970cF1b8N7T9bykMFFW45d+htHwsvqsF5q3+Ve4oOoT6dt8z7viEdvncdvwKcCfodJuFN1rq/SW5e1PreHmnLqba3p/7cqrtuZUfom//pK67zfHBa+m8+FnOEXjx/Lf7VPvXbPOT5Tb8PGADzJWQog+QY86GZ+XWbsQqhy2RpSelSf18hMpEic+dRipOIg0rhClDhAqkgOPG/RPGfJP5kLkYGwMAAlU0UVGTpQton1N6bxJC7PJtCPa4ilZkpMudzM0nmBquihCTyCpIYEKEEbNjjCyJTn+KBmaEAcEYBJBCDWCauV2/shLOoil5HLkrWFyNzHEFMKvlxqOIclGGE4Dx6cisElIXCIar8bgVRiCGk1MAKDYFF+EBhYzxO14jGU5cZScsOgOnrQZTcwiMyuU2QdJIQYMPpVATMeQNAisGoaLh6KVcLSKSE0D4EEZLEzKHlbCXqmRG5QNwmWYy4d1pp1F1j1ssS1JO4IvXPys6Cpc1YNAKcOlhaPdk/vG52XqalRQKoCgGpsZsa8aa1/WVNaRxIEs8/nJ2XK672SLvbx8DC7pZk96Vae8qLaHn6NS+qu6vLYWb7fH03sMjk8DMLTCepr6XyUFz2015QQJilXU09j29ED/ucP7dTqnH9eOHvqNN+NFOf7xAaq9dM//uob+a6nrKGmDkjKAUGZZtLCuN668JlgVGpwOJWQnpDa1dR2wVPSFsCwEqiEwaS++bJEU3UKhZEmklZ1tE0ODx1XxDYTgHEAgqBaIHZLkMZGqOZRnDWGaceRCNt8eGlZPCSng8W0R4qro8B2hDD2NaWKyzeGyipi4XYLwcio9HxCF1wmFdUJ2tYBt5XMqWaziYEYBiVZEoeUzmGZJuEsgdpFDS6iMQibTzGFbWBxrGK+azS7ncioAkaRJJLbzRdXhotoIQS03rIJELQthFfJYxUJuUxi/icGzclhWUpiZwS7mMitJ3FKuqDaKZ+fxKgCebn9kZpex1pNXPypTNoaydjY6LPMr9Z0Ty5HRbjHHNRx4/EZov4teyuXuDs2pY51p9PmymGWsUfAbAUrzZaX78LH5pdlLy0pThyCq7vTyAmX4btH5V2WNvfEB7mf6l95HW080VTpRd9iYa93708T75aDRWrW4CwhuuCp2z7SNzLUdmJfp27myxtkjven777rO3M7Ob46ltN7PnfN+NX8jx2yI6mU5d4d8Z7c9mZF0dCQoRwFp/ilO9elo12lV43SYYZij7ttRNjS5/8vyptO82D6Bqqda2z6s21Wa6k5RDKYnj8a6esKb3cn6icS8k0B28WKK+XxK09fRozdDe69zXJeV9QvqyjOainmF4UR8xhF9waSpcLow50iuZiI7a7bUcrGo7mp87SVp49eAefet/PpVvX0luW9d6VmX7NuQuVfkbasxLSuJ1de01iW95UJB6aK55GKxZclQd13XfCN9z7LGdTWp6TpQ0XPX0r5R1Lpe1nHb0rVW0rW2s2Wltmtt99CdzoHbA/3rnpGN3v713r139gze2dV/y+q+Xuq4kL/rvLF+CUhrvZnXdtey51t797cDnu/Hx+8dH787e/De4vHNlbMbGxfW//7VxualzcMz93v2f9M0+k3T8Nouz63CoTv6zlUg2X1b1XeGP9sZcaKvdnpt4eJW5cwLzvCvqoNbJ67+e+3ms+UfXnR+8+PUtcdDJ55Pd175Xll1T1l1ct/q1JUtYGDiAbzfZv5+THTdkbHkuX3zXdzM67WHv+afeWMZuf3g/uO4Q09ils7O/XzZ6/W+ruvdGj32i2toy9Z35cEWIFfVfFKki1lzkxdqqtZnLiz/k9h6r+aalzu2VTl44enzF8UT94vGFuYvLtiqWo5Jst8VO3811G46p/KHLwF8ZVVQREFETxe/tUVu7lQa3Z/yyuQjj1I7V+xtR0989eDc5c0mx7hj16DJUJ8k1h1Kqbu481D7gRu8TBcQnlRt6V4sbJgrtM+Ktc1YUQGamRWjq5dpG0QJDZz4+lzbYVNJV9uRW62HbwqUFkm5R9dxOtzYgRKYAFCgVFc/xVJZ8dxscYZLqHNm2o+qyjxofj5ZXBrI0AsSGxL0TqNrTmc/GsTNCQhJR3Fz8RFF4BDd/wHcqEANj1SBdgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;One UI主界面&quot;
+        title=&quot;One UI主界面&quot;
+        src=&quot;/static/e45db4220084f57f2a45e361d90d16af/dabea/one-ui-homescreen.png&quot;
+        srcset=&quot;/static/e45db4220084f57f2a45e361d90d16af/5459c/one-ui-homescreen.png 285w,
+/static/e45db4220084f57f2a45e361d90d16af/2cee3/one-ui-homescreen.png 570w,
+/static/e45db4220084f57f2a45e361d90d16af/dabea/one-ui-homescreen.png 1080w&quot;
+        sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;One UI主界面&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;负一屏就比较让人意外了：可以快速打开微信小程序这个功能比我想像中的有用多了；还有快速打开扫吗、车票追踪、快递追踪等功能。Samsung Pay中还有各种公交卡、支付方式等。三星这种在国内都Others的厂商居然还做了这些贴心的本地化功能，让我感到很意外。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 160.70175438596493%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAgCAIAAACdAM/hAAAACXBIWXMAAAsSAAALEgHS3X78AAAE20lEQVQ4y41VW2wUZRQeMCT4ZCQhaVKoibZ9QYh9aKgh1gtpjA9i9AWEBCrbRiGQiD7YVhJKqaAFbOVmNKAPCIgmBlRCbBGhtLUX27JboF3Ybbezt9nZmd2dy87t/2fHb3YawgOXfrvz75fM+c7/n/Ofc5ZZvHjx8uXLysrKlhZRUlLy9PwAIYOftWvfWLfunVWrVlVVVWFduHAh8yQsWLDAFS9atKjqpara2trVRVRXV69+EmpqalauXAkh09HRoRm6LMuapulFgOQfC1VVTdOEkHGIfTJ85QZ/JxmJTd0NRiKRWxMT8FUoFOjDYNs2vMMAesYmlNWFLMmDwKskSaIoGoZhPRqQeQYM2PjIqH/85tDQUCAQIITA930jPB6zdH2OQwZeBINncHAw4PePjo76/X73vU2xEMv1YhcKLsdxHcTnOiUIx3EsSufEjuPIah5+QYhhUkmlhOimwcVjwvVB2OtcSjzSpd4MQKb094snjpuSBD0DQXh6es27m7pOnXa9hAa587upQ/m+kVO7dv69+SP1Xkw41BpZynC+t3TRiL25IlrBCEePwhGDEymK0nP9xgwbhVgzknwurFNbiyUufvzJ2OmfLOrkey5EV5TkjrXjbGLz9uSa59X+XgIxspIGUgCX4lMsG4+ycS6Z1CkJT07NTE4Rm3J8OnI7GI8niVNIxBJh/x1FN5BaN2ZcTyAwwbIsSDgc8gf8U8Egcsun+XRGhEEumw2GQryQti0i5XJiNoNLtTwxfECG2kIIWBEFasC7M1rMKlZY29SWzbxk5lVLB8d1uMf2XsPac+RV0oNVYVimYzs/xK69Otb+tv/wK6NtB2YuFizKeLs9Hnldc0x7/fjXz93YWTd6oKx3R81gi0UJMzY2hiTjhM6jUcDHceKOfFId+F7uOyH1Rh3l1niAqaysbGlu2tv6BOxp3bN/b/vRLw4daT94bP/htt17KioqmCVLlry/ub5x2/YGn6+xsbGhAb8Px1bf1nrfB1t89VsbfOs3bICQ6e7pcfiILSaL5ys484AXY3d3NwNzbvcm+ddvI7w4MjyEFMSiLJKe1zQ0EHrPy5nlEgODwjBNSVUzoui4FYbr4VOCOKsR00Y/GIagGLi4ArVymiVpJgi1SNbQvfZyW1LKmSAYBrjAa+LAi701n95qcWz61YBc/WP6SljL5s0tf2R8l8ScSoYzqR13/juTiLj9efak9eXnZGIcde521Teh409deqZ2oE7SlY0XpGc7+SPDSjBtvH5GqDsn3OPJ+XjovaF/9t2bMBXZrN+ovfayde60K6aE5nTp4GRXX+pfOBqLKV0DIi/rDrXO+qVfJiTHJgkp992k/3YqiQTlrl7NdHZqgoDqZTAyTMPkwpwiypgbGZ7jZoIyorKsFBtKzNxFhtIcNzs5lYhGNVUNRaO3WTbJccg5g2JGGyRTyVSaR6mmBSGe5NAn4NPTkVB42it4s9go6GHbLbi5kcR4pU+KeJB43TI3DNE8tm2keOXPv5TfL8sXL+uzrFUouDt7jfXQEWven56I9vDx9Ie7xL0d7trchh0YjH/kydvkkaAUR9UuX8m27Mvt78x+1qr//Juq60xTU1N2npDlTCwuzkYz0VhWkpqamxn8J5aWlpaXl78wH1RU4FteWVm6bBmE/wPtCMOYY93TtQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;One UI快速打开微信小程序和快捷方式&quot;
+        title=&quot;One UI快速打开微信小程序和快捷方式&quot;
+        src=&quot;/static/ab1ec9a15b9d52f0d88fc3e455965911/dabea/one-ui-cards.png&quot;
+        srcset=&quot;/static/ab1ec9a15b9d52f0d88fc3e455965911/5459c/one-ui-cards.png 285w,
+/static/ab1ec9a15b9d52f0d88fc3e455965911/2cee3/one-ui-cards.png 570w,
+/static/ab1ec9a15b9d52f0d88fc3e455965911/dabea/one-ui-cards.png 1080w&quot;
+        sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;One UI快速打开微信小程序和快捷方式&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 95.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsSAAALEgHS3X78AAACRElEQVQ4y5VSyW7aUBT1HrUsIsVuK+zESID9nhmMccxgM0MBgxAQCYrEpqnEJkKVKtZVNl3kB7rlL7ruB7BjQdVNv6EfkB7zguUmHY/sq+vnO5x77uPC4fDJC/G5eHYmSZFIRBRFZoM4fwRJkpDIxeLx2571xtGThtmo1xzHqVQqtm1blgVbrVbhaJqWDCCVSmWz2Xg8zqmUfnplv6+niHExcN12u93v92FRArbT6ZRKJUIIPQI+ktPpNHwOr6ooCcVD4gCUVAKfqqrSn0EO8JIR5JTL0+l0MBiAkvYr0N/A6wwOpmliDPqf8JINw8jlcowe+MCB1XUdFXGez+cxZHDsYrGI8/tkX0NEgAXSYIMK4xebyFeLBXPo02g0IOxoNELJ4XCI9biue1TGY4EAyN5qtcAFu4Df7XZRyxMM0fixWCyw2PF43Ov1yuXyYQrCpkDpWq3WbDaxc1RHzGQyQX+OUQWrQqGA4ZGG/vj0J0QyMjF5JpNBZwRg84jxaKM7cnAKR5blaDQKG4vFgqqybSMaNDGtvxpPMEiHD5SczWZY+Hw+B/OgvMFtIxkU7m8YTqEBJFmtVrvdbrvd7vf7zWaDJo8Xq1KSwAMV/T2zqphTP4IVfoAEIQbVLJVcEEq8QofkB5fWv7o+klSLqurSKn6dXX1Zvv32+vpjvaMwwf56DVOaJqrKB7t+t3z3/eb2bn3z2b30aENedoH+DJrUcunMdcFZW/Y677w0TEmWuVAoJAjCs38ALwhP+dMnPI/nhD9F4g9iyuYOT4dNpwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;One UI车票追踪&quot;
+        title=&quot;One UI车票追踪&quot;
+        src=&quot;/static/0935bd5bf1dba785e504d089b7f7a7d4/dabea/one-ui-12306.png&quot;
+        srcset=&quot;/static/0935bd5bf1dba785e504d089b7f7a7d4/5459c/one-ui-12306.png 285w,
+/static/0935bd5bf1dba785e504d089b7f7a7d4/2cee3/one-ui-12306.png 570w,
+/static/0935bd5bf1dba785e504d089b7f7a7d4/dabea/one-ui-12306.png 1080w&quot;
+        sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;One UI车票追踪&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;另外本来说One UI的&lt;a href=&quot;https://support.microsoft.com/en-us/office/samsung-gallery-and-onedrive-99c4e77b-8e63-4ddc-aede-19f81acee1a3&quot;&gt;照片应用可以使用OneDrive同步&lt;/a&gt;，但是国行没有，应该是被阉割了。但其实影响不大，只要关掉三星的备份、单独使用OneDrive应用备份就行。&lt;/p&gt;
+&lt;h2&gt;链接到Windows&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;链接到Windows&lt;/strong&gt;。是微软推出的同步工具，用起来比较折腾，首先电脑和手机都得翻墙、然后把Windows的区域设置到美国，而且功能也挺一般，只有同步通知、同步照片等功能，而且因为要经过互联网，所以同步速度堪忧。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1086px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 57.19298245614035%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAABbklEQVQoz42SW2uEMBCF/TfLqvGuiYkmGi9J1L1Ql0Kh733o/v/nThSWsoWl5ymQmfOdycSp61prXZYlwZgxRin1PO9wOHgvhVCAEHKKArOShFRGzVxXLM/zZVnu9/vx6O51rus+dfoo8H0fDg7GhOT5/PH5/vVNiqKkNMuyuuYosBVhGAZBuJcewQ+MfD9I0jiOLZmUhDImOs6bkrGqoHRMsxkTLqUQou8HrUdaZhAQTKEBktgwmxzRtK2Uo9LTvMCBNyJP0yxJ4iRJN8EgURTu2iP4m2zs+XxZ17UfBm2MnqYWpCdplpoxQkhVVcCPIhvyaXhLPl0ub7dVGT2fTmaewAVjvNGsgk0wIWBt5qdm4C3X62CU0kob1cj2POnb9QwjKKUgR9/34zhyzmGdYPSb70jZANYss7L9g+zavWJ/24f+rtqSuWCyE60Ubd/KXnZDBwnh4vE2L76KA7TRKEJhwbiqCKUEId/7hwDwA2WvihazJOGuAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;小米9 SE使用你的手机和Windows同步&quot;
+        title=&quot;小米9 SE使用你的手机和Windows同步&quot;
+        src=&quot;/static/e560b0c33757a6527532a35e8e0f915b/2898d/your-phone-companion-mi.png&quot;
+        srcset=&quot;/static/e560b0c33757a6527532a35e8e0f915b/5459c/your-phone-companion-mi.png 285w,
+/static/e560b0c33757a6527532a35e8e0f915b/2cee3/your-phone-companion-mi.png 570w,
+/static/e560b0c33757a6527532a35e8e0f915b/2898d/your-phone-companion-mi.png 1086w&quot;
+        sizes=&quot;(max-width: 1086px) 100vw, 1086px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9 SE使用你的手机和Windows同步&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;本来所有Android手机都可以用，但是&lt;a href=&quot;https://www.samsung.com/levant/support/mobile-devices/what-is-link-to-windows/&quot;&gt;微软对三星的手机开了小灶&lt;/a&gt;，额外支持同步手机屏幕和在电脑上打电话两个功能。&lt;/p&gt;
+&lt;p&gt;打电话可以直接将电脑当作一个蓝牙耳机，从而实现不拿手机打电话，有电话来的时候还有提示。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 385px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 94.73684210526315%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsSAAALEgHS3X78AAACLUlEQVQ4y4VTXYvaQBTNL1jqUwvVaJLJZBI1avzCrB+tX1todgXBtlu2IPhkQYrbB2HXh7YI4oMvpUX6WiqC6I/qX+gv6DFTbDa76x7CMDf3nnvv3DkjlMvlRqORTqczN5FNp/OpVD6fz2azPheCbdsuFAqCZVmlUokQonpAVRV2SBSDwaCiKJRSrxfBhmHoui7AgFu7CfyE8+35ebfbTSQSiGaMeQOoC4G58DpgIt1oNNpsNuv1ejqd+gL2EHw24lDWNM3VajWfzyeTyXa7rVQqsizfTiHcmRItzWYzlF0ul4vFAp0j48Nk0LBKkpRMJsfjMXouFouiKOLY3HUvGW4UwU1Uq1VcEt/kcrl6vY4NznKIjN7Awc11Oh3HcZrNJqbdarV6vR42yOIrfkfbAHFRdMEvViEqdef577tN9o6EHwHgFqOEUVXHqir4/GR+Sd7GeBdMAykWztTF7EnQqkUyzYj1jBcX9kz01m63oVauJ6yQMTRM5Agxc0cvrx6dfbIH34/OPgdefKR6FMmFfRHIdTgc1mo16EGHyAg5dZz3/b4ZM6RoJuBcP7/88frLr0z/W+Dk0k+G0DHPeDzOO9+tqZRpHxs6U6LJx9Uea31QTweSM3hSeUeZ8Z/M4VUC0bRePDaIR3Hm3bk0LRyRnu4eGTkkT8RhmgVKf79q/7l409KZSDUd5HAYs+DrQW0jBaVf7fzP8rHldgECZhEKhfDgHiBzvkypDIVo9+IvpQ/bWpKeREUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;在电脑上接打电话&quot;
+        title=&quot;在电脑上接打电话&quot;
+        src=&quot;/static/705a85c61d98f6c7616e52340e31f7e6/d7aa9/calling-with-computer.png&quot;
+        srcset=&quot;/static/705a85c61d98f6c7616e52340e31f7e6/5459c/calling-with-computer.png 285w,
+/static/705a85c61d98f6c7616e52340e31f7e6/d7aa9/calling-with-computer.png 385w&quot;
+        sizes=&quot;(max-width: 385px) 100vw, 385px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;在电脑上接打电话&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;同步手机屏幕功能和华为的有差距，最大的问题就是同步手机屏幕输入的时候是调用的手机输入法而不是电脑输入法，这带来了体验的割裂。另外，我也只有一次成功了投影了电脑屏幕，后续都没能成功（手机端有提示已经投影，但是电脑无法显示），不知道为什么。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsSAAALEgHS3X78AAACD0lEQVQoz12STW8SQRjH96PsLpAFLCSFshAgZV+qgF12Z9/YYuqhsVAUsVoW24Pp3aNXpfXgZ/BgPHhEE6VJ4QtQ48Fiy0ulJtCIT9l0W/xnM3kyM7/9zTwZzDAMjuPisXg0GmUYJhaLeb3euatA7Xa7PR6Pexpr0u/3UxSFEMIkSaLDoTWjlFxE0VhkIbgAwK1poAgGAzzLxONxlknwHGst+Xw+h8ORyWQwRVYCgflXL/efPtoJBOdpmrZ3kATxuLzZ/nH8vX30s9P78PGT0+kEMyxBcQmDnaZD62vFrJ6LRCKhUOj69yReKJv1o7+d485Be/jufZ1y2TCYRWx19f7S0u0EhGF4jg+HwzaM47hZMUeji0F/MBqNP9e/zJoFLJ8vpO8uJ++kkslUOpW2GmbBBI5XzGq3f/b7bDiZTJrNFlzVd5k5gAVhGSuVyoaxIgiiIGREUUosJqC3Nmyaz7uD89OTLsCHh02AZ469sfFQkVUkyZKIVEVjGdaG4dhVs3o+/NM97QHcaBzcgKcNyz8oIFHWFE1BalY1OJa/NhPE1lal1+3/6pwA/O1r43+4sF6UJVVXDVXWDS3HX8HwEsC8s70N2PhiDGOrZd/ZhvNFGam6ZqiKbmRz0HALBoPL5UJIrr3Z2997W3td232xCw9rxrz55NlK9p6mZOG7abZ4yk0ROAFCkiQdpMOat+F/7UHsZaw0mhUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;在电脑上控制手机&quot;
+        title=&quot;在电脑上控制手机&quot;
+        src=&quot;/static/2b0d0d08edd42390dec57d304d071f37/267c0/phone-screen.png&quot;
+        srcset=&quot;/static/2b0d0d08edd42390dec57d304d071f37/5459c/phone-screen.png 285w,
+/static/2b0d0d08edd42390dec57d304d071f37/2cee3/phone-screen.png 570w,
+/static/2b0d0d08edd42390dec57d304d071f37/267c0/phone-screen.png 1140w,
+/static/2b0d0d08edd42390dec57d304d071f37/b69e4/phone-screen.png 1176w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;在电脑上控制手机&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;注意，国行的系统阉割了这个功能，国行三星要想使用这个功能，需要单独装一个APK（Link to Windows Service，&lt;a href=&quot;https://www.apkmirror.com/apk/samsung-electronics-co-ltd/link-to-windows-service/&quot;&gt;apkmirror链接&lt;/a&gt;），然后再装Your Phone Companion。&lt;/p&gt;
+&lt;p&gt;说实话这个功能还是有点鸡肋的，通知同步还要过互联网就离谱，使用体验也不好。这个方面华为和苹果确实还是做的最好的。&lt;/p&gt;
+&lt;h2&gt;5G&lt;/h2&gt;
+&lt;p&gt;港版S20刷了国行固件后可以完美支持5G，正好我家附近有5G信号，于是体验了一下5G杀手级应用：测速，结果如下。对于联通，不办5G套餐不换卡可以直接连接5G，但是限速到300Mbps。&lt;/p&gt;
+&lt;p&gt;我个人认为5G之前吹得太过了，所谓低延迟啥的对普通消费者“感知不强”，而且使用5G而非4G对于我这种在手机上视频都不看的人来说都是”徒增功耗“，这一代的5G也是功耗杀手。所以，目前来说，看看就好。建议下一代再买5G手机，到时候肯定价格会下来（今年手机价格太夸张了），而且也能做的更轻薄更省电。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1079px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.49122807017544%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAAB8ElEQVQoz22RS2+bQBDHubROKlWR2tg8doFd2MXA8lieBmMcwLKdxK3iVEovPfT7f4uO4x56qPTTaOY/r9WsMrtV777YxElNO2Je0a4Pc5V9mM1ntxrw8Ub9fGdeslakah7CITJDQhPN8G8+acrXe8+0UpdVLquDcF1We0JzVRcIJwaONV1YJBNRT53CJjk2U8gyXvlBC40KoVVRHjQ9eSe+XwjHWYloKMrHevUNKMqnLIcCGBQbKIUysO36xHirgPcXnBp6TOSYrI5t89xvfxCndM0uF8eqeez716XfXfsBhCXCqfJPILEpdSxF9PAwnKv68aIjyb0W9gBxMqhadK0EIKu8vyReqEIzkrkqwAnFdn/42a6f54sQQpsUMttBcyqnxUJoWgwjAANJBWZQp07S0aGllJPLVzYtwAaiB1ze5OUBrEULA67llCAug84PNzpKFF2PGWv74a3avE67XzI+EFw7VuuzbZ2fUrEf+zePdtRsHKuJ/KmtXqrsBFC7UcLo6CdPttcT3tFgYGLHw8kTEwtG6m1dfyC8Z+HIxQS664PYO3zjLLc83ileNCZytKwMoQQOiElu8hq5FQbYBZNdwisXcbnG0YDDrW5KhZDifP7NvLUf9HzZ+X7PWWMY8G3Jf1Ajg3VG+YKy7wZd/QExbWts3XbQWAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;5G测速结果&quot;
+        title=&quot;5G测速结果&quot;
+        src=&quot;/static/2349ba7347f8ebd9eb348594c22470ff/7b38f/5g-speedtest.png&quot;
+        srcset=&quot;/static/2349ba7347f8ebd9eb348594c22470ff/5459c/5g-speedtest.png 285w,
+/static/2349ba7347f8ebd9eb348594c22470ff/2cee3/5g-speedtest.png 570w,
+/static/2349ba7347f8ebd9eb348594c22470ff/7b38f/5g-speedtest.png 1079w&quot;
+        sizes=&quot;(max-width: 1079px) 100vw, 1079px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;5G测速结果&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;电池&lt;/h2&gt;
+&lt;p&gt;虽然S20有4000mAh的电池，但是在865和1080P120屏幕下还是不堪一击。&lt;/p&gt;
+&lt;p&gt;我的日常使用习惯是这样的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wi-Fi不关&lt;/li&gt;
+&lt;li&gt;双卡，一卡5G一卡4G&lt;/li&gt;
+&lt;li&gt;蓝牙连Amazfit GTS&lt;/li&gt;
+&lt;li&gt;装Google Play但是不一直开梯子&lt;/li&gt;
+&lt;li&gt;不在手机上看视频，不玩游戏，手机主要聊QQ刷知乎，有时候拍拍照&lt;/li&gt;
+&lt;li&gt;1080P120&lt;/li&gt;
+&lt;li&gt;晚上自动切换黑暗模式，白天不用黑暗模式&lt;/li&gt;
+&lt;li&gt;自动亮度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在这样的使用习惯下，手机从100到0应该只能8个小时，其中亮屏2个半小时左右。&lt;/p&gt;
+&lt;p&gt;说实话，这个续航真的挺一般的。希望以后注销一张卡，以及日常把5G关掉可能会好一些吧。&lt;/p&gt;
+&lt;p&gt;当然普通用户如果不用Google Play、不用蓝牙、不用双卡的话，应该会好不少。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.87719298245615%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsSAAALEgHS3X78AAACN0lEQVQoz41TW2sTQRTOr/Ch3WZ3Zy/ZbHaTugk0TdrgJrGaSi4lupeUgBC1IDEhWlAEhYCCIcTe0pikmy2tpqAVxAcFRVDoq8/+Hk9mt7ZP0u9hdvbMfDPf+c4ZD0IoHo8XCoVsNptMJnO5nCAILMtyF4CHoigg3MUolUq1Wk0URYZhLkSGm9PptGEYcDNMgJlKpTIYsMTz/P/IoDAQCIRCIVmWg8EghIAvy5IsSafa3Y9zkCPJycvjzBgMJ8ROwP1L2yc4WfCIpoGtsLyP4/x+P5w1ITs0HwaPQYfzSFrgWQTXMSyfupZ/9movGlu4sWJW791HFClJ0oQMNBAMUmcAXi9FkjRC/iuVwNwyTRKwg+XFxvPdvfc/2xu9Vu94/eFjmvS6ssFtcKjZbFYqFU3TljPX52OL5SeHT1/2EosxYnrq8pz6YvBj0/q009/vj7/Xqw2GpiRZdsmqqg6HQ9u2Lcsa9N9sdfu19rfWzrvNjY4yK6vZO53x79eDj9s9u3vwtf6gAbIhQZcMFXKYAHtkjfbfPto+aXWPjsaHnXZrvf156/jP7sGXwWhsffgFss/I4FY4HIY667qOR00zzKXiWr64ahiaaZrFcn1ltXrTvH1LL+nltavpJagNGOaWClwBswiCABXYNS+HyBliGpwjSZKYusQ6vxTFIBoi3GnnTNyGookY0C0w4oK5ZYNRlBUBr08iOHjWYSA7EokoigLPI5FIwPz8q4CtSjwTnFXmo1Enz/P4C46Wyo+4VNEwAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;注意中间的陡坡，那时候一直在外面，亮屏时间只有1个小时左右&quot;
+        title=&quot;注意中间的陡坡，那时候一直在外面，亮屏时间只有1个小时左右&quot;
+        src=&quot;/static/901089058a24a613fe555952782ff818/dabea/battery.png&quot;
+        srcset=&quot;/static/901089058a24a613fe555952782ff818/5459c/battery.png 285w,
+/static/901089058a24a613fe555952782ff818/2cee3/battery.png 570w,
+/static/901089058a24a613fe555952782ff818/dabea/battery.png 1080w&quot;
+        sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;注意中间的陡坡，那时候一直在外面，亮屏时间只有1个小时左右&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;其实这也是这代5G的毛病，看现在几乎所有手机的电池都4000mAh左右或以上，高端机都一般5000mAh。做这么大，一个原因也是目前5G不够成熟，功耗太大。所以，不想尝鲜的同学还是明年再换机吧，等等党永远胜利。&lt;/p&gt;
+&lt;h2&gt;其他细节&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;震动马达比9 SE和6提升巨大，但是应该还是不如目前主流的X轴马达&lt;/li&gt;
+&lt;li&gt;屏幕仍然是曲面的，但是这个曲面几乎和没有差不多，不会出现误触（国产机全部投入夸张的曲面屏，这让我这种单手党很为难啊）&lt;/li&gt;
+&lt;li&gt;无线充电好，15W无线充电好，25W线充速度还可以，但是港版的充电头是港版的，需要带转接器。可以去淘宝上搜“电友”，有那种可以支持所有手机牌子的私有协议+PD 65W的头&lt;/li&gt;
+&lt;li&gt;说小屏，其实S20也不算小屏，由于高度高了一点，可操作性还是不如短了4mm方便，尤其是需要操作屏幕上方时。在现在这个19.5:9甚至21:9屏幕当道的时候，这是无解的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;总结&lt;/h1&gt;
+&lt;p&gt;在这个小手机消失的年代，总有一些“前朝遗老”想着回到那个单手就能掌控的手机。这个群体的人数，说大不大，手机厂商都不愿投钱做这个市场，上一个坚持这个市场的SONY Compact系列已经死了；但是这个群体的人数说小也不小，iPhone SE 2推出时，也有很多剁手党直接就剁手了。&lt;/p&gt;
+&lt;p&gt;我也是这样的前朝遗老。我希望有一部手机：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;大小够小，能够让我轻松地单手打字，能够方便地放在兜里&lt;/li&gt;
+&lt;li&gt;重量够轻，能够让我长时间拿在手中不觉得沉&lt;/li&gt;
+&lt;li&gt;配置够强，能够让我快速可靠地使用手机完成各种日常工作&lt;/li&gt;
+&lt;li&gt;续航够久，能够让我在外使用时不会太提心吊胆&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然，这四点是矛盾的：前三点和续航是不可兼得的。S20、iPhone SE 2都牺牲了续航，而达到了前四点；而其他主流手机，都希望大小和重量，从而换取了强悍的配置和足够的续航，当然还有大量生产带来的低成本和低价格。&lt;/p&gt;
+&lt;p&gt;但是，随着5G的不断成熟以及中端市场芯片的越来越强，以及iPhone SE带来的强烈的话题性再次点燃了小屏手机这一话题，一部采用中高端芯片的、低功耗的、不过分阉割外围硬件配置（摄像头、闪存、内存、屏幕）的现代的小屏手机，可能就在不久的将来就会出现了。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[使用PowerShell脚本让UWP应用使用localhost上的系统代理]]></title><link>https://ddadaal.me/articles/make-uwp-apps-use-loopback-system-proxy-using-powershell-script/cn</link><guid isPermaLink="false">/articles/make-uwp-apps-use-loopback-system-proxy-using-powershell-script/cn</guid><category><![CDATA[Windows]]></category><category><![CDATA[problem-investigation]]></category><pubDate>Sat, 25 Apr 2020 15:40:00 GMT</pubDate><content:encoded>&lt;h1&gt;问题&lt;/h1&gt;
 &lt;p&gt;众所周知，国内微软服务的连接性很成问题，并且这个问题越来越严重了，所以必须要让这些应用通过梯子才能正常使用微软服务。&lt;/p&gt;
 &lt;p&gt;梯子一般都会设置系统代理，其原理是在本机localhost的某个端口上监听网络请求，并将请求发送到服务器。绝大部分普通的Win32应用都会遵循系统代理的设置，包括OneDrive桌面应用等，所以这些以Win32应用形式存在的应用程序可以很简单的解决。&lt;/p&gt;
 &lt;p&gt;但是微软的很多应用，例如自带的Windows商店、邮件、照片等，都是UWP应用，而UWP应用禁止了将网络流量发送到本机(localhost)，所以UWP应用是不能直接使用这种系统代理的。&lt;/p&gt;
@@ -206,7 +998,7 @@ S-1-15-2-...（剩下的ID）
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 797px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 797px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -254,7 +1046,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 757px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 757px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -279,7 +1071,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 980px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 980px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -309,7 +1101,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 775px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 775px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -334,7 +1126,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 726px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -360,7 +1152,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 616px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 616px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -385,7 +1177,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -411,7 +1203,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -467,7 +1259,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 547px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 547px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -490,7 +1282,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 485px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 485px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -513,7 +1305,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -546,7 +1338,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 498px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 498px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -616,7 +1408,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 661px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 661px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -643,7 +1435,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 661px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 661px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -674,7 +1466,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -706,7 +1498,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 630px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -746,7 +1538,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 705px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 705px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -773,7 +1565,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -802,7 +1594,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 697px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 697px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -830,7 +1622,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 615px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 615px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -866,7 +1658,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 573px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 573px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -918,7 +1710,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 667px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 667px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -994,7 +1786,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 540px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 540px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1022,7 +1814,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1086,7 +1878,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1119,7 +1911,7 @@ libGL error: failed to load driver: swrast&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1212,7 +2004,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 941px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 941px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1286,7 +2078,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 877px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 877px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1311,7 +2103,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1344,7 +2136,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 317px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 317px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1370,7 +2162,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1407,7 +2199,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1435,7 +2227,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 781px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 781px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1469,7 +2261,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1497,7 +2289,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 978px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 978px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1523,7 +2315,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1003px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1003px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1549,7 +2341,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1580,7 +2372,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1607,7 +2399,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1634,7 +2426,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1684,7 +2476,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;li&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1711,7 +2503,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;li&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 717px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 717px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1747,7 +2539,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;2019年是收获的一年，也是思考的一年。通过亲身体验和思考，我对以后我想过的生活有了不一样的认识。而这个认识是否正确，那就只能用2020年、以及接下来更长的时间来检验了。希望站在2020年底、或者以后的任何一个时间点回望这一年的各种事情、各种思考、各种决定，我能说，我已经做到最好了。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[入手4K显示器：LG 27UL550]]></title><link>https://ddadaal.me/articles/getting-a-new-4k-monitor/cn</link><guid isPermaLink="false">/articles/getting-a-new-4k-monitor/cn</guid><category><![CDATA[life]]></category><category><![CDATA[hands-on]]></category><pubDate>Sat, 21 Dec 2019 09:30:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1775,7 +2567,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1801,7 +2593,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1827,7 +2619,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1856,7 +2648,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 387px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 387px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1929,7 +2721,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 681px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 681px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1953,7 +2745,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 631px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 631px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1979,7 +2771,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2013,7 +2805,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 681px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 681px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2040,7 +2832,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 790px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 790px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2067,7 +2859,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 545px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 545px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2091,7 +2883,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 185px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 185px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2114,7 +2906,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 465px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 465px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2145,7 +2937,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2170,7 +2962,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2197,7 +2989,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2235,7 +3027,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 944px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 944px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2263,7 +3055,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 528px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 528px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2287,7 +3079,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1073px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1073px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2316,7 +3108,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2343,7 +3135,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2377,7 +3169,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 930px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 930px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2412,7 +3204,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 658px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 658px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2438,7 +3230,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 931px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 931px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2562,7 +3354,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2589,7 +3381,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2617,7 +3409,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2644,7 +3436,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2675,7 +3467,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2710,7 +3502,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2739,7 +3531,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 373px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 373px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2766,7 +3558,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2793,7 +3585,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2820,7 +3612,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2847,7 +3639,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2878,7 +3670,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2906,7 +3698,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2948,7 +3740,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2976,7 +3768,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3045,7 +3837,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3073,7 +3865,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 458px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 458px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3100,7 +3892,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3127,7 +3919,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 865px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 865px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3271,7 +4063,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3299,7 +4091,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 726px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3344,7 +4136,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 780px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 780px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3368,7 +4160,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 414px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 414px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3393,7 +4185,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 476px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 476px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3421,7 +4213,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 123px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 123px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3484,7 +4276,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 609px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 609px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3509,7 +4301,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 748px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 748px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3542,7 +4334,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1055px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1055px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3566,7 +4358,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3591,7 +4383,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3638,7 +4430,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3758,7 +4550,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3857,7 +4649,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 424px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 424px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3883,7 +4675,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1080px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3908,7 +4700,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 640px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3935,7 +4727,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3961,7 +4753,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1043px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1043px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -3987,7 +4779,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 886px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 886px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4015,7 +4807,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1008px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1008px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4040,7 +4832,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1000px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4065,7 +4857,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4091,7 +4883,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4116,7 +4908,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4142,7 +4934,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4171,7 +4963,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 853px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 853px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4196,7 +4988,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4224,7 +5016,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4249,7 +5041,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1049px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1049px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4274,7 +5066,7 @@ map &amp;lt;A-q&amp;gt; :Bc&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&g
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 900px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 900px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4301,7 +5093,7 @@ s
 &lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4327,7 +5119,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4355,7 +5147,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4455,7 +5247,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 176px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 176px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4477,7 +5269,7 @@ s
 &lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 130px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 130px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4504,7 +5296,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4529,7 +5321,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4574,7 +5366,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 782px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 782px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4599,7 +5391,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4630,7 +5422,7 @@ s
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 763px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 763px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4805,7 +5597,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4838,7 +5630,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 716px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 716px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4878,7 +5670,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4905,7 +5697,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -4932,7 +5724,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5158,7 +5950,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;要启动应用，设置好&lt;strong&gt;目标Activity&lt;/strong&gt;后，应首先启动Server。等Server启动完成后（显示下图的字样即启动完成），再使用Android Studio运行多个客户端。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 724px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 724px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5180,7 +5972,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;当客户端启动成功后，输入用户名后点击登录按钮进行登录。要注意多个客户端不能使用同一个用户名，否则登录时将会报错。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 543px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 543px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5201,7 +5993,7 @@ Sun Mon Tue Wed Thu Fri Sat
 &lt;p&gt;进入主界面后，输入信息点击发送即可将信息发送出去。本机发出的信息显示在右边，其他用户发送的信息显示在左边。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5282,7 +6074,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;h1&gt;4. MVC架构&lt;/h1&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 696px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 696px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5310,7 +6102,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;具体来说，如果我们通过MVC架构实现发送消息这个功能，其数据流应该如下图所示。其中，左边（后缀为1的MVC）为发送者，右边（后缀为2的MVC）为接收者。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 584px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 584px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5344,7 +6136,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;根据MVC架构，我们可以很容易地画出如下的数据流图。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 570px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 570px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5373,7 +6165,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;h1&gt;5. MVP架构&lt;/h1&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 694px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5396,7 +6188,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;使用MVP架构实现的消息备份功能的数据流图如下。注意，在发起&lt;strong&gt;3. 请求备份操作&lt;/strong&gt;之前，P已经控制V显示正在备份的数据。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 712px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 712px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5454,7 +6246,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;使用MVP架构实现的此功能，其数据流是这样的：&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 712px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 712px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5562,7 +6354,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;h1&gt;6. MVVM架构&lt;/h1&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 693px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 693px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5589,7 +6381,7 @@ content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;当我们使用MVVM来实现消息撤回时，其数据流是这样的。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 708px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 708px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5703,7 +6495,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;FRP，全称Functional Reactive Programming，函数式响应式编程，是最近一个非常火的概念，被广泛运用于各个UI开发领域，很多使用者说它能解决很多UI开发中固有的问题。那么这到底是个什么东西呢？&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 693px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 693px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5731,7 +6523,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;让我们来看看FRP是怎么处理消息发送和接受的过程的。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 716px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 716px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5811,7 +6603,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;有了这样的流结构，要实现过滤脏话，我们只需要在发送流上增加一个filter函数即可。这样，包含有脏话的消息数据，就不会继续被输入流的后续函数和消费者进行处理，被“过滤”掉了。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 688px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 688px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5844,7 +6636,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;而使用FRP的思想，我们可以尝试&lt;strong&gt;截断这个流&lt;/strong&gt;，使其一定时间内只能通过指定次数。幸运的是，这个需求很常见，我们可以直接使用内置的节流函数（throttleLatest）就可以实现这个功能。这个函数顾名思义，使这个流在指定时间内只能通过一次。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 695px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 695px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5890,7 +6682,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;目前被广泛使用的FRP库（例如&lt;a href=&quot;http://reactivex.io/documentation/operators.html&quot;&gt;ReactiveX&lt;/a&gt;）都会提供非常非常多的函数供用户使用，虽然这增强了FRP的能力，但是却也让新手程序员望而却步；就算是老手程序员，其中一些函数从字面上可能并不能猜出它们地区别，也很容易地就用错了函数（例如下图这两个函数（&lt;a href=&quot;http://reactivex.io/documentation/operators.html&quot;&gt;地址&lt;/a&gt;），对于很多用户来说，仅从函数名上可能很难理解他们的区别）。要精通FRP的使用，还是需要很长的学习时间。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 627px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 627px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5938,7 +6730,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 951px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 951px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -5987,7 +6779,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 425px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 425px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6062,7 +6854,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 640px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6289,7 +7081,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1058px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1058px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6325,7 +7117,7 @@ uiOperator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 907px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 907px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6686,7 +7478,7 @@ vbox &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 823px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 823px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6712,7 +7504,7 @@ vbox &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 287px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 287px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6859,7 +7651,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 601px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 601px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6906,7 +7698,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;举例：2017年11月30前后三天，在九食巴黎贝甜连肝3天，从Linux命令和groovy一无所知，到写出了一个调用了操作系统API的构建脚本，只为了达成让构建脚本能够在测试之前启动服务器，启动成功后运行测试用例，运行结束后关闭服务器这一个目的。即使最后并没有起到应有的作用，但是让人印象深刻。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6928,7 +7720,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6951,7 +7743,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;2018年1月，系统展示、最终答辩，24/7被软工2占据的日子终于结束，在如释重负的同时，我还感到了收获的快乐。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 666px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6972,7 +7764,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1067px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1067px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -6995,7 +7787,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;软工3倒是没有像软工2一样，把所有时间都花在这个上面。但是，软工3和软工2完全不同，不清晰的需求，不设限的技术选择，甚至最后1个月推导需求完全重做，每一步都和作业似的软工2完全不一样。为了博得评委的好感，增加项目的“亮点”，不管用不用得上，有没有用到位，我们一股脑上了最新最酷的技术（React, TS, Ant Design, Spring Boot, CI/CD，独立域名，响应式，多语言，视频/音频/3D标注，Tensorflow，各种我没有听说过的网络……距结项1个月推翻重做的时候，还提到了用Unity做VR标记…），做了一切我们能想到的工作，甚至答辩（下午）的上午还在加新的功能（当然坚守了不通宵的底线），答辩时也在尽可能在找花哨的词语。最终虽然也拿到了不错的成绩，却让我产生了思考：真实的项目真的是这样做出来吗？一个项目是否成功，真的是“亮点”越多越好，技术越多越新越好吗？&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 345px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 345px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7017,7 +7809,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;一个偶然的机会，在同学的“引荐”下，认识了商院的同学，抱着试一试的心态接下来链谷杯的锅；花了用了一个晚上4个小时，从0开始xjb设计的拓扑架构，再以“能用就行”的代码质量要求写出了几千行的代码，大部分还是现学的kotlin和Vue；最后却稀里糊涂地进了决赛，有便宜白不占地去苏州玩了一圈，还在老师“五篇博士论文”的怒怼下自己都不敢相信地得了三等奖，还发现这是大学期间我第一次拿有价值的奖项？更让人震惊的是，同一个项目还在6个月后的类似比赛上又拿了奖，而且比赛听上去更有排面？生活中真是处处充满了惊喜。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7039,7 +7831,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7064,7 +7856,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;奖杯&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7087,7 +7879,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;顺便逛了逛大连，真实个美丽的海滨城市，尤其对我这种西部山区出来的，还是非常见世面。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7109,7 +7901,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7131,7 +7923,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7164,7 +7956,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;俱乐部活动时间表&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7189,7 +7981,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;5月20日校庆夜开放体验&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7213,7 +8005,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;7月4日，组织四个学校的同学去微软苏州参观，中途意外情况不断，再加上我各种不过脑子的决定和错误，让这次参观出现了很多不该发生的问题。当然了也是宝贵的学习机会，以后一定不会再犯相同的错误了！&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7240,7 +8032,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;解放军军乐团&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7263,7 +8055,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;校新年音乐会&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7288,7 +8080,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;/ul&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7310,7 +8102,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7336,7 +8128,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;贝店&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 807px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 807px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7361,7 +8153,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;栖霞山&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 905px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 905px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7383,7 +8175,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;先锋书店&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7406,7 +8198,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;南京市长江大桥&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 905px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 905px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7432,7 +8224,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;MSRA面试邮件&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 484px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 484px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -7454,7 +8246,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;之前从我妈那里听说了这个公司（以及对它的ERP产品繁琐易用性不高的抱怨），没想到这个公司还和学院有个实习项目的合作，听了宣讲会后居然感觉到价值观挺相符……即使听说最终待遇比较低，但是&lt;del&gt;参加了总没有坏处&lt;/del&gt;就报了。暑假参加了一次供应链相关内容和SAP相关产品的培训，虽然就5天，每天还有赶单程1个小时的地铁，却感觉学到了很多知识（毕竟是全新的领域，老师讲的也好）；然后去玩了一圈，虽然活动比较尬和天气比较热，还是非常好玩。按道理暑假需要去实习，所以这段时间我必须在信仰和偷懒之间做出权衡了。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8419,7 +9211,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8443,7 +9235,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8467,7 +9259,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8491,7 +9283,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8515,7 +9307,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8569,7 +9361,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8605,7 +9397,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8629,7 +9421,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -8653,7 +9445,7 @@ const ComponentWitHooks = ({ id }: Props) =&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 324px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 324px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -9233,7 +10025,7 @@ IDENTIFIER （定义一个F -&amp;gt; IDENTIFIER的产生式）
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 536px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 536px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -9845,7 +10637,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;先放一张效果图。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 866px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 866px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -9870,7 +10662,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;院的GitLab版本是&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -9920,7 +10712,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;直接敲&lt;code class=&quot;language-text&quot;&gt;sudo apt-get install nodejs&lt;/code&gt;，然后就开始build。结果在build的时候才发现node版本很低……&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -9946,7 +10738,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;上传后，pipeline自动开始build。然而虽然想到了Node非常耗费内存，但是没想到512M内存都不够吃……跑&lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt;的时候被bash无情杀掉。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -9972,7 +10764,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;成功了！折腾了这些后，终于成功build了一次。
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -10024,7 +10816,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;在VS2017上运行插件，运行测试时，会弹出如下的错误提示。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -10049,7 +10841,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;为了找到这个的原因，使用免费的JetBrains的&lt;a href=&quot;https://www.jetbrains.com/decompiler&quot;&gt;dotPeek&lt;/a&gt;工具对CppPlugin工具解包出的&lt;strong&gt;CppPlugin.dll&lt;/strong&gt;文件进行反编译并导出成解决方案到VS里查看。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -10073,7 +10865,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;通过查找报错的字符串&lt;em&gt;获取可执行文件路径出错&lt;/em&gt;直接定位出错的位置，可以发现相关代码路径是&lt;code class=&quot;language-text&quot;&gt;Controller/imp/TestControllerImp.cs&lt;/code&gt;的&lt;code class=&quot;language-text&quot;&gt;CallResult RunTest(string)&lt;/code&gt;方法。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1140px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -10101,7 +10893,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;为了弄清楚具体哪一个调用出错，我新建了一个&lt;strong&gt;全新的VSIX扩展程序&lt;/strong&gt;项目，并在点击事件响应中加入了这个方法。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 531px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 531px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -10122,7 +10914,7 @@ not_login_error &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
 &lt;p&gt;在调试中的VS实例中新建一个C++控制台程序，点击菜单按钮，发现如下结果：&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 926px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 926px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
