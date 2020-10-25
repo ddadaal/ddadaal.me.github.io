@@ -8,6 +8,8 @@
 <url> <loc>https://ddadaal.me/articles/6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/7</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/8</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ddadaal.me/resume</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://ddadaal.me/resume/en</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/good-memories-and-unknown-future</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/run-gui-on-wsl2-with-x11-forwarding</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/about/me</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -19,8 +21,6 @@
 <url> <loc>https://ddadaal.me/articles/from-vscode-to-vim-to-both</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/summary-for-2019</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/getting-a-new-4k-monitor</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ddadaal.me/resume</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://ddadaal.me/resume/en</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/dark-mode-online</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/fix-gatsby-transformer-remark-chinese-word-count</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://ddadaal.me/articles/playing-with-linux-from-machine-to-win10</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
