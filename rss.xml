@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 30 Dec 2020 13:05:11 GMT</lastBuildDate><item><title><![CDATA[2020年总结]]></title><link>https://ddadaal.me/articles/summary-for-2020/cn</link><guid isPermaLink="false">/articles/summary-for-2020/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Sun, 27 Dec 2020 07:42:00 GMT</pubDate><content:encoded>&lt;h1&gt;2020年的四个阶段&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 30 Dec 2020 13:40:39 GMT</lastBuildDate><item><title><![CDATA[2020年总结]]></title><link>https://ddadaal.me/articles/summary-for-2020/cn</link><guid isPermaLink="false">/articles/summary-for-2020/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Wed, 30 Dec 2020 13:40:00 GMT</pubDate><content:encoded>&lt;h1&gt;2020年的四个阶段&lt;/h1&gt;
 &lt;p&gt;不管对世界还是对我来说，2020年都挺魔幻的。对我来说，2020年可以分为四个阶段：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;与毕设一起在家度过的上半年&lt;/li&gt;
@@ -275,15 +275,16 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;从价格来说，其实这套配置的价格已经算比较高的了，如果要讲究性价比的话，有很多地方可以缩配，缩到12000应该是比较简单的，比如：&lt;/p&gt;
+&lt;p&gt;从价格来说，其实这套配置的价格已经算比较高的了，如果要讲究性价比的话，有很多地方可以缩配，缩到12000以下应该是比较简单的，比如：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;买丐版3070，-300&lt;/li&gt;
 &lt;li&gt;双SSD换成SSD+HDD配置，-400&lt;/li&gt;
-&lt;li&gt;风扇、内存等去掉RGB，就算-400&lt;/li&gt;
+&lt;li&gt;去掉RGB，-500&lt;/li&gt;
 &lt;li&gt;缩点电源，650W应该也够用，-100&lt;/li&gt;
+&lt;li&gt;机箱也可以缩缩，-200&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;而且如果只是臭打游戏的话，5900X也很overkill，5800X应该能够非常好的满足需求，不需要加这上千块强上5900X（更别提5900X现在还在耍猴了……）&lt;/p&gt;
-&lt;p&gt;另外，本套配置是个mATX配置，空间较小，操作并不如标准ATX方便，对我这种第一次独自装机的不太友好，所以花了整整两天才完成，还拆掉了一些不该拆掉的螺丝，造成现在侧面盖板无法完全合上，而且完全没有理线，所以现在看上去很乱……另外，其实宿舍空间相当充足，mATX既没有ATX的扩展性，也没有ITX的便携性，有点小亏，下次装机还是要么ATX要么ITX了，mATX在中间不伦不类的。&lt;/p&gt;
+&lt;p&gt;而且如果只是臭打游戏的话，5900X也很overkill，5800X应该能够非常好的满足需求，不需要加这上千块强上5900X（更别提5900X现在还在耍猴了……），这样甚至可以压缩到10000以内。再减1000换个什么3060Ti，噫，性价比爆表。&lt;/p&gt;
+&lt;p&gt;另外，本套配置是个mATX配置，空间较小，操作并不如标准ATX方便，对我这种第一次独自装机的不太友好，所以花了整整两天才完成，还拆掉了一些不该拆掉的螺丝，造成现在侧面盖板无法完全合上，而且完全没有理线，所以现在看上去很乱……另外，其实宿舍空间相当充足，mATX既没有ATX的扩展性，也没有ITX的便携性，有点小亏，下次装机还是要么ATX要么ITX了，mATX在中间不伦不类的，两头不占好。&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -401,18 +402,18 @@
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 68.07017543859648%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABqElEQVQoz4VS21bcMAzM/38hdGlPT8uybJKNL5JsWbKTygks8EL14hxPRjMaawghPJ5+/jg9vVyuLMpSU5Ei2mrbts0593B6eng0/BdlLlLrfn/UUEqBxDGxIVxUm7HWtq5VFQBExHqhdW2r/d0M6Kd9VEQc5kBLzDcgz7R1YAdrFrrFiIC8BAqQ20E6qrHiCEjDLSZHJF3vE1yp0IyUKJeUS+3gvQxlpTllHiafrgFcRvNlrpqVkSWy/+s8eORbt5YwlTt3U5LwHAGHDgOFzDaX5ZRFuFWzXcgjkovJyBEzZ2n7xG/k+BwiDBcfxwALEjDrPUk15T8hAGYBS0xrD+OL7ZFS3mc2vNTd83tilQSvNvMCefQYiD/IvXUSuALQcLnBy9zFtbva3mLTWEw5whRo9pRYv5JJ/O8+8xTS5HEK6CBbtlrrdlfGZImYr+5M6zHyXdkSGV4XPC9+pPj+VIcycDhbb7OTuO9Jj1PreqBNm2RR7coXF529qEhd3wOrWPY12L6tYfR0dXD2Dkv+uFZimGzD/kOeQxodnoND5U+2iXE229+T/wHz6C53zZxasQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 64.56140350877193%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABt0lEQVQoz4WSy47cIBBF+f8fiyJlFSWbROqZSbdpbIMNZZ7Fwyns6fTMKiVkWS4Ode817PuPn1cuBjEasBFLTJkW5rrv++Xy+uXrt9fr8Ov3ZZIqRqTVWqMWPWutTGtjfQwRU8KEpdRaasulhhCMMVyMcoVZaU87sKSUTzjn4pxjSju9BaBmwf2slrOdnPOt7oR4onLZP1YJGK0Pgd1mI1aA4HN97KgJgVvnQsyjBHITMT+4Pnb3wmvhfGTjst0X7VJstRUqUlUxw2Btj0AaDz5pR6/lCac1bIrOZmIBrrTarIuJRDpMO6UGguCE+TRF58SEn2C7kFHGlRk1bD4QTGkdshHhRnkQrG0IKVM8Z04fYEUNNkgzzHrz8fwB7fCczZUmE8blRsqx1E+ew+T0aJ1nw2z+iJUv2vpEwVbqNvJ8s9Z1WB3wM+0DjrM3E8Xd4bdJjWB8oD2lnbLNraed8rja/rm+T6ar0bX1wGT3TL/qZZI6uNZPbQ/PnCYTtIBft2Bcd46H8wPW0QFlyO4SrtPK19Wm8N6ji7TNBD9UnmG0R2bPYlzCy129LRJL/ndJIgiAbf9f/QV0RfEtyiEFIAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;本年度的电影和音乐剧列表&quot;
         title=&quot;本年度的电影和音乐剧列表&quot;
-        src=&quot;/static/5cc507f004c5159ee52795669e470c25/267c0/movies-and-musicals.png&quot;
-        srcset=&quot;/static/5cc507f004c5159ee52795669e470c25/5459c/movies-and-musicals.png 285w,
-/static/5cc507f004c5159ee52795669e470c25/2cee3/movies-and-musicals.png 570w,
-/static/5cc507f004c5159ee52795669e470c25/267c0/movies-and-musicals.png 1140w,
-/static/5cc507f004c5159ee52795669e470c25/78a90/movies-and-musicals.png 1710w,
-/static/5cc507f004c5159ee52795669e470c25/2004a/movies-and-musicals.png 2142w&quot;
+        src=&quot;/static/90d87203a874c567d710cd43fc3e2f68/267c0/movies-and-musicals.png&quot;
+        srcset=&quot;/static/90d87203a874c567d710cd43fc3e2f68/5459c/movies-and-musicals.png 285w,
+/static/90d87203a874c567d710cd43fc3e2f68/2cee3/movies-and-musicals.png 570w,
+/static/90d87203a874c567d710cd43fc3e2f68/267c0/movies-and-musicals.png 1140w,
+/static/90d87203a874c567d710cd43fc3e2f68/78a90/movies-and-musicals.png 1710w,
+/static/90d87203a874c567d710cd43fc3e2f68/f6e64/movies-and-musicals.png 1921w&quot;
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -422,8 +423,9 @@
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;今年开始可以说正式踏入了音乐剧大坑，解锁了一个电影以外更大的世界。由于疫情的原因，这几年可能都很难能够在国内看到原版的国外音乐剧，还是稍显遗憾的，但是一些中文版的剧评价也相当不错，也值得专程去剧院欣赏。希望疫情能够早日结束，也希望国产剧能够越来越好。&lt;/p&gt;
 &lt;h1&gt;总结&lt;/h1&gt;
-&lt;p&gt;总的来说，研究生生活方面和我之前考虑的差别不大，除了课程的难度让我有点措手不及以外，其他方面基本大差不差。而信科从任何角度来说（包括但不限于课程设计、院系发展的方向、同学的基本情况），确实不适合想做工程方向的我。可能这也是当时做选择的时候考虑不周到吧：只考虑了学校，没有考虑专业的匹配性。本院的学长学姐对清华和上交的偏爱确实也有他们的理由。人际关系方面也是因为客观条件以及自己的冲动相当受限，更别提其他比如感情方面了。而日常生活方面也是比较平淡，但是也可以从中短暂体验到生活的美好。&lt;/p&gt;
-&lt;p&gt;对于选校，现在说后悔也都晚了，唯一的慰藉是导师、实验室的氛围和工作仍然还是非常好。只有研一会上课，之后都是以实验室为主，实验室良好的氛围也让我对未来稍微有点希望，盼望以后能够不这么挣扎，找回自己当初选这里的初心，能够真正做点实用的、能为他人带来帮助的事情。而人际关系方面还需要适应，也不希望能够改变现状，可能这就是成年人的生活吧。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[美好的回忆和未知的未来：写在研究生开学前]]></title><link>https://ddadaal.me/articles/good-memories-and-unknown-future/cn</link><guid isPermaLink="false">/articles/good-memories-and-unknown-future/cn</guid><category><![CDATA[life]]></category><pubDate>Fri, 11 Sep 2020 10:42:00 GMT</pubDate><content:encoded>&lt;p&gt;昨天晚上把重达100多斤的行李寄走了，标志着研究生生活的开始。在这个最长的假期中，我止不住地回忆过去四年的美好生活。而对于研究生以及未来的生活，我却充满了未知和迷茫。&lt;/p&gt;
+&lt;p&gt;总的来说，研究生生活方面和我之前考虑的差别不大，除了课程的难度让我有点措手不及以外，其他方面基本大差不差。而信科从任何角度来说（包括但不限于课程设计、院系发展的方向、同学的基本情况），确实不适合想做工程方向的我。可能这也是当时做选择的时候考虑不周到吧：只考虑了学校，没有考虑专业的匹配性。本院的学长学姐对清华和上交的偏爱确实也有他们的理由。人际关系方面也是因为客观条件以及自己的冲动相当受限，更别提其他比如感情方面了。而日常生活方面也是比较平淡，但是也可以通过一些简单的活动从中短暂体验到生活的美好。&lt;/p&gt;
+&lt;p&gt;对于选校，现在说后悔也都晚了，唯一的慰藉是导师、实验室的氛围和工作仍然还是非常好。只有研一会上课，之后都是以实验室为主，实验室良好的氛围也让我对未来稍微有点希望，盼望以后能够不这么挣扎，找回自己当初选这里的初心，能够真正做点实用的、能为他人带来帮助的事情。而人际关系方面还需要适应，也不希望能够改变现状，可能这就是成年人的生活吧。&lt;/p&gt;
+&lt;p&gt;另外，我发现，不管是日常生活中还是写代码的过程中，我似乎很久没有再找到大一大二时的激情了，那种可以为了一个问题可以花几天时间啥都不想就想深追到底的激情。我仍然记得软工2大作业中途有3天我满脑子都只有一个CI的问题，除了吃饭上课就是在电脑前尝试解决这个问题。而现在感觉什么事都可以凑合过去，难道这也是成年人的生活吗？&lt;/p&gt;</content:encoded></item><item><title><![CDATA[美好的回忆和未知的未来：写在研究生开学前]]></title><link>https://ddadaal.me/articles/good-memories-and-unknown-future/cn</link><guid isPermaLink="false">/articles/good-memories-and-unknown-future/cn</guid><category><![CDATA[life]]></category><pubDate>Fri, 11 Sep 2020 10:42:00 GMT</pubDate><content:encoded>&lt;p&gt;昨天晚上把重达100多斤的行李寄走了，标志着研究生生活的开始。在这个最长的假期中，我止不住地回忆过去四年的美好生活。而对于研究生以及未来的生活，我却充满了未知和迷茫。&lt;/p&gt;
 &lt;h1&gt;最长的“假期”：为四年划上句号&lt;/h1&gt;
 &lt;h2&gt;毕设&lt;/h2&gt;
 &lt;p&gt;一场突如其来的疫情打乱了本科最后半年的计划，从和在学校边和兄弟们享受人生边做毕设，变成了……在家里疯狂做毕设。&lt;/p&gt;
