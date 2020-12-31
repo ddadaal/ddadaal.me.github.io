@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 31 Dec 2020 07:23:33 GMT</lastBuildDate><item><title><![CDATA[2020年总结]]></title><link>https://ddadaal.me/articles/summary-for-2020/cn</link><guid isPermaLink="false">/articles/summary-for-2020/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Thu, 31 Dec 2020 07:10:00 GMT</pubDate><content:encoded>&lt;h1&gt;2020年的四个阶段&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 31 Dec 2020 07:30:15 GMT</lastBuildDate><item><title><![CDATA[2020年总结]]></title><link>https://ddadaal.me/articles/summary-for-2020/cn</link><guid isPermaLink="false">/articles/summary-for-2020/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Thu, 31 Dec 2020 07:10:00 GMT</pubDate><content:encoded>&lt;h1&gt;2020年的四个阶段&lt;/h1&gt;
 &lt;p&gt;对我来说，2020年可以分为四个阶段：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;与毕设一起在家度过的上半年&lt;/li&gt;
@@ -139,7 +139,7 @@
 &lt;p&gt;认识的人：当然，研究生和工作期间也会认识新同学新朋友，但是由于参加的活动将会减少，社交面会急剧变窄；而且，研究生期间的同学和以后的同事都是成年人了，都懂了自己想要什么，都有了自己的安排，都有了自己的人脉圈甚至家庭，不能像本科时的兄弟们一样时时刻刻泡在一起。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;唯一值得庆幸的是，我和室友以及实验室同年级同学的关系（包括我共5个人，其中3个是舍友）的关系还可以，和清华的本科同学关系比之前更好了，还加了一个打羽毛球的小圈子，但是也就仅此而已了：这些就是我当前认识的所有圈子。&lt;/p&gt;
-&lt;p&gt;大家都知道自己想要什么，都在朝着自己想做的方向去努力：三位舍友两位想转博，一位目标是走选调回家。三位舍友卷得昏天黑地，每天早上就走，最早每天晚上11点才回宿舍，包括周末。所以除了约饭、上课以及偶尔出去看个电影之外，其实也干不了什么，周末平时想出去看个电影都找不到人。&lt;/p&gt;
+&lt;p&gt;大家都知道自己想要什么，都在朝着自己想做的方向去努力：三位舍友两位想转博，一位目标是走选调回家。三位舍友卷得昏天黑地，每天早上就走，最早每天晚上11点才回宿舍，包括周末。所以除了约饭、上课以及偶尔出去看个电影之外，其实也干不了什么。&lt;/p&gt;
 &lt;p&gt;唉，每次想找人却找不到的人时候，就想念本科的兄弟萌，十一的时候和兄弟萌短暂的几天相聚，也当是重温我的逝去的美好青春了。&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -166,7 +166,7 @@
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;十一回南大玩&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;大环境是个更大的问题，简单来说，&lt;strong&gt;和其他同学像是两个世界的人&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;就像之前说的，信科主要注重科研，所以周围的同学也基本都是科研方向（或者选调方向），而我仍然想做工程。我的能力、兴趣、方向和他们不说是冲突的，至少是正交的。所以不像本科时大家方向都大致相同或者互补，现在我完全找不到能一起做事的人。这几个月实验室有两个工程项目，都只能我一个人做；想参加一些项目相关的比赛，找不到愿意参加的同学；好不容易有个课程有个组队的工程项目，一个简单的社交网站平台，结果身边的同学都完全没做过稍微正经一点的工程开发工作（比如项目或者工程任务的实习）……据我老师说，整个计算中心可能只有我一个人能搞开发。&lt;/p&gt;
+&lt;p&gt;就像之前说的，信科主要注重科研，所以周围的同学也基本都是科研方向（或者选调方向），而我仍然想做工程。我的能力、兴趣、方向和他们不说是冲突的，至少是正交的。所以不像本科时大家方向都大致相同或者互补，现在我完全找不到能一起做事的人。这几个月实验室有两个工程项目，都只能我一个人做；想参加一些项目相关的比赛，找不到愿意参加的同学；好不容易有个课程有个组队的工程项目，一个简单的社交网站平台，结果身边的同学都完全没做过稍微正经一点的工程开发工作（比如项目或者工程任务的实习）……&lt;/p&gt;
 &lt;p&gt;核心问题并不是技能不匹配，有兴趣的话，工程相关的知识其实比科研所需要和使用的知识简单多了，但是问题是我和其他人互相对对方的工作&lt;strong&gt;没有兴趣&lt;/strong&gt;：我没兴趣去想idea做实验，其他人没有兴趣做工程。我觉得从工作中认识同伴是最好的、最自然的认识的人的方式，而兴趣的不匹配加上上面说的学工的情况，从工作中认识同伴这条路基本已经堵死了。&lt;/p&gt;
 &lt;h1&gt;其他生活中的小事&lt;/h1&gt;
 &lt;h2&gt;入音乐剧坑&lt;/h2&gt;
