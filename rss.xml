@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Jun 2021 03:04:27 GMT</lastBuildDate><item><title><![CDATA[react-typed-i18n: 使用Template Literal Types实现强类型的i18n]]></title><link>https://ddadaal.me/articles/typed-i18n-with-template-literal-types/cn</link><guid isPermaLink="false">/articles/typed-i18n-with-template-literal-types/cn</guid><category><![CDATA[web-frontend]]></category><category><![CDATA[code-trick]]></category><category><![CDATA[TypeScript]]></category><category><![CDATA[project]]></category><pubDate>Sun, 06 Jun 2021 07:27:00 GMT</pubDate><content:encoded>&lt;h1&gt;react-typed-i18n&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 07 Jul 2021 06:51:29 GMT</lastBuildDate><item><title><![CDATA[react-typed-i18n: 使用Template Literal Types实现强类型的i18n]]></title><link>https://ddadaal.me/articles/typed-i18n-with-template-literal-types/cn</link><guid isPermaLink="false">/articles/typed-i18n-with-template-literal-types/cn</guid><category><![CDATA[web-frontend]]></category><category><![CDATA[code-trick]]></category><category><![CDATA[TypeScript]]></category><category><![CDATA[project]]></category><pubDate>Sun, 06 Jun 2021 07:27:00 GMT</pubDate><content:encoded>&lt;h1&gt;react-typed-i18n&lt;/h1&gt;
 &lt;p&gt;最近学习了一下TypeScript最新的&lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html&quot;&gt;Template Literal Type&lt;/a&gt;特性，突然想起来可以使用这个实现一个使用字符串字面量的i18n库，以用来替换之前的使用了一些黑魔法的&lt;a href=&quot;https://github.com/ddadaal/simstate-i18n&quot;&gt;&lt;code&gt;simstate-i18n&lt;/code&gt;&lt;/a&gt;库，也在这个新库中解决一些技术债，例如只使用React Context、加入测试、增加一些新功能等。&lt;/p&gt;
 &lt;p&gt;新的库名字叫&lt;code&gt;react-typed-i18n&lt;/code&gt;（&lt;a href=&quot;https://github.com/ddadaal/react-typed-i18n&quot;&gt;GitHub&lt;/a&gt;）。花了一个周末将功能和测试写好发到了npm上，并很快把本网站用这个新库重写了，体验比较好。&lt;/p&gt;
 &lt;p&gt;于是通过此文章介绍一下i18n的概念、常见实现方式以及本库的亮点，其中介绍部分的内容使用了之前写过的关于&lt;code&gt;simstate-i18n&lt;/code&gt;的文章 &lt;a href=&quot;/articles/strongly-typed-i18n-with-typescript&quot;&gt;Strongly Typed i18n with TypeScript&lt;/a&gt;。要想更详细的了解一些i18n的内容以及当时写&lt;code&gt;simstate-i18n&lt;/code&gt;的考虑，请查阅此文章。&lt;/p&gt;
@@ -359,6 +359,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Build 2020上WSL 2的GUI支持图片（来源：https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-build-2020-summary/#wsl-gui）&lt;/figcaption&gt;
@@ -386,6 +387,7 @@
         sizes=&quot;(max-width: 1138px) 100vw, 1138px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;GitHub仓库&lt;/figcaption&gt;
@@ -413,6 +415,7 @@
         sizes=&quot;(max-width: 1069px) 100vw, 1069px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;环境要求&lt;/figcaption&gt;
@@ -438,6 +441,7 @@
         sizes=&quot;(max-width: 1053px) 100vw, 1053px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;CUDA on WSL驱动&lt;/figcaption&gt;
@@ -462,6 +466,7 @@
         sizes=&quot;(max-width: 456px) 100vw, 456px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;21364版本&lt;/figcaption&gt;
@@ -489,6 +494,7 @@
         sizes=&quot;(max-width: 240px) 100vw, 240px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;xclock&lt;/figcaption&gt;
@@ -515,6 +521,7 @@
         sizes=&quot;(max-width: 1100px) 100vw, 1100px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VSCode&lt;/figcaption&gt;
@@ -543,6 +550,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;网易云音乐&lt;/figcaption&gt;
@@ -573,6 +581,7 @@
         sizes=&quot;(max-width: 276px) 100vw, 276px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;糊了的xclock&lt;/figcaption&gt;
@@ -602,6 +611,7 @@
         sizes=&quot;(max-width: 846px) 100vw, 846px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;不能直接使用Windows输入法&lt;/figcaption&gt;
@@ -635,6 +645,7 @@
         sizes=&quot;(max-width: 980px) 100vw, 980px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;内核版本&lt;/figcaption&gt;
@@ -660,6 +671,7 @@
         sizes=&quot;(max-width: 262px) 100vw, 262px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Arch目录&lt;/figcaption&gt;
@@ -683,6 +695,7 @@
         sizes=&quot;(max-width: 382px) 100vw, 382px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Ubuntu目录&lt;/figcaption&gt;
@@ -803,6 +816,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VPN方案下网络流量走向&lt;/figcaption&gt;
@@ -835,6 +849,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;代理服务器下网络流量走向&lt;/figcaption&gt;
@@ -865,6 +880,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;内网代理服务器方案下的网络流量走向&lt;/figcaption&gt;
@@ -895,6 +911,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VPN作为HTTP代理服务器的最终方案&lt;/figcaption&gt;
@@ -936,6 +953,7 @@
         sizes=&quot;(max-width: 1013px) 100vw, 1013px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;git使用代理访问内网仓库&lt;/figcaption&gt;
@@ -1074,6 +1092,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;退学？&lt;/figcaption&gt;
@@ -1104,6 +1123,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;某一次课内容的来源&lt;/figcaption&gt;
@@ -1132,6 +1152,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;DDL&lt;/figcaption&gt;
@@ -1163,6 +1184,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;北大微俱组织的MSRA参访活动&lt;/figcaption&gt;
@@ -1195,6 +1217,7 @@
         sizes=&quot;(max-width: 1006px) 100vw, 1006px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;十一回南大玩&lt;/figcaption&gt;
@@ -1228,6 +1251,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;剧票&lt;/figcaption&gt;
@@ -1255,6 +1279,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;本年度的电影和音乐剧列表&lt;/figcaption&gt;
@@ -1288,6 +1313,7 @@
         sizes=&quot;(max-width: 1079px) 100vw, 1079px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;希望能正常上演&lt;/figcaption&gt;
@@ -1314,6 +1340,7 @@
         sizes=&quot;(max-width: 931px) 100vw, 931px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;成都之行&lt;/figcaption&gt;
@@ -1431,6 +1458,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;PC&lt;/figcaption&gt;
@@ -1459,6 +1487,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;原价买到的5900X和3070&lt;/figcaption&gt;
@@ -1484,6 +1513,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;24个框框！！！！&lt;/figcaption&gt;
@@ -1604,6 +1634,7 @@
         sizes=&quot;(max-width: 232px) 100vw, 232px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2月23日的编程时间&lt;/figcaption&gt;
@@ -1632,6 +1663,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;确定开学的时候高兴死了&lt;/figcaption&gt;
@@ -1668,6 +1700,7 @@
         sizes=&quot;(max-width: 918px) 100vw, 918px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;一些旅行照片&lt;/figcaption&gt;
@@ -1705,6 +1738,7 @@
         sizes=&quot;(max-width: 945px) 100vw, 945px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;合影&lt;/figcaption&gt;
@@ -1946,6 +1980,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Build 2020上WSL 2的GUI支持图片（来源：https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-build-2020-summary/#wsl-gui）&lt;/figcaption&gt;
@@ -1974,6 +2009,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;效果图&lt;/figcaption&gt;
@@ -1999,6 +2035,7 @@
         sizes=&quot;(max-width: 250px) 100vw, 250px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;X11架构（来源：https://en.wikipedia.org/wiki/X_Window_System_protocols_and_architecture）&lt;/figcaption&gt;
@@ -2034,6 +2071,7 @@
         sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;第一步：选择Multiple windows&lt;/figcaption&gt;
@@ -2057,6 +2095,7 @@
         sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;第二步：什么都不选&lt;/figcaption&gt;
@@ -2080,6 +2119,7 @@
         sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;第三步：勾选Disable access control&lt;/figcaption&gt;
@@ -2103,6 +2143,7 @@
         sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;第四步：确定以启动&lt;/figcaption&gt;
@@ -2126,6 +2167,7 @@
         sizes=&quot;(max-width: 198px) 100vw, 198px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;状态栏图标和地址&lt;/figcaption&gt;
@@ -2180,6 +2222,7 @@
         sizes=&quot;(max-width: 215px) 100vw, 215px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;xclock&lt;/figcaption&gt;
@@ -2207,6 +2250,7 @@
         sizes=&quot;(max-width: 682px) 100vw, 682px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Intellij IDEA&lt;/figcaption&gt;
@@ -2233,6 +2277,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VSCode&lt;/figcaption&gt;
@@ -2261,6 +2306,7 @@
         sizes=&quot;(max-width: 1024px) 100vw, 1024px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VSCode隐藏标题栏&lt;/figcaption&gt;
@@ -2417,6 +2463,7 @@
         sizes=&quot;(max-width: 300px) 100vw, 300px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;iPhone 20（图片来源：https://www.zhihu.com/question/25216924/answer/3035342）&lt;/figcaption&gt;
@@ -2738,6 +2785,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9SE（宽度70.5）轻松单手打字&lt;/figcaption&gt;
@@ -2763,6 +2811,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;iPhone 11（宽度75.7）有点吃力&lt;/figcaption&gt;
@@ -2850,6 +2899,7 @@
         sizes=&quot;(max-width: 1014px) 100vw, 1014px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;其实……P40也有无线充电？(https://www.zhihu.com/question/383288772)&lt;/figcaption&gt;
@@ -2878,6 +2928,7 @@
         sizes=&quot;(max-width: 1044px) 100vw, 1044px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;4月29日的价格，5月15日已经到5050了&lt;/figcaption&gt;
@@ -2933,6 +2984,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9SE（左）和三星S20（右）对比&lt;/figcaption&gt;
@@ -2959,6 +3011,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;S20带保护壳单手打字&lt;/figcaption&gt;
@@ -2986,6 +3039,7 @@
         sizes=&quot;(max-width: 648px) 100vw, 648px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;One UI主界面&lt;/figcaption&gt;
@@ -3011,6 +3065,7 @@
         sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;One UI快速打开微信小程序和快捷方式&lt;/figcaption&gt;
@@ -3035,6 +3090,7 @@
         sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;One UI车票追踪&lt;/figcaption&gt;
@@ -3062,6 +3118,7 @@
         sizes=&quot;(max-width: 1086px) 100vw, 1086px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米9 SE使用你的手机和Windows同步&lt;/figcaption&gt;
@@ -3087,6 +3144,7 @@
         sizes=&quot;(max-width: 385px) 100vw, 385px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;在电脑上接打电话&lt;/figcaption&gt;
@@ -3113,6 +3171,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;在电脑上控制手机&lt;/figcaption&gt;
@@ -3142,6 +3201,7 @@
         sizes=&quot;(max-width: 1079px) 100vw, 1079px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;5G测速结果&lt;/figcaption&gt;
@@ -3182,6 +3242,7 @@
         sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;注意中间的陡坡，那时候一直在外面，亮屏时间只有1个小时左右&lt;/figcaption&gt;
@@ -3231,6 +3292,7 @@
         sizes=&quot;(max-width: 388px) 100vw, 388px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;闲鱼&lt;/figcaption&gt;
@@ -3656,6 +3718,7 @@
         sizes=&quot;(max-width: 797px) 100vw, 797px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;screenfetch信息&lt;/figcaption&gt;
@@ -3704,6 +3767,7 @@
         sizes=&quot;(max-width: 757px) 100vw, 757px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;NVIDIA控制面板&lt;/figcaption&gt;
@@ -3729,6 +3793,7 @@
         sizes=&quot;(max-width: 980px) 100vw, 980px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;X11&lt;/figcaption&gt;
@@ -3759,6 +3824,7 @@
         sizes=&quot;(max-width: 775px) 100vw, 775px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;ProtonDB&lt;/figcaption&gt;
@@ -3784,6 +3850,7 @@
         sizes=&quot;(max-width: 726px) 100vw, 726px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;开启Steam Play&lt;/figcaption&gt;
@@ -3810,6 +3877,7 @@
         sizes=&quot;(max-width: 616px) 100vw, 616px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Steam Play提示&lt;/figcaption&gt;
@@ -3836,6 +3904,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;RA3&lt;/figcaption&gt;
@@ -3862,6 +3931,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;RA3遭遇战&lt;/figcaption&gt;
@@ -3916,6 +3986,7 @@
         sizes=&quot;(max-width: 547px) 100vw, 547px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Ori and the Will of the Wisps&lt;/figcaption&gt;
@@ -3939,6 +4010,7 @@
         sizes=&quot;(max-width: 485px) 100vw, 485px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Halo: Master Chief Collection&lt;/figcaption&gt;
@@ -3964,6 +4036,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Crysis 2&lt;/figcaption&gt;
@@ -4094,6 +4167,7 @@
         sizes=&quot;(max-width: 498px) 100vw, 498px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Pebble&lt;/figcaption&gt;
@@ -4159,6 +4233,7 @@
         sizes=&quot;(max-width: 661px) 100vw, 661px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Pebble上玩Flappy Bird&lt;/figcaption&gt;
@@ -4186,6 +4261,7 @@
         sizes=&quot;(max-width: 661px) 100vw, 661px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Pebble Time&lt;/figcaption&gt;
@@ -4218,6 +4294,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Microsoft Band 2&lt;/figcaption&gt;
@@ -4249,6 +4326,7 @@
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;朝内的佩戴和交互方式（来源：https://www.engadget.com/2015-10-29-microsoft-band-2-review.html）&lt;/figcaption&gt;
@@ -4287,6 +4365,7 @@
         sizes=&quot;(max-width: 705px) 100vw, 705px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Microsoft Band的应用，左为睡眠检测，右为步数检测&lt;/figcaption&gt;
@@ -4315,6 +4394,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;无法显示中文&lt;/figcaption&gt;
@@ -4343,6 +4423,7 @@
         sizes=&quot;(max-width: 697px) 100vw, 697px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;LG G Watch运行Ingress&lt;/figcaption&gt;
@@ -4371,6 +4452,7 @@
         sizes=&quot;(max-width: 615px) 100vw, 615px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;手表在学校，这里放一张和GTS的对比图充数&lt;/figcaption&gt;
@@ -4407,6 +4489,7 @@
         sizes=&quot;(max-width: 573px) 100vw, 573px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Amazfit GTS&lt;/figcaption&gt;
@@ -4459,6 +4542,7 @@
         sizes=&quot;(max-width: 667px) 100vw, 667px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;高通骁龙3100的芯片组配置。图片来源：https://www.qualcomm.com/products/snapdragon-wear-3100-platform&lt;/figcaption&gt;
@@ -4534,6 +4618,7 @@
         sizes=&quot;(max-width: 540px) 100vw, 540px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Amazfit应用内设置闹钟&lt;/figcaption&gt;
@@ -4564,6 +4649,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Wear OS by Google回复消息（来源：https://developer.android.com/training/wearables/notifications/creating）&lt;/figcaption&gt;
@@ -4718,6 +4804,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;IDEA 2019.3更新日志中给出的启动时间图&lt;/figcaption&gt;
@@ -4751,6 +4838,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;neovim展示&lt;/figcaption&gt;
@@ -4845,6 +4933,7 @@
         sizes=&quot;(max-width: 941px) 100vw, 941px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;goneovim字体渲染，与nvim-qt对比&lt;/figcaption&gt;
@@ -5022,6 +5111,7 @@
         sizes=&quot;(max-width: 877px) 100vw, 877px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;PPT的最后一页，虽说右边的类图很复杂，但是相信大家都很明白这只是一个纸上谈兵的东西&lt;/figcaption&gt;
@@ -5048,6 +5138,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;暴力的DI核心源码&lt;/figcaption&gt;
@@ -5079,6 +5170,7 @@
         sizes=&quot;(max-width: 317px) 100vw, 317px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;一天产出学术垃圾&lt;/figcaption&gt;
@@ -5107,6 +5199,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;遍历时的各种例外规则&lt;/figcaption&gt;
@@ -5145,6 +5238,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;视频截图&lt;/figcaption&gt;
@@ -5171,6 +5265,7 @@
         sizes=&quot;(max-width: 781px) 100vw, 781px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;5月底的俱乐部事项&lt;/figcaption&gt;
@@ -5208,6 +5303,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;微软苏州大楼&lt;/figcaption&gt;
@@ -5233,6 +5329,7 @@
         sizes=&quot;(max-width: 978px) 100vw, 978px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;地图&lt;/figcaption&gt;
@@ -5259,6 +5356,7 @@
         sizes=&quot;(max-width: 1003px) 100vw, 1003px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;接受待录取&lt;/figcaption&gt;
@@ -5287,6 +5385,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;多尝试，多准备&lt;/figcaption&gt;
@@ -5317,6 +5416,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;俱乐部特色钥匙链和卡贴&lt;/figcaption&gt;
@@ -5344,6 +5444,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;核心功能截图&lt;/figcaption&gt;
@@ -5373,6 +5474,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;微软Hackathon 2019苏州现场&lt;/figcaption&gt;
@@ -5418,6 +5520,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;11月开始看的电影列表，其中有2部是之前看过的，其他都是这一个月看的&lt;/figcaption&gt;
@@ -5444,6 +5547,7 @@
         sizes=&quot;(max-width: 717px) 100vw, 717px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;网易云音乐收藏的原声集&lt;/figcaption&gt;
@@ -5570,6 +5674,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;现在的混乱的桌面&lt;/figcaption&gt;
@@ -5598,6 +5703,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;ThinkVision X24q&lt;/figcaption&gt;
@@ -5624,6 +5730,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;之前的混乱的桌面……&lt;/figcaption&gt;
@@ -5650,6 +5757,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2019年12月21日的京东价格&lt;/figcaption&gt;
@@ -5677,6 +5785,7 @@
         sizes=&quot;(max-width: 387px) 100vw, 387px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;京东价格，其中LG的（27UL550）天猫能到1999&lt;/figcaption&gt;
@@ -5751,6 +5860,7 @@
         sizes=&quot;(max-width: 681px) 100vw, 681px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;AOC U2790PQU的高度调节范围（来源：京东）&lt;/figcaption&gt;
@@ -5775,6 +5885,7 @@
         sizes=&quot;(max-width: 631px) 100vw, 631px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;LG 27UL550的高度调节范围（来源：某天猫店）&lt;/figcaption&gt;
@@ -5802,6 +5913,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;微软工位上的显示器高度。显示器的高度和位置是可以自己调的，我发现这个角度比较舒服&lt;/figcaption&gt;
@@ -5835,6 +5947,7 @@
         sizes=&quot;(max-width: 681px) 100vw, 681px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;XV273K&lt;/figcaption&gt;
@@ -5862,6 +5975,7 @@
         sizes=&quot;(max-width: 790px) 100vw, 790px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小米的1440P带鱼屏&lt;/figcaption&gt;
@@ -5888,6 +6002,7 @@
         sizes=&quot;(max-width: 545px) 100vw, 545px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;X1C的HDMI只有1.4，只能支持4K30&lt;/figcaption&gt;
@@ -5911,6 +6026,7 @@
         sizes=&quot;(max-width: 185px) 100vw, 185px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;GT72VR 6RD的配置&lt;/figcaption&gt;
@@ -5935,6 +6051,7 @@
         sizes=&quot;(max-width: 465px) 100vw, 465px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;4K60 10bit&lt;/figcaption&gt;
@@ -5968,6 +6085,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;开启HDR&lt;/figcaption&gt;
@@ -5993,6 +6111,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;关闭HDR&lt;/figcaption&gt;
@@ -6020,6 +6139,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;DP各个标准的特征。来源：维基百科&lt;/figcaption&gt;
@@ -6057,6 +6177,7 @@
         sizes=&quot;(max-width: 944px) 100vw, 944px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;画面撕裂&lt;/figcaption&gt;
@@ -6084,6 +6205,7 @@
         sizes=&quot;(max-width: 528px) 100vw, 528px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;G-Sync Compatible&lt;/figcaption&gt;
@@ -6109,6 +6231,7 @@
         sizes=&quot;(max-width: 1073px) 100vw, 1073px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;如果开启了以窗口和全屏启动，那么一些窗体上会出现这个G-Sync的标志&lt;/figcaption&gt;
@@ -6139,6 +6262,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;超频&lt;/figcaption&gt;
@@ -6166,6 +6290,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;不能正常显示&lt;/figcaption&gt;
@@ -6289,6 +6414,7 @@
         sizes=&quot;(max-width: 930px) 100vw, 930px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;黑背景白文字&lt;/figcaption&gt;
@@ -6324,6 +6450,7 @@
         sizes=&quot;(max-width: 658px) 100vw, 658px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VS代码高亮样式&lt;/figcaption&gt;
@@ -6350,6 +6477,7 @@
         sizes=&quot;(max-width: 931px) 100vw, 931px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;VSCode Dark+ Cascadia Code&lt;/figcaption&gt;
@@ -6674,6 +6802,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;KDE桌面截图&lt;/figcaption&gt;
@@ -6701,6 +6830,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;KDE HiDPI设置和国产软件&lt;/figcaption&gt;
@@ -6729,6 +6859,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;字体设置&lt;/figcaption&gt;
@@ -6756,6 +6887,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;QQ，注意看群聊名称下一栏&lt;/figcaption&gt;
@@ -6787,6 +6919,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;100%和200%&lt;/figcaption&gt;
@@ -6822,6 +6955,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;上面出现过的KDE桌面，各个窗口之间有重叠&lt;/figcaption&gt;
@@ -6847,6 +6981,7 @@
         sizes=&quot;(max-width: 373px) 100vw, 373px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;manjaro i3的默认壁纸会给出操作提示&lt;/figcaption&gt;
@@ -6878,6 +7013,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;装逼专用neofetch, zsh, htop&lt;/figcaption&gt;
@@ -6905,6 +7041,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;浮动式的应用&lt;/figcaption&gt;
@@ -6932,6 +7069,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;firefox + vscode&lt;/figcaption&gt;
@@ -6959,6 +7097,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;FreeOffice Word and PPT&lt;/figcaption&gt;
@@ -6990,6 +7129,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;QQ&lt;/figcaption&gt;
@@ -7018,6 +7158,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;运行了gnome-settings-daemon后的效果&lt;/figcaption&gt;
@@ -7060,6 +7201,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;pulseaudio...&lt;/figcaption&gt;
@@ -7088,6 +7230,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;平铺QQ窗口的后果&lt;/figcaption&gt;
@@ -7152,6 +7295,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;操作蓝牙&lt;/figcaption&gt;
@@ -7176,6 +7320,7 @@
         sizes=&quot;(max-width: 458px) 100vw, 458px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;tldr&lt;/figcaption&gt;
@@ -7205,6 +7350,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Arch Linux + i3 + urxvt&lt;/figcaption&gt;
@@ -7231,6 +7377,7 @@
         sizes=&quot;(max-width: 865px) 100vw, 865px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Arch on WSL&lt;/figcaption&gt;
@@ -7551,6 +7698,7 @@
         sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Source: https://gist.github.com/alexmingoia/4db967e5aeb31d84847c. See this page to get yourself familiarized if you haven&amp;#39;t already.&lt;/figcaption&gt;
@@ -7579,6 +7727,7 @@
         sizes=&quot;(max-width: 726px) 100vw, 726px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;part of fields&lt;/figcaption&gt;
@@ -7623,6 +7772,7 @@
         sizes=&quot;(max-width: 780px) 100vw, 780px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Ranked chart&lt;/figcaption&gt;
@@ -7646,6 +7796,7 @@
         sizes=&quot;(max-width: 414px) 100vw, 414px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Flamegraph chart&lt;/figcaption&gt;
@@ -7671,6 +7822,7 @@
         sizes=&quot;(max-width: 476px) 100vw, 476px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;The dropdown&lt;/figcaption&gt;
@@ -7698,6 +7850,7 @@
         sizes=&quot;(max-width: 123px) 100vw, 123px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&amp;gt;400 options&lt;/figcaption&gt;
@@ -7763,6 +7916,7 @@
         sizes=&quot;(max-width: 609px) 100vw, 609px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Optimized code&lt;/figcaption&gt;
@@ -7788,6 +7942,7 @@
         sizes=&quot;(max-width: 748px) 100vw, 748px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;After&lt;/figcaption&gt;
@@ -7928,6 +8083,7 @@
         sizes=&quot;(max-width: 1055px) 100vw, 1055px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;有效性认证&lt;/figcaption&gt;
@@ -7953,6 +8109,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;文章列表（Newsflow UWP应用）&lt;/figcaption&gt;
@@ -7978,6 +8135,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;文章内容（Newsflow UWP应用）&lt;/figcaption&gt;
@@ -8025,6 +8183,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;站长工具&lt;/figcaption&gt;
@@ -8142,6 +8301,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;使用simstate设计Store（左）和使用Store（右）&lt;/figcaption&gt;
@@ -8337,6 +8497,7 @@
         sizes=&quot;(max-width: 424px) 100vw, 424px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;俱乐部2018年招新海报&lt;/figcaption&gt;
@@ -8364,6 +8525,7 @@
         sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2016年hackathon奖状&lt;/figcaption&gt;
@@ -8389,6 +8551,7 @@
         sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;hackathon比赛前的合影&lt;/figcaption&gt;
@@ -8417,6 +8580,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;左到右上到下：编程之美决赛，技术讲座，活动策划，hackathon答辩&lt;/figcaption&gt;
@@ -8442,6 +8606,7 @@
         sizes=&quot;(max-width: 1043px) 100vw, 1043px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2017年微软学生夏令营合照&lt;/figcaption&gt;
@@ -8468,6 +8633,7 @@
         sizes=&quot;(max-width: 886px) 100vw, 886px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2018年校庆夜展台&lt;/figcaption&gt;
@@ -8496,6 +8662,7 @@
         sizes=&quot;(max-width: 1008px) 100vw, 1008px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2018-2019学年活动时间轴&lt;/figcaption&gt;
@@ -8521,6 +8688,7 @@
         sizes=&quot;(max-width: 1000px) 100vw, 1000px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;上：2018年冬至未至；下：2019年校庆文化夜&lt;/figcaption&gt;
@@ -8547,6 +8715,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;“南风微语”春游活动南大站&lt;/figcaption&gt;
@@ -8573,6 +8742,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;两次实习交流活动&lt;/figcaption&gt;
@@ -8599,6 +8769,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2019年1月参观微软苏州&lt;/figcaption&gt;
@@ -8625,6 +8796,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2019年参观微软苏州合照&lt;/figcaption&gt;
@@ -8652,6 +8824,7 @@
         sizes=&quot;(max-width: 853px) 100vw, 853px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;黄金点游戏决赛现场，投影上实时显示得分情况&lt;/figcaption&gt;
@@ -8678,6 +8851,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;左到右，上到下：AI技术讲座、如何正确地问问题、Office讲座、Unity ECS架构&lt;/figcaption&gt;
@@ -8706,6 +8880,7 @@
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;比赛现场&lt;/figcaption&gt;
@@ -8730,6 +8905,7 @@
         sizes=&quot;(max-width: 1049px) 100vw, 1049px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;合照&lt;/figcaption&gt;
@@ -8755,6 +8931,7 @@
         sizes=&quot;(max-width: 900px) 100vw, 900px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2019华东七校联合hackathon海报&lt;/figcaption&gt;
@@ -8784,6 +8961,7 @@ s
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;品牌活动奖奖状&lt;/figcaption&gt;
@@ -8809,6 +8987,7 @@ s
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;展台前忙碌的部长团和部员们&lt;/figcaption&gt;
@@ -8838,6 +9017,7 @@ s
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2019年5月24日，南京大学微软学生俱乐部新老部长团和马欣姐和昊哥的合影&lt;/figcaption&gt;
@@ -9024,6 +9204,7 @@ s
         sizes=&quot;(max-width: 176px) 100vw, 176px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;申请编号&lt;/figcaption&gt;
@@ -9046,6 +9227,7 @@ s
         sizes=&quot;(max-width: 130px) 100vw, 130px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;我的编号&lt;/figcaption&gt;
@@ -9076,6 +9258,7 @@ s
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;日程1&lt;/figcaption&gt;
@@ -9101,6 +9284,7 @@ s
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;日程2&lt;/figcaption&gt;
@@ -9145,6 +9329,7 @@ s
         sizes=&quot;(max-width: 782px) 100vw, 782px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;罚时计算例子&lt;/figcaption&gt;
@@ -9171,6 +9356,7 @@ s
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;练习场实拍&lt;/figcaption&gt;
@@ -9201,6 +9387,7 @@ s
         sizes=&quot;(max-width: 763px) 100vw, 763px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;机考题目情况&lt;/figcaption&gt;
@@ -9379,6 +9566,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;做题时的电脑屏幕（X1C截屏键的蜜汁位置（右alt和ctrl之间）让我图库多了不少的截图……）&lt;/figcaption&gt;
@@ -9409,6 +9597,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 716px) 100vw, 716px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;面试准备的要求&lt;/figcaption&gt;
@@ -9452,6 +9641,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;东北角的微软标志&lt;/figcaption&gt;
@@ -9479,6 +9669,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;草坪&lt;/figcaption&gt;
@@ -9506,6 +9697,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;零食角&lt;/figcaption&gt;
@@ -9813,6 +10005,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 724px) 100vw, 724px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;当客户端启动成功后，输入用户名后点击登录按钮进行登录。要注意多个客户端不能使用同一个用户名，否则登录时将会报错。&lt;/p&gt;
@@ -9834,6 +10027,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 543px) 100vw, 543px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;进入主界面后，输入信息点击发送即可将信息发送出去。本机发出的信息显示在右边，其他用户发送的信息显示在左边。&lt;/p&gt;
@@ -9857,6 +10051,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;通过修改&lt;strong&gt;目标Activity&lt;/strong&gt;，可以尝试各个功能的效果。各个功能的效果gif图可以在下文介绍实现每个功能时看到。&lt;/p&gt;
@@ -9938,6 +10133,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 696px) 100vw, 696px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;在MVC架构中，&lt;strong&gt;界面相关的代码&lt;/strong&gt;和&lt;strong&gt;业务逻辑相关的代码&lt;/strong&gt;被分开，分别放在View和Model中。而在Android开发中，View即我们之前提到的Activity。他们三者之间的关系如上图所示，即&lt;/p&gt;
@@ -9966,6 +10162,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 584px) 100vw, 584px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;通过这样，&lt;/p&gt;
@@ -9999,6 +10196,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 570px) 100vw, 570px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;看起来非常的正常，但是我们思考一个问题：&lt;strong&gt;当Model正在进行3. 备份操作时，View如何进行响应？&lt;/strong&gt;&lt;/p&gt;
@@ -10029,6 +10227,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 694px) 100vw, 694px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;在MVP架构中，负责界面的View和负责数据操作的Model已经不再有直接的联系：他们之间的操作均通过一个专门的Presenter进行转发和处理。Presenter取代并加强了原来Controller的地位：Presenter现在除了要转发View层的操作，还能够直接控制界面层进行界面的修改，还负责给View提供数据进行显示。除了Presenter的引入，View和Model的职责和MVC一致。&lt;/p&gt;
@@ -10052,6 +10251,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 712px) 100vw, 712px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;5.1 优点&lt;/h2&gt;
@@ -10110,6 +10310,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 712px) 100vw, 712px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;其Presenter的代码是这样的，请留意我其中的注释，再想想我们MVC尝试解决的问题是什么。&lt;/p&gt;
@@ -10218,6 +10419,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 693px) 100vw, 693px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;在MVVM中，VM和M的交互则和M和P中的交互没有变化。但是我们使用了一个叫ViewModel的东西替代了原来的Presenter。ViewModel包含某个View需要的数据，需要处理View业务处理请求。除此之外，也是最精彩的地方，&lt;/p&gt;
@@ -10245,6 +10447,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 708px) 100vw, 708px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;特别注意在第二步，和MVP去直接去修改界面中元素属性不同，&lt;strong&gt;ViewModel只修改了数据&lt;/strong&gt;，界面的修改是自动的。&lt;/p&gt;
@@ -10362,6 +10565,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 693px) 100vw, 693px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;在FRP中，对事件的处理被抽象为一个&lt;strong&gt;流(Stream)&lt;/strong&gt;。&lt;/p&gt;
@@ -10390,6 +10594,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 716px) 100vw, 716px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;我们将整个系统考虑为两个流：&lt;strong&gt;输入流&lt;/strong&gt;和&lt;strong&gt;输出流&lt;/strong&gt;。&lt;/p&gt;
@@ -10470,6 +10675,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 688px) 100vw, 688px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;代码实现：&lt;/p&gt;
@@ -10503,6 +10709,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 695px) 100vw, 695px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;代码：&lt;/p&gt;
@@ -10549,6 +10756,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 627px) 100vw, 627px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -10705,6 +10913,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 951px) 100vw, 951px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;申请列表&lt;/figcaption&gt;
@@ -10753,6 +10962,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 425px) 100vw, 425px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;我的Leetcode情况&lt;/figcaption&gt;
@@ -10829,6 +11039,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;等车时的抱怨说说&lt;/figcaption&gt;
@@ -11142,6 +11353,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1058px) 100vw, 1058px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Lang object autocompletion&lt;/figcaption&gt;
@@ -11179,6 +11391,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 907px) 100vw, 907px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;root object autocompletion&lt;/figcaption&gt;
@@ -11877,6 +12090,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 823px) 100vw, 823px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Loop that never ends&lt;/figcaption&gt;
@@ -11902,6 +12116,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 287px) 100vw, 287px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Only one element in the map&lt;/figcaption&gt;
@@ -12164,6 +12379,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 601px) 100vw, 601px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;A glimpse of Hooks in unstated&lt;/figcaption&gt;
@@ -12318,6 +12534,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -12340,6 +12557,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;2018年1月，系统展示、最终答辩，24/7被软工2占据的日子终于结束，在如释重负的同时，我还感到了收获的快乐。&lt;/p&gt;
@@ -12362,6 +12580,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 666px) 100vw, 666px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -12383,6 +12602,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1067px) 100vw, 1067px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;3-6月：软工3，Tag x00&lt;/h2&gt;
@@ -12405,6 +12625,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 345px) 100vw, 345px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;4-6月：链谷杯，ChainStore&lt;/h2&gt;
@@ -12429,6 +12650,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -12451,6 +12673,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;8-11月：花旗杯，A+Quant&lt;/h2&gt;
@@ -12476,6 +12699,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;顺便逛了逛大连，真实个美丽的海滨城市，尤其对我这种西部山区出来的，还是非常见世面。&lt;/p&gt;
@@ -12499,6 +12723,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -12521,6 +12746,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -12543,6 +12769,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;VicBlog&lt;/h2&gt;
@@ -12576,6 +12803,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h3&gt;MR&lt;/h3&gt;
@@ -12601,6 +12829,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h3&gt;参观微软苏州&lt;/h3&gt;
@@ -12625,6 +12854,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;其他&lt;/h2&gt;
@@ -12652,6 +12882,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;校新年音乐会&lt;/p&gt;
@@ -12675,6 +12906,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -12700,6 +12932,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -12722,6 +12955,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -12747,6 +12981,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 807px) 100vw, 807px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -12772,6 +13007,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 905px) 100vw, 905px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;先锋书店&lt;/p&gt;
@@ -12795,6 +13031,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;南京市长江大桥&lt;/p&gt;
@@ -12817,6 +13054,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 905px) 100vw, 905px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h1&gt;实习&lt;/h1&gt;
@@ -12842,6 +13080,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 484px) 100vw, 484px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;SAP&lt;/h2&gt;
@@ -12866,6 +13105,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h1&gt;其他&lt;/h1&gt;
@@ -14099,6 +14339,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 539px) 100vw, 539px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;select-source&lt;/figcaption&gt;
@@ -14124,6 +14365,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 702px) 100vw, 702px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;add-audio&lt;/figcaption&gt;
@@ -14149,6 +14391,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 614px) 100vw, 614px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;add-audio-to-pics&lt;/figcaption&gt;
@@ -14174,6 +14417,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 595px) 100vw, 595px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;preview&lt;/figcaption&gt;
@@ -14198,6 +14442,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 557px) 100vw, 557px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;done&lt;/figcaption&gt;
@@ -14253,6 +14498,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 610px) 100vw, 610px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;doc-display&lt;/figcaption&gt;
@@ -14289,6 +14535,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 425px) 100vw, 425px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;save-onedrive&lt;/figcaption&gt;
@@ -14313,6 +14560,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 420px) 100vw, 420px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;save-complete&lt;/figcaption&gt;
@@ -14337,6 +14585,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 408px) 100vw, 408px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;duplicated-copies&lt;/figcaption&gt;
@@ -15100,6 +15349,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 536px) 100vw, 536px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;wakatime&lt;/figcaption&gt;
@@ -16155,6 +16405,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 866px) 100vw, 866px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;项目地址：
@@ -16181,6 +16432,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;。截止当前（2017/11/6）GitLab CE已经更新到了大版本10，这个8.10版本官方早就已经放弃治疗，甚至在gitlab-runner的&lt;a href=&quot;https://docs.gitlab.com/runner/index.html#compatibility-chart&quot;&gt;兼容性页面&lt;/a&gt;上都找不到这个版本的信息。&lt;del&gt;看来你院使用过时技术的传统看来还要继续延续多年。&lt;/del&gt;&lt;/p&gt;
@@ -16232,6 +16484,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;只能自己设置apt源了。Node官方提供的源说明&lt;a href=&quot;https://nodejs.org/en/download/package-manager/&quot;&gt;参照这个链接&lt;/a&gt;。&lt;/p&gt;
@@ -16257,6 +16510,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;后来把内存加到2G才够npm install使用。&lt;/p&gt;
@@ -16283,6 +16537,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;还给README.md加上了badge（题图）&lt;a href=&quot;https://docs.gitlab.com/ee/ci/pipelines.html#badges&quot;&gt;(教程)&lt;/a&gt;，这样看上去就非常像是一个非常好的开源项目。&lt;/p&gt;
@@ -16527,6 +16782,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;找错&lt;/h2&gt;
@@ -16551,6 +16807,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;导出到VS后，需要在nuget里安装&lt;strong&gt;Microsoft.VisualStudio.Shell&lt;/strong&gt;和&lt;strong&gt;EnvDTE&lt;/strong&gt;依赖以正常获得InteliSense提示。否则就要去翻MSDN……&lt;/p&gt;
@@ -16576,6 +16833,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;图中&lt;code&gt;get_Solution()&lt;/code&gt;、&lt;code&gt;get_Name()&lt;/code&gt;等语句不是错误，它们是C#的属性编译后的代码。在自己程序中，如需访问&lt;code&gt;Solution&lt;/code&gt;等属性，&lt;strong&gt;只能&lt;/strong&gt;直接&lt;code&gt;.Solution&lt;/code&gt;，不能直接调用&lt;code&gt;get_Solution()&lt;/code&gt;代码。&lt;/p&gt;
@@ -16601,6 +16859,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 531px) 100vw, 531px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;在调试中的VS实例中新建一个C++控制台程序，点击菜单按钮，发现如下结果：&lt;/p&gt;
@@ -16623,6 +16882,7 @@ Sun Mon Tue Wed Thu Fri Sat
         sizes=&quot;(max-width: 926px) 100vw, 926px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Properties是null，Item(1)返回的是一个COM对象，无法获得值。&lt;/strong&gt;&lt;/p&gt;
