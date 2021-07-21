@@ -1,4 +1,1220 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 07 Jul 2021 06:51:29 GMT</lastBuildDate><item><title><![CDATA[react-typed-i18n: 使用Template Literal Types实现强类型的i18n]]></title><link>https://ddadaal.me/articles/typed-i18n-with-template-literal-types/cn</link><guid isPermaLink="false">/articles/typed-i18n-with-template-literal-types/cn</guid><category><![CDATA[web-frontend]]></category><category><![CDATA[code-trick]]></category><category><![CDATA[TypeScript]]></category><category><![CDATA[project]]></category><pubDate>Sun, 06 Jun 2021 07:27:00 GMT</pubDate><content:encoded>&lt;h1&gt;react-typed-i18n&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Jul 2021 11:13:36 GMT</lastBuildDate><item><title><![CDATA[我的第一个真实项目：总结和经验]]></title><link>https://ddadaal.me/articles/summary-of-my-first-real-project/cn</link><guid isPermaLink="false">/articles/summary-of-my-first-real-project/cn</guid><category><![CDATA[project]]></category><pubDate>Wed, 21 Jul 2021 08:34:00 GMT</pubDate><content:encoded>&lt;h1&gt;我的第一个真实项目&lt;/h1&gt;
+&lt;p&gt;终于，从3月15日开始，我自己独立承担了一个完整的、真实的项目的开发和整个软件生命周期的维护工作：&lt;a href=&quot;https://data-competition.pku.edu.cn&quot;&gt;https://data-competition.pku.edu.cn&lt;/a&gt; ，第三届全国高校数据驱动创新研究大赛的后台系统（代码目前放在学校gitlab上，以后应该会把代码放到github上）。&lt;/p&gt;
+&lt;p&gt;虽然这还是一个常规的CRUD项目，但是毕竟是我第一个能够被真实用户使用的系统，我还是比较激动的。项目中途遇到了几次重构，最后出现了一次生产事故，其他的总体流程还是比较顺利的。&lt;/p&gt;
+&lt;p&gt;项目现在已经基本结束了，这里写一篇总结文，介绍一下项目的架构、演进、自己设置的一套前后端共用API的机制、以及在这个过程中的经验。&lt;/p&gt;
+&lt;h1&gt;系统功能、架构、规模&lt;/h1&gt;
+&lt;p&gt;下面是系统的用例图，主要完成一个比赛报名系统的用户管理、团队管理和上传提交文件操作，还对管理员实现了查看用户和团队信息以及群发邮件功能。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 880px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 82.45614035087718%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAAAsTAAALEwEAmpwYAAACEElEQVQoz3WTXW/TMBSG9///BruEGwQMpCGkTWhri2DqREeakKRN3cSJYydxYsffqMnard14dG6O5dd+z/HxGcZYCOH2aK3lDmOMU8pKadSOXar1bkUpJaV0zgkhzp4rnXNSSiH6uo7jeLLZ/KB0rZTCOA7D2/V6CuEfrYWU0lr7JLYDzjmlFGNtUcyT5BqA73l+3zRNnj+sVldJcp2mP4VgSqkj8QHGGKUU4zRNfQAe6hpKKTivEIoQihgrjTGnN2fZGqECQphlGQCb1eoqCD74/gUAU4RIns+j6HMYfoLwpusapfSROAi8MPy73W4BAFVVUcqKooyiqed9iePLJLnBOO/7Xik9tupRPHrIMjjWzPcIIctyFUWzJPlVlitj9KG0J/Gh5lE8vJIdUmOtM8YKoep6G0WzOJ4g5A8vdVwzY421ZjxVSqG1bduOENw0LWMMwnkYfg3DyzSdcd6edtvz7gHYIITSNK3rxvdvJ5Nzz3vveR8JAQdfr9i21i6XASFV27aEkK7rimKd578JWWC8bNtKSsEY5rzkHEvJT21TSseWjN1qW1oUWwgTCIEQipAtAN8mkzdxfFGWC877/46ntS6OZ3d350HwdrF4V1WbYWsnBOWcjsN/Op6juO97KSVjXdeVnJddR4Tox59hjB1Cc85fv9kYs9/qhrDGGL1DPYvHUTljL+Ccn6QvYYO3f/CMjqFUjRKOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;用例图&quot;
+        title=&quot;用例图&quot;
+        src=&quot;/static/aa66a8cb568cf804956cb2bdc1ab25f9/e4c64/usecase.png&quot;
+        srcset=&quot;/static/aa66a8cb568cf804956cb2bdc1ab25f9/5459c/usecase.png 285w,
+/static/aa66a8cb568cf804956cb2bdc1ab25f9/2cee3/usecase.png 570w,
+/static/aa66a8cb568cf804956cb2bdc1ab25f9/e4c64/usecase.png 880w&quot;
+        sizes=&quot;(max-width: 880px) 100vw, 880px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;用例图&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;总的来说，系统是一个做了SSR的前后端分离的TypeScript全栈项目，下表为项目的技术栈。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;部分&lt;/th&gt;
+&lt;th&gt;技术栈&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;编程语言&lt;/td&gt;
+&lt;td&gt;TypeScript&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;前端框架&lt;/td&gt;
+&lt;td&gt;Next.js&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;UI库&lt;/td&gt;
+&lt;td&gt;Ant Design&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;后端框架&lt;/td&gt;
+&lt;td&gt;fastify&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;反向代理&lt;/td&gt;
+&lt;td&gt;nginx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据库&lt;/td&gt;
+&lt;td&gt;MySQL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;部署&lt;/td&gt;
+&lt;td&gt;Docker + Docker Compose&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;监控&lt;/td&gt;
+&lt;td&gt;Prometheus + Loki + Grafana&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;外部服务&lt;/td&gt;
+&lt;td&gt;学校提供的SMTP服务器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;下图是系统各个部分的架构图，监控部分其他的各个小组件就没有画了。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 958px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 85.26315789473684%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAAsTAAALEwEAmpwYAAACHklEQVQ4y21SyXLbMAz1/39KT10ObdOpM0kapz2kh7qTzePUFqPRYooiJUoEAS4dSUnjJn6D4QEgBg8Pb8Y5r6oKEe0eENEYNIaMIURnDwEAZkopRIzPCDFGANO2aylv6/qmKO5CiK9BRDMi2k+F8WPTSM5PhDgW4muSnHkfDjcjYgjBvwKRt3bg7H18yrkpnKMQwtA8LUCEiDi9zjlj+qq6T9PfeX6VZauxRG6An2LSaAYAzrkXtLuuE+JbVc2FmDN26pyfhADoxzBENAiGiH2vOV+W5c+yvGTslxBS61apSmvZtqJp6rETyvI8z4/y/Mt2O2/bFhFniKS15PxcyoVSZ0VxaQxOXJzz1tpJG0RUaltV15zfSLkBgEfaRM7aABCM8cag949bOOcBcNrFORdCdC44F8aSG2hbi01TSpkIkWTZbduK6XffCyGSorgXggF0IQQhtkVxy/ma8w2AGSYjhiS5SNP3afqRsXeMLWOMxtj1+vjh4S1jH1arN5xvEH2en3D+mfOjJPnUNBJxPFXfa0SN2CFqoke3IRpEbW1LpMfDRmt7AA2giZ7UfnGqvZsNG1rr/ndVGEWJz81Eg2P+Yeqs6z9Z9p2xBWMXSu1ijLvdXV2f7nYnZTlP0xWRPzzZ+8j5tZQLKX+U5ZlSRYxRygellm171TTLus6spQOTJzx5e7K3H/0frPXWekQ/XhdmXdfpQ+j2cDDZ9/1f9cPPPteYXlUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;架构图&quot;
+        title=&quot;架构图&quot;
+        src=&quot;/static/ea393019380798da6169f4342033b1c3/72988/architecture.png&quot;
+        srcset=&quot;/static/ea393019380798da6169f4342033b1c3/5459c/architecture.png 285w,
+/static/ea393019380798da6169f4342033b1c3/2cee3/architecture.png 570w,
+/static/ea393019380798da6169f4342033b1c3/72988/architecture.png 958w&quot;
+        sizes=&quot;(max-width: 958px) 100vw, 958px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;架构图&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;每个部分（包括nginx、数据库）都是使用容器运行，所有容器部署在一台2核2G内存的学校提供的虚拟机上。这个机器前面还有其他机器，负责SSL和开放到公网，所以这台机器本身是不能直接从公网访问的（连我上机器都需要使用VPN连接），这就带来了安全性：我可以使用最前面的nginx的来控制各个部分的可访问性。在我的配置中，nginx开放了80（前端）、5000（后端）和grafana的端口。grafana是否应该被公网访问我还不好说，但是由于grafana可以设置用户名和密码，应该安全性还好。&lt;/p&gt;
+&lt;p&gt;用docker运行的好处很显著：不管机器是什么样的，直接&lt;code&gt;docker-compose build&lt;/code&gt;和&lt;code&gt;docker-compose up -d&lt;/code&gt;就可以部署和更新了，以及loki也可以直接从Docker引擎中获取各个服务的日志。当然事实上没这么简单（数据库migration、volume mount等），后面要讲的生产事故也和docker直接相关。但是docker无疑是使得运维工作更简单的。&lt;/p&gt;
+&lt;p&gt;项目规模在12000行的TS代码左右。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;&quot; data-index=&quot;0&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;➜  cloc . --fullpath --not-match-d=&amp;quot;(node_modules|.next)&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;     615 text files.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;     610 unique files.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;     296 files ignored.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;github.com/AlDanial/cloc v 1.88  T=0.85 s (545.5 files/s, 92257.2 lines/s)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;-------------------------------------------------------------------------------&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;Language                     files          blank        comment           code&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;-------------------------------------------------------------------------------&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;JSON                            22              1              0          41742&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;HTML                            96           1421              0          16873&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;TypeScript                     320           2470            440          12470&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;XML                              1              0              0           1390&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;CSS                              3             62             22            754&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;YAML                             6             26              3            260&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;JavaScript                       5             28             27            230&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;Bourne Shell                     1             12              6            164&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;Markdown                         6             76              0            162&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;SVG                              4              0              1            138&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;LESS                             1              2              0             14&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;PowerShell                       1              2              2              7&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;-------------------------------------------------------------------------------&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;SUM:                           466           4100            501          74204&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;-------------------------------------------------------------------------------&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h1&gt;几次重构&lt;/h1&gt;
+&lt;h2&gt;Create React App到Next.js&lt;/h2&gt;
+&lt;p&gt;项目开始得比较急，以及我一开始询问得知&lt;strong&gt;不需要做SEO&lt;/strong&gt;，所以采用了CRA开发了系统的第一个版本。结果后面又说需要SEO，所以只好将项目迁移到&lt;code&gt;next.js&lt;/code&gt;。但是现在虽然已经能够做到SSR（下图），但是搜索引擎似乎也不好搜索到网页中的内容（可能是流量太低，搜索引擎还没有索引？）。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 57.54385964912281%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAACJklEQVQoz32QS08aURiGjwY1LIwbg7pxIW5IjDu5RNrSCjMMoY0yv4TwX1or1NpiTJPWVW27dmFiYhQiMAy3GS6CwJnj3MABGZhmgE1D2yfv4iTfec6b74Atq9Vmt9tttu1t57MXrudDnE6nw+Gw2Wxb/8ZqtQLM9+alm3BjXoqiSqUyy7Isw7AMwxQKd5UK4jgIIeK4cSBECHEcJ4piIpEAuNfr8WAEQdRqNVmWeZ6XHh/lTkdWlG6vp2ma2u9rfzIYDDRNK5VKAMMwHMcDgYAsy/qg35dzOT4WE25vhWTyIRaTcjkxm+VTKe7mBl5dKRCOnmAYBniHkCQpSZLe0+uJlQqfz/MMgwqFu1SqWSzytZpYrUrlslAstnm+p6pj2ePRm0mSbMmyoigZmq7e39chbEDY5Lhqvd5oNgVJggi1Ox2p1eIQEgRhLPt8vlFzu9V6UtVkNkvn8w2EOqra7nYlRXka9kzurMv4kMDeXi0eR/F44fycvbioXF7yyaRI02ImI9A0T1F60unR4YGiJJpOX1/rspcgdv3+z2bz1/X1bxbLycrKsckUXVw8nJuLzMx8mMih0XgAwFkopP82huO7fn/UYvnldv/E8S9ra6cbG6ebm5HZ2fcAHEwkbDC8BeB7MDjc2Ue8JohPZvPJ8nJ0aemj0bgPwP7o3t8SMRjeAXAWDAKXy/VqZ8eH40erq9GFhWOT6Wh+Pjw1FZmeDv9X/hEK/Qab9KSlQuMSqwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;SSR&quot;
+        title=&quot;SSR&quot;
+        src=&quot;/static/d0e518baf665da86860618ec1d5a864b/267c0/ssr.png&quot;
+        srcset=&quot;/static/d0e518baf665da86860618ec1d5a864b/5459c/ssr.png 285w,
+/static/d0e518baf665da86860618ec1d5a864b/2cee3/ssr.png 570w,
+/static/d0e518baf665da86860618ec1d5a864b/267c0/ssr.png 1140w,
+/static/d0e518baf665da86860618ec1d5a864b/47d67/ssr.png 1220w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;SSR&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;非响应式到响应式&lt;/h2&gt;
+&lt;p&gt;和上面一样，一开始说系统并不需要考虑手机上访问，所以设计的时候就完全没有考虑手机端访问的情况。结果初版上线没多久就说需要支持手机上的访问，所以需要对网站做响应式的改造。&lt;/p&gt;
+&lt;p&gt;由于除了主页以外，之前本来就完全没有使用绝对坐标，所以其实很多元素已经能够自己适应了（例如网页的主内容部分），整体工作量比我想象的小。主要工作有两块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;header&lt;/li&gt;
+&lt;li&gt;左右布局&lt;/li&gt;
+&lt;li&gt;主页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;header整体是左边logo右边menu，但是右边的menu需要根据屏幕大小切换不同的布局。为了简单，我直接就对大屏幕和小屏幕分别写了两个Menu，然后在运行时根据当前的屏幕大小进行切换。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;tsx&quot; data-index=&quot;1&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;useBreakpoint&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;antd/lib/grid/hooks/useBreakpoint&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;md&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } = &lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;useBreakpoint&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;();&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk12&quot;&gt;md&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  ? (&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk17&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;BigScreenMenu&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;renderedLinks&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;userStore&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;userStore&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk17&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  ) : (&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk17&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;SmallScreenMenu&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;renderedLinks&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;userStore&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;userStore&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk17&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  )&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;左右布局借用了使用的Ant Design的&lt;a href=&quot;https://ant.design/components/tabs-cn/&quot;&gt;Tabs&lt;/a&gt;组件可以显示在左边也可以在上面的功能，同样通过&lt;code&gt;useBreakpoint&lt;/code&gt; hook获得现在屏幕的大小，然后通过大小判断Tabs的显示模式。&lt;/p&gt;
+&lt;p&gt;大屏幕下的界面：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 31.929824561403507%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnElEQVQY042PywoCMRAE8/8/tidPIgjCquCirItgNpPJZDLT4vPgRYs+FfShwrhcndabcX8oorWhqn9WpBELZaFcUy6ZmGeaiYllTpmLBlXNRAD8jgH+GJ4m7rbXbQ9/mS9CTZSmyZtVkTnGklm1+S/MrLUWuJRrjAAKMxEZ0Mz+PauqiAAw4NL3x657J/y4u3v45AFIw3BeLPA3N3cpYABO8+ZVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;大屏幕界面&quot;
+        title=&quot;大屏幕界面&quot;
+        src=&quot;/static/b18d90701c6d278c9e619eebefe9e008/267c0/big-screen-ui.png&quot;
+        srcset=&quot;/static/b18d90701c6d278c9e619eebefe9e008/5459c/big-screen-ui.png 285w,
+/static/b18d90701c6d278c9e619eebefe9e008/2cee3/big-screen-ui.png 570w,
+/static/b18d90701c6d278c9e619eebefe9e008/267c0/big-screen-ui.png 1140w,
+/static/b18d90701c6d278c9e619eebefe9e008/eb4a2/big-screen-ui.png 1249w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;大屏幕界面&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;小屏幕下的界面：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 682px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.245614035087726%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABW0lEQVQoz4WSS0/CQBDH+9XVI4mfhQ9AYmLwBHpALo0QbIFWKS37AHb2MTOGLjToAX+Zw2Yy/3ntJIt+vxyPy9GoHI9UnjMzEXG0+G6hFr4AAM65ZDeb1dWmLstt+WWN6QTETIh0IWoQ0becxXyFOZo8z83h0Eyn+jOz3q/W66raAkCaplLKU00D3nlrrTEmwZaYHhFDCEQETXMsS6s1KIWtJwQfY4QQWmlmttb+qhyHO6VvmuVgULwMi+HQH4+dn5nreltV1VmshJBKOe8tgLWW/kx5WVXXmtjt5vO5ECJ4nygplVLenXYAAF1Qxx+x3u+z5UppHUJIRNMIIZxzxhgAQzcJiM3mezZ9r4tiL0ViW7xzDiBu6wZIVHyk6fPT4nW0yT6T9WpZ1zUye0Tn3D9iRCnkIsuk1jb+czBm8vg46fUCAN+EiFxL7Pcsfnt4eL2/C+2F8dUZ3uYHjca09vGSFYsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;小屏幕下的界面&quot;
+        title=&quot;小屏幕下的界面&quot;
+        src=&quot;/static/41c8f893560531b770007f7c5c370250/e899a/small-screen-ui.png&quot;
+        srcset=&quot;/static/41c8f893560531b770007f7c5c370250/5459c/small-screen-ui.png 285w,
+/static/41c8f893560531b770007f7c5c370250/2cee3/small-screen-ui.png 570w,
+/static/41c8f893560531b770007f7c5c370250/e899a/small-screen-ui.png 682w&quot;
+        sizes=&quot;(max-width: 682px) 100vw, 682px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小屏幕下的界面&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;主页是比较麻烦的，因为主页有一些部分结构比较复杂，设计图的HTML里也主要是以1200px以上为基准，把一些复杂的结构使用绝对大小来表示。比如下图中的树状结构，就是通过绝对的margin值来确定位置的。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 952px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 99.29824561403508%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAElElEQVQ4y0XQa0xTZxgH8BfozSJkmmw6YzZxF4PLNuIU5HYq7enttD29qKCdl0Ud10oXEEe94TCyIdv8oPuAs5XL6YWKLXSdusiAc95TpCpMTcaMbstUMr/MuPhBN/qe8y7FD0v+H57k+f+SJw9AMAfxOYiTI06JYE6KU6CJV1HyTTT5OprMQ8lVKPkGmliW3nIyBJUIZiNWlg6fA8TEQpzIxlwG5hdgPhtDKZ5cjqfex9Or8O18fLsAT63G1/Iwr8RQgqEiXeOy0jU+G4j8QszL57FC5JWYV2A2E/OZ4iW5cCFPiC3HrAyzIA04STpQ8WIQ5/ECkZMInFTglSKUC1AhsnLxqjzV//Lzzo3/nq5AY7kIShErEVipwGYKMBtzsrTnswHmZAKX9XxcJvJyxMkFuABBydy4TEhkIV4iJOQISp+NSzDMmr8uS+CVKVaKYZbILwSYAzMs8cnozCP4LuaAmJQi34p/3FY8ohQSCsxlBCeLXTd3/n0l52F85YOhzGeBfDG4FnMAQwXA42B27C3v6Mkn7DLMAjGRIQwsmusswCMZIpRgFlybXNk1UvhTvOpZsuRxHNzvLZgbXDH/BRnAd3eLvzWj6U34wQFxZjO+V/v89/a/fm7Cs5/jGfvTW/VPp1vuXm58+Msg/tWB7h+/d8v7cKoBz7bj66uBAF/6YbzJN94TYz9DMBfxixG/NAWXoMRSAeam4OJUYunTH1+54c+fjeXeiVGPwjvnwkVzl95GUA7wVXCL14xN1F3nzfgq+D8TACeAwAN8A9zslQU7Xnv8PXgSl+GLi/DF5fiKHCcBcNcdaW1oPehq8jQ0u+vb3PVtjbUH99Ycatrb7mk+1uJub3Idph1Hd2xv2994wF3ncdW27K1rdtW2uqo9oNg4UExFiqnhElOszDRUSkVLDOeLtEHSHtnjHqvcfWW9PlxhCZebwkW6cKE2VEiGivXhQtK/jmQASZ/T0l6S9qptDOkI6ewB0tprsPeQ5m69rdfgCBjsfTpr3waTr8LsVVt8WrqHpM9qbT0aiw+oLcEyc7zCMuS0erdafTpbyLApQlguq63fUZsHSNv5DdbL5eZhnZ3R2hgVda7UyJSY4irLEGkNAIO9//jBo237O5xbmKoqRkMPOHf5T7Z7jnx6gt4as1b1d7Udbms9ZnOG6aqBMr2/0vnN6Y79NdVflVNhsGN7Z2o048/YYsLUV2r0F2nPu6qP4AlwJ5S3VhP9eFcHGgUPoksM1rOEMVBQMdzl2YWnQfyUah05CDTmXo97X2PtYcIYJIyhMmOYpPtaG1t2f9RZoh9Um5nm+kMN1e0ENUBQwfW6sMXR7XHvczq/LtWHQLkhUEgOFpKDKmN/8ASVPPee0/llftnFjZWnpvry/Z2mdZr01uzoht+uud7zjsHqXaOOluhChJEBhNGvovpVJkZn6x89U/7H0IqaPV+sUQ/X7Ol8FF820q3S0P5yQ8Ds6OZ9Rdf6PjA5zpQZgiqKIYz+NJ73fnprxLEt6th+gXZGdbaQ1Tnk2Baxb4tatkRUFFOqD5oqI7YPhwkqSBiZF+o/jjhvPJIk1/oAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;结构复杂的部分&quot;
+        title=&quot;结构复杂的部分&quot;
+        src=&quot;/static/d90887e67ea7b35744bf010dbf518bbf/35c50/homepage-big.png&quot;
+        srcset=&quot;/static/d90887e67ea7b35744bf010dbf518bbf/5459c/homepage-big.png 285w,
+/static/d90887e67ea7b35744bf010dbf518bbf/2cee3/homepage-big.png 570w,
+/static/d90887e67ea7b35744bf010dbf518bbf/35c50/homepage-big.png 952w&quot;
+        sizes=&quot;(max-width: 952px) 100vw, 952px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;结构复杂的部分&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这个我最后取了一个偷懒的做法，就是在屏幕宽度过小的情况下，把这些复杂的部分全部隐藏掉。由于原来是支持1200px以上的，所以最后在1200px以下就把这些部分直接隐藏掉。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;css&quot; data-index=&quot;2&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;@media&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;1200px&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;) {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.part_04&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.part_05&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.part_06_01&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.part_06_02&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.part_07&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.part_03&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;.moreOnPC&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 682px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.245614035087726%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABW0lEQVQoz4WSS0/CQBDH+9XVI4mfhQ9AYmLwBHpALo0QbIFWKS37AHb2MTOGLjToAX+Zw2Yy/3ntJIt+vxyPy9GoHI9UnjMzEXG0+G6hFr4AAM65ZDeb1dWmLstt+WWN6QTETIh0IWoQ0becxXyFOZo8z83h0Eyn+jOz3q/W66raAkCaplLKU00D3nlrrTEmwZaYHhFDCEQETXMsS6s1KIWtJwQfY4QQWmlmttb+qhyHO6VvmuVgULwMi+HQH4+dn5nreltV1VmshJBKOe8tgLWW/kx5WVXXmtjt5vO5ECJ4nygplVLenXYAAF1Qxx+x3u+z5UppHUJIRNMIIZxzxhgAQzcJiM3mezZ9r4tiL0ViW7xzDiBu6wZIVHyk6fPT4nW0yT6T9WpZ1zUye0Tn3D9iRCnkIsuk1jb+czBm8vg46fUCAN+EiFxL7Pcsfnt4eL2/C+2F8dUZ3uYHjca09vGSFYsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;小屏幕下提示&quot;
+        title=&quot;小屏幕下提示&quot;
+        src=&quot;/static/41c8f893560531b770007f7c5c370250/e899a/small-screen-ui.png&quot;
+        srcset=&quot;/static/41c8f893560531b770007f7c5c370250/5459c/small-screen-ui.png 285w,
+/static/41c8f893560531b770007f7c5c370250/2cee3/small-screen-ui.png 570w,
+/static/41c8f893560531b770007f7c5c370250/e899a/small-screen-ui.png 682w&quot;
+        sizes=&quot;(max-width: 682px) 100vw, 682px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;小屏幕下提示&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;部署Prometheus/Loki/Grafana&lt;/h2&gt;
+&lt;p&gt;一开始系统并没有部署任何的监控系统和日志工具，日志全部直接打到stdout里，要查日志的时候通过&lt;code&gt;docker-compose logs {container name}&lt;/code&gt;来查。这种方式有以下几个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;容器重启后，之前的日志就丢失了&lt;/li&gt;
+&lt;li&gt;只能看到raw log，只能借助一些外部工具（比如grep）进行分析，灵活性受限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外在一开始，机器的硬盘很少（20G），由于我没有镜像仓库，docker镜像都是直接拉到机器现场build，产生了巨多storage layer，占用了不少空间，有一次部署因为硬盘不够直接build失败了。&lt;/p&gt;
+&lt;p&gt;所以我觉得需要部署一套监控和日志系统，用来在问题出现时更方便地寻找问题。后面选择了Prometheus和Loki和Grafana这一套组合。&lt;/p&gt;
+&lt;p&gt;网上抄了一些dashboard的配置，比如下面的&lt;a href=&quot;https://grafana.com/grafana/dashboards/1860&quot;&gt;Node Exporter Full&lt;/a&gt;，nginx等，但是可能由于我这个系统比较简单，请求压力也不大，这些机器只是看着炫酷，实际没有起到什么作用。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 50.526315789473685%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB7ElEQVQozx2Py2vbQBjEdbb12l3t49un3pItE8dJnNqWnIS00EeaQ5rabaEnF0oCpf//saiX4TcDwzCelZxJw4QEbZmAMMJBhIIonvrhZBpM/XA6DSZ+ECFMKScJS5hIKBdCJZR7hIIwmbYpocA4xJhx0JSJ0EdRiCdB5CPiB1EY4CCMgxCNHGEmJMKJJ0Cp1KjMgda2ykFpU2Wjrpw6yyouP5W1lNJc5No5mxagjLFZ1czHZakNKwC05Aao4RRYYjkTXFwAzvgS5DUDaQU/B0aZMU6O5VRrJ5X1QBqprLap1IZQJpROKMcJxYhhQkNCJygJ4sQPCeaScDm+QCTASRhjjxDebbrhsN09vemfN/vDrn/e9k+b/XF79fHCuGyl1KVgV8DXUq6lvOT8Evg1CEeZhxBd7s7e/bi5/7K/O+5uv+7ujv3tob//Pmwf1sqmbzezx33zfts+7qvjffV5aD9sm4dh1uTaw4Q65/KiyNK0LIu2aauqdKkzWiulBKj5vOi6Yt6Vy1W7Om8Wi6KsTF1bkMIDUMpl6Wxmmzabd/X5Ku8WrmnHpKoFKIx5jFiMGOOGcROj/zZmMUq8sqxnm+Hm5e9weul/vfanl/70Opxe97//rL/9BG2zJs9nRdmVRVcU8xHKRdksazDqH6e5T9r+Ve3EAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Grafana Noded Exporter Full&quot;
+        title=&quot;Grafana Noded Exporter Full&quot;
+        src=&quot;/static/1d0c40e3870f766bfaa1d6a652a08b9b/267c0/grafana-node-exporter.png&quot;
+        srcset=&quot;/static/1d0c40e3870f766bfaa1d6a652a08b9b/5459c/grafana-node-exporter.png 285w,
+/static/1d0c40e3870f766bfaa1d6a652a08b9b/2cee3/grafana-node-exporter.png 570w,
+/static/1d0c40e3870f766bfaa1d6a652a08b9b/267c0/grafana-node-exporter.png 1140w,
+/static/1d0c40e3870f766bfaa1d6a652a08b9b/78a90/grafana-node-exporter.png 1710w,
+/static/1d0c40e3870f766bfaa1d6a652a08b9b/04a44/grafana-node-exporter.png 1788w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Grafana Noded Exporter Full&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 50.526315789473685%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABqUlEQVQoz02P227TQBCGfdki27L3MIc92GuvYzsNgQZVpOIOEheQuOJJeBUuIFWFeFbYRBVIn0b//DOjmck8I5AnslJSWdTXV/mL6+KZ/ExxfZWLSkkBSqJWJGolhK4rmSkyEENloXJcWShIXihJCYaKdM1nE0WBIgeRQ500iVzVmdn0q+/vp8dl/HlMnI7TaZlOy3x6uH36sv/1dfP4+eL848dx/v0pfHub2T64j2s8jnhY0XHFy0RJD3AY8DC45UYfIp41LyMvqYQfBnoY1V2TETldoSy1KBTU5DmwNKJQqtSyVFUuVAmyVLJQRjuHzcWXpa4LmSkgsh6NATLWW+utJpNSNsgpAhtN/AwBMzCjsRIwSzOu1UBKk29sCE5pBkxoYOebl1P3au62U7ed++3cv577GLwGlgoyITUb5xsHxE3rYvSIzMxIRgOzMfvd+v7N+n633u/m/e387m6zHnsNrDRmxNY618fom6YNXddHYoNkkCwgI5s+xtB1Xdf3wxCHVRdj24am7YhtNs43cF4CSEgmxIGdS4+ls+l/rG9dEzQQQOr8e/YfJ/BL2xwzFyEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Grafana Nginx&quot;
+        title=&quot;Grafana Nginx&quot;
+        src=&quot;/static/f0bbc1c5e3d84a70d39a51b4b6877b4e/267c0/grafana-nginx.png&quot;
+        srcset=&quot;/static/f0bbc1c5e3d84a70d39a51b4b6877b4e/5459c/grafana-nginx.png 285w,
+/static/f0bbc1c5e3d84a70d39a51b4b6877b4e/2cee3/grafana-nginx.png 570w,
+/static/f0bbc1c5e3d84a70d39a51b4b6877b4e/267c0/grafana-nginx.png 1140w,
+/static/f0bbc1c5e3d84a70d39a51b4b6877b4e/78a90/grafana-nginx.png 1710w,
+/static/f0bbc1c5e3d84a70d39a51b4b6877b4e/04a44/grafana-nginx.png 1788w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Grafana Nginx&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;真正起到作用的是loki，通过使用Loki的&lt;a href=&quot;https://grafana.com/docs/loki/latest/clients/docker-driver/configuration/&quot;&gt;Docker Driver&lt;/a&gt;，loki可以直接收集容器产生的日志，并且支持在grafana中进行搜索和查询。这些日志在后面诊断生产事故时发挥了巨大的作用。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABm0lEQVQoz4WQza7cIAyFs+/cm8mPMRiMgfwSZjIj9Rm6qfpIffgqyaLq5lb6ZBnhg8+hAjQA2DTN7aP+dvu86sXtowY0baeUph501yMA8PtX/vkb8w+AvgLDNi4dulY7ZAdKt72qm7Zuur/c24Oz+ayb+t5ZJwqp4rgM62786CRJmtC4XpmvASRA2/ZYaeJhWr2kcc58VkBqOtX2+DX3Fiql6Jg+zx3o/2r+ERtiNM75SE6cj1dDTlgSObEcNDFLcj4qbTU5NAeauANdoXGWhViM9ZeMrD/7q4omvl48xccmUEYhHZnbTllZtA1o3HHtItqIhhUd08ce4l6ZK9SViyUN0wpIFaDhuEqc2R/eOC4HYeQwWQ4X5vRiTheAZH2UNIGiyvogaQppmvNzXMpWypLLuJZcSi6vYd6GeRuXTeIkcYzjEtLs4yhxQK0ry8FJCmnM5bWWfd+3sr+Xsj/f33N5WR+tjz4MzsdzcnCSfBhCSqhVZZ0nDj4M0/qY17U88pSfy5rzY1/yMwxzSLOTSKf/49slWR9ZEmj6A6qlTWv+wHNwAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;通过Loki查看和搜索日志，右上角还可以修改时间&quot;
+        title=&quot;通过Loki查看和搜索日志，右上角还可以修改时间&quot;
+        src=&quot;/static/3cea37213ac9b086087eabe5eb154083/267c0/loki.png&quot;
+        srcset=&quot;/static/3cea37213ac9b086087eabe5eb154083/5459c/loki.png 285w,
+/static/3cea37213ac9b086087eabe5eb154083/2cee3/loki.png 570w,
+/static/3cea37213ac9b086087eabe5eb154083/267c0/loki.png 1140w,
+/static/3cea37213ac9b086087eabe5eb154083/fba59/loki.png 1605w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;通过Loki查看和搜索日志，右上角还可以修改时间&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h1&gt;前后端共享API定义&lt;/h1&gt;
+&lt;p&gt;前后端分离中，接口是非常重要的。为了减少接口层次的不一致，这次系统使用了我在&lt;a href=&quot;https://github.com/ddadaal/yaarxiv&quot;&gt;yaarxiv&lt;/a&gt;中采用&lt;strong&gt;前后端共享API定义文件&lt;/strong&gt;的设计。只需要在共享的&lt;code&gt;shared&lt;/code&gt;项目中使用TypeScript写API相关的定义（request、response、权限等），前后端就可以使用同一份定义文件进行API的调用和实现。只要对每个接口写一个文件，以下所有工作都可以自动化：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前端
+&lt;ul&gt;
+&lt;li&gt;调用接口时编译时检查参数，推断返回值类型&lt;/li&gt;
+&lt;li&gt;生成API Client&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;后端
+&lt;ul&gt;
+&lt;li&gt;生成swagger&lt;/li&gt;
+&lt;li&gt;检查请求参数，对错误参数的请求返回400&lt;/li&gt;
+&lt;li&gt;编译时检查返回值类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面是一个真实的本项目中的API定义：更新团队成果信息来举例子，看看这个机制是怎么工作的。&lt;/p&gt;
+&lt;h2&gt;定义接口&lt;/h2&gt;
+&lt;p&gt;用户定义一个&lt;code&gt;xxxSchema&lt;/code&gt;的interface，通过&lt;code&gt;body&lt;/code&gt;定义request body的类型，&lt;code&gt;responses&lt;/code&gt;中定义各个状态码以及对应的返回值。在定义接口的时候可以随意使用TypeScript的各种高级类型来减少重复。&lt;/p&gt;
+&lt;p&gt;定义好接口后，使用&lt;code&gt;endpoint&lt;/code&gt;定义这个API的方法和URL以及对应的Schema类型，再使用&lt;code&gt;props&lt;/code&gt;指定API的一些属性，例如要求的权限（&lt;code&gt;requiredRoles&lt;/code&gt;），可以被调用的时间段（&lt;code&gt;timeRange&lt;/code&gt;）等。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;3&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;UserRole&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;../auth/login&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;ApiProps&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;../utils/apiProps&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;Endpoint&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;../utils/schema&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;TimeOutOfRangeError&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;../utils/serverError&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;Submission&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;submissionTimeRange&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;./models&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;UpdateSubmissionModel&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Omit&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Submission&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;teamId&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;leader&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;paper&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;UpdateSubmissionSchema&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;teamId&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;UpdateSubmissionModel&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  };&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;TimeOutOfRangeError&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;{ &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;NotLeader&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; }&amp;gt; &amp;amp; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;201&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {};&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;DataUrls&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;ApiProps&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;requiredRoles:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; [&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;UserRole&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;],&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;timeRange:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;submissionTimeRange&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;method:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;PATCH&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;url:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;/submissions&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;} &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Endpoint&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;UpdateSubmissionSchema&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这些都定义好后，在&lt;code&gt;shared&lt;/code&gt;项目中调用&lt;code&gt;npm run api&lt;/code&gt;生成一个json schema文件。后端将会使用这个json schema自动生成参数和返回值验证，自动对传入参数不合要求的请求返回400。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;json&quot; data-index=&quot;4&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;UpdateSubmissionSchema&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;teamId&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;number&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;info&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;$ref&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;#/definitions/UpdateSubmissionModel&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;required&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: [&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;teamId&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;info&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      ],&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;additionalProperties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;responses&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;additionalProperties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;201&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;additionalProperties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;400&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;reason&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;string&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;const&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;DataUrls&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;            }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;required&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: [&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;reason&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          ],&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;additionalProperties&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;后端实现接口&lt;/h2&gt;
+&lt;p&gt;后端对于每个这样的定义文件，提供一个实现。指定api的路径，传入api的Schema的名称，提供实现。通过&lt;code&gt;req.body&lt;/code&gt;可以访问传入的参数，并且这些参数以及对应的类型都被自动推断出来的。响应使用&lt;code&gt;{ 状态码: 响应 }&lt;/code&gt;的格式，如果状态码或者响应不对，编译器也会报错。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;5&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;dc-shared/api/submission/updateSubmission&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;updateSubmissionRoute&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;UpdateSubmissionSchema&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; ({ &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; }) &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;teamId&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } = &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;findOne&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;Team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;id:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;teamId&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    });&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; (!&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;) { &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {} };}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;leader&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; !== &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;dbUserRef&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;) {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;403&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;reason:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;NotLeader&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } };&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;abstract&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;abstract&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;subjectType&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;subjectType&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;team&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;lastUpdateTime&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;();&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;flush&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;();&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;201&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {} }; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;b&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  });&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;另外在写集成测试的时候，也提供了一些辅助函数简化测试的编写。比如，由于框架会自动检查HTTP传入的参数是否合法，我在测试中基本就不需要再写模拟传入错误参数的测试用例了。并且，我写了一个&lt;code&gt;callRoute&lt;/code&gt;函数来进行接口的调用，能够在编译时检查传入的参数是否合法并提供自动完成，还能自动推断不同状态码的响应类型。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;6&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;callRoute&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;adminGetTeamsRoute&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;query:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;pageSize:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;}, &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk11&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk3&quot;&gt;// 200的返回值&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;gt;();&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;前端调用接口&lt;/h2&gt;
+&lt;p&gt;在&lt;code&gt;shared&lt;/code&gt;项目中运行&lt;code&gt;npm run client&lt;/code&gt;将会根据API的文件结构，在前端项目中生成一份具有相同架构的API调用对象。&lt;/p&gt;
+&lt;p&gt;下图是API的文件的结构：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 268px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.83582089552239%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAIAAABPIytRAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjklEQVQ4y42SyW/TQBhHfUBwR0JAkpJ4mcX2OK4dL2OPxx6v4ziobVog3YRAIDiySAgOSFxA4sKR/xcB1yat9K5P75vRT5l7watn3tDFvGq9xcIkjuXMb4hCXP/1JjgcUl61830XYBPbxLwZCrGJYS6Kw8skZcNyKWXvEMcwAADwWhTLchautZaRu+9TSn1/gSC+iflXxtY8j8yfH8KsKORy8D1P1XQI0Y1k0zSZZX5KWRJGGaVpHGJgAE2D+vUoaiAWoXh3cO6Kg0WzXtRHms+nbjp12bUod9dfH13+cN58n559S9//9t7+ujN8vtV/ur38fHv4y53hyzaUCX8yzdbwycfx0Qenv3BXL/aKjVpfjLKTUXbykJ3cT9bbUCwTm7PxfbEZ1eeCpV1dt12zlPJg1T9eSRaHhjpDhn71m03bwbo6qc9GzWUSx3kuGOPEmUOIEbYAxACibSjYtJA6fcCORvlxHAZV2Yi8IISoqmYYYPdaFNsmEWWHR+vItZu2L8qqyHhVtd7+vq4bAMAdvoKwaWHsdWuUtlEQ0oTRKIkiSgiBENk2ITaBWzanIGzB2d698vxB97ItRdPI7h9N3S5l37Ty8WrVNC3cJiN1Oqk24/qMxRHPRc4LxrIkSdIkDYIwCCOEt5eRNhuLp5NqI3jGuRB5ybMi50UtSs7zNGEQILCjPKovxt0LHkdV3VR1nfPMsqxH05mmaaqmGzs+DGmzCT/cK449QmKaRnEcx9RxHIQwxiaECKHd5eZi1D4vGZXDqh+GvCj7fiX7XspBdkPXto7j6Dq4Wh6Lp6PylAZezvM0ZUIISilNEt/3AYAImwBuL4+r03F5WmbpUvZ1VUspu64ThQiC8P9Urjz7D3ht+0Amm9GBAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;API&quot;
+        title=&quot;API&quot;
+        src=&quot;/static/7ffd1cfd1aebd225d88f011e8de52373/471d4/api-structure.png&quot;
+        srcset=&quot;/static/7ffd1cfd1aebd225d88f011e8de52373/471d4/api-structure.png 268w&quot;
+        sizes=&quot;(max-width: 268px) 100vw, 268px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;API&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;下图是生成的API对象的对应结构：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 599px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.78947368421052%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABzklEQVQoz4XQzY6bMBiFYe6iTbA/29hgwBib/0BCMiEhzQ/RNJ0oi1l20/u/gyrqqLNrpUfv/hynSLt+McZ5L7MNt51YHkW5VjryhA+eT/7JCZOqHl6DvAuikkaGhoaEhkpNgv9zhMrN8hgklQgNkZp+SD+Fz5JP+i8nkImp1tSPKPFdoJh4CJiLGQKKgSAgCAMGgjEABgAC1APG/3Cox+vNS9O3TWHyTPmB0FrWZaxMGpk8NnlStTKxnql53vEko4ABf3AIkNxEu6EuynTYt8OuK9fDahzT9UGPb2p9TKpOhDELNVOWS0UpA0KegDiCB8bWYRxzISPf5wQAYaAeAuoShjAgd+7OZmj+Fc2/IHeGkYvd+bMYO4L7zfRo339V95/56bG63oP13o9kkauiSJOiTqpWFYvYVqpsI51xnfFiKWzjCd9hhNVtebidhmncTuP5bUq71ealmS799jK153s3PRbHW7O/6M1Z7X9Ew/dwseWxYZ7nUOLVjb1O/fm4PH1brLpssyr6vjqc98vx2E6Pen/Ndq92vJntRRYdLzc867iMCWAn9MPMGJ1GxiqTxlwIncY2S2SaB4mNs0pqy8KEpSVT1uMCnmvR822A39yucwFLIsUVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;API对象&quot;
+        title=&quot;API对象&quot;
+        src=&quot;/static/b935984b78379618613733c9f958a459/755f7/api-client.png&quot;
+        srcset=&quot;/static/b935984b78379618613733c9f958a459/5459c/api-client.png 285w,
+/static/b935984b78379618613733c9f958a459/2cee3/api-client.png 570w,
+/static/b935984b78379618613733c9f958a459/755f7/api-client.png 599w&quot;
+        sizes=&quot;(max-width: 599px) 100vw, 599px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;API对象&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;前端代码通过这个对象来访问API，不需要手动输入方法、URL等参数。编译器会自动检查传入的各个参数的类型是否正确，还能自动推断响应正确（&lt;code&gt;[200, 300)&lt;/code&gt;）时的返回值类型。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;7&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;submission&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;updateSubmission&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;({&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;body:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;teamId:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;teamId&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  },&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;})&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;减少重复，提高效率&lt;/h2&gt;
+&lt;p&gt;其实这也是我使用TS写全栈的原因：如果前后端采用不同的语言，那么在API层次肯定会有重复工作：两边重复定义接口数据结构、URL、HTTP方法，这很麻烦，而且维护不好还容易造成两方数据结构的不一致。&lt;/p&gt;
+&lt;p&gt;另外，如果要基于数据结构定义新的数据结构，传统的OO语言很难达到TypeScript的灵活性。例如上面出现过的&lt;code&gt;UpdateSubmissionModel&lt;/code&gt;，就是在&lt;code&gt;Submission&lt;/code&gt;类型的基础上删除&lt;code&gt;Omit&lt;/code&gt;掉&lt;code&gt;teamId&lt;/code&gt;等几个属性。TypeScript支持各种对类型的骚操作，很适合接口灵活多变的特性。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;8&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;UpdateSubmissionModel&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Omit&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Submission&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;teamId&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;leader&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;paper&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;另外虽然有&lt;code&gt;swagger/openapi&lt;/code&gt;等标准，但是这些标准需要手写JSON Schema有点太过反人类……这套机制完全使用TypeScript写，不需要学习新的语法，还可以享受到编译器和IDE的支持。&lt;/p&gt;
+&lt;h1&gt;使用migration进行数据库初始化和更新&lt;/h1&gt;
+&lt;p&gt;开发的时候，数据库的schema可以使用ORM框架自己产生，如果schema变了，直接删除原来的数据库重新创建就可以了。但是项目一旦在生产环境中开始使用了，就不能随便删除schema了。随便删schema不就变成删库跑路了嘛。&lt;/p&gt;
+&lt;p&gt;现在的ORM基本都提供了&lt;code&gt;Migration&lt;/code&gt;机制进行数据库schema的更新。一个migration主要包含一个日期和一段更新的命令，有的框架还能提供撤销这次更新的命令。在执行时，ORM会根据日期判断当前数据库schema的版本，然后执行后续的数据库变更。&lt;/p&gt;
+&lt;p&gt;对于那些可以通过运行数据库命令就能完成的schema更新，通过migration机制能够有效地记录下对数据库的变更，并且能够在运行数据库变更之前检查变更是否是自己所需要的，防止破坏现有的数据。&lt;/p&gt;
+&lt;p&gt;当前的ORM框架也会常常提供很多方便的命令，例如&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据Entity的变化和数据库的现状，自动生成migration代码&lt;/li&gt;
+&lt;li&gt;执行需要执行的migration&lt;/li&gt;
+&lt;li&gt;回退到某个migration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;很多维护工作都可以通过migration完成。&lt;/p&gt;
+&lt;p&gt;本项目使用&lt;a href=&quot;https://mikro-orm.io/&quot;&gt;mikro-orm&lt;/a&gt;作为ORM库，也提供了内置的migration机制，下面是我的项目中所现有的migration。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;&quot; data-index=&quot;9&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;migrations&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210331031030.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210402023841.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210414064450.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210424142314.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210426143345.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210428092351.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;├── Migration20210715123945.ts&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;└── Migration20210719091704.ts&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面是一个migration的例子，&lt;code&gt;up&lt;/code&gt;为执行这个migration所对应的SQL，&lt;code&gt;down&lt;/code&gt;是撤销这个migration的命令。&lt;code&gt;up&lt;/code&gt;是自动生成的，而&lt;code&gt;down&lt;/code&gt;是自己写的。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;10&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; } &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;#39;@mikro-orm/migrations&amp;#39;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Migration20210424142314&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(): &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;addSql&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;#39;alter table `team` change `file_relative_path` `filename` varchar(255) null;&amp;#39;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;down&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(): &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;&amp;gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;addSql&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;#39;alter table `team` change `filename` `file_relative_path` varchar(255) null;&amp;#39;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我的工作流是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在项目开发期间，仍然使用框架自动生成数据库schema的方法，让程序自己去更新数据库schema&lt;/li&gt;
+&lt;li&gt;在项目开始投用之前，使用&lt;code&gt;mikro-orm migration:create --initial&lt;/code&gt;命令，创建第一个migration，并禁止程序自己操作数据库schema&lt;/li&gt;
+&lt;li&gt;项目部署后，使用&lt;code&gt;mikro-orm migration:up&lt;/code&gt;执行第一个migration，程序开始运行&lt;/li&gt;
+&lt;li&gt;每次数据库更改后，使用&lt;code&gt;mikro-orm migration:create&lt;/code&gt;命令，生成一个新的migration。打开新生成的migration文件检查SQL是否正确，并手写&lt;code&gt;down&lt;/code&gt;方法&lt;/li&gt;
+&lt;li&gt;提交到生产机后，在&lt;code&gt;docker-compose up -d&lt;/code&gt;前，使用&lt;code&gt;mikro-orm migration:up&lt;/code&gt;执行migration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当然migration也不能解决所有数据库变更的问题，migration也不能解决过于复杂的变更，所以在设计数据库schema时也需要谨慎、考虑到未来的可扩展性。&lt;/p&gt;
+&lt;p&gt;另外，前面说的记录尽可能多的信息在这里也有作用，记录尽可能多的信息也为以后增加使用新信息的新功能提供了可能。例如，我在实现群发邮件功能的时候，一开始没有在数据库中记录一次群发邮件的结束时间，只记录了开始时间。这时我已经群发了一次邮件了。而后续我又想增加记录和显示群发邮件的结束时间的功能，这时第一次群发邮件的信息就不能直接从数据库中获取了，丢失了信息。事实上，最后我是从log中获得第一个发送邮件的结束时间，然后手动修改数据库才填进去这个数据的。&lt;/p&gt;
+&lt;h1&gt;记录尽可能多的信息&lt;/h1&gt;
+&lt;p&gt;在比赛临近结束、正在接受用户提交成果文件的时候，系统出了一场事故，丢失了一段时间内用户上传的文件。文章&lt;a href=&quot;/articles/summary-of-a-file-lost-accident&quot;&gt;一次生产环境的文件丢失事故：复盘和教训&lt;/a&gt; 详细介绍了这个事故从发现到确定影响范围到确定原因的过程。在处理事故的过程中，后台程序记录的日志起到了巨大的作用。&lt;/p&gt;
+&lt;p&gt;同时，不仅是log，包括文件、数据库条目等保存的信息越多越好，能保存的信息尽可能保存，涉及到任何删除信息/文件等操作都应该谨慎。反正现在存储便宜，多用一点空间的成本和一旦发生事故造成的问题相比还是无关紧要的。&lt;/p&gt;
+&lt;p&gt;例如，在本项目中中为了节省磁盘空间和恶意上传文件，我设定了每个队伍只能上传一个文件，之后的上传会首先删除之前的文件。但是现在想起来，如果又有其他地方逻辑出错，把用户上传好的文件删除了怎么办？如果系统响应到一半被中断了，只删除了之前的文件，没有写入后面的文件怎么办？一切皆有可能，连字节跳动的实习生都能删掉机器学习模型，更何况我们这种没人审核代码的独立开发者？而至于防止恶意上传文件，也可以采用给团队能够使用的空间大小进行限额的方式来防止团队使用过多的空间，而不是一刀切地只能使用一个文件。&lt;/p&gt;
+&lt;p&gt;尽可能避免删除之前的信息，使得意外发生时，能够恢复到之前的状态，并且更方便去诊断问题。&lt;/p&gt;
+&lt;h1&gt;安全性&lt;/h1&gt;
+&lt;p&gt;为了防止用户作恶，我针对系统的安全性做了一些有限的工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证API接口传入的参数（见下部分）&lt;/li&gt;
+&lt;li&gt;数据库中密文保存用户密码&lt;/li&gt;
+&lt;li&gt;数据库密码、JWT密钥等都是高强度的随机密码&lt;/li&gt;
+&lt;li&gt;没有必要公网公开的部分都没有公开（比如数据库等）&lt;/li&gt;
+&lt;li&gt;为了防止用户上传太多文件占满服务器存储，限制了一个用户只能有一个文件，后续上传文件会删除之前上传的文件&lt;/li&gt;
+&lt;li&gt;为了防止用户spam邮件，发送重置密码的邮件时，一个用户每30分钟才能发一条&lt;/li&gt;
+&lt;li&gt;为了防止用户下载其他团队的提交的文件
+&lt;ul&gt;
+&lt;li&gt;关闭了&lt;code&gt;fastify-static&lt;/code&gt;和&lt;code&gt;nginx&lt;/code&gt;的serve整个目录的功能&lt;/li&gt;
+&lt;li&gt;下载提交的文件也需要验证token，这使得前端也得需要通过手动实现下载，而不能直接让浏览器处理下载链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;为了防止用户提交的文件名过长（Linux下文件块最长255），在上传文件时验证文件名长度，拒绝过长文件名的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;个人感觉这些措施应该是一些比较容易想到的措施了，但是当然，这些措施对一些真正的攻击也无能为力，比如注册和登录都可以随便请求，攻击者可以无限注册账号，可以无限猜测密码来登录，更别说什么DDOS攻击了。还好，目前据我所知还没有遇到恶意的使用者。&lt;/p&gt;
+&lt;h1&gt;准备应对外部系统出的问题&lt;/h1&gt;
+&lt;p&gt;后端和数据库之间的交互已经被做透了，一般也不会出问题，出了问题也有各种方案进行恢复。但是一个非玩具系统肯定会支持处理数据库之外的其他功能，而实现这些功能往往会使用到外部服务。这些外部服务总可能会遇到的一些问题，所以在功能实现的时候就需要考虑到外部服务器的稳定性，并做好外部服务出问题的准备，例如采用上面提到的记录尽可能多的信息的方法。&lt;/p&gt;
+&lt;p&gt;举个本系统的群发邮件相关的例子。系统需要支持向参赛人员群发邮件的功能，而学校提供了SMTP服务器。我当时考虑到发送邮件可能失败，就记录下发送失败的用户的用户名（下图中&lt;code&gt;failedUserId&lt;/code&gt;）。当时前面发了几次邮件都没有失败，看起来学校的服务还挺稳定，当时也有点忙，就没有实现失败重发的功能，这个字段就一直没用上。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;11&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;Entity&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk15&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;GroupEmailDelivery&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk3&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  @&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;Property&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;({ &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;type:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;ArrayType&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;) &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; +&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;) })&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;failedUsersId&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;mtk10&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;[] = [];&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk3&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果在16日的一次发送邮件中，系统突然报了不少的错误，一看都是邮件服务器报的错误。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;json&quot; data-index=&quot;12&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk7&quot;&gt;2021-07-16&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;13&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;level&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;1626419413258&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;pid&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;hostname&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;7534d898d7e5&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;code&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;EAUTH&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;response&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;550 User suspended&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;responseCode&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk7&quot;&gt;550&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;AUTH PLAIN&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;stack&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;Error: Invalid login: 550 User suspended&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at SMTPConnection._formatError (/dist/node_modules/nodemailer/lib/smtp-connection/index.js:774:19)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at SMTPConnection._actionAUTHComplete (/dist/node_modules/nodemailer/lib/smtp-connection/index.js:1513:34)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at SMTPConnection.&amp;lt;anonymous&amp;gt; (/dist/node_modules/nodemailer/lib/smtp-connection/index.js:540:26)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at SMTPConnection._processResponse (/dist/node_modules/nodemailer/lib/smtp-connection/index.js:932:20)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at SMTPConnection._onData (/dist/node_modules/nodemailer/lib/smtp-connection/index.js:739:14)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at TLSSocket.SMTPConnection._onSocketData (/dist/node_modules/nodemailer/lib/smtp-connection/index.js:189:44)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at TLSSocket.emit (events.js:315:20)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at TLSSocket.EventEmitter.emit (domain.js:467:12)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at addChunk (internal/streams/readable.js:309:12)&lt;/span&gt;&lt;span class=&quot;mtk6&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;    at readableAddChunk (internal/streams/readable.js:284:9)&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;Error&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;&amp;quot;msg&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;Invalid login: 550 User suspended&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;马上去找提供SMTP服务器的老师请求解决这个问题，在此期间做了重发邮件的功能，因为有了&lt;code&gt;failedUserId&lt;/code&gt;字段，我可以直接从数据库中获得需要重发的邮件，实现这个功能就很简单了。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;&quot; data-index=&quot;13&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;commit d4366a3c45261ead399940552bfc67b3547eb7e6&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;Author: Chen Junda &amp;lt;ddadaal@outlook.com&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;Date:   Fri Jul 16 15:44:39 2021 +0800&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;    add retry failed email&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当SMTP服务器的问题解决后，这个新功能也做好了，直接上线，点一个键，就能重发邮件了。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1020px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 20%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAIAAAABPYjBAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlElEQVQI1y2OUQrEIAwFvf89W7SUWjU+o4m6VHe+hsA8YihTSsm5i5lVNYbgrKu1qqr3/jhOoDzPcx4nEYUQMqC9q6qIGBFh5hhTKV+8PO4hZgawpWwhwvsSUUyJazVjDBEBQDnLIi90McaYc6rqXLQYs7X+vm/nCmB67621HXzpcgDffT0/5xSRf5xSdq5cF6wV4AfctOc8A741mQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;失败和重发&quot;
+        title=&quot;失败和重发&quot;
+        src=&quot;/static/deff612df3817db977e28f2c50e54844/568bb/resend-email.png&quot;
+        srcset=&quot;/static/deff612df3817db977e28f2c50e54844/5459c/resend-email.png 285w,
+/static/deff612df3817db977e28f2c50e54844/2cee3/resend-email.png 570w,
+/static/deff612df3817db977e28f2c50e54844/568bb/resend-email.png 1020w&quot;
+        sizes=&quot;(max-width: 1020px) 100vw, 1020px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;失败和重发&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;试想要是当时没有存&lt;code&gt;failedUsersId&lt;/code&gt;，我还得又去从log中获得失败的用户ID，过程非常的繁琐和复杂。&lt;/p&gt;
+&lt;h1&gt;还可以改进的点&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CI/CD&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这次偷懒没有做CI/CD，使得每次部署完之后我都得去服务器上跑一下&lt;code&gt;docker-compose build &amp;#x26;&amp;#x26; docker-compose up -d&lt;/code&gt;，由于机器只能通过校园网，没有校园网的时候还必须接个VPN才能进去，比较麻烦。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;预生产环境&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我理解的预生产环境，就是一个和生产环境完全相同的机器，使用生产环境的数据的某个历史快照，对新的代码进行测试，测试通过后，再将代码放到生产环境中运行&lt;/p&gt;
+&lt;p&gt;这次部署没有预生产环境，代码在本地测试通过之后直接就扔到生产服务器上构建和部署了，没有使用实际测试数据进行测试&lt;/p&gt;
+&lt;p&gt;这其实也是后面生产事故的一大原因，有缺陷的代码没有真实测过就扔到生产环境，造成了问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;graceful shutdown和不中断服务的更新&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这次项目的部署都是直接重启容器，如果此时有响应正在处理，可能会造成响应做到一半被强制中断。一个好的策略是graceful shutdown，在退出之前的服务时，停止接受新的请求并处理完正在进行的请求，这样可以避免运行到一半的服务（数据库操作有事务保护，但是处理请求可没有事务）。&lt;/p&gt;
+&lt;p&gt;另外，&lt;code&gt;docker-compose up -d&lt;/code&gt;虽然启动速度较快，但是仍然有一定的downtime，如果对服务质量有要求，0 downtime的不中断服务的更新还是非常有必要的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;前端测试&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本项目写了不少后端的测试，行覆盖达到了94%，但是没有写前端测试，这造成每次改前端之后，部署后都心惊胆战的，不知道在真实环境中会不会出现问题。&lt;/p&gt;
+&lt;p&gt;但是写测试也有它的问题：&lt;strong&gt;花时间&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;现在项目中后端的测试代码比业务逻辑代码要多，写测试代码花的时间也比写真实业务逻辑代码更多。而且由于测试代码也是代码，也会出问题（而且常常会出问题），有时候测试通不过，调试半天测试代码之后发现业务代码没有错，是测试代码的错……&lt;/p&gt;
+&lt;p&gt;而前端就更复杂了。前端的测试可不是1+1=2正确、=3就错误那么简单。定位UI元素、操作UI元素、等待UI元素的响应、判断UI元素的响应是否合需求，每一部都有一大堆API需要学校。另外，尤其是对于业务项目，很多前端其实并没有一个完整详细的设计文档，什么样的UI是正确的根本就不确定。目前，除了自己的两个前端库，我从来没写过正经的完整项目的前端测试。&lt;/p&gt;
+&lt;p&gt;我当前的想法是只针对一些复杂一点的业务操作写测试，具体什么样的业务算复杂，只能看实际情况了。&lt;/p&gt;
+&lt;h1&gt;总结&lt;/h1&gt;
+&lt;p&gt;这个项目比较简单，规模也比较小（12000行左右），用户量也比较小，什么优行操作都没有做，一个简单的前后端结构就能满足需求，但是中途还是犯了很多错误，最后丢失文件的事故也带来了比较多的麻烦。不管怎样，这个项目至少也让我自己完整走了一次一个项目从开发到上线的流程，学到了一些写玩具项目永远都不会用上的技能（比如grafana）。我终于有一个不是玩具的项目了！&lt;/p&gt;
+&lt;p&gt;现在纯业务的工作确实做得比较腻了，简单的CRUD做来做去也就那些东西。以后希望能够做点更偏架构上的工作，能够支持规模更大、要求更高的项目，也通过更大的项目去接触更高级的项目和流程。我也希望能够带团队或者加入一个能够参与项目全程的已有团队，挑战一下复杂度更高的项目，并从中练习一下团队合作和领导能力。&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+  .dark-default-dark {
+    background-color: #1E1E1E;
+    color: #D4D4D4;
+  }
+  .dark-default-dark .mtk15 { color: #C586C0; }
+  .dark-default-dark .mtk1 { color: #D4D4D4; }
+  .dark-default-dark .mtk12 { color: #9CDCFE; }
+  .dark-default-dark .mtk8 { color: #CE9178; }
+  .dark-default-dark .mtk4 { color: #569CD6; }
+  .dark-default-dark .mtk11 { color: #DCDCAA; }
+  .dark-default-dark .mtk17 { color: #808080; }
+  .dark-default-dark .mtk10 { color: #4EC9B0; }
+  .dark-default-dark .mtk7 { color: #B5CEA8; }
+  .dark-default-dark .mtk6 { color: #D7BA7D; }
+  .dark-default-dark .mtk3 { color: #6A9955; }
+  .dark-default-dark .grvsc-line-highlighted::before {
+    background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));
+    box-shadow: inset var(--grvsc-line-highlighted-border-width, 4px) 0 0 0 var(--grvsc-line-highlighted-border-color, rgba(255, 255, 255, 0.5));
+  }
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[一次生产环境的文件丢失事故：复盘和教训]]></title><link>https://ddadaal.me/articles/summary-of-a-file-lost-accident/cn</link><guid isPermaLink="false">/articles/summary-of-a-file-lost-accident/cn</guid><category><![CDATA[problem-investigation]]></category><category><![CDATA[project]]></category><pubDate>Wed, 21 Jul 2021 05:13:00 GMT</pubDate><content:encoded>&lt;h1&gt;生产事故&lt;/h1&gt;
+&lt;p&gt;我最近负责了一个比赛后台网站的开发和维护，在比赛临近结束、正在接受用户提交成果文件的时候出了一场生产事故，造成了丢失了一段时间内用户上传的文件。本文主要讲讲生产事故从发现到确定影响范围到确定原因的过程。在整个过程中，后台程序记录的日志起到了巨大的作用。&lt;/p&gt;
+&lt;p&gt;关于这个项目的总结，可以查看这篇文章：&lt;a href=&quot;/articles/summary-of-my-first-real-project&quot;&gt;我的第一个真实项目：总结和经验&lt;/a&gt;。&lt;/p&gt;
+&lt;h1&gt;TL;DR&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;要素&lt;/th&gt;
+&lt;th&gt;内容&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;表现&lt;/td&gt;
+&lt;td&gt;丢失&lt;code&gt;2021-07-16 09:00:10&lt;/code&gt;至&lt;code&gt;2021-07-17 18:00:57&lt;/code&gt;期间所上传的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;原因&lt;/td&gt;
+&lt;td&gt;7月16日的一次提交，使得之后文件上传到了一个容器内部的、没有mount出来的目录，容器重启后，这些文件丢失了&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;补救&lt;/td&gt;
+&lt;td&gt;进入容器，找回了最后一次容器重启后到问题发生期间上传的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;后续处理&lt;/td&gt;
+&lt;td&gt;通过log、数据库数据等找到了受到影响的用户，通过邮箱、电话和短信提醒他们重新上传文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;经验&lt;/td&gt;
+&lt;td&gt;实现依赖业务，而非业务依赖实现；重视测试细节；log中记录尽可能多的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1&gt;问题发现&lt;/h1&gt;
+&lt;p&gt;项目基本情况是这样的。用户可以注册团队，一个团队有一个队长，队长可以提交一个团队的成果文件。管理员可以看到各个队伍的提交情况，以及也可以直接下载团队提交的文件。&lt;/p&gt;
+&lt;p&gt;19日下午4点左右，我用管理员登录了系统，本来只是在随便看看有哪些团队提交了成果，结果突然发现有的团队的成果点击下载下不下来。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30.87719298245614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA20lEQVQY02XNPYvEIBAGYP//H9pyyyu2kJCDs4pNwuYDR81o4qhrDpRdOO4pXhjmi11vsbqui0JYlgUApmma5/k4jpSSUiqEEGPMOX9WWHkLIQSiQrQDSCm3bRNCSCkBABHHcfTen+cZY/yssJRSfL1SzkRkjAGtjTH7vltrW1prtdbWWmOMc649b8lyzgUgeI/ORaI21PhKKYWIe+Wq8zxLKTFGZrS+brfnj/h6PDQAr7qu45xrrdd1vd/v3xXnvO97IcQwDKUUImLWWncc7SQiur8Q0Xv/v9XKXzWmUi9uXCwnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;点击下载提交的团队的成果发现出错&quot;
+        title=&quot;点击下载提交的团队的成果发现出错&quot;
+        src=&quot;/static/ff63f2742e97cd7f927719b7930c0707/e290a/download-error.png&quot;
+        srcset=&quot;/static/ff63f2742e97cd7f927719b7930c0707/5459c/download-error.png 285w,
+/static/ff63f2742e97cd7f927719b7930c0707/e290a/download-error.png 435w&quot;
+        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;点击下载提交的团队的成果发现出错&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;赶紧上服务器上看是怎么回事。打开服务器存放上传的文件的目录，grep一下发现对应的ID发现没有这个文件。&lt;/p&gt;
+&lt;p&gt;上传文件的逻辑是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取上传的文件&lt;/li&gt;
+&lt;li&gt;把文件保存到&lt;code&gt;upload/{团队ID}/文件名&lt;/code&gt;
+&lt;ol&gt;
+&lt;li&gt;保存之前，打日志&lt;code&gt;Received file {文件名} from {用户ID}. Saving it to {完整路径}.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;保存完成后，打日志&lt;code&gt;${完整路径} saved successfully.&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;更新数据库，记录文件名(列名为&lt;code&gt;filename&lt;/code&gt;)和上传时间（&lt;code&gt;last_update_time&lt;/code&gt;）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果第二步失败，就不能进行第三步，不会出现保存文件失败但是写了数据库的情况。但是如果没有写数据库，我在后台就不会看到这个团队有成果，就不会能够点击下载了。&lt;/p&gt;
+&lt;p&gt;后端程序运行在docker中，但是&lt;code&gt;upload&lt;/code&gt;是一个mounted volume，其中的文件和容器外的一个目录是进行了共享的，所以不管容器怎么重启，这里面的文件是不会掉的。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;yaml&quot; data-index=&quot;0&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk3&quot;&gt;# docker-compose相关部分, /dist是容器中存放程序文件的根目录&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;backend&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;    - &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;./backend/upload:/dist/upload&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;马上翻了下日志，按上面说的格式搜一下日志（下面的队伍ID为实际的团队ID）：&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;logql&quot; data-index=&quot;1&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;{container_name=&amp;quot;backend&amp;quot;}|=&amp;quot;Saving it to upload/队伍ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;发现&lt;strong&gt;没有结果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这就奇怪了，于是把&lt;code&gt;upload/队伍ID&lt;/code&gt;从查询语句中删除，直接看有哪些保存的日志，这一看就出事了。我看到了一堆这样的日志：&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;&quot; data-index=&quot;2&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;{&amp;quot;level&amp;quot;:30,&amp;quot;time&amp;quot;:1626528267191,&amp;quot;pid&amp;quot;:36,&amp;quot;hostname&amp;quot;:&amp;quot;2358983e224d&amp;quot;,&amp;quot;reqId&amp;quot;:&amp;quot;req-29&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;Received file 文件名.zip from 用户ID.\n    Saving it to 团队ID/文件名.zip.&amp;quot;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文件被保存到&lt;code&gt;{团队ID}/文件名&lt;/code&gt;下了！而&lt;code&gt;{团队ID}&lt;/code&gt;这些目录是没有被mount的，容器重启就重启了，没了！&lt;/p&gt;
+&lt;p&gt;马上进入容器里运行&lt;code&gt;ls&lt;/code&gt;，果然在容器根目录看到了一堆&lt;code&gt;{团队ID}&lt;/code&gt;的目录。&lt;/p&gt;
+&lt;h1&gt;确定影响范围和补救&lt;/h1&gt;
+&lt;p&gt;首先，我把容器里已有的这些文件复制了出来，并定时检查有没有新的文件。还好，在排查问题的整个过程中都没有新的文件名上传。这些文件应该是在上一次容器重启之后才上传的。&lt;/p&gt;
+&lt;p&gt;之后，是找到哪些队伍的文件仍然丢失了，也就是数据库中&lt;code&gt;filename&lt;/code&gt;不是NULL，但是&lt;code&gt;upload&lt;/code&gt;下面没有这个队伍。这些队伍的文件应该是在上一次重启之前就上传了，上一次重启使得这些文件丢失了，应该是无法找回了。&lt;/p&gt;
+&lt;p&gt;通过各种查找资料，写出来以下的bash脚本：&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;bash&quot; data-index=&quot;3&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk3&quot;&gt;# 查询filename不是NULL的团队的ID，写入db.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;query=&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk8&quot;&gt;use data_competition_prod;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk8&quot;&gt;select id from team where filename is not null;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk11&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | mysql -u root -h 127.0.0.1 -P 3306 -p密码 | sed &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;#39;1d&amp;#39;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | sort -n &amp;gt; db.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk3&quot;&gt;# 查询upload下的所有目录名，写入folder.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;ls -d */ | cut -f1 -d&lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; | sort -n &amp;gt; folder.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk3&quot;&gt;# diff两个文件&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;diff db.txt folder.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个bash脚本得出filename不是NULL的、但是upload下没有对应的目录有&lt;strong&gt;11&lt;/strong&gt;个。所以这11个团队的文件是丢失了。&lt;/p&gt;
+&lt;p&gt;但是除了丢失文件的情况，还有在出现问题之前就上传了版本，但是在这问题发生后更新了文件。这样，虽然在系统上有他们的问题，但是这些文件版本不是最终的版本。&lt;/p&gt;
+&lt;p&gt;为了找到这些团队，首先需要找到最近几次重启的时间，以及问题开始时的时间。容器重启的时候之前的容器会被强制退出，会打出有&lt;code&gt;npm ERR&lt;/code&gt;的日志，通过这个ERR可以找到最近几次重启的时间。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;logql&quot; data-index=&quot;4&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;{container_name=&amp;quot;backend&amp;quot;}|=&amp;quot;npm ERR&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.19298245614035%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA50lEQVQY04XPS05DMQwF0MwpzUtsx3HsfN7rh7YgIYbsgFWw/2WgVGKERKWjK/naEzukDEDeL7tn/7Tb730A4hAxYgLiuSWGxAEoQAKAND7G57e8fgGx03Fup7dkK5Wu2+BckLIPsARcZv6KOAX0S/TLkosW624cb327SNuKjToOLEZc/qWUjViRixNth9Ol9e14vlpbTy834hIgReSHnGgllogMyECzmk/OVx9zqzUTXbVSVs7KYshl1SpilDX9gay92HvrKuoyFxGrdeRSi3XRnrXVOkTbfbynzVLnTRPrar1bp5R/AIfWKA1OE/xcAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;最近几次重启的时间&quot;
+        title=&quot;最近几次重启的时间&quot;
+        src=&quot;/static/183de235943cb4ea375c865f7b4b4bf8/267c0/reboot-logs.png&quot;
+        srcset=&quot;/static/183de235943cb4ea375c865f7b4b4bf8/5459c/reboot-logs.png 285w,
+/static/183de235943cb4ea375c865f7b4b4bf8/2cee3/reboot-logs.png 570w,
+/static/183de235943cb4ea375c865f7b4b4bf8/267c0/reboot-logs.png 1140w,
+/static/183de235943cb4ea375c865f7b4b4bf8/601a3/reboot-logs.png 1579w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;最近几次重启的时间&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以看到图上有三次重启：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;2021-07-16 09:00:10&lt;/code&gt; (&lt;code&gt;t1&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2021-07-16 15:50:07&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2021-07-17 18:00:57&lt;/code&gt; (&lt;code&gt;t3&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最后一次重启（19日的）是后面修改代码中的bug引发的重启，此时文件能恢复的文件已经恢复。而查询时间段之前的代码我知道是没有问题的。所以可以确定，&lt;code&gt;t1&lt;/code&gt;-&lt;code&gt;t3&lt;/code&gt;之间的数据是丢失了，而我之前从容器中补救出的文件是&lt;code&gt;t3&lt;/code&gt;之后的数据。&lt;/p&gt;
+&lt;p&gt;为了确定事情是不是&lt;code&gt;t1&lt;/code&gt;这次重启后发生，我又进行了一次确认。问题的原因是没有保存到&lt;code&gt;upload/团队ID/&lt;/code&gt;下，而是直接保存到&lt;code&gt;团队ID/&lt;/code&gt;下，可以通过正则表达式匹配&lt;code&gt;Saving it to 数字&lt;/code&gt;的log，查看第一次出现这样的log的时间为&lt;code&gt;2021-07-16 09:24:28&lt;/code&gt;，是在&lt;code&gt;t1&lt;/code&gt;之后，所以可以确定原来的时间段是正确的，或者说，更详细的说是9点24-15点50之间的数据丢失了。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;logql&quot; data-index=&quot;5&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;{container_name=&amp;quot;backend&amp;quot;}|~&amp;quot;Saving it to [0-9]+&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 50.526315789473685%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNElEQVQoz31QW24EIQzjBN0u70dCIDDMzO5W7f1P1zL8tpUsCwS2E4tIPSBLm5QHG4M2zlivjbu9q1/xdpNSuZAoYhF8fAKfDjlizbVJ7axP1idtw18wLlqfApCgulXeahut77n01g9lvDJe/wupnYsgQsrWp2U22SWprJRm8t+4S+PCJdY2+IhLvFwi0Br+fwgXIALl0pA4pByBAmSq3UeMSJNhcsIyX7Fc52p9uisj5iW3GetnpotkA0x4cJOTC7gmWlVpGyIUyFUZJwIU4FdpI2HNxMjPzDvWAaUnnJ9S5rnUcrzEhcc4X8ZFAVgQCXKFzIW3cT4T0hUIa7HVgo/oAlzJUelZ511ZMdreeezH4/z42o7HOF5UO9WtjZO3g2ovbRQepY2+P/r+IN4q19b7T9vfCPk930FaEQsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;第一次保存错目录的log&quot;
+        title=&quot;第一次保存错目录的log&quot;
+        src=&quot;/static/0126d0c1263fb338ed88404a99e7c482/267c0/first-bad-log.png&quot;
+        srcset=&quot;/static/0126d0c1263fb338ed88404a99e7c482/5459c/first-bad-log.png 285w,
+/static/0126d0c1263fb338ed88404a99e7c482/2cee3/first-bad-log.png 570w,
+/static/0126d0c1263fb338ed88404a99e7c482/267c0/first-bad-log.png 1140w,
+/static/0126d0c1263fb338ed88404a99e7c482/8162a/first-bad-log.png 1581w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;第一次保存错目录的log&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;把查询时间设置在&lt;code&gt;t1&lt;/code&gt;到&lt;code&gt;t3&lt;/code&gt;之间，运行以下语句，通过正则表达式，提取在这期间上传的团队的ID，获得了一个团队ID的列表。那么这些就是受到本次影响的团队了。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;logql&quot; data-index=&quot;6&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;{container_name=&amp;quot;backend&amp;quot;}|~&amp;quot;Saving it to [0-9]+&amp;quot; | regexp &amp;quot;Saving it to (?P&amp;lt;id&amp;gt;[0-9]+)&amp;quot; | line_format &amp;quot;{{.id}}&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h1&gt;后续处理&lt;/h1&gt;
+&lt;p&gt;第一步当然是恢复还能恢复的文件并火速修改bug，并确认了一下在修改bug发布之前没有团队上传了新的文件。&lt;/p&gt;
+&lt;p&gt;由于这些文件无法被恢复，只能麻烦组委会其他人去通过电话、短信和邮件联系对应参赛队员，让他们重新交一份文件。&lt;/p&gt;
+&lt;h1&gt;出错原因&lt;/h1&gt;
+&lt;p&gt;这次项目我给后端项目写了测试，覆盖率已经达到了94.3%，对文件上传这部分也进行了重点的测试，但是为什么还是没有发现这个问题呢？&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 679px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 12.280701754385966%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVQI11XBQQ6DMAwEQB5QiToR8XrXIZGKRPn/B7nCzKIQNqyf1cy+D1ZM1OwzlZJGjlQG2NlJZiQaFh/uv1aGlbdaKxX8h6YQ0EXt8r3pDJI44LPdhj8LHbpQ7QYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;后端测试覆盖&quot;
+        title=&quot;后端测试覆盖&quot;
+        src=&quot;/static/c238d001c3b1a7b583a49959244ae462/ae072/test-coverage.png&quot;
+        srcset=&quot;/static/c238d001c3b1a7b583a49959244ae462/5459c/test-coverage.png 285w,
+/static/c238d001c3b1a7b583a49959244ae462/2cee3/test-coverage.png 570w,
+/static/c238d001c3b1a7b583a49959244ae462/ae072/test-coverage.png 679w&quot;
+        sizes=&quot;(max-width: 679px) 100vw, 679px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;后端测试覆盖&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;因为之前我之前都是通过以下代码，将配置中的&lt;code&gt;config.upload.path&lt;/code&gt;（取值为&lt;code&gt;upload&lt;/code&gt;，就是之前根目录）和团队ID和文件名拼接起来，来获得一个团队的上传的文件的实际路径。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;diff&quot; data-index=&quot;7&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;diff --git a/backend/src/entities/Team.ts b/backend/src/entities/Team.ts&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;index 38c381b..cf2957a 100644&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;--- a/backend/src/entities/Team.ts&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk4&quot;&gt;+++ b/backend/src/entities/Team.ts&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;@@ -1,4 +1,3 @@&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk8&quot;&gt;-import { config } from &amp;quot;@/utils/config&amp;quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt; import { EntityOrRef, toRef } from &amp;quot;@/utils/orm&amp;quot;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt; import {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;   ArrayType, Collection, Entity, IdentifiedReference,&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;@@ -66,7 +65,7 @@ export class Team {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;   get filePath() {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;     return this.filename&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk8&quot;&gt;-      ? urljoin(config.upload.path, this.id + &amp;quot;&amp;quot;, this.filename)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk7&quot;&gt;+      ? urljoin(this.id + &amp;quot;&amp;quot;, this.filename)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;       : undefined;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;   }&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这次错误的commit为了重构&lt;strong&gt;下载&lt;/strong&gt;的相关代码，修改了这个地方的计算逻辑，把拼接&lt;code&gt;config.upload.path&lt;/code&gt;的代码移到了处理下载请求的代码中，而忘记了&lt;strong&gt;上传&lt;/strong&gt;时确定文件保存的路径时也使用了这个&lt;code&gt;filePath&lt;/code&gt; getter，造成了上传时使用的路径不包含顶级的&lt;code&gt;config.upload.path&lt;/code&gt;，而是直接就是&lt;code&gt;{团队ID}/文件名&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;而在测试中，判断上传之后的文件是否存在时，仍然是使了&lt;code&gt;filePath&lt;/code&gt; getter获得路径，这使得其实不管&lt;code&gt;filePath&lt;/code&gt;怎么写，测试肯定都能通过，因为测试代码和业务代码所使用的计算路径的代码是相同的，所以并没有发现目录计算错误这个问题。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;8&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk3&quot;&gt;// 测试文件是否存在&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk11&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;basename&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;!)).&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;newFileName&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h1&gt;教训&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;实现依赖业务，而非业务依赖实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;之前把计算文件真实路径的代码放在业务模型里（&lt;code&gt;filePath&lt;/code&gt;属性）这样的设计是有问题的。&lt;/p&gt;
+&lt;p&gt;按照DDD的思想，&lt;strong&gt;业务逻辑&lt;/strong&gt;（保存用户上传的文件）不应该直接依赖&lt;strong&gt;实现逻辑&lt;/strong&gt;（通过&lt;code&gt;config.upload.path&lt;/code&gt;计算实际路径，然后使用&lt;code&gt;fs&lt;/code&gt;直接操作文件系统），而是应该反过来，实现层面依赖业务逻辑。也就是说，应该&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;提供一个保存用户文件的方法，这个方法接受保存文件所需要参数（比如操作用户、文件名、文件流），这个方法来负责进行实际保存文件的工作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用传统的OO和DI的说法，就是定义一个保存文件的接口，实现层实现实际的保存文件的逻辑，并通过DI注入给用户逻辑。业务逻辑通过这个接口完成保存文件的工作。&lt;/p&gt;
+&lt;p&gt;这样，既可以避免本文这种问题，还有利于以后进行扩展，比如不保存到本地，而是保存到云端的存储。&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;重视测试细节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;虽然这次写的测试并没有发现这个问题，但是现在复盘发现，如果在运行测试的时候能够留意并重视一个细节的话，仍然也可以发现这个错误。&lt;/p&gt;
+&lt;p&gt;测试结束后的运行的代码（&lt;code&gt;afterEach&lt;/code&gt;）中，指定了删除&lt;code&gt;config.upload.path&lt;/code&gt;的目录。&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;ts&quot; data-index=&quot;9&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk11&quot;&gt;afterEach&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; () &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; {&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;();&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk3&quot;&gt;// delete the test upload path&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;promises&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk11&quot;&gt;rmdir&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;upload&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;, { &lt;/span&gt;&lt;span class=&quot;mtk12&quot;&gt;recursive:&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mtk4&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; });&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mtk3&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;});&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是由于错误的代码没有写到这个目录中，删除&lt;code&gt;config.upload.path&lt;/code&gt;并不能删除测试上传所创建的文件，那么跑完测试将会有新的文件生成，就像下面这样：&lt;/p&gt;
+&lt;pre class=&quot;grvsc-container dark-default-dark&quot; data-language=&quot;bash&quot; data-index=&quot;10&quot;&gt;&lt;code class=&quot;grvsc-code&quot;&gt;&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;➜  git status&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;On branch master&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;Your branch is up to date with &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;#39;origin/master&amp;#39;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;Untracked files:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;  (use &lt;/span&gt;&lt;span class=&quot;mtk8&quot;&gt;&amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot;&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; to include &lt;/span&gt;&lt;span class=&quot;mtk15&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;mtk1&quot;&gt; what will be committed)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;grvsc-line&quot;&gt;&lt;span class=&quot;grvsc-source&quot;&gt;&lt;span class=&quot;mtk1&quot;&gt;        10/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在我想起来，当时确实发现了这个问题，但是并没有引起重视。&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;log中记录尽可能多的信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从上面的发现问题的过程中可以发现，log相当重要。要是log中没有记录真实的完整路径，我可能需要花更多时间才能明白问题的原因。要是没有对每次文件保存都打log，我甚至都不能知道哪些队伍受到了影响。log记录了系统运行的整个流程，是分析系统的运行流程的最准确的工具。如果log打得好的话，能够从log中提取出很多没有记录到数据库中的数据。&lt;/p&gt;
+&lt;p&gt;所以应该在log里尽可能记录更多的信息。最基本的，错误必须打到log中，不能直接吞掉。而且在进行一些容易出错的行为时，也应该尽可能把相关上下文打到log里，以供后续查找。&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+  .dark-default-dark {
+    background-color: #1E1E1E;
+    color: #D4D4D4;
+  }
+  .dark-default-dark .mtk3 { color: #6A9955; }
+  .dark-default-dark .mtk4 { color: #569CD6; }
+  .dark-default-dark .mtk1 { color: #D4D4D4; }
+  .dark-default-dark .mtk8 { color: #CE9178; }
+  .dark-default-dark .mtk11 { color: #DCDCAA; }
+  .dark-default-dark .mtk12 { color: #9CDCFE; }
+  .dark-default-dark .mtk7 { color: #B5CEA8; }
+  .dark-default-dark .mtk15 { color: #C586C0; }
+  .dark-default-dark .grvsc-line-highlighted::before {
+    background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));
+    box-shadow: inset var(--grvsc-line-highlighted-border-width, 4px) 0 0 0 var(--grvsc-line-highlighted-border-color, rgba(255, 255, 255, 0.5));
+  }
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[react-typed-i18n: 使用Template Literal Types实现强类型的i18n]]></title><link>https://ddadaal.me/articles/typed-i18n-with-template-literal-types/cn</link><guid isPermaLink="false">/articles/typed-i18n-with-template-literal-types/cn</guid><category><![CDATA[web-frontend]]></category><category><![CDATA[code-trick]]></category><category><![CDATA[TypeScript]]></category><category><![CDATA[project]]></category><pubDate>Sun, 06 Jun 2021 07:27:00 GMT</pubDate><content:encoded>&lt;h1&gt;react-typed-i18n&lt;/h1&gt;
 &lt;p&gt;最近学习了一下TypeScript最新的&lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html&quot;&gt;Template Literal Type&lt;/a&gt;特性，突然想起来可以使用这个实现一个使用字符串字面量的i18n库，以用来替换之前的使用了一些黑魔法的&lt;a href=&quot;https://github.com/ddadaal/simstate-i18n&quot;&gt;&lt;code&gt;simstate-i18n&lt;/code&gt;&lt;/a&gt;库，也在这个新库中解决一些技术债，例如只使用React Context、加入测试、增加一些新功能等。&lt;/p&gt;
 &lt;p&gt;新的库名字叫&lt;code&gt;react-typed-i18n&lt;/code&gt;（&lt;a href=&quot;https://github.com/ddadaal/react-typed-i18n&quot;&gt;GitHub&lt;/a&gt;）。花了一个周末将功能和测试写好发到了npm上，并很快把本网站用这个新库重写了，体验比较好。&lt;/p&gt;
 &lt;p&gt;于是通过此文章介绍一下i18n的概念、常见实现方式以及本库的亮点，其中介绍部分的内容使用了之前写过的关于&lt;code&gt;simstate-i18n&lt;/code&gt;的文章 &lt;a href=&quot;/articles/strongly-typed-i18n-with-typescript&quot;&gt;Strongly Typed i18n with TypeScript&lt;/a&gt;。要想更详细的了解一些i18n的内容以及当时写&lt;code&gt;simstate-i18n&lt;/code&gt;的考虑，请查阅此文章。&lt;/p&gt;
