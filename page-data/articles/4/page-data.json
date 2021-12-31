@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-article-list-page-template-tsx",
     "path": "/articles/4",
-    "result": {"pageContext":{"limit":5,"skip":15,"pageCount":9,"pageIndex":3,"ids":["dark-mode-online","fix-gatsby-transformer-remark-chinese-word-count","playing-with-linux-from-machine-to-win10","rename-from-viccrubs","a-react-form-comp-pref-optimization-with-profiler"]}},
+    "result": {"pageContext":{"limit":5,"skip":15,"pageCount":9,"pageIndex":3,"ids":["getting-a-new-4k-monitor","dark-mode-online","fix-gatsby-transformer-remark-chinese-word-count","playing-with-linux-from-machine-to-win10","rename-from-viccrubs"]}},
     "staticQueryHashes": ["3830103294"]}
