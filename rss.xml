@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Jun 2022 06:19:57 GMT</lastBuildDate><item><title><![CDATA[2021年总结]]></title><link>https://ddadaal.me/articles/summary-for-2021/cn</link><guid isPermaLink="false">/articles/summary-for-2021/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Fri, 31 Dec 2021 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;暴风雨之前的宁静&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 30 Dec 2022 16:08:22 GMT</lastBuildDate><item><title><![CDATA[2021年总结]]></title><link>https://ddadaal.me/articles/summary-for-2021/cn</link><guid isPermaLink="false">/articles/summary-for-2021/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Fri, 31 Dec 2021 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;暴风雨之前的宁静&lt;/h1&gt;
 &lt;p&gt;站在2021的年尾回看这一年，发现这一年着实有点波澜不惊。&lt;/p&gt;
 &lt;p&gt;这一年中没什么非常关键的里程碑事件。没有2018年的各种比赛和活动充实我的简历（以至于现在还在吃当年的老本）；没有2019年决定保研，确定了未来三年的生活状态，以及实习，第一次进入梦想中的公司去工作；没有2020年的本科结束，告别至今对我最具意义的四年，以及研究生开学，迎接一段外表看上去光鲜、但是自己却不那么肯定的研究生生活。这一年发生的各种事件看上去都那么的日常，有时候日常地甚至连朋友圈都懒得发。&lt;/p&gt;
 &lt;p&gt;但是，可以遇见到，2022年将会是一个“腥风血雨”的一年。再次准备实习面试，再次暑期实习，参加秋招，确定出路，每个步骤都是一场不可避免的硬仗。用&lt;strong&gt;暴风雨之前的宁静&lt;/strong&gt;来总结2021年实在是再合适不过了。&lt;/p&gt;
@@ -279,6 +279,509 @@
 &lt;p&gt;虽然最近几个月的生活似乎就是copy-paste，几乎没有什么变化，但是这种确定性还是挺让人心安的。要是以后我的生活也能够像这样，每天稳定地做着自己喜欢的事情，我也已经很满足了。&lt;/p&gt;
 &lt;h1&gt;又是一个转折点&lt;/h1&gt;
 &lt;p&gt;有时候我在想，要是两年前我选择了工作，现在是怎样的呢？现在是股票翻倍，升职加薪，还是被优化了，现在正忙着各种找下家呢？有没有后悔当时没有保研呢？要是当时加入了AI的浪潮，现在是在读博做学术，还是也是在考虑找工业界的工作呢？现在是在拿着几篇论文意气风发呢，还是idea想不出来、实验卡住了，和现在一样、甚至比现在更焦虑呢？在做出某个选择的时候没感觉那么重要，可只有回头看的时候才知道人生的轨迹被改变了。这也说明，没有最好的出路，只有适合自己的才是好的。希望明年结束的时候，能够找到一个满意的出路吧。&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[2022年总结]]></title><link>https://ddadaal.me/articles/summary-for-2022/cn</link><guid isPermaLink="false">/articles/summary-for-2022/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Fri, 31 Dec 2021 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;转折点&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;又是一个转折点&lt;/strong&gt;，是2021年总结的最后一节小标题。不出意外的，2022年确实是一个&lt;strong&gt;转折点&lt;/strong&gt;。&lt;/p&gt;
+&lt;h1&gt;玩具项目开始“玩真的”&lt;/h1&gt;
+&lt;p&gt;上半年，继续维持2021年下半年的状态，像是做个玩具一样，在一个人的宿舍没有压力地写着实验室的项目。&lt;/p&gt;
+&lt;p&gt;可是，像是被赶鸭子上架一样，五月份项目放到GitHub开源（&lt;a href=&quot;https://github.com/PKUHPC/SCOW&quot;&gt;仓库地址&lt;/a&gt;），在一个小会上做报告，六月份写了一篇论文投到HPC China会议上然后拿了满分评价和优秀论文提名，之后项目组多了好多学弟学妹、老师和同事。公开的demo集群（&lt;a href=&quot;https://hpc.pku.edu.cn/demo/scow&quot;&gt;点击访问&lt;/a&gt;，用户名密码参考仓库README）上线了，潜在用户来找我们了：项目突然变得认真了。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.29824561403509%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABWUlEQVQoz22RSU/DMBCFc2drG3u8L3GSEpKUVVRqCxJnxBmJ//9DHrJpOfXwaTye5zceu1K+h3Q9TLyFdB10WMM2Q1lfLASulgpXq/NcLmU5G/oZsd8Uj4qrAGEakI5gKpSY87y/YLpwvZK4XNAZOFZki5briFo4VEtuwVROPGoRiimTAbX0RcRzTXosuDnLTW5Yq3+qbJbHJpMgfAvSCWRTyf9jrtn2PO5EB64bVIwCzDxAvw+wnxNk34EoQWQjlSD00dAcm6kjp7VIIPmX52mqmnnY/Qj3s4H7nmG/JsjHHtS0UNs1RN+CXAL3CSK1EN0fFBPE2BWNfOohuq48UVWTh74foHcD3H6C2d/Bvo0wzwPsYYTfTlDTGvFlA/M6IOxn2N0I9zrBH2a49wnx4wF6O4C7BtWSLJgIyDfN49c8gGXEKcbySVw1qCmAUSy6sk9HDcVSyx/7C49Q1PMPnrV7AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GitHub动态&quot;
+        title=&quot;GitHub动态&quot;
+        src=&quot;/static/601cf2ef420aaea0526f90529b2e3c39/267c0/git-commits.png&quot;
+        srcset=&quot;/static/601cf2ef420aaea0526f90529b2e3c39/5459c/git-commits.png 285w,
+/static/601cf2ef420aaea0526f90529b2e3c39/2cee3/git-commits.png 570w,
+/static/601cf2ef420aaea0526f90529b2e3c39/267c0/git-commits.png 1140w,
+/static/601cf2ef420aaea0526f90529b2e3c39/10deb/git-commits.png 1161w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;GitHub动态&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 8.070175438596491%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdyAsD//xAAWEAEBAQAAAAAAAAAAAAAAAAAAATH/2gAIAQEAAQUCTX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEBAQEAAAAAAAAAAAAAAAAAAUFR/9oACAEBAAE/Iau6df/aAAwDAQACAAMAAAAQi8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAgMBAAAAAAAAAAAAAAABABEhMUFR/9oACAEBAAE/EE1tjGKSvYLeXZ//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;会议论文评分&quot;
+        title=&quot;会议论文评分&quot;
+        src=&quot;/static/24b0c24160e52a14d1cb1be59e5248dc/65ac4/scow.jpg&quot;
+        srcset=&quot;/static/24b0c24160e52a14d1cb1be59e5248dc/65031/scow.jpg 285w,
+/static/24b0c24160e52a14d1cb1be59e5248dc/fd252/scow.jpg 570w,
+/static/24b0c24160e52a14d1cb1be59e5248dc/65ac4/scow.jpg 1140w,
+/static/24b0c24160e52a14d1cb1be59e5248dc/b2dda/scow.jpg 1710w,
+/static/24b0c24160e52a14d1cb1be59e5248dc/cbf81/scow.jpg 1912w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;会议论文评分&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.19298245614035%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAwklEQVQoz62R6wrCMAyF+/4vqAiioAhubuu6dk1S3JFEN/WfioHQ8uVy0tT1IeJ8rjDmjJgSpmmC2nx+a46IEWOEiECkLM1+dVfIo2kDSPAXc0QZfRjAXKDTsggykTFifrBiKwlDtHsmttc8mSy1TkHTdiAWpDFbE+97tJ23YmVSCqq6xna3NxbTeM/rgwmrgObpIE4DQ0xgFgtoY1VXIXWNKZ//6Hqd7v6yt5nZDi9Ng8Px9KbcdR6r9WZpquqf/voN+LQlJyDw7AQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;飞书组织&quot;
+        title=&quot;飞书组织&quot;
+        src=&quot;/static/cd3ba4bf69ca6fd32cae219aa3669205/267c0/feishu.png&quot;
+        srcset=&quot;/static/cd3ba4bf69ca6fd32cae219aa3669205/5459c/feishu.png 285w,
+/static/cd3ba4bf69ca6fd32cae219aa3669205/2cee3/feishu.png 570w,
+/static/cd3ba4bf69ca6fd32cae219aa3669205/267c0/feishu.png 1140w,
+/static/cd3ba4bf69ca6fd32cae219aa3669205/5c439/feishu.png 1398w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;飞书组织&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;从一个随便写着玩的小程序员到啥都管的“小老板”，带人给了我更大的压力。不同的人有不同的背景、不同的能力、不同的期望。应该把什么样的工作给谁做？我自己应该把事情做到什么程度？我应该提供什么样的支持？什么事情应该他自己思考？怎样高效地沟通？如何我的想法更高效、更准确地告诉其他人，如何让同事更好的告诉我他所想的？如何和一个有数年、甚至数十年工作经验的人合作？这些问题对不同的人都有不同的、且随时都在变化的答案。我的一切行为可能都会影响同事接下来的一段时间如何开展工作，一丁点没有考虑到的细节，一点工作需要的、但是没有写进文档的、而且我也没亲口告诉的知识点都可能让别人浪费数倍的时间。甚至，我连我需要什么样的人这样基础的问题，我都没法给出一个自信的回答。如何作为一个并没有实际工业界经验的小小研究生来说，我只能根据在课堂和网络上看到的以及短时间的实习中体验到的经验依葫芦画瓢，尝试建立一个尽可能高效的团队。目前看来还有很长的路要走。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1115px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 96.8421052631579%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAMEBQEG/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAbfMusvoWcqKmRID/8QAHhABAAECBwAAAAAAAAAAAAAAAQMAAhESEyExMjP/2gAIAQEAAQUCZytYq2cCQ2UzY1f1m9jj/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8BYz//xAAcEAABBAMBAAAAAAAAAAAAAAABABARIQISMYH/2gAIAQEABj8C7kpBKvZqkN4i3//EABwQAQADAAIDAAAAAAAAAAAAAAEAESExUXGR8P/aAAgBAQABPyFDx7NGzfu5TbHzLg2gOhKIeunUBWTnYxPJpfc//9oADAMBAAIAAwAAABAkP37/xAAXEQADAQAAAAAAAAAAAAAAAAAAAREQ/9oACAEDAQE/EJCIef/EABgRAAMBAQAAAAAAAAAAAAAAAAABETEh/9oACAECAQE/EOHCI2LD/8QAHBABAAICAwEAAAAAAAAAAAAAAQARITFRYaHR/9oACAEBAAE/EEKAU6MdbiinuoKgJydp9ic0gVvEcYKNNQ4KEdMaAUcr7qEoYyPkvXFgtLc//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;meme&quot;
+        title=&quot;meme&quot;
+        src=&quot;/static/51af56a1060278ca264acef3fa843c6c/11e83/meme.jpg&quot;
+        srcset=&quot;/static/51af56a1060278ca264acef3fa843c6c/65031/meme.jpg 285w,
+/static/51af56a1060278ca264acef3fa843c6c/fd252/meme.jpg 570w,
+/static/51af56a1060278ca264acef3fa843c6c/11e83/meme.jpg 1115w&quot;
+        sizes=&quot;(max-width: 1115px) 100vw, 1115px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;meme&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;项目本身也有很长的路要走。项目复杂起来之后，CI/CD流水线、自动化测试、文档、协作工具、仓库管理、版本发布，甚至如何保证代码风格的一致性，这些繁琐的事情的重要性越来越高了。代码之外，用户究竟需要什么样的功能，如何让用户部署和使用系统更方便，什么样的需求该做和不该做，项目应该朝什么样的方向发展，虽然最终拍板的不全是我，但是这些问题都需要我的参与和讨论。这些问题都不是确定的问题，也没有一个固定的量化指标，但是对于项目来说，可能比写100个功能点更重要。&lt;/p&gt;
+&lt;p&gt;我现在才算摸到的真正的工程的冰山一角。我自认为我能够勇敢面对困难，但是这半年来，我经常想逃避，issue打开了就放在那里，随便挑点简单的功能点写写代码，而不去想真正紧急的问题，审PR有时候也粗心大意，出现过好几次有重大问题的bug的PR进了主分支的情况。工作后挑战就更大了，如何平衡工作、生活和项目变得格外重要。什么工作都有难点，我不想坐科研的“冷板凳”，但是也逃不过工程的不确定性和复杂度啊。&lt;/p&gt;
+&lt;h1&gt;新的娱乐方式&lt;/h1&gt;
+&lt;p&gt;5月份，北京疫情严重了，进入了准封城状态，而高校当然是封控急先锋。5月份封校了，早期我们住校外宿舍区的连宿舍区都出不去，被迫在万柳这个弹丸之地开发娱乐活动。扔沙包、跳广场舞、甚至放风筝，世界仿佛回到了我甚至还没有出生的80、90年代。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.14035087719298%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAgP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAYpsCqNFn//EABoQAAMAAwEAAAAAAAAAAAAAAAABAgMQETH/2gAIAQEAAQUClUipFi6L3X//xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQMBAT8BrH//xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwFH/8QAGBAAAgMAAAAAAAAAAAAAAAAAAhAgMTL/2gAIAQEABj8CtbGH/8QAHBABAAICAwEAAAAAAAAAAAAAAQARITEQQWGh/9oACAEBAAE/IaBHnZeIrZb57FF/WLTqomns4//aAAwDAQACAAMAAAAQVz//xAAWEQADAAAAAAAAAAAAAAAAAAABEEH/2gAIAQMBAT8QCJ//xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAIAQIBAT8QAbF//8QAHRABAQACAgMBAAAAAAAAAAAAAREAITFBUXGBsf/aAAgBAQABPxBBOCAEdfmKHsSFNuVlwDMvIwj9xLvsmEqFpHxiC7B9mf/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;扔沙包&quot;
+        title=&quot;扔沙包&quot;
+        src=&quot;/static/481541017a17031e9a418995a7d27f19/65ac4/shabao.jpg&quot;
+        srcset=&quot;/static/481541017a17031e9a418995a7d27f19/65031/shabao.jpg 285w,
+/static/481541017a17031e9a418995a7d27f19/fd252/shabao.jpg 570w,
+/static/481541017a17031e9a418995a7d27f19/65ac4/shabao.jpg 1140w,
+/static/481541017a17031e9a418995a7d27f19/b2dda/shabao.jpg 1710w,
+/static/481541017a17031e9a418995a7d27f19/69b48/shabao.jpg 1920w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;扔沙包&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAID/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQD/2gAMAwEAAhADEAAAAbSKWxP/xAAbEAACAgMBAAAAAAAAAAAAAAABAgATAxESIf/aAAgBAQABBQK/y9Ct2MwjTRV6H//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/AUn/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQIBAT8BjH//xAAcEAACAgIDAAAAAAAAAAAAAAAAEQECEDFCceH/2gAIAQEABj8CdqTByXR4S94Z/8QAGhAAAgMBAQAAAAAAAAAAAAAAAREAIWEQMf/aAAgBAQABPyFAgsI5A9AJipKVGFEIJHJ//9oADAMBAAIAAwAAABBfz//EABcRAAMBAAAAAAAAAAAAAAAAAAABETH/2gAIAQMBAT8QRiKf/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQARIf/aAAgBAgEBPxBL21f/xAAcEAEAAwACAwAAAAAAAAAAAAABABEhMYFRcdH/2gAIAQEAAT8Qq0rR1ZuNYTabo3nvsZ0T5/YG4sut0eDqIsSh5DJYOB//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;放风筝&quot;
+        title=&quot;放风筝&quot;
+        src=&quot;/static/adea729e5421354684061b64444de1a0/65ac4/kite.jpg&quot;
+        srcset=&quot;/static/adea729e5421354684061b64444de1a0/65031/kite.jpg 285w,
+/static/adea729e5421354684061b64444de1a0/fd252/kite.jpg 570w,
+/static/adea729e5421354684061b64444de1a0/65ac4/kite.jpg 1140w,
+/static/adea729e5421354684061b64444de1a0/60e21/kite.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;放风筝&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这些室外活动随着学校开通燕园班车以及后续学校解封就消失了，但是室内活动却保留了下来。在工作之余，和朋友们一起吃烧烤、打麻将，还是非常惬意的。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAQT/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAU6qiUM7zR//xAAaEAEAAgMBAAAAAAAAAAAAAAACAAEDERIi/9oACAEBAAEFAiVVZw7PGoM872fFz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABYRAQEBAAAAAAAAAAAAAAAAAAABEv/aAAgBAgEBPwFmv//EABwQAAICAgMAAAAAAAAAAAAAAAABERIhMQJhcf/aAAgBAQAGPwKWuXgnBkTeUWWibb6P/8QAGhAAAgMBAQAAAAAAAAAAAAAAAREAITFBUf/aAAgBAQABPyFwzgzB/sCyNlh7fIQMFl+wDseoSk7Wt5//2gAMAwEAAgADAAAAEKz/AP/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABcRAAMBAAAAAAAAAAAAAAAAAAABIUH/2gAIAQIBAT8QomYf/8QAGxABAQACAwEAAAAAAAAAAAAAAREAITFBUWH/2gAIAQEAAT8QZbIKJd2llyiM8FT77MsCBpiuKJTt0dwvYTEtBFeEm+MhkBXo+5//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;打麻将&quot;
+        title=&quot;打麻将&quot;
+        src=&quot;/static/b6bc0c4188b9ebe3a0d4edd8dfc8e09b/65ac4/majiang.jpg&quot;
+        srcset=&quot;/static/b6bc0c4188b9ebe3a0d4edd8dfc8e09b/65031/majiang.jpg 285w,
+/static/b6bc0c4188b9ebe3a0d4edd8dfc8e09b/fd252/majiang.jpg 570w,
+/static/b6bc0c4188b9ebe3a0d4edd8dfc8e09b/65ac4/majiang.jpg 1140w,
+/static/b6bc0c4188b9ebe3a0d4edd8dfc8e09b/60e21/majiang.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;打麻将&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAGR7KJcsuKP/8QAGBABAAMBAAAAAAAAAAAAAAAAAQADEgL/2gAIAQEAAQUC4DJyNRXVDEeNSyvb/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBAAAwEBAAAAAAAAAAAAAAAAAAERAiL/2gAIAQEABj8C04dZO6mPKqE6Vn//xAAbEAACAgMBAAAAAAAAAAAAAAAAARFBITFRYf/aAAgBAQABPyGSGfoiNjzdiK3lLhtLO8EQKCUwTEH/2gAMAwEAAgADAAAAEDsf/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREA/9oACAEDAQE/ECSZHf/EABcRAAMBAAAAAAAAAAAAAAAAAAABETH/2gAIAQIBAT8Qd0qP/8QAHhABAQACAgIDAAAAAAAAAAAAAREAITFBUWFxsdH/2gAIAQEAAT8QqEwINH64K1ZmldNwLW4FA8Pl94pdJYu05MZRAJw7n1jkgdF0Ln//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;吃烧烤&quot;
+        title=&quot;吃烧烤&quot;
+        src=&quot;/static/685bdf0b2939034c133202c60ab30066/65ac4/takeover.jpg&quot;
+        srcset=&quot;/static/685bdf0b2939034c133202c60ab30066/65031/takeover.jpg 285w,
+/static/685bdf0b2939034c133202c60ab30066/fd252/takeover.jpg 570w,
+/static/685bdf0b2939034c133202c60ab30066/65ac4/takeover.jpg 1140w,
+/static/685bdf0b2939034c133202c60ab30066/60e21/takeover.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;吃烧烤&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;下半年，认识了更多的羽毛球球友，高峰期打球频率甚至提高到了一天2小时。甚至第一次加入了院队，第一次获得了一件有自己名字的队服，第一次和队友参加了几次团体和单项的小比赛。虽然水平很一般，几场比赛都没出线，但是这确实是第一次的体验。我也希望能够在最后一个学期里和同学们多多练球涨球，起码比赛不一轮游一次吧。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFAv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHc9pIqiZH/xAAaEAADAQADAAAAAAAAAAAAAAABAgMABBET/9oACAEBAAEFArqBiNx5r5Wx7DJYqv8A/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGhAAAwEAAwAAAAAAAAAAAAAAAAIRARAhcf/aAAgBAQAGPwJfOLuWikIrdH//xAAaEAEAAgMBAAAAAAAAAAAAAAABABExUZFx/9oACAEBAAE/IaScSjfJTBSWA9OGXrzA1QbJ/9oADAMBAAIAAwAAABCHz//EABYRAQEBAAAAAAAAAAAAAAAAABEAIf/aAAgBAwEBPxAxm//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/EKf/xAAdEAEBAAICAwEAAAAAAAAAAAABEQAhQVExYaHB/9oACAEBAAE/EK7KpfK7wq6POE0dBPc/MC0IEHQyXWAibYA6c6OAq3n7n//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;队服&quot;
+        title=&quot;队服&quot;
+        src=&quot;/static/d4783de0c108b7824f53de7c8efcb3c6/65ac4/team-dress.jpg&quot;
+        srcset=&quot;/static/d4783de0c108b7824f53de7c8efcb3c6/65031/team-dress.jpg 285w,
+/static/d4783de0c108b7824f53de7c8efcb3c6/fd252/team-dress.jpg 570w,
+/static/d4783de0c108b7824f53de7c8efcb3c6/65ac4/team-dress.jpg 1140w,
+/static/d4783de0c108b7824f53de7c8efcb3c6/60e21/team-dress.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;队服&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h1&gt;最后的比赛和实习&lt;/h1&gt;
+&lt;p&gt;看我的&lt;a href=&quot;/resume&quot;&gt;简历&lt;/a&gt;就可以知道，我的本科和研究生生活就是用各类项目比赛撑起来的。2021年和本科老搭档参与了一个&lt;a href=&quot;https://www.biendata.xyz/wudao&quot;&gt;AI创新应用大赛&lt;/a&gt;，本以为已经烂尾，却突然复活并获奖。虽说只是个优胜奖，但是也足够为我这6年的小比赛生涯画上句号了。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 927px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.59649122807018%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACjUlEQVQoz22R20uTYRzHdxO59+A25+bmsMyORNcRRFDQTVl0E11Fhh3V7T3MN4dWVAuzCIkohK7KZVKk07n3YLboMO1kRP/RJ55nFhVdfPkdn+/z/T5PSD0+Tlv/C9IXpmjuLaH3lujMPifSW0LpmUQ73YD6J3omiZ55SuL8M9r7pklfnCbTN0387BSh2Llp9ox/Z+/dL7QPvyMx/J5jj36QKrwlbLxGs2qo/0D0u65+YPedzxy8/4194185cG+VncUVQkrPE8LGEk39LmrOR8v5rBd51kfNBUQNj5jhETE8mg1f1iIXcyXrER5ooGnAk3VIWNDtGrokC9CMgGYjoCn3iv2Xp+gfe8i50QlO3XzE2dEJcmMP2DX0knXZJbmnrUFfiyH1dAnNrkmyiOH/hc7BeTY7c2xx5tjqlNnmzLLZKZOwqnIeXUNEki1KSEJdvE0uIGm5bMhX6MhXSFiuXM7kK8RNDzW3SNpeIGNXSFpVqUjspu1qQ2k2+EU4iWa/kXJjtk/CdiVZi+nRarmSUNQij5subXZVzmJy7slezArQnYbLNcIampBuByScgNSgKz9AHBK2BZlQIep2e+H3k4jL45Ynz2mC0Pyl0KrJ3xUKM0MebY5P2qiww55hkzXHFrtMl1WW1oVFESNWQMquksq7MpefYy8RUk49Rrdeowy4RE2XVL5C0l4gmZuny5xhozlLpzlLh1EmblRJmRVajCpR0yeZr0pETE861KxFQrG+WVqvrJIcXqGlsIzqfEAZWkYTcbCO4jSgOnXZE3NdoFBHHfmEOvIRbaiOVqijF5YJtR26RObEbbafvM2GE7dQDl8j3H0d5fB1mTfif9B9A+VIEeVokbCMN1G6i/wEB7sNXmv8V14AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;获奖名单&quot;
+        title=&quot;获奖名单&quot;
+        src=&quot;/static/260c14e04218efd7c8b95f11df7fe216/782ec/biendata.png&quot;
+        srcset=&quot;/static/260c14e04218efd7c8b95f11df7fe216/5459c/biendata.png 285w,
+/static/260c14e04218efd7c8b95f11df7fe216/2cee3/biendata.png 570w,
+/static/260c14e04218efd7c8b95f11df7fe216/782ec/biendata.png 927w&quot;
+        sizes=&quot;(max-width: 927px) 100vw, 927px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;获奖名单&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;去年末，面试并加入了之前完全没有听说过的alluxio，并在里面第一次体验到了一个外企背景的小技术公司的工作生活状态，并第一次给一个还算出名的开源项目做出了一点不是很简单的贡献(&lt;a href=&quot;https://github.com/Alluxio/alluxio/pull/15002&quot;&gt;PR&lt;/a&gt;)。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.298245614035096%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACE0lEQVQoz2VTy3LbMAz0tYmsF1+SKJGULcm2HFu206bTmVza/kCv/Zje+9fbAaQ4melhB4QALrEAtBK2R24HiGZEXgTkqkKUGkSZwZpRLDD/Iy84VxgH340o6i1WTFK0EFUHU3eQpoYqHFTpIHSNVFaMXNfIlEWmZpsSlpgsHIxtIUyDVSpKZBRQBrmpoEwD7zuE0KNckoiYLtE5Z9L3B+gb2YdYIko1VlGqEOcFpvN3XKYfGMYb3PaA0B/Rjxe0wwmF26FwA3JtEeUWa2H5Dsl+TDQTvbVhFWXklPj1+ge/f/5F1ewhS3evSJYtsvqEzB6QFxtkzYTMjpBlYLkfyZiQX6EqhUGmqR8kq0YiSiYlaTQo6ivJFXoGxUgd3SdSOi+SNffw9vIK2z+j2X+DCleo9grd3vic1Cek9RlZc4bwlzvIT+sT1OYZZvuFc5mQ+kFTqsKIzeEZYXeF6ye0+xv8cGGfztL2WMsGsfKIpUOsHNtEB6Q6INF+lkykn9aS96kOPcP6DmWz4fXRlYcqGjzGAg+xYBslcpGpECVq9hNFQ6Fmzo2NRYmm3aEdnhj702dsd2dGt7/Ad0eUrkPlOuS6WXr3jvtQ3hwi11VAt58wHK9MWjmqeID1AxNZ33NOIualnpfd3ie+Wi8V0i+USsv7N04veLp8RXeY4LcjQjei7Y9sKU6/2YYf63jaqgq8YkT4D+MqOS+H86qZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;PR&quot;
+        title=&quot;PR&quot;
+        src=&quot;/static/933dabbb87df1a18b88d914ce4bbabf5/267c0/alluxio-pr.png&quot;
+        srcset=&quot;/static/933dabbb87df1a18b88d914ce4bbabf5/5459c/alluxio-pr.png 285w,
+/static/933dabbb87df1a18b88d914ce4bbabf5/2cee3/alluxio-pr.png 570w,
+/static/933dabbb87df1a18b88d914ce4bbabf5/267c0/alluxio-pr.png 1140w,
+/static/933dabbb87df1a18b88d914ce4bbabf5/c2341/alluxio-pr.png 1241w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;PR&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;作为一个长期把微软作为第一择业目标的纯粹的微软粉，暑期实习选择了上海的C+AI大组，并在上海数十天的40度的天气、以及此起彼伏的疫情下onsite了整个暑假。这个暑假也是第一次和同学租房（在苏州时租的公寓），体验了一把老破小，过了两个月自己买菜做饭的居家生活。体验很不错，但是决定之后再也不租老破小了，高端小区买不起，多花几百块钱租一套体验一下也是很不错的。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwABBP/EABUBAQEAAAAAAAAAAAAAAAAAAAID/9oADAMBAAIQAxAAAAHVJpPkmqj/xAAaEAACAgMAAAAAAAAAAAAAAAABAgAREiEx/9oACAEBAAEFAkJlhoqil5qsVn//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAWEQADAAAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8BpX//xAAaEAACAgMAAAAAAAAAAAAAAAAAARAhETFB/9oACAEBAAY/AtGCxFccf//EABoQAQADAQEBAAAAAAAAAAAAAAEAESFBMVH/2gAIAQEAAT8h9XPIJajeeaRuG3s7Cz7DG9cIsrTs/9oADAMBAAIAAwAAABDcL//EABcRAAMBAAAAAAAAAAAAAAAAAAABESH/2gAIAQMBAT8Qio8P/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREA/9oACAECAQE/EGEwCXf/xAAcEAEBAAICAwAAAAAAAAAAAAABEQAhMUFRYaH/2gAIAQEAAT8Q5OFAuR1tHDZLV5BHfZjpBKFZsxrBQbU+YlvKDLr3c5CCtc//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;做饭&quot;
+        title=&quot;做饭&quot;
+        src=&quot;/static/abff67c30915321ed448663d13a0b7c0/65ac4/cook.jpg&quot;
+        srcset=&quot;/static/abff67c30915321ed448663d13a0b7c0/65031/cook.jpg 285w,
+/static/abff67c30915321ed448663d13a0b7c0/fd252/cook.jpg 570w,
+/static/abff67c30915321ed448663d13a0b7c0/65ac4/cook.jpg 1140w,
+/static/abff67c30915321ed448663d13a0b7c0/60e21/cook.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;做饭&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAQT/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABZvIgKJMKP//EABoQAAIDAQEAAAAAAAAAAAAAAAACARMhAxL/2gAIAQEAAQUCvy1pLJPSqP2lhdj/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGn/8QAGxAAAQQDAAAAAAAAAAAAAAAAAAECECERMZH/2gAIAQEABj8CUppeOmp//8QAGxABAAMAAwEAAAAAAAAAAAAAAQARITFBUWH/2gAIAQEAAT8hthz5Amiz5r5C9DRAgujuotrn/9oADAMBAAIAAwAAABC3P//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAgEBPxDUCl//xAAaEAEBAAMBAQAAAAAAAAAAAAABEQAhQTFx/9oACAEBAAE/ELQX3rEO4UpNyc+5BRnd8Mup7JS4NIyeAtxJV7N5/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;房子外景&quot;
+        title=&quot;房子外景&quot;
+        src=&quot;/static/c94af07ad8c9c8e80d5f1a98854faf73/65ac4/outside-view.jpg&quot;
+        srcset=&quot;/static/c94af07ad8c9c8e80d5f1a98854faf73/65031/outside-view.jpg 285w,
+/static/c94af07ad8c9c8e80d5f1a98854faf73/fd252/outside-view.jpg 570w,
+/static/c94af07ad8c9c8e80d5f1a98854faf73/65ac4/outside-view.jpg 1140w,
+/static/c94af07ad8c9c8e80d5f1a98854faf73/60e21/outside-view.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;房子外景&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQCAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAU38pvLIqC//xAAZEAACAwEAAAAAAAAAAAAAAAAAAQMREgL/2gAIAQEAAQUChyzNDRHab7Nn/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8Bqv/EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAgBAgEBPwGJr//EABkQAAIDAQAAAAAAAAAAAAAAAAABEBEhMf/aAAgBAQAGPwLNZyEXH//EABsQAAMAAgMAAAAAAAAAAAAAAAABESFBMWFx/9oACAEBAAE/IUSk0ND2T6IpQEeF7o0eT//aAAwDAQACAAMAAAAQjP8A/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQARMf/aAAgBAwEBPxAB2xf/xAAWEQADAAAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8Qoo//xAAaEAEBAQEBAQEAAAAAAAAAAAABEQAhMVGR/9oACAEBAAE/EDOAKLbjEZ88TWeGHCS34vPvpqBumKan7kOEu//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;躺平生活&quot;
+        title=&quot;躺平生活&quot;
+        src=&quot;/static/e667c8f052a9e1a42229353a3fd72e10/65ac4/house-setup.jpg&quot;
+        srcset=&quot;/static/e667c8f052a9e1a42229353a3fd72e10/65031/house-setup.jpg 285w,
+/static/e667c8f052a9e1a42229353a3fd72e10/fd252/house-setup.jpg 570w,
+/static/e667c8f052a9e1a42229353a3fd72e10/65ac4/house-setup.jpg 1140w,
+/static/e667c8f052a9e1a42229353a3fd72e10/60e21/house-setup.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;躺平生活&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h1&gt;回到了原点的职业选择&lt;/h1&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 524px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.70175438596491%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABeElEQVQoz3VRy07CUBDtR0jFyMLe2zctFEOThgrU8qrQ0kTZaNx168aNWyWKK7/AJfEXXLj1S0hMxA3fcMy9SmMILk7mzsydM3NmBFVVsQlFUbAtLisKTE3DkevA8xtoNptotVoIggD1ep3XCf+RbZJqmgaJHKDZCPH+eovFxxsWiy8sl59YrVaYz+eQJAkCKySEgFIKWZa3TpY3owTmoYfs5gpPD9eY3j9iOr3DbDZDlmWcQ7BtG/1+n4/ueR6oLINSBbKs8CnXYM24pQT7xT3sFIoQxQJEcReiKKJUKvGmgq7rqNVqcBwHlmVB01RUqwYMQ+cyWT7Hr2+aJmzbQrnMUOb+WoXASKIo4oiTFGenJ3h5vsTF+QRBcIzBYIA0TTEcDpEkCeI45nYymWA0GqHdbnN1hmH8HIVJ7nQ6/EpM+nicIIq6nMD3fYRhyAnYH0bOwJqzfLfb5Wvq9XqclK1FqFQqcF03PwqzhNDcX8fW70383S+T/A3wwQjK2MyjWgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;MS Offer&quot;
+        title=&quot;MS Offer&quot;
+        src=&quot;/static/98e89f68f7e3faa3fd7f093eb4bbce2e/b6716/ms-offer.png&quot;
+        srcset=&quot;/static/98e89f68f7e3faa3fd7f093eb4bbce2e/5459c/ms-offer.png 285w,
+/static/98e89f68f7e3faa3fd7f093eb4bbce2e/b6716/ms-offer.png 524w&quot;
+        sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;MS Offer&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;兜兜转转又回到了原点呀。&lt;/p&gt;
+&lt;p&gt;本科前两年半时，我拿定主意直接工作，却在最后时刻，抱着想看看有没有新的机会的想法，极限转弯踏入了研究生的大门。而研究生的前两年的体验让我认识到高校做工程不靠谱，回去看业界的机会时，发现实验室做的工作不能让我踏入一个所谓更“高阶”的工作，我能投向的业界工作和读本科时基本没有区别。后来，当我意识到，当前国内大环境下体制内的技术工作也并非一无是处，想把握北大应届毕业生这个机会尝试体制内的机会，但却错过了这个时间窗口，最后仍然投向了微软，和三年前的唯一的区别也就是大组（C+AI vs STCA）和工作地点（苏州 vs 上海）的区别了。&lt;/p&gt;
+&lt;p&gt;说遗憾肯定是有点遗憾的，很多人都向往的北大学历最后在找工作方面并没有发挥什么用处。但是这几年让我认识到，人是会变的，现在的想法只能代表现在，不能代表未来。甚至有几个被项目的事情困扰的晚上，我还在认真考虑现在去科研是不是还来得及。考虑了这么多，最后只会发现，一切都是有好有坏。在微软，起码短期内实现Work Life Balance、收入还可以的“小目标”实现起来还是比较简单的。虽然世界大环境对外企不利，但是世界变换得太快了，几年后的日子谁又能预测得到呢？&lt;/p&gt;
+&lt;h1&gt;迎接未知的新生活&lt;/h1&gt;
+&lt;p&gt;这一年像是2019年的重演。升到毕业年级；暑假去外地微软实习；纠结了几个月后强势转向，2019年从就业选择了保研，2022年，从偏向体制内选择了上海微软。甚至直到疫情防控放开前，我还在担心明年会不会又像2020年一样，无法返校过最后一个学期。&lt;/p&gt;
+&lt;p&gt;但是有一点不同：&lt;strong&gt;现在，无论愿不愿意，都得迎接新生活了&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;高中时，所有精力都放在高考，“一分一千人”，似乎一切事情高考完就结束了；大学时，毕业就是一个看得见的里程碑，想工作的同学去实习，想科研的同学去科研，大家都为即将到来的新的生活而努力。而现在毕业了，工作了，没有看得到的终点了，反倒之前以学业为理由不想考虑、或者有人帮忙的事情一下子都变得重要了起来。大到找对象、结婚、买房、下一代、升职加薪、照顾父母，小到租房、做饭、做家务等日常琐事，都变成一个一个的终点，变成了一个一个无法逃避的事情。&lt;/p&gt;
+&lt;p&gt;站在校园生活的末尾才发现，即将挥手告别的生活可能是最简单、最单纯的生活，即将离开的地方将会是之后永远的回忆。&lt;/p&gt;
+&lt;p&gt;转折点之后，我们将迎来未知的新生活。新生活下，每个人都是自己生活的第一责任人。&lt;/p&gt;
 &lt;style class=&quot;grvsc-styles&quot;&gt;
   .grvsc-container {
     overflow: auto;
