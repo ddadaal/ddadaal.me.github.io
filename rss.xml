@@ -1,374 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 30 Dec 2022 16:08:22 GMT</lastBuildDate><item><title><![CDATA[2021年总结]]></title><link>https://ddadaal.me/articles/summary-for-2021/cn</link><guid isPermaLink="false">/articles/summary-for-2021/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Fri, 31 Dec 2021 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;暴风雨之前的宁静&lt;/h1&gt;
-&lt;p&gt;站在2021的年尾回看这一年，发现这一年着实有点波澜不惊。&lt;/p&gt;
-&lt;p&gt;这一年中没什么非常关键的里程碑事件。没有2018年的各种比赛和活动充实我的简历（以至于现在还在吃当年的老本）；没有2019年决定保研，确定了未来三年的生活状态，以及实习，第一次进入梦想中的公司去工作；没有2020年的本科结束，告别至今对我最具意义的四年，以及研究生开学，迎接一段外表看上去光鲜、但是自己却不那么肯定的研究生生活。这一年发生的各种事件看上去都那么的日常，有时候日常地甚至连朋友圈都懒得发。&lt;/p&gt;
-&lt;p&gt;但是，可以遇见到，2022年将会是一个“腥风血雨”的一年。再次准备实习面试，再次暑期实习，参加秋招，确定出路，每个步骤都是一场不可避免的硬仗。用&lt;strong&gt;暴风雨之前的宁静&lt;/strong&gt;来总结2021年实在是再合适不过了。&lt;/p&gt;
-&lt;h1&gt;本年度的事件&lt;/h1&gt;
-&lt;h2&gt;项目和比赛&lt;/h2&gt;
-&lt;p&gt;我一直认为，不被人使用的项目没有意义。所以，即使项目是大家都觉得没啥技术含量的CRUD，只要真的有人用，我仍然会接受并且愿意花心思和时间把它做好。所以上半年除了上课，很大一部分时间投入到了data-competition.pku.edu.cn的开发上了。这个项目之前写过文章详细介绍，我这里就不讲了。&lt;/p&gt;
-&lt;p&gt;5月份的时候参加中心主办的“新手友好”的CTF比赛，结果就会做娱乐题和web题，其他题一点思路都没有，说到底还是我太垃圾了。最后趁着大佬还在睡午觉没有发力、以及相关技术（JWT）之前开发用过偷了个web题的一血奖，本以为还能蹭个30名万岁，结果比赛DDL当天早上一觉起来被卷王卷下去了，行吧。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 591px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 69.47368421052632%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAADVUlEQVQozxXM608bBQAA8PtmYhZTSbONMRnbjM6YzGTRD2bTBOKCCcZoYmZANxo6Ggx1bmwjG0LbtaVcn/d+P3t37dGuMMQySwttaOkTyjkTlymTMnRrFv8J4+8P+AEfXXj/3NkzJ7s7TaZXXzv0ytEjHW+d7j514tjpnq6e7s43e453dR7uOnr4iPl1c4fp5BvHuo93mjtMHaZDZrMJePftns/7++w2i2XwS8vgFzbL1+PWobGRQbtt+Nro8PfWy+PWb+22K/bRy2MjQ2MjQ+OWweujV27/8N25s2eA99455ZicwH+cDN+8xmN+AfNzCEiALtQ7AzmnYNc05nOh92aY8CwV8uAhb2Dm9q1LX+F+78cXPgA+6Tsf8jgw55RAo5KA8SzEcxACuqB7DtjthN3OiNsJuxwMDNIwSEI+CvP77t6IeGYG+nuBi30fUhCo8zRHQhjko9EQh4QVgVREUuRRjoFFFpFYVCQiPB7kUD+L+Imgm4MCAxd7gU97zysUqrJETKVYMsShYR6N8BhEwSAZ8eIhDxH2UuE5HAIxKICEfDg8R4a9AhwcHroEfDbQr/N0lEGiPCpTiMYTCoOxaBAPujg8QERmYb+DgudIPIgjfpaKiCJCwrMiGrRZvwHGrMMLEqfzxGKMSyhMQqGTGq2KBA3PzTruuKYmPNOT/78yJkuoJCKSgLBEQMBCk7fGgQn71WWVT8rcYlxUOULhiJhExWRGxCMiElA4WJNxNUpoIq6yiMpjUYkQWChKwo6pGwDonk4n1Ae6/CCpLCbl1Lycmo8mVSFBoXEa1Wg0rvGawmo0puIhlQgrAi7xiMbiHvcdYCkVz6Xu59dW19cyuezDbCadXX24srTws64t6/pPmr60sDA/rydEfhHHkhybiKv39VicIBgaA2rlYikWa+Syjx4ZvxrbhtE0jOaO0TQa20Z1q7m9VW/UqvVatVbZqpS3GvWmsZPTE2mS2ShuAP++aP+zY+xWKu3dv9qt/Xar1W7tv2jtH+zutX7/o/X4z7+fPnv+9OD57sGzJ639J3t7O781U8uPc8X2y5dAdSPbKBeq5XxpfaVRytRKmXrxl1pxtVpYaWzmqqXCWia9nk3nMsvF/GqzXi3kM5ubhUqlWC7l/wMdFNwBXpaidAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;CTF&quot;
-        title=&quot;CTF&quot;
-        src=&quot;/static/81c2e0463a878ed78177aed5ae029ce3/3d4ad/ctf.png&quot;
-        srcset=&quot;/static/81c2e0463a878ed78177aed5ae029ce3/5459c/ctf.png 285w,
-/static/81c2e0463a878ed78177aed5ae029ce3/2cee3/ctf.png 570w,
-/static/81c2e0463a878ed78177aed5ae029ce3/3d4ad/ctf.png 591w&quot;
-        sizes=&quot;(max-width: 591px) 100vw, 591px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;CTF&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;这学期年中的时候参加了学院组织的持续48小时的hackathon比赛，由于是线上，所以差点现场一起卷的感觉。但是瑕不掩瑜，4个人在48小时从0开始卷了个类似大众点评的小程序出来，也算是学了个新技术（虽然小程序其实可以说就是个阉割版和私有版的web）。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAIAAADzvTiPAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFWklEQVQ4yx3LWY/bxgEAYP68PvYXNC2CAg7qNLGT1nXWx2p17KGVRFHD+x5yOEMOj+FNrbSS97Sym127TZ0CAfLUP1LUwPf6cWtxPzl6ER79UIBJIUuxqFcmbmy8xtmalFfJcldePCxvb8vNXb25q85vsvY6KR+L6lNdch/stx/M17/4g5+d3q9o9Ft08ls8/W8l/ZouPoaLn0LhjoBLBFa+0EFQWkJmzn2hn0mjrbngdvr+ndX7JV58DE7/GYz/TfifI/AQSvdEeUys+9S6Sbwt9VrilMjMoBb7qiOMHH4E+iPu2ujdmoNPmfyfVP6Uax/dyU/jV4+28OPx64+efC+PfyTO5elwE3qrolimtM2iQD2F4uS0d8Rttd5WfftI5QcCHqn0QBb3rrDzxZ0jPCTOzlN2SXCDzHfUW7OoS8I6wb545Ij8ZDThVtrBUn6zsceX7uTCPn2Pwb8q/FDix5Y+LpP7VX7fFXfL4rpOzhleMlKl2JfHUJd4XuYatb9UejehfO7OamW01MeXvnRLzfepc0Gdi9i7TII1dpfYabCdIYuFMFAn0JCEhc6V6rCSeisI1va8VI4bffwukK9CbYP16wxd5+iakU0EzyJ4Rr0S2zlxU3OWeqZheFyqDJnUbz2588QaCmui7Ep0w+A5sT507KFNH7r8/izfdez9Mrvuik3FqD6jyLUR5SJpkKqjbepsEusqc3cF+rBMukBL9Pk7Cqk6X8f+/aq87bLLNt9W5apkiSVkMXFIxhFxQKXBMjIqTywcoQuUywReZWgd2ufUuWD4fZffdPl1m22b/Lyu1nURu2KWJXaYcz7oY2lYYzN1xMiYp45cB3YXwRLqhaO22Lko6LoM2zxsWFLnSVukqa9mObPDkoNgiMRRhe0G213knlH/PMVbRrYsXIb+WYwqAovQTkOPIJ9gQkIS+HqS5zqpOHcx8sRDhq0CmVVod9RbJWRb0KuKXdXZRc0u2mLT5WWRERKElIY0cV3Dp0wKCs5eDF1wmCCdBUYZ2V0WnLGoJLAM3CZwG+JWcbBqiq7O66aqm6asGtfSIWVa1HA6f2AJg9DXUmSUob1kZFXGDNsssBPfZASyCK2asvs8q6YtmgZBy08KkZScePJam+4jV6ZQzUO3y+mqzmtGE+xEyMqiYNnUXdd8nv9X1I3vWVaUTZ2Ymw5egMOX0AKBLcUY5ozWRZ5GFFmGbxnIsaq6bLuubj/nus3LyoOGEdA+8Llx7/tZ/3tL411jHiAriUmWJUVRBK7rGHochXXblnVdlnVZNVXT5WXpO7poo2dDkTt6+2y8/9xUeE3mNV1ybNO2HRdCB0LP86Dv+0FAQoowQSTMioqmqW1IU9X5y1ueG7369ujNt7LCKxqwXccLfBTHKIygTzxEUBgRGmdFmeRFzHKasTCKdH1xDMw/vxxzBy+f9ve+BhI/B7ykKpYLrQB7cewEESQxDGNEExP6im7IugE0E6iqoQuHvPzH74bcq79/1Xv5FIi8aqgwwJgWNG9o1SJW4KKKqjaquyBlDsGy5QLdXqi6KE0PTudfPOtzP/ztSX/va0UFLrRQFKGE6QiLjqfh0I4SDRHF9WwS4iz1cOQEge46AJwejOd/+KbH7b34arj/XNFF24NBEpOUOTEbHx7PTsaSqvKCIOsGjKgXUhhgCxPNcyVlvn88++Kvb7i97748+McTgR8CMF1IM1kFhqWB05F4cgCmQzAdGMpEU6ZgfiwKx6o8k8TpjB+9GZ08eTHgnj/98mDv2ZwfLwAPAL9YzObCBIgzRZnZ2txRpqZ4oi2OFOFYnJ+I87G0GNva/GTC/+73f/of1moNDOp+rswAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;hackathon奖状&quot;
-        title=&quot;hackathon奖状&quot;
-        src=&quot;/static/b9bc0d4e8eb3b1400168a24b7c4f5905/7d769/hackathon.png&quot;
-        srcset=&quot;/static/b9bc0d4e8eb3b1400168a24b7c4f5905/5459c/hackathon.png 285w,
-/static/b9bc0d4e8eb3b1400168a24b7c4f5905/2cee3/hackathon.png 570w,
-/static/b9bc0d4e8eb3b1400168a24b7c4f5905/7d769/hackathon.png 960w&quot;
-        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;hackathon奖状&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;年末的时候还参加了个比赛，说好10月中旬结束的，结果到现在还没结束，日程表一改又改，也是无语了。&lt;/p&gt;
-&lt;h2&gt;城市旅游/参观&lt;/h2&gt;
-&lt;p&gt;和长距离的旅游相比，我更喜欢城市/城郊的旅游和参观，原因很简单：规划更简单、当日去当日回。加上疫情期间学校对进出京比较严格，以及北京作为首都，还是存在不少值得一逛的地方，所以这一年通过和同学和社区的方式，一起参观了北京城里和城郊的多处公园、博物馆等景点。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;公园：圆明园、颐和园、玉渊谭公园、北京动物园、奥林匹克森林公园、798艺术区（可能不算公园……）&lt;/li&gt;
-&lt;li&gt;博物馆：农业展览馆、天文馆、古动物馆、园林博物馆、电影博物馆、民航博物馆、铁道博物馆、首都博物馆&lt;/li&gt;
-&lt;li&gt;雁栖湖&lt;/li&gt;
-&lt;li&gt;阳台山&lt;/li&gt;
-&lt;li&gt;古北水镇&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 57.54385964912281%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAACJ0lEQVQozwXB2Y7aSBQAUP//t8zMw0jRKJooEpAO0DQYmzZ2eau97r21eCN5zznZsoR58euScJa9O1MC6SU4sxKDxZ7D2yOVs1eC7p3fJTcASQVd1IVyVbat6bVOr3VqU13TaYsq4BjwSvYs3ftFf8/HvxH2cRqUewPbLD7FjeDxRsNH9mub4wbzRtsWoyl4+W/Z/eemyocGoH6o/b34q6XPCj+M2kfXUxhTfiQ1SK8yPzmRau2vZmYPtav6/wtikNwr2Q2VVEWu8hWNxlJDY6zD8qt7/2Y9L/wtu6ajmCqguyXG4CncjsuLQh5cgfw0yve8/UK2FnCT+AyKJdkqqvrIBmLZYflm145TXunTGqVyeWu4AJFSA/oaqfFwA/U5YSN1pcQdHY70oCB+v16ZiGOYhY6dIBkXacODU4+mg+tPbnrrRssfwbQGmXvmrP9QWI9YkS+WGbNt9kg3hE8MnHydoPB40fWP9vxdYi9dxcudYRegRojnczwYf1uCQboIume/kvZ00foUsZ6g8eoO40nmh4jMA/8Exbu7sVoZbnBYqU7DMcEQwjWGIjNzb333sAwiC9QSVtIUrXmGcscFa3RPzwsooUSBtgjq6Ia9NoOxt+SuWVX+4/jPAC25NppyhZyPh1q0sTuhvgNJPylpBxAFEXOKTVgRCdDMuHNWlodqyOfN+cWT7yd7HvUxJLdgZ4NRQfZ4rtRe65YjT57P7oFJ6anp6foHbA51lf2zQVoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;城里各个点的地图，不包含郊区的景点&quot;
-        title=&quot;城里各个点的地图，不包含郊区的景点&quot;
-        src=&quot;/static/31628d569def9be9dfeaef029f8caaad/267c0/map.png&quot;
-        srcset=&quot;/static/31628d569def9be9dfeaef029f8caaad/5459c/map.png 285w,
-/static/31628d569def9be9dfeaef029f8caaad/2cee3/map.png 570w,
-/static/31628d569def9be9dfeaef029f8caaad/267c0/map.png 1140w,
-/static/31628d569def9be9dfeaef029f8caaad/78a90/map.png 1710w,
-/static/31628d569def9be9dfeaef029f8caaad/a683c/map.png 1754w&quot;
-        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;城里各个点的地图，不包含郊区的景点&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;可以发现大多数景点都较为冷门。有的景点的门票实在是约不上有空的时间，如故宫等；但是更重要的是我不太喜欢人太多的景点。人太多的景点，看到的人比看到的景还多，那还有什么意义？所以这些景点大多数我都尽量选择工作日去参观的，避开北京汹涌的人流。这也是作为学生的福利的了吧，以后工作了之后，想避开高峰都做不到了。&lt;/p&gt;
-&lt;p&gt;这些景点总结一下，&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;各个博物馆虽然离城里近的人多、人少的太远，但是质量普遍较高，例如电影博物馆的20多个展厅个个内容充实，强烈推荐；&lt;/li&gt;
-&lt;li&gt;雁栖湖太远而且风景不如南京玄武湖（玄武湖yyds），票价较为，而且周边除了国科大啥都没有，吃饭的选择都比较少，劝退；&lt;/li&gt;
-&lt;li&gt;公园较为普通，适合散步聊天，动物园假期人流量太大（我是五一去的），建议避开高峰；&lt;/li&gt;
-&lt;li&gt;古北水镇很偏（都快到河北了），但是开发得还可以，而且人比较少，参观体验良好并且市郊铁路12块钱直达，附近酒店、民宿也比较便宜，附近还有长城景点，适合周末放松；&lt;/li&gt;
-&lt;li&gt;阳台山是跟随社团去的，总体体验参考下图：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 936px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 120.35087719298245%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAIAAAB1KUohAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEPElEQVQ4y4WUbWwTdRzHaxwmutEN5lxSQozGEF8hb/ZmQ9gQnYxVcJIx4xYXEoTNBJhjLAKOzQdwxjeaTDFGxMS4mODY1g1BMoKRpWSOrWXtPfyv196t6/Wu5R57be+xZ9o616oJ31zu7sV9/r///3vffG2GYTJcSpBVKhIJEUQ4J0VRLMvK5LX6zL4WKJPJ2AzDwEMkwAJ+n8/j9QQwDACQzsH/lWmuLZGFFUUBAEVg2OPxQBAMw9Di4iKCIDACoyhAYDgSiYRXVoJBHAAQIohUKrUGp9Mpr9cbCAR8Ph9BEr6lJRzHwyvhQAALBUMQBKEoCIfDFEUZhqHrupmfnpNNVVUYQYI4jmEARRGO41RNU9Jp62HKwpZlRSlqaem+3+/3er0IDJPkMkmSkiQlEgmOY2OxmJxM8hzHMIwsy2xOoihalmUzdB0AQBAEw9A0TbMsm06nE4kEz/OSJEYpiiSIhJSIMQxBkpIo0TQdiURYlv0bRlCUpulolOJ5nuO5eDyeTCaj0ShFRWVZ5jiOpmmKojiO41iWYRhJSsiyvHrmnMsAgOXlZY/HCwDw+30AgLm5OQiCBEEQRZFl2dxeJJ7nk8lkDrZspmkAACA/FAqGUBSFICgUCilK1jBN01VVfYhhOI673W4MYBiGLfl8AGTvGIaRJMkLwlrUCnK29qv8MApDcD4GsRgTjVK3f58VRSn/UX7M6lU8WdWMcEzUDVPXTcPMmKalaqai6IqiqZqhKFpa0VTdUjVL1a3CdOfiqRkwyQNKRiKSn2Dv3F36ZXzhzwVh3sMv3E9MXrs+8NHgxUujo2O3pmY8qmbksFVYSiRv3oWnb83P3Jy/R6Qu/3Rlb5Pz/PC3X3w9+snwyIXPBjoPOw8dbT90+O1Tp/tkWf7nLFk4gGPbtte0NNWdat15tPP1oXO9ja/VNTnranfWvNRc8+mHZ7rf3dvT/0Z3z56unoOCyBfBJIHvczZ8fuzliQ9qx3q3fnWhq37fi60Hd7U4m3c37RgaPN7RVvfOkfoDnVuP9TslSSiC2Xhs+OPTg2d7zw/1nztz4puLXx4/2XXivSPvn+wbONs3Pvnzpcsjrukfv/t+5MrkD6qmFMEIABs3PWV3bLQ7Kh8pfeytjo7du/Y0v7q/vb3N2bwf8/myHVDcIWtuIyhSVlVmr15fUV1eUlbS2vZm5abn6nc0Dgx21zY03Lv9m0V50kKMEwRJFAqbKAvDKGJ3lG/estnxjKOkYl1L64Eqx9MvbKupq93+7JbnZ91uhcZVJhhj+QfxuGmaRTAEw4+WrSuvrlhfabeV2F5pany87IlSe2nlkxsqqzbM/zFjMaiekhRNUxTl35NFSbo6MT455XJNucYmxmbdd1xTrunpqWu/Tt+4cV1iGcsyMgUFaBgZ3TCNXBnZCsvVyliaruX39r8myWmVk1IP+CQnpQ3T/AujfZb6Cl5XAQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;活动结束发的说说&quot;
-        title=&quot;活动结束发的说说&quot;
-        src=&quot;/static/9b961d7a0bc2cb205968fd7ffce17f62/14e2f/mountain.png&quot;
-        srcset=&quot;/static/9b961d7a0bc2cb205968fd7ffce17f62/5459c/mountain.png 285w,
-/static/9b961d7a0bc2cb205968fd7ffce17f62/2cee3/mountain.png 570w,
-/static/9b961d7a0bc2cb205968fd7ffce17f62/14e2f/mountain.png 936w&quot;
-        sizes=&quot;(max-width: 936px) 100vw, 936px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;活动结束发的说说&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;h2&gt;运动和减肥&lt;/h2&gt;
-&lt;p&gt;这一年可能唯一能称为标志性的事件就是我的体重人生中第一次降低到了标准值（BMI&amp;#x3C;24）。当前最低下过150斤（149.5，下图，是前一天晚上运动后第二天早上吃饭之前的结果，不具普遍意义），平时一般稳定在155左右。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 94.73684210526315%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsTAAALEwEAmpwYAAABVklEQVQ4y72TuW7CQBCG/d6Il6GloKJDQm64uoAbQE6UyAhiI2AXr/eYnZkIjCwU7hT5Nc0cn37NSBMQkfeez0REzCyEmE6ncRwLIapiJWMMAASIKKW8hFerVb/fHwwGy+XyHK66eZ4HfEPn079sKwW3yHIdPOoqTEQ3nZ/RFVhrHUXRfD4Pw3A2mw2HwyzLLm92HbbWtlqtWq1Wr9cbjUaz2ez1esyMiI9hRJxMJmEYttvtTqfT7XZHo9GzzswMAIgIAFrroiheu7YxRgihlNJaSykB4AX479d+AUY+LUT/7TxWInVmDfbDqNx74SGxxRZcjrDzzhDeg6V30rtPq6JCps5+O/OmROKKnXdjJRZW39koOHQummXh3ajY5Fcfq0yDcpaIkE7CYzDzV5IkiwUzbzYbrTUibrdb5xwiGmMefFWWpuv08BL7/d5aS0RCCAAgojL9Aez5Vp5FECCRAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;当前最低体重&quot;
-        title=&quot;当前最低体重&quot;
-        src=&quot;/static/7a74569c5804e5b7dba2bca25e8e009e/dabea/weight.png&quot;
-        srcset=&quot;/static/7a74569c5804e5b7dba2bca25e8e009e/5459c/weight.png 285w,
-/static/7a74569c5804e5b7dba2bca25e8e009e/2cee3/weight.png 570w,
-/static/7a74569c5804e5b7dba2bca25e8e009e/dabea/weight.png 1080w&quot;
-        sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;当前最低体重&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;自从我记事开始我都是在超重或者肥胖的状态，且深受大体重的困扰，比如体力不行，运动成绩特别差，中考体育几乎全员满分的情况下只得了41/50分等等问题，没有得心理问题已经是万幸了。大学第一学期在一学期没有出过校、天天吃食堂的情况下降了30斤之后，之后的情况虽然比高中要好多了，但是仍然是在超重状态，且在正负20斤的范围内徘徊。直到研究生第一学年结束后，体重仍然离标准体重差了十几斤。终于有一天，我的体重终于降下来了！&lt;/p&gt;
-&lt;p&gt;其实根据这5年的经验，我觉得&lt;strong&gt;减重最重要的还是饮食&lt;/strong&gt;，运动用处不大。&lt;/p&gt;
-&lt;p&gt;拿大一上学期和大三下学期举例：这两个学期，我的运动量基本都是一周2-4小时羽毛球的水平，但是大一上学期我每天吃20块的三餐，午饭晚饭基本就是一份鸡肉（因为鸡肉便宜，而且除了肉没很多骨头之类的其他配料）、一份青菜和2两米饭，完全没有出去吃过（那一学期就没有出过学校），除了有时候吃点水果，完全没有零食和奶茶等三餐之外的东西。而大三大四时对吃基本什么限制了，有时候晚上2两饺子+鸭削粉丝汤，中午30块的香锅，每周还出去吃2、3顿。这样的最终结果，就是大一上学期220斤起点少了30斤、大三180斤左右的起点最后甚至好像还重了5、6斤的样子。&lt;/p&gt;
-&lt;p&gt;研究生期间的情况其实也差不多。到目前这三个学期，第一学期2-4个小时羽毛球，第二学期没有羽毛球，平时基本没有其他运动，但是5、6月保持两三天一次&amp;#x3C;6配速的5km，第三学期4-6小时羽毛球，吃的情况差不太多，但是体重变化方面，前两学期每学期-10斤左右，第三个学期下降得比较明显，快20斤了，但是我觉得还是因为吃得少了：这学期因为懒得去学校，所以早上基本每天一碗纯麦片，中午吃万柳的比校内食堂种类和量少太多、但是价格贵不少的食，这样摄入得少，体重也就下来了。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 702px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 135.78947368421052%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAIAAADzvTiPAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADRElEQVQ4y41U32sbRxDW/9yWUEKgpu5DSkMf2jwEanADptCHFrdEFY4RKHaJLJ8NsmtZsmRZP3J3OkmnvR97t3u7OzvlbuVzYxe3H4fYHc23M/PtzFYAIIoifAApZa1WGwwGiKi1Lu1mbdt2HMcVRMwKSCn1LYwT5xwA8N+glNJaV7TWjLE0TaWUD53+GfMhKkqp/f39w8PDTqfjOM7BwcHZ2dnjtDK7CgBsbW1tbm7u7u72+/2dnZ3j42NELBM2fgEhQRAYe0ITxlhORsRqtbq9vV2r1VzXbTQaw+HQCGFoUPw2V17DGSOikCIgJMuynKy1juM4TVNKaZqmZSgAKJVDxNHNTduyzFZkmckrJ4dh6Pt+FEVJkpSFAQBjLI+gtVQqWvrJcuXQWCvFGROZ0KArj6hSrkCDx1kGkEml4c6eky3LopQ+VNiyrKOjo9K+Vi4I9vb2Wq2WECInt9ttQsi9yEKIk5MTy7KUUjkT1/zFYlGv109PT3MyAKRpGgTBvbBhGNIC5oYMKKXz+ZxzLoTQJu3ySgBR3a41Iph+MPrlwdefylXQ63suO+a+YMb+8V+39RftCUUxF2n0ejH9afnhx0XeCb+t3A6LfvWdEU9eLyaI+IvvdFn8O5n97Ns/zMdHlBTk4pDDyH86vdywu59PO4j4cnb9nvov7MF5Gj2dXiLiN86gGZPvZsOv7KvPRhdviHdHbsarL+2r5+7VhtNDxFfeTZOuXrrDThpv2leI+P1seEyDV/PxC/f62aT7R7C4I7+Llk8mnS8+XH46vVhHjpfP7X47CZ9McsvX7uA9Jd/Orjfs3ic3f1XJ/JYMMObJ23BeDxdvwwUCvPNnk4z9GfkzwffD3K++dEeMNmPSiJZVf3YWrNbzHMcxqCKDIos0TeMoMldgBkAqxaNY8qzolnxPSagAKqaBAECCEkoJJSEfKJBKCiVlYVEqP1sBGAdptkpVKKXn5+etVsvzvPLOH3997p4hM3pJkggh8H9Dlx1WTsKygOu6juOYCX/8xIpGDPr9LAxZlo1Ho8sCvV6v2+26rmveqntVJEnieV5eMyJy3wchOOekAGNMKRWGISGEc/6QLKVkjK2nqiwDPsZ/yvY3n0T/j2n5i9wAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;跑步&quot;
-        title=&quot;跑步&quot;
-        src=&quot;/static/de8f4275f06fce3ddd14240466ff53e2/7df1d/running1.png&quot;
-        srcset=&quot;/static/de8f4275f06fce3ddd14240466ff53e2/5459c/running1.png 285w,
-/static/de8f4275f06fce3ddd14240466ff53e2/2cee3/running1.png 570w,
-/static/de8f4275f06fce3ddd14240466ff53e2/7df1d/running1.png 702w&quot;
-        sizes=&quot;(max-width: 702px) 100vw, 702px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;跑步&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;现在既然体重已经回归正常体重了，所以我现在也没有继续控制体重了，想吃啥吃啥，有时候甚至还吃点零食，所以最近体重没有继续往下走了。啊，不胖的感觉真好。&lt;/p&gt;
-&lt;h1&gt;技术、工作、职业发展&lt;/h1&gt;
-&lt;h2&gt;浪费掉的暑假&lt;/h2&gt;
-&lt;p&gt;7月，因为自己懒，在实习和选择了回家过最后一个暑假这两个选择中，选择了后者，并给自己找了个借口：继续写yaarxiv（[GitHub](&lt;a href=&quot;https://github.com/ddadaal/yaarxiv%EF%BC%89%E8%BF%99%E4%B8%AA%E9%A1%B9%E7%9B%AE%E3%80%82&quot;&gt;https://github.com/ddadaal/yaarxiv）这个项目。&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 815px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 44.91228070175438%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABvUlEQVQoz3WPX0sUURjGB/+kjjOzc86ZmfecM2f+njM7k7os5moKK1GIRV6tW22bU1DdpN4IgmC34ZewQrwJUwQLEqGb6DNEn6APEut6EVTw8PLC+/x4n0czEZgIBg1Pt8FCYCAY6u3esOUZNvSv/5NWIaxC2L0pEXM+jhhx2d0pIQUvGyF2mIGYfWn4pzQLUwvTo0eqWRUDJnBgRx3VzMVpV63UAhPRkQqYmI7ZtO/8U1fw25acz8SgCQzYu5a6If3TrvpSZkXIX87HMecTkW+Tv+B+gPerciETAxbllB+01WIhPq1lZ0+yhhQHbTmdiv2WdD1m4qsWNmG2wzQdUfPyc0OKYQssTD88VF+fVb+/qJ48VvXUP3yg3iwnh21FnB7cq4CojulQxdN8oIjQjx11XmbHHdmdCS9K9XMj/7GeXzxV9YR/e5792so/ryniUN0G8BindFZEr+t17f60lGFQziV7K8XuUrZ9W+4s5b15R23eqiaB2FyUu8vFq2aax6HLomYRrs5EN9N8pzGrCTnpsGgU+SSaMLx4BPlufF13glESQDKJPDHuhCBrY9gHHsu8hlzfckOeFtcw+w0+KVZQgadyBgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;commit记录&quot;
-        title=&quot;commit记录&quot;
-        src=&quot;/static/cbb94753edc6ba0bccb798532e18b695/d660c/yaarxiv.png&quot;
-        srcset=&quot;/static/cbb94753edc6ba0bccb798532e18b695/5459c/yaarxiv.png 285w,
-/static/cbb94753edc6ba0bccb798532e18b695/2cee3/yaarxiv.png 570w,
-/static/cbb94753edc6ba0bccb798532e18b695/d660c/yaarxiv.png 815w&quot;
-        sizes=&quot;(max-width: 815px) 100vw, 815px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;commit记录&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;这是我今年最后悔的一个选择。&lt;/p&gt;
-&lt;p&gt;这个项目的主要功能2020年9月就已经完工，可是这一年多时间了，一点推进的迹象都没有。上个学期整整三个月，这个项目就发生了这三个变化：加了个logo，注册了个域名，上了个HTTPS，没了。&lt;/p&gt;
-&lt;p&gt;我本应该从上个学年这个项目的情况推测出这个项目完全没有前途，结果仍然把宝贵的暑假时间投入到这个巨坑中，结果在开学之后发现认识的同学个个要么实习、要么学生工作、要么论文在投，各种方向做得有声有色（至少能往简历上写），感到十分后悔。后悔归后悔，想着赶紧推动另一个实验室项目，结果在整整一个月的时间内项目（又）一点的动静都没有，连个会都拉不起来，连个需求都理不出来，焦虑感直接拉满。那段时间找各种事情来做，做leetcode、做tidb的实验、各种看新技术，但是由于是焦虑驱动的，根本无法坚持下来（leetcode刷了几天没刷了），而且碰到难题无法静下来debug（比如tidb实验的一个bug到现在都没de出来），所以那段时间也可以说是一无所获。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 193px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 107.7720207253886%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAIAAABPIytRAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVklEQVQ4y6VTu24UQRDcACc44R8IICAi4AsQIIFEQAABSPwAQrJsiJFAjvkAZCwwJISYCPCRYSEBxg6MOD+A1flx0zPdPa+d271btDene1nYSHQ0W9s7XV1Vm5T/UcnwQ95qSSlDCN770God7A6ZB4Asy5iplRejH+chTX/XNzfq9Y2dnd3hV51OpyxLRLW/t5umaaPRcD4kox1t73wI1Xzv/cHJ7XZhrI3UiqKdIKLWmogym31cX7746Mrl2asrm9+Cy4hJa42IxhhmJiJjLTMbY6y1RJQIIRARALz2r5cXk2sTx64ff/d1ybIFCUopIQQRyW4RUbPZVEohVnhS3WcMa/bWr26tTT2dmZ6/v/7ru7NOa22MISLbHcjMcaDpVjVZShkpgQRnXO7z3OfWWACIeGxARKUUM8f58ZAAABFF5hUr0RRQ8QQA7Fa8RSkVb4l4bEgimSiJcxVVrbVzrsJNhROTddZo08ejYMzcEwwRx4SJuFRyb38PCcfw2J/ETSKxaAxR5VDEgw/BhcxnY3js7/nc9zOKEQ9IOD1/7/yDS0/ezrV8LiRoo4f7e7QP+gkAAsTZmXPJhWRqbqZsl6hQsxZCdH3Ggc8xZH0/e5Fifvhq9tbj289qC1uN7dXNNUDQzH3/j965LMrPP76cunvm5J3T71dqwQaFqrfz4WqDBMNmaaU2efPExI3JxU9vvPYgYYT232JYMdQm3U8XPrx8XnuxvfvTGjugPZywGLpIuJ8kIYQ1pvB50Y2tADFI2OE793GpJEj4V5/H8N7/PIofIdjh+B93tLvxh7zMzAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;为了缓解焦虑而做leetcode，无法坚持下来&quot;
-        title=&quot;为了缓解焦虑而做leetcode，无法坚持下来&quot;
-        src=&quot;/static/c845d8c61b84e75cb00c7c0bc0bf5d3c/c85ac/sept-leetcode.png&quot;
-        srcset=&quot;/static/c845d8c61b84e75cb00c7c0bc0bf5d3c/c85ac/sept-leetcode.png 193w&quot;
-        sizes=&quot;(max-width: 193px) 100vw, 193px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;为了缓解焦虑而做leetcode，无法坚持下来&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;直到项目终于开始之后，我像是抓到了一个救命稻草一样，把我研究生能否有任何值得一提的成果全部压到那个项目上去了，所以接下来几个月基本全身心投入到了那个项目的开发上去。做了2个月之后，项目终于初步可用并内部上线试用了。但是现在想起来，那个项目只是个业务逻辑稍微复杂、涉及外部系统有点多的CRUD，仍然只是个玩具，仍然不具有什么含金量，并不能拯救我的简历，焦虑如闪电般归来。&lt;/p&gt;
-&lt;h2&gt;工作和职业发展&lt;/h2&gt;
-&lt;p&gt;明年就要找工作了，上半年暑期实习，下半年秋招。最近刷校内的BBS，总能看到很多同学的求帮忙比较offer的帖子，现在大家一般都不会只看薪资，普遍更重视职业发展、稳定性等因素，这也造成选择一个比一个难。而我因为不愿意做行政工作，也不愿意加班，完全没有做过科研，选择面瞬间少了很多（比如本校同学热衷的选调对我来说就完全不是一个选项）而且我很讨厌（怕）面试，理想情况是面个1、2次、拿到不那么差的offer就停止了，所以从某种角度来说可能明年也不会那么纠结（当然这种拿着多个offer的纠结和拿着1、2较差的offer是两种纠结）。&lt;/p&gt;
-&lt;p&gt;在职业发展上，纯业务的发展路径是不可持续的：业务是可以复制的，而且目前互联网的发展明显出现了瓶颈，各种“优化”层出不穷就是一个证据。另外一条路是走纯技术路线，掌握并精通业界的实用技术，如分布式、数据库、UI等，虽然这才是做“技术人”的正途，但是其难度较大，门槛较高（比如应用规模必须大到一定程度才会遇到分布式的需求和对应的问题，但是做实验室的玩具项目基本就完全用不到这些问题；比如只有面向关注UI的用户才会对UI提出要求，才能倒逼去学习和实践CRUD之外的UI技术，但是一般内部的业务都不重视UI，能用就行了）。这种需求的培养的脱节已经被受到很多批评了，但是现实就是这样：工程确实不是学校的重点。&lt;/p&gt;
-&lt;p&gt;我之前的技术栈都在web上，但是受限于实验项目的需求和人力（毕竟只有一个人），而且我有种“用不上的东西就学不进去”的坏习惯，所以无法通过项目学习公司想要的高的技术难度上，而需要写没什么简单、但是量大的业务代码（写这些成果在找工作的时候基本没有用，面试官只会觉得没什么难度，大家都能做。其实到目前为止我手里的项目、比赛在找工作的时候基本没什么含金量）而如果换方向，因为我已经在这个方向上投入了这么多，现在距离找工作也只有几个月的时间了，贸然换方向存在极大的风险：很容易最后变成两边都是半吊子，两边的工作都找不到的问题。其实，我现在掌握的技能已经太过分散，什么都会一点=什么都不会，如果不背面经，连正经大厂实习都不好找。&lt;/p&gt;
-&lt;p&gt;除了开发，我仍然参与搭建和维护实验室的一些基础设施。我也认同管理、基础设施等看似和技术无关的东西对于软件项目同等重要。但是同样是因为当前手里的项目难度和规模上不去，这些管理和运维的经验在业界看来就是个笑话，还不如不写，省得到时候面试官想，就这？&lt;/p&gt;
-&lt;p&gt;说到底，这几年所做的工作基本对找工作没什么帮助。所以最后找工作，还是只能像本科生一样，靠算法题和八股文。算法题方面，由于我算法水平很差，所以在11月开始坚持每天一道LeetCode的每日一题，到现在能不能做出来另说，起码看到题不会慌了，也是一个好的进步吧。而八股文方面，还是在这个假期好好静下心来背，就当是一个更大的、更重要的期末考试了。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
-    &gt;
-      &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 52.28070175438596%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfklEQVQoz42QS2sUURCF+yfr2lX8H4JEghCIuFSZxYgiSEQTsshMjEl3D92d6U73fVXd90PmdhIGV36ruufUrTpUwSidpklKGZ6I0VkM1jjvOeeIO8s7H/bwmWIYBkJISinGmDKEsqGrk9M+BCGED2HWH+xHYoxFePSeGMdx2/fOB++dcy6ltD7/fXNZXSyWi8O3PispbypC8Pvj8sQYY0gh5r+71uqm7rvhdPn55PBN2otRMGDOu1mxYgxWzZYFNFIBwDQRxplSSlv3T8aCZUAIACCUCiGMMVprKaVSChGFELmFM0olojZaaaWU1FoViEgziAAcOBfpf5hjW2u11labZmirbW2NBQC5A+cCEQGhvqudcUKylv5Zd8tPZ8eXzWlhjCGEMMpWm/Oqu+WMz8/+vl9XV4wySilnvGrLVbkqu/L79fG7Xy9efXv+c3NUSCk554KLxdmHezKAAM4ZAjZ922wbBMwXgXEab5vybmy/XJ28/vry4P2zH5uPfwE6UzYowF46qwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;LeetCode&quot;
-        title=&quot;LeetCode&quot;
-        src=&quot;/static/e186ee019ef60068086eff35bccf9dbc/267c0/leetcode.png&quot;
-        srcset=&quot;/static/e186ee019ef60068086eff35bccf9dbc/5459c/leetcode.png 285w,
-/static/e186ee019ef60068086eff35bccf9dbc/2cee3/leetcode.png 570w,
-/static/e186ee019ef60068086eff35bccf9dbc/267c0/leetcode.png 1140w,
-/static/e186ee019ef60068086eff35bccf9dbc/81753/leetcode.png 1396w&quot;
-        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
-        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-        loading=&quot;lazy&quot;
-        decoding=&quot;async&quot;
-      /&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;LeetCode&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;h1&gt;日常学习生活状态&lt;/h1&gt;
-&lt;p&gt;一个正常的学习路径是入门的时候先学习掌握基础、个人技能，之后通过项目学习多人合作以处理更复杂的问题，可是我到现在的路径是反过来的：本科特别推崇多人合作，基本所有项目都是多人合作完成的；结果上了研究生之后项目却都变成个人做了，甚至实验室都变成了甲乙方关系，实验室只管提需求，我把需求分析、设计、实现、测试、部署、运维等事情全部搞定，甚至还得去push甲方，否则东西做完了，又没人用，重蹈覆辙。&lt;/p&gt;
-&lt;p&gt;在这个学期之前，我其实一直在找能够一起做项目的同伴，最好还有大佬可以抱，还不用自己动脑想做什么了。但是现在已经完全放弃了，或许一个人做也挺好的，毕竟每个人都有自己的想法，不能强求，能依赖的都只有自己。换个角度看，读研和工作也没什么区别，研究生三年可真就完全变成了用三年经验和工资的差价换一个研究生学历了。&lt;/p&gt;
-&lt;p&gt;由于就是一个人做项目，加上课在研一都上完了，所以我的日常生活也基本变成了“一个人的狂欢”。白天在宿舍/实验室一个人写项目，有问题去微信上问问甲方，饭点到了吃饭，中午到了午睡，正常情况下白天一句话都不用说。实验室也能不去尽量不去：宿舍又方便又暖和（或者凉快，取决于拒绝），平时又没有人非常自由，不去实验室还可以避开早晚通勤高峰，宿舍还有配置比实验室高的电脑，因此除了老师要我去实验室，以及宿舍区的食堂实在太难吃了，有时候还得去学校改善下伙食之外，实验室基本都看不到我。每天最开心的时候还是晚上有时和新认识的其他同学打打球，晚上11点后舍友回来了和室友聊天的时候。&lt;/p&gt;
-&lt;p&gt;虽然最近几个月的生活似乎就是copy-paste，几乎没有什么变化，但是这种确定性还是挺让人心安的。要是以后我的生活也能够像这样，每天稳定地做着自己喜欢的事情，我也已经很满足了。&lt;/p&gt;
-&lt;h1&gt;又是一个转折点&lt;/h1&gt;
-&lt;p&gt;有时候我在想，要是两年前我选择了工作，现在是怎样的呢？现在是股票翻倍，升职加薪，还是被优化了，现在正忙着各种找下家呢？有没有后悔当时没有保研呢？要是当时加入了AI的浪潮，现在是在读博做学术，还是也是在考虑找工业界的工作呢？现在是在拿着几篇论文意气风发呢，还是idea想不出来、实验卡住了，和现在一样、甚至比现在更焦虑呢？在做出某个选择的时候没感觉那么重要，可只有回头看的时候才知道人生的轨迹被改变了。这也说明，没有最好的出路，只有适合自己的才是好的。希望明年结束的时候，能够找到一个满意的出路吧。&lt;/p&gt;
-&lt;style class=&quot;grvsc-styles&quot;&gt;
-  .grvsc-container {
-    overflow: auto;
-    position: relative;
-    -webkit-overflow-scrolling: touch;
-    padding-top: 1rem;
-    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
-    padding-bottom: 1rem;
-    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
-    border-radius: 8px;
-    border-radius: var(--grvsc-border-radius, 8px);
-    font-feature-settings: normal;
-    line-height: 1.4;
-  }
-  
-  .grvsc-code {
-    display: table;
-  }
-  
-  .grvsc-line {
-    display: table-row;
-    box-sizing: border-box;
-    width: 100%;
-    position: relative;
-  }
-  
-  .grvsc-line &gt; * {
-    position: relative;
-  }
-  
-  .grvsc-gutter-pad {
-    display: table-cell;
-    padding-left: 0.75rem;
-    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
-  }
-  
-  .grvsc-gutter {
-    display: table-cell;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-  
-  .grvsc-gutter::before {
-    content: attr(data-content);
-  }
-  
-  .grvsc-source {
-    display: table-cell;
-    padding-left: 1.5rem;
-    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
-    padding-right: 1.5rem;
-    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
-  }
-  
-  .grvsc-source:empty::after {
-    content: &apos; &apos;;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-  
-  .grvsc-gutter + .grvsc-source {
-    padding-left: 0.75rem;
-    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
-  }
-  
-  /* Line transformer styles */
-  
-  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
-    content: &apos; &apos;;
-    position: absolute;
-    width: 100%;
-  }
-  
-  .grvsc-line-diff-add::before {
-    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
-  }
-  
-  .grvsc-line-diff-del::before {
-    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
-  }
-  
-  .grvsc-line-number {
-    padding: 0 2px;
-    text-align: right;
-    opacity: 0.7;
-  }
-  
-&lt;/style&gt;</content:encoded></item><item><title><![CDATA[2022年总结]]></title><link>https://ddadaal.me/articles/summary-for-2022/cn</link><guid isPermaLink="false">/articles/summary-for-2022/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Fri, 31 Dec 2021 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;转折点&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[ddadaal.me RSS]]></title><description><![CDATA[ddadaal.me RSS]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 31 Dec 2022 01:51:42 GMT</lastBuildDate><item><title><![CDATA[2022年总结]]></title><link>https://ddadaal.me/articles/summary-for-2022/cn</link><guid isPermaLink="false">/articles/summary-for-2022/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Sat, 31 Dec 2022 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;转折点&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;又是一个转折点&lt;/strong&gt;，是2021年总结的最后一节小标题。不出意外的，2022年确实是一个&lt;strong&gt;转折点&lt;/strong&gt;。&lt;/p&gt;
 &lt;h1&gt;玩具项目开始“玩真的”&lt;/h1&gt;
 &lt;p&gt;上半年，继续维持2021年下半年的状态，像是做个玩具一样，在一个人的宿舍没有压力地写着实验室的项目。&lt;/p&gt;
@@ -669,7 +299,7 @@
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;PR&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;作为一个长期把微软作为第一择业目标的纯粹的微软粉，暑期实习选择了上海的C+AI大组，并在上海数十天的40度的天气、以及此起彼伏的疫情下onsite了整个暑假。这个暑假也是第一次和同学租房（在苏州时租的公寓），体验了一把老破小，过了两个月自己买菜做饭的居家生活。体验很不错，但是决定之后再也不租老破小了，高端小区买不起，多花几百块钱租一套体验一下也是很不错的。&lt;/p&gt;
+&lt;p&gt;作为一个长期把微软作为第一择业目标的纯粹的微软粉，暑期实习选择了上海的C+AI大组，并在上海数十天的40度的天气、以及此起彼伏的疫情下onsite了整个暑假。这个暑假也是第一次和同学租房（在苏州时租的单人公寓），体验了一把老破小，过了两个月自己买菜做饭的居家生活。体验很不错，但是决定之后再也不租老破小了，高端小区买不起，多花几百块钱租一套体验一下也是很不错的。&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -752,36 +382,433 @@
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 524px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 494px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 40.70175438596491%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABeElEQVQoz3VRy07CUBDtR0jFyMLe2zctFEOThgrU8qrQ0kTZaNx168aNWyWKK7/AJfEXXLj1S0hMxA3fcMy9SmMILk7mzsydM3NmBFVVsQlFUbAtLisKTE3DkevA8xtoNptotVoIggD1ep3XCf+RbZJqmgaJHKDZCPH+eovFxxsWiy8sl59YrVaYz+eQJAkCKySEgFIKWZa3TpY3owTmoYfs5gpPD9eY3j9iOr3DbDZDlmWcQ7BtG/1+n4/ueR6oLINSBbKs8CnXYM24pQT7xT3sFIoQxQJEcReiKKJUKvGmgq7rqNVqcBwHlmVB01RUqwYMQ+cyWT7Hr2+aJmzbQrnMUOb+WoXASKIo4oiTFGenJ3h5vsTF+QRBcIzBYIA0TTEcDpEkCeI45nYymWA0GqHdbnN1hmH8HIVJ7nQ6/EpM+nicIIq6nMD3fYRhyAnYH0bOwJqzfLfb5Wvq9XqclK1FqFQqcF03PwqzhNDcX8fW70383S+T/A3wwQjK2MyjWgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 74.03508771929825%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB7UlEQVQ4y51TWY7TQBD1NYKUyeYVx2Rx4niNdxI7UmIlMGPxQ+YjI5gvNBJC4gTcgpNxloeqJKMMApHw8VRd3eVXr163hV1V4cPHRxyPR5xOJ+z3e6xWK5RliTzPcTgcEEURNpsN55qmQZZlKIrC8XcIxesE79+9QV3XuKtrxHEM3/fhui5s20aSJLAsi/dpr9frodPpoNvtot/vc04QRRGSJEGQghpi8QRNVRH4PpOFYQjP87Ber1ldmqbIsozXpJ7U0pnjOFy7XC65qaqqEMyH7/C//YC1cHB7+xbb7ZZRVRWrIpX0YaOYQGvam0wmME2TyabTKdsgjKZzGKYDY6hzcXNIxdTxfCxan+eDwYBBexR5ZNex4SzmmM/nCIKAQWNQJCVE+ifz/wZhsVjAdT1WR17MZrNn3akrFTbxn4TkAZGde9EckidEdA2pQEV05Q0kSYSqKlBkmfNz4ktIhcYzehJlWSBYJvD8BGGcwvMDZGnKt33xyOQhEdJfEIYpTvcFvjyVyGwd9lSHrGjQNPXykcfjMXtISi3Lwd0hxOk+hDOWMNIl9AfSVT4K5Bndarvdxs1NG61WG60XXfRF8vB58UUKPz3G+Pq5Qp4X2O227ONwqF/9XH4RJtEESWTipT7EaPQKhmH8F1FD+BMaLtWx0beVgQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;MS Offer&quot;
-        title=&quot;MS Offer&quot;
-        src=&quot;/static/98e89f68f7e3faa3fd7f093eb4bbce2e/b6716/ms-offer.png&quot;
-        srcset=&quot;/static/98e89f68f7e3faa3fd7f093eb4bbce2e/5459c/ms-offer.png 285w,
-/static/98e89f68f7e3faa3fd7f093eb4bbce2e/b6716/ms-offer.png 524w&quot;
-        sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
+        alt=&quot;已接受MS Offer&quot;
+        title=&quot;已接受MS Offer&quot;
+        src=&quot;/static/a084e24d73f9ad0b3196beb9992aa20d/11eb2/ms-offer.png&quot;
+        srcset=&quot;/static/a084e24d73f9ad0b3196beb9992aa20d/5459c/ms-offer.png 285w,
+/static/a084e24d73f9ad0b3196beb9992aa20d/11eb2/ms-offer.png 494w&quot;
+        sizes=&quot;(max-width: 494px) 100vw, 494px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
         decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
-    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;MS Offer&lt;/figcaption&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;已接受MS Offer&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;兜兜转转又回到了原点呀。&lt;/p&gt;
-&lt;p&gt;本科前两年半时，我拿定主意直接工作，却在最后时刻，抱着想看看有没有新的机会的想法，极限转弯踏入了研究生的大门。而研究生的前两年的体验让我认识到高校做工程不靠谱，回去看业界的机会时，发现实验室做的工作不能让我踏入一个所谓更“高阶”的工作，我能投向的业界工作和读本科时基本没有区别。后来，当我意识到，当前国内大环境下体制内的技术工作也并非一无是处，想把握北大应届毕业生这个机会尝试体制内的机会，但却错过了这个时间窗口，最后仍然投向了微软，和三年前的唯一的区别也就是大组（C+AI vs STCA）和工作地点（苏州 vs 上海）的区别了。&lt;/p&gt;
+&lt;p&gt;本科前两年半时，我拿定主意直接工作，却在最后时刻，抱着想看看有没有新的机会的想法，极限转弯踏入了研究生的大门。而研究生的前两年的体验让我认识到高校做工程不靠谱，回去看业界的机会时，发现实验室做的工作不能让我踏入一个所谓更“高阶”的工作，我能投向的业界工作和读本科时基本没有区别。后来，当我意识到，当前国内大环境下体制内的技术工作也并非一无是处，想把握北大应届毕业生这个机会了解一下体制内的机会，但却错过了这个时间窗口，最后仍然投向了微软，和三年前的唯一的区别也就是大组（C+AI vs STCA）和工作地点（苏州 vs 上海）的区别了。&lt;/p&gt;
 &lt;p&gt;说遗憾肯定是有点遗憾的，很多人都向往的北大学历最后在找工作方面并没有发挥什么用处。但是这几年让我认识到，人是会变的，现在的想法只能代表现在，不能代表未来。甚至有几个被项目的事情困扰的晚上，我还在认真考虑现在去科研是不是还来得及。考虑了这么多，最后只会发现，一切都是有好有坏。在微软，起码短期内实现Work Life Balance、收入还可以的“小目标”实现起来还是比较简单的。虽然世界大环境对外企不利，但是世界变换得太快了，几年后的日子谁又能预测得到呢？&lt;/p&gt;
+&lt;p&gt;虽然终点一样，但是心态不一样了。在体制外，没有各种各样的限制，没人管的另一面就是自己为自己负责。这三年大环境的变化让我意识到，和体制内不同，公司是要赚钱的，我们和公司只是合作关系。发展得好，一起吃肉；发展得不好，分道扬镳。换公司（无论是自愿的还是非自愿的）对任何人来说几乎是肯定的事情。一定会发生的事情也没什么需要担忧的，需要做的只是为它做准备。公司的目标是为客户提供服务赚钱，那我们也得想办法增加&lt;strong&gt;自己作为个人（而不是作为公司的一员）对他人、对社会的价值&lt;/strong&gt;。目前来看，实验室的项目似乎迈入了一个正确的轨道，采用的客户越多，越能体现我的价值。如果它真能发展起来，那对我个人的发展来说是一个大大的加分项。&lt;/p&gt;
 &lt;h1&gt;迎接未知的新生活&lt;/h1&gt;
 &lt;p&gt;这一年像是2019年的重演。升到毕业年级；暑假去外地微软实习；纠结了几个月后强势转向，2019年从就业选择了保研，2022年，从偏向体制内选择了上海微软。甚至直到疫情防控放开前，我还在担心明年会不会又像2020年一样，无法返校过最后一个学期。&lt;/p&gt;
 &lt;p&gt;但是有一点不同：&lt;strong&gt;现在，无论愿不愿意，都得迎接新生活了&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;高中时，所有精力都放在高考，“一分一千人”，似乎一切事情高考完就结束了；大学时，毕业就是一个看得见的里程碑，想工作的同学去实习，想科研的同学去科研，大家都为即将到来的新的生活而努力。而现在毕业了，工作了，没有看得到的终点了，反倒之前以学业为理由不想考虑、或者有人帮忙的事情一下子都变得重要了起来。大到找对象、结婚、买房、下一代、升职加薪、照顾父母，小到租房、做饭、做家务等日常琐事，都变成一个一个的终点，变成了一个一个无法逃避的事情。&lt;/p&gt;
+&lt;p&gt;高中时，所有精力都放在高考，“一分一千人”，似乎一切事情高考完就结束了；大学时，毕业就是一个看得见的里程碑，想工作的同学去实习，想科研的同学去科研，大家都为即将到来的新的生活而努力。而现在毕业了，工作了，没有看得到的终点了，反倒之前以学业为理由不想考虑的事情一下子都变得重要了起来，之前遇到了可以找家长、找老师、找学校帮忙的事情现在必须得自己花精力处理。大到找对象、结婚、买房、下一代、升职加薪、照顾父母，小到租房、做饭、做家务等日常琐事，都变成了一个一个无法逃避的事情。同时，现在朝夕相处的同学们也会有自己的生活，绝大多数时间都需要自己想办法度过。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.08771929824562%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQCA//EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAGNOHbgo//EABgQAQEBAQEAAAAAAAAAAAAAAAASAQIT/9oACAEBAAEFAs4QlevRev/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAgBAgEBPwFlf//EABUQAQEAAAAAAAAAAAAAAAAAABAx/9oACAEBAAY/Amv/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEhMUFRkf/aAAgBAQABPyFXiLrUv1MOXLhtWLuV9n//2gAMAwEAAgADAAAAECvf/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAERIf/aAAgBAwEBPxDFw//EABgRAAIDAAAAAAAAAAAAAAAAAAABITFh/9oACAECAQE/EJdGZ//EABwQAQACAgMBAAAAAAAAAAAAAAEAESGRMUFRof/aAAgBAQABPxCQPaG/nqemDVB3LgHDBgD5L1sJ/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2月和目前在国外的同学一起逛重庆，在南山上拍的照&quot;
+        title=&quot;2月和目前在国外的同学一起逛重庆，在南山上拍的照&quot;
+        src=&quot;/static/92e1b72784dbf3881d4898873399ec61/65ac4/chongqing.jpg&quot;
+        srcset=&quot;/static/92e1b72784dbf3881d4898873399ec61/65031/chongqing.jpg 285w,
+/static/92e1b72784dbf3881d4898873399ec61/fd252/chongqing.jpg 570w,
+/static/92e1b72784dbf3881d4898873399ec61/65ac4/chongqing.jpg 1140w,
+/static/92e1b72784dbf3881d4898873399ec61/60e21/chongqing.jpg 1440w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;2月和目前在国外的同学一起逛重庆，在南山上拍的照&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;站在校园生活的末尾才发现，即将挥手告别的生活可能是最简单、最单纯的生活，即将离开的地方将会是之后永远的回忆。&lt;/p&gt;
 &lt;p&gt;转折点之后，我们将迎来未知的新生活。新生活下，每个人都是自己生活的第一责任人。&lt;/p&gt;
+&lt;style class=&quot;grvsc-styles&quot;&gt;
+  .grvsc-container {
+    overflow: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-top: var(--grvsc-padding-top, var(--grvsc-padding-v, 1rem));
+    padding-bottom: 1rem;
+    padding-bottom: var(--grvsc-padding-bottom, var(--grvsc-padding-v, 1rem));
+    border-radius: 8px;
+    border-radius: var(--grvsc-border-radius, 8px);
+    font-feature-settings: normal;
+    line-height: 1.4;
+  }
+  
+  .grvsc-code {
+    display: table;
+  }
+  
+  .grvsc-line {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+  }
+  
+  .grvsc-line &gt; * {
+    position: relative;
+  }
+  
+  .grvsc-gutter-pad {
+    display: table-cell;
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  .grvsc-gutter {
+    display: table-cell;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter::before {
+    content: attr(data-content);
+  }
+  
+  .grvsc-source {
+    display: table-cell;
+    padding-left: 1.5rem;
+    padding-left: var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem));
+    padding-right: 1.5rem;
+    padding-right: var(--grvsc-padding-right, var(--grvsc-padding-h, 1.5rem));
+  }
+  
+  .grvsc-source:empty::after {
+    content: &apos; &apos;;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .grvsc-gutter + .grvsc-source {
+    padding-left: 0.75rem;
+    padding-left: calc(var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) / 2);
+  }
+  
+  /* Line transformer styles */
+  
+  .grvsc-has-line-highlighting &gt; .grvsc-code &gt; .grvsc-line::before {
+    content: &apos; &apos;;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .grvsc-line-diff-add::before {
+    background-color: var(--grvsc-line-diff-add-background-color, rgba(0, 255, 60, 0.2));
+  }
+  
+  .grvsc-line-diff-del::before {
+    background-color: var(--grvsc-line-diff-del-background-color, rgba(255, 0, 20, 0.2));
+  }
+  
+  .grvsc-line-number {
+    padding: 0 2px;
+    text-align: right;
+    opacity: 0.7;
+  }
+  
+&lt;/style&gt;</content:encoded></item><item><title><![CDATA[2021年总结]]></title><link>https://ddadaal.me/articles/summary-for-2021/cn</link><guid isPermaLink="false">/articles/summary-for-2021/cn</guid><category><![CDATA[annual-summary]]></category><pubDate>Fri, 31 Dec 2021 15:59:00 GMT</pubDate><content:encoded>&lt;h1&gt;暴风雨之前的宁静&lt;/h1&gt;
+&lt;p&gt;站在2021的年尾回看这一年，发现这一年着实有点波澜不惊。&lt;/p&gt;
+&lt;p&gt;这一年中没什么非常关键的里程碑事件。没有2018年的各种比赛和活动充实我的简历（以至于现在还在吃当年的老本）；没有2019年决定保研，确定了未来三年的生活状态，以及实习，第一次进入梦想中的公司去工作；没有2020年的本科结束，告别至今对我最具意义的四年，以及研究生开学，迎接一段外表看上去光鲜、但是自己却不那么肯定的研究生生活。这一年发生的各种事件看上去都那么的日常，有时候日常地甚至连朋友圈都懒得发。&lt;/p&gt;
+&lt;p&gt;但是，可以遇见到，2022年将会是一个“腥风血雨”的一年。再次准备实习面试，再次暑期实习，参加秋招，确定出路，每个步骤都是一场不可避免的硬仗。用&lt;strong&gt;暴风雨之前的宁静&lt;/strong&gt;来总结2021年实在是再合适不过了。&lt;/p&gt;
+&lt;h1&gt;本年度的事件&lt;/h1&gt;
+&lt;h2&gt;项目和比赛&lt;/h2&gt;
+&lt;p&gt;我一直认为，不被人使用的项目没有意义。所以，即使项目是大家都觉得没啥技术含量的CRUD，只要真的有人用，我仍然会接受并且愿意花心思和时间把它做好。所以上半年除了上课，很大一部分时间投入到了data-competition.pku.edu.cn的开发上了。这个项目之前写过文章详细介绍，我这里就不讲了。&lt;/p&gt;
+&lt;p&gt;5月份的时候参加中心主办的“新手友好”的CTF比赛，结果就会做娱乐题和web题，其他题一点思路都没有，说到底还是我太垃圾了。最后趁着大佬还在睡午觉没有发力、以及相关技术（JWT）之前开发用过偷了个web题的一血奖，本以为还能蹭个30名万岁，结果比赛DDL当天早上一觉起来被卷王卷下去了，行吧。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 591px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 69.47368421052632%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAADVUlEQVQozxXM608bBQAA8PtmYhZTSbONMRnbjM6YzGTRD2bTBOKCCcZoYmZANxo6Ggx1bmwjG0LbtaVcn/d+P3t37dGuMMQySwttaOkTyjkTlymTMnRrFv8J4+8P+AEfXXj/3NkzJ7s7TaZXXzv0ytEjHW+d7j514tjpnq6e7s43e453dR7uOnr4iPl1c4fp5BvHuo93mjtMHaZDZrMJePftns/7++w2i2XwS8vgFzbL1+PWobGRQbtt+Nro8PfWy+PWb+22K/bRy2MjQ2MjQ+OWweujV27/8N25s2eA99455ZicwH+cDN+8xmN+AfNzCEiALtQ7AzmnYNc05nOh92aY8CwV8uAhb2Dm9q1LX+F+78cXPgA+6Tsf8jgw55RAo5KA8SzEcxACuqB7DtjthN3OiNsJuxwMDNIwSEI+CvP77t6IeGYG+nuBi30fUhCo8zRHQhjko9EQh4QVgVREUuRRjoFFFpFYVCQiPB7kUD+L+Imgm4MCAxd7gU97zysUqrJETKVYMsShYR6N8BhEwSAZ8eIhDxH2UuE5HAIxKICEfDg8R4a9AhwcHroEfDbQr/N0lEGiPCpTiMYTCoOxaBAPujg8QERmYb+DgudIPIgjfpaKiCJCwrMiGrRZvwHGrMMLEqfzxGKMSyhMQqGTGq2KBA3PzTruuKYmPNOT/78yJkuoJCKSgLBEQMBCk7fGgQn71WWVT8rcYlxUOULhiJhExWRGxCMiElA4WJNxNUpoIq6yiMpjUYkQWChKwo6pGwDonk4n1Ae6/CCpLCbl1Lycmo8mVSFBoXEa1Wg0rvGawmo0puIhlQgrAi7xiMbiHvcdYCkVz6Xu59dW19cyuezDbCadXX24srTws64t6/pPmr60sDA/rydEfhHHkhybiKv39VicIBgaA2rlYikWa+Syjx4ZvxrbhtE0jOaO0TQa20Z1q7m9VW/UqvVatVbZqpS3GvWmsZPTE2mS2ShuAP++aP+zY+xWKu3dv9qt/Xar1W7tv2jtH+zutX7/o/X4z7+fPnv+9OD57sGzJ639J3t7O781U8uPc8X2y5dAdSPbKBeq5XxpfaVRytRKmXrxl1pxtVpYaWzmqqXCWia9nk3nMsvF/GqzXi3kM5ubhUqlWC7l/wMdFNwBXpaidAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;CTF&quot;
+        title=&quot;CTF&quot;
+        src=&quot;/static/81c2e0463a878ed78177aed5ae029ce3/3d4ad/ctf.png&quot;
+        srcset=&quot;/static/81c2e0463a878ed78177aed5ae029ce3/5459c/ctf.png 285w,
+/static/81c2e0463a878ed78177aed5ae029ce3/2cee3/ctf.png 570w,
+/static/81c2e0463a878ed78177aed5ae029ce3/3d4ad/ctf.png 591w&quot;
+        sizes=&quot;(max-width: 591px) 100vw, 591px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;CTF&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这学期年中的时候参加了学院组织的持续48小时的hackathon比赛，由于是线上，所以差点现场一起卷的感觉。但是瑕不掩瑜，4个人在48小时从0开始卷了个类似大众点评的小程序出来，也算是学了个新技术（虽然小程序其实可以说就是个阉割版和私有版的web）。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAIAAADzvTiPAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFWklEQVQ4yx3LWY/bxgEAYP68PvYXNC2CAg7qNLGT1nXWx2p17KGVRFHD+x5yOEMOj+FNrbSS97Sym127TZ0CAfLUP1LUwPf6cWtxPzl6ER79UIBJIUuxqFcmbmy8xtmalFfJcldePCxvb8vNXb25q85vsvY6KR+L6lNdch/stx/M17/4g5+d3q9o9Ft08ls8/W8l/ZouPoaLn0LhjoBLBFa+0EFQWkJmzn2hn0mjrbngdvr+ndX7JV58DE7/GYz/TfifI/AQSvdEeUys+9S6Sbwt9VrilMjMoBb7qiOMHH4E+iPu2ujdmoNPmfyfVP6Uax/dyU/jV4+28OPx64+efC+PfyTO5elwE3qrolimtM2iQD2F4uS0d8Rttd5WfftI5QcCHqn0QBb3rrDzxZ0jPCTOzlN2SXCDzHfUW7OoS8I6wb545Ij8ZDThVtrBUn6zsceX7uTCPn2Pwb8q/FDix5Y+LpP7VX7fFXfL4rpOzhleMlKl2JfHUJd4XuYatb9UejehfO7OamW01MeXvnRLzfepc0Gdi9i7TII1dpfYabCdIYuFMFAn0JCEhc6V6rCSeisI1va8VI4bffwukK9CbYP16wxd5+iakU0EzyJ4Rr0S2zlxU3OWeqZheFyqDJnUbz2588QaCmui7Ep0w+A5sT507KFNH7r8/izfdez9Mrvuik3FqD6jyLUR5SJpkKqjbepsEusqc3cF+rBMukBL9Pk7Cqk6X8f+/aq87bLLNt9W5apkiSVkMXFIxhFxQKXBMjIqTywcoQuUywReZWgd2ufUuWD4fZffdPl1m22b/Lyu1nURu2KWJXaYcz7oY2lYYzN1xMiYp45cB3YXwRLqhaO22Lko6LoM2zxsWFLnSVukqa9mObPDkoNgiMRRhe0G213knlH/PMVbRrYsXIb+WYwqAovQTkOPIJ9gQkIS+HqS5zqpOHcx8sRDhq0CmVVod9RbJWRb0KuKXdXZRc0u2mLT5WWRERKElIY0cV3Dp0wKCs5eDF1wmCCdBUYZ2V0WnLGoJLAM3CZwG+JWcbBqiq7O66aqm6asGtfSIWVa1HA6f2AJg9DXUmSUob1kZFXGDNsssBPfZASyCK2asvs8q6YtmgZBy08KkZScePJam+4jV6ZQzUO3y+mqzmtGE+xEyMqiYNnUXdd8nv9X1I3vWVaUTZ2Ymw5egMOX0AKBLcUY5ozWRZ5GFFmGbxnIsaq6bLuubj/nus3LyoOGEdA+8Llx7/tZ/3tL411jHiAriUmWJUVRBK7rGHochXXblnVdlnVZNVXT5WXpO7poo2dDkTt6+2y8/9xUeE3mNV1ybNO2HRdCB0LP86Dv+0FAQoowQSTMioqmqW1IU9X5y1ueG7369ujNt7LCKxqwXccLfBTHKIygTzxEUBgRGmdFmeRFzHKasTCKdH1xDMw/vxxzBy+f9ve+BhI/B7ykKpYLrQB7cewEESQxDGNEExP6im7IugE0E6iqoQuHvPzH74bcq79/1Xv5FIi8aqgwwJgWNG9o1SJW4KKKqjaquyBlDsGy5QLdXqi6KE0PTudfPOtzP/ztSX/va0UFLrRQFKGE6QiLjqfh0I4SDRHF9WwS4iz1cOQEge46AJwejOd/+KbH7b34arj/XNFF24NBEpOUOTEbHx7PTsaSqvKCIOsGjKgXUhhgCxPNcyVlvn88++Kvb7i97748+McTgR8CMF1IM1kFhqWB05F4cgCmQzAdGMpEU6ZgfiwKx6o8k8TpjB+9GZ08eTHgnj/98mDv2ZwfLwAPAL9YzObCBIgzRZnZ2txRpqZ4oi2OFOFYnJ+I87G0GNva/GTC/+73f/of1moNDOp+rswAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;hackathon奖状&quot;
+        title=&quot;hackathon奖状&quot;
+        src=&quot;/static/b9bc0d4e8eb3b1400168a24b7c4f5905/7d769/hackathon.png&quot;
+        srcset=&quot;/static/b9bc0d4e8eb3b1400168a24b7c4f5905/5459c/hackathon.png 285w,
+/static/b9bc0d4e8eb3b1400168a24b7c4f5905/2cee3/hackathon.png 570w,
+/static/b9bc0d4e8eb3b1400168a24b7c4f5905/7d769/hackathon.png 960w&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;hackathon奖状&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;年末的时候还参加了个比赛，说好10月中旬结束的，结果到现在还没结束，日程表一改又改，也是无语了。&lt;/p&gt;
+&lt;h2&gt;城市旅游/参观&lt;/h2&gt;
+&lt;p&gt;和长距离的旅游相比，我更喜欢城市/城郊的旅游和参观，原因很简单：规划更简单、当日去当日回。加上疫情期间学校对进出京比较严格，以及北京作为首都，还是存在不少值得一逛的地方，所以这一年通过和同学和社区的方式，一起参观了北京城里和城郊的多处公园、博物馆等景点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;公园：圆明园、颐和园、玉渊谭公园、北京动物园、奥林匹克森林公园、798艺术区（可能不算公园……）&lt;/li&gt;
+&lt;li&gt;博物馆：农业展览馆、天文馆、古动物馆、园林博物馆、电影博物馆、民航博物馆、铁道博物馆、首都博物馆&lt;/li&gt;
+&lt;li&gt;雁栖湖&lt;/li&gt;
+&lt;li&gt;阳台山&lt;/li&gt;
+&lt;li&gt;古北水镇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 57.54385964912281%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAACJ0lEQVQozwXB2Y7aSBQAUP//t8zMw0jRKJooEpAO0DQYmzZ2eau97r21eCN5zznZsoR58euScJa9O1MC6SU4sxKDxZ7D2yOVs1eC7p3fJTcASQVd1IVyVbat6bVOr3VqU13TaYsq4BjwSvYs3ftFf8/HvxH2cRqUewPbLD7FjeDxRsNH9mub4wbzRtsWoyl4+W/Z/eemyocGoH6o/b34q6XPCj+M2kfXUxhTfiQ1SK8yPzmRau2vZmYPtav6/wtikNwr2Q2VVEWu8hWNxlJDY6zD8qt7/2Y9L/wtu6ajmCqguyXG4CncjsuLQh5cgfw0yve8/UK2FnCT+AyKJdkqqvrIBmLZYflm145TXunTGqVyeWu4AJFSA/oaqfFwA/U5YSN1pcQdHY70oCB+v16ZiGOYhY6dIBkXacODU4+mg+tPbnrrRssfwbQGmXvmrP9QWI9YkS+WGbNt9kg3hE8MnHydoPB40fWP9vxdYi9dxcudYRegRojnczwYf1uCQboIume/kvZ00foUsZ6g8eoO40nmh4jMA/8Exbu7sVoZbnBYqU7DMcEQwjWGIjNzb333sAwiC9QSVtIUrXmGcscFa3RPzwsooUSBtgjq6Ia9NoOxt+SuWVX+4/jPAC25NppyhZyPh1q0sTuhvgNJPylpBxAFEXOKTVgRCdDMuHNWlodqyOfN+cWT7yd7HvUxJLdgZ4NRQfZ4rtRe65YjT57P7oFJ6anp6foHbA51lf2zQVoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;城里各个点的地图，不包含郊区的景点&quot;
+        title=&quot;城里各个点的地图，不包含郊区的景点&quot;
+        src=&quot;/static/31628d569def9be9dfeaef029f8caaad/267c0/map.png&quot;
+        srcset=&quot;/static/31628d569def9be9dfeaef029f8caaad/5459c/map.png 285w,
+/static/31628d569def9be9dfeaef029f8caaad/2cee3/map.png 570w,
+/static/31628d569def9be9dfeaef029f8caaad/267c0/map.png 1140w,
+/static/31628d569def9be9dfeaef029f8caaad/78a90/map.png 1710w,
+/static/31628d569def9be9dfeaef029f8caaad/a683c/map.png 1754w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;城里各个点的地图，不包含郊区的景点&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以发现大多数景点都较为冷门。有的景点的门票实在是约不上有空的时间，如故宫等；但是更重要的是我不太喜欢人太多的景点。人太多的景点，看到的人比看到的景还多，那还有什么意义？所以这些景点大多数我都尽量选择工作日去参观的，避开北京汹涌的人流。这也是作为学生的福利的了吧，以后工作了之后，想避开高峰都做不到了。&lt;/p&gt;
+&lt;p&gt;这些景点总结一下，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;各个博物馆虽然离城里近的人多、人少的太远，但是质量普遍较高，例如电影博物馆的20多个展厅个个内容充实，强烈推荐；&lt;/li&gt;
+&lt;li&gt;雁栖湖太远而且风景不如南京玄武湖（玄武湖yyds），票价较为，而且周边除了国科大啥都没有，吃饭的选择都比较少，劝退；&lt;/li&gt;
+&lt;li&gt;公园较为普通，适合散步聊天，动物园假期人流量太大（我是五一去的），建议避开高峰；&lt;/li&gt;
+&lt;li&gt;古北水镇很偏（都快到河北了），但是开发得还可以，而且人比较少，参观体验良好并且市郊铁路12块钱直达，附近酒店、民宿也比较便宜，附近还有长城景点，适合周末放松；&lt;/li&gt;
+&lt;li&gt;阳台山是跟随社团去的，总体体验参考下图：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 936px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 120.35087719298245%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAIAAAB1KUohAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEPElEQVQ4y4WUbWwTdRzHaxwmutEN5lxSQozGEF8hb/ZmQ9gQnYxVcJIx4xYXEoTNBJhjLAKOzQdwxjeaTDFGxMS4mODY1g1BMoKRpWSOrWXtPfyv196t6/Wu5R57be+xZ9o616oJ31zu7sV9/r///3vffG2GYTJcSpBVKhIJEUQ4J0VRLMvK5LX6zL4WKJPJ2AzDwEMkwAJ+n8/j9QQwDACQzsH/lWmuLZGFFUUBAEVg2OPxQBAMw9Di4iKCIDACoyhAYDgSiYRXVoJBHAAQIohUKrUGp9Mpr9cbCAR8Ph9BEr6lJRzHwyvhQAALBUMQBKEoCIfDFEUZhqHrupmfnpNNVVUYQYI4jmEARRGO41RNU9Jp62HKwpZlRSlqaem+3+/3er0IDJPkMkmSkiQlEgmOY2OxmJxM8hzHMIwsy2xOoihalmUzdB0AQBAEw9A0TbMsm06nE4kEz/OSJEYpiiSIhJSIMQxBkpIo0TQdiURYlv0bRlCUpulolOJ5nuO5eDyeTCaj0ShFRWVZ5jiOpmmKojiO41iWYRhJSsiyvHrmnMsAgOXlZY/HCwDw+30AgLm5OQiCBEEQRZFl2dxeJJ7nk8lkDrZspmkAACA/FAqGUBSFICgUCilK1jBN01VVfYhhOI673W4MYBiGLfl8AGTvGIaRJMkLwlrUCnK29qv8MApDcD4GsRgTjVK3f58VRSn/UX7M6lU8WdWMcEzUDVPXTcPMmKalaqai6IqiqZqhKFpa0VTdUjVL1a3CdOfiqRkwyQNKRiKSn2Dv3F36ZXzhzwVh3sMv3E9MXrs+8NHgxUujo2O3pmY8qmbksFVYSiRv3oWnb83P3Jy/R6Qu/3Rlb5Pz/PC3X3w9+snwyIXPBjoPOw8dbT90+O1Tp/tkWf7nLFk4gGPbtte0NNWdat15tPP1oXO9ja/VNTnranfWvNRc8+mHZ7rf3dvT/0Z3z56unoOCyBfBJIHvczZ8fuzliQ9qx3q3fnWhq37fi60Hd7U4m3c37RgaPN7RVvfOkfoDnVuP9TslSSiC2Xhs+OPTg2d7zw/1nztz4puLXx4/2XXivSPvn+wbONs3Pvnzpcsjrukfv/t+5MrkD6qmFMEIABs3PWV3bLQ7Kh8pfeytjo7du/Y0v7q/vb3N2bwf8/myHVDcIWtuIyhSVlVmr15fUV1eUlbS2vZm5abn6nc0Dgx21zY03Lv9m0V50kKMEwRJFAqbKAvDKGJ3lG/estnxjKOkYl1L64Eqx9MvbKupq93+7JbnZ91uhcZVJhhj+QfxuGmaRTAEw4+WrSuvrlhfabeV2F5pany87IlSe2nlkxsqqzbM/zFjMaiekhRNUxTl35NFSbo6MT455XJNucYmxmbdd1xTrunpqWu/Tt+4cV1iGcsyMgUFaBgZ3TCNXBnZCsvVyliaruX39r8myWmVk1IP+CQnpQ3T/AujfZb6Cl5XAQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;活动结束发的说说&quot;
+        title=&quot;活动结束发的说说&quot;
+        src=&quot;/static/9b961d7a0bc2cb205968fd7ffce17f62/14e2f/mountain.png&quot;
+        srcset=&quot;/static/9b961d7a0bc2cb205968fd7ffce17f62/5459c/mountain.png 285w,
+/static/9b961d7a0bc2cb205968fd7ffce17f62/2cee3/mountain.png 570w,
+/static/9b961d7a0bc2cb205968fd7ffce17f62/14e2f/mountain.png 936w&quot;
+        sizes=&quot;(max-width: 936px) 100vw, 936px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;活动结束发的说说&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;运动和减肥&lt;/h2&gt;
+&lt;p&gt;这一年可能唯一能称为标志性的事件就是我的体重人生中第一次降低到了标准值（BMI&amp;#x3C;24）。当前最低下过150斤（149.5，下图，是前一天晚上运动后第二天早上吃饭之前的结果，不具普遍意义），平时一般稳定在155左右。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1080px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 94.73684210526315%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsTAAALEwEAmpwYAAABVklEQVQ4y72TuW7CQBCG/d6Il6GloKJDQm64uoAbQE6UyAhiI2AXr/eYnZkIjCwU7hT5Nc0cn37NSBMQkfeez0REzCyEmE6ncRwLIapiJWMMAASIKKW8hFerVb/fHwwGy+XyHK66eZ4HfEPn079sKwW3yHIdPOoqTEQ3nZ/RFVhrHUXRfD4Pw3A2mw2HwyzLLm92HbbWtlqtWq1Wr9cbjUaz2ez1esyMiI9hRJxMJmEYttvtTqfT7XZHo9GzzswMAIgIAFrroiheu7YxRgihlNJaSykB4AX479d+AUY+LUT/7TxWInVmDfbDqNx74SGxxRZcjrDzzhDeg6V30rtPq6JCps5+O/OmROKKnXdjJRZW39koOHQummXh3ajY5Fcfq0yDcpaIkE7CYzDzV5IkiwUzbzYbrTUibrdb5xwiGmMefFWWpuv08BL7/d5aS0RCCAAgojL9Aez5Vp5FECCRAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;当前最低体重&quot;
+        title=&quot;当前最低体重&quot;
+        src=&quot;/static/7a74569c5804e5b7dba2bca25e8e009e/dabea/weight.png&quot;
+        srcset=&quot;/static/7a74569c5804e5b7dba2bca25e8e009e/5459c/weight.png 285w,
+/static/7a74569c5804e5b7dba2bca25e8e009e/2cee3/weight.png 570w,
+/static/7a74569c5804e5b7dba2bca25e8e009e/dabea/weight.png 1080w&quot;
+        sizes=&quot;(max-width: 1080px) 100vw, 1080px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;当前最低体重&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;自从我记事开始我都是在超重或者肥胖的状态，且深受大体重的困扰，比如体力不行，运动成绩特别差，中考体育几乎全员满分的情况下只得了41/50分等等问题，没有得心理问题已经是万幸了。大学第一学期在一学期没有出过校、天天吃食堂的情况下降了30斤之后，之后的情况虽然比高中要好多了，但是仍然是在超重状态，且在正负20斤的范围内徘徊。直到研究生第一学年结束后，体重仍然离标准体重差了十几斤。终于有一天，我的体重终于降下来了！&lt;/p&gt;
+&lt;p&gt;其实根据这5年的经验，我觉得&lt;strong&gt;减重最重要的还是饮食&lt;/strong&gt;，运动用处不大。&lt;/p&gt;
+&lt;p&gt;拿大一上学期和大三下学期举例：这两个学期，我的运动量基本都是一周2-4小时羽毛球的水平，但是大一上学期我每天吃20块的三餐，午饭晚饭基本就是一份鸡肉（因为鸡肉便宜，而且除了肉没很多骨头之类的其他配料）、一份青菜和2两米饭，完全没有出去吃过（那一学期就没有出过学校），除了有时候吃点水果，完全没有零食和奶茶等三餐之外的东西。而大三大四时对吃基本什么限制了，有时候晚上2两饺子+鸭削粉丝汤，中午30块的香锅，每周还出去吃2、3顿。这样的最终结果，就是大一上学期220斤起点少了30斤、大三180斤左右的起点最后甚至好像还重了5、6斤的样子。&lt;/p&gt;
+&lt;p&gt;研究生期间的情况其实也差不多。到目前这三个学期，第一学期2-4个小时羽毛球，第二学期没有羽毛球，平时基本没有其他运动，但是5、6月保持两三天一次&amp;#x3C;6配速的5km，第三学期4-6小时羽毛球，吃的情况差不太多，但是体重变化方面，前两学期每学期-10斤左右，第三个学期下降得比较明显，快20斤了，但是我觉得还是因为吃得少了：这学期因为懒得去学校，所以早上基本每天一碗纯麦片，中午吃万柳的比校内食堂种类和量少太多、但是价格贵不少的食，这样摄入得少，体重也就下来了。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 702px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 135.78947368421052%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAIAAADzvTiPAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADRElEQVQ4y41U32sbRxDW/9yWUEKgpu5DSkMf2jwEanADptCHFrdEFY4RKHaJLJ8NsmtZsmRZP3J3OkmnvR97t3u7OzvlbuVzYxe3H4fYHc23M/PtzFYAIIoifAApZa1WGwwGiKi1Lu1mbdt2HMcVRMwKSCn1LYwT5xwA8N+glNJaV7TWjLE0TaWUD53+GfMhKkqp/f39w8PDTqfjOM7BwcHZ2dnjtDK7CgBsbW1tbm7u7u72+/2dnZ3j42NELBM2fgEhQRAYe0ITxlhORsRqtbq9vV2r1VzXbTQaw+HQCGFoUPw2V17DGSOikCIgJMuynKy1juM4TVNKaZqmZSgAKJVDxNHNTduyzFZkmckrJ4dh6Pt+FEVJkpSFAQBjLI+gtVQqWvrJcuXQWCvFGROZ0KArj6hSrkCDx1kGkEml4c6eky3LopQ+VNiyrKOjo9K+Vi4I9vb2Wq2WECInt9ttQsi9yEKIk5MTy7KUUjkT1/zFYlGv109PT3MyAKRpGgTBvbBhGNIC5oYMKKXz+ZxzLoTQJu3ySgBR3a41Iph+MPrlwdefylXQ63suO+a+YMb+8V+39RftCUUxF2n0ejH9afnhx0XeCb+t3A6LfvWdEU9eLyaI+IvvdFn8O5n97Ns/zMdHlBTk4pDDyH86vdywu59PO4j4cnb9nvov7MF5Gj2dXiLiN86gGZPvZsOv7KvPRhdviHdHbsarL+2r5+7VhtNDxFfeTZOuXrrDThpv2leI+P1seEyDV/PxC/f62aT7R7C4I7+Llk8mnS8+XH46vVhHjpfP7X47CZ9McsvX7uA9Jd/Orjfs3ic3f1XJ/JYMMObJ23BeDxdvwwUCvPNnk4z9GfkzwffD3K++dEeMNmPSiJZVf3YWrNbzHMcxqCKDIos0TeMoMldgBkAqxaNY8qzolnxPSagAKqaBAECCEkoJJSEfKJBKCiVlYVEqP1sBGAdptkpVKKXn5+etVsvzvPLOH3997p4hM3pJkggh8H9Dlx1WTsKygOu6juOYCX/8xIpGDPr9LAxZlo1Ho8sCvV6v2+26rmveqntVJEnieV5eMyJy3wchOOekAGNMKRWGISGEc/6QLKVkjK2nqiwDPsZ/yvY3n0T/j2n5i9wAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;跑步&quot;
+        title=&quot;跑步&quot;
+        src=&quot;/static/de8f4275f06fce3ddd14240466ff53e2/7df1d/running1.png&quot;
+        srcset=&quot;/static/de8f4275f06fce3ddd14240466ff53e2/5459c/running1.png 285w,
+/static/de8f4275f06fce3ddd14240466ff53e2/2cee3/running1.png 570w,
+/static/de8f4275f06fce3ddd14240466ff53e2/7df1d/running1.png 702w&quot;
+        sizes=&quot;(max-width: 702px) 100vw, 702px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;跑步&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;现在既然体重已经回归正常体重了，所以我现在也没有继续控制体重了，想吃啥吃啥，有时候甚至还吃点零食，所以最近体重没有继续往下走了。啊，不胖的感觉真好。&lt;/p&gt;
+&lt;h1&gt;技术、工作、职业发展&lt;/h1&gt;
+&lt;h2&gt;浪费掉的暑假&lt;/h2&gt;
+&lt;p&gt;7月，因为自己懒，在实习和选择了回家过最后一个暑假这两个选择中，选择了后者，并给自己找了个借口：继续写yaarxiv（[GitHub](&lt;a href=&quot;https://github.com/ddadaal/yaarxiv%EF%BC%89%E8%BF%99%E4%B8%AA%E9%A1%B9%E7%9B%AE%E3%80%82&quot;&gt;https://github.com/ddadaal/yaarxiv）这个项目。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 815px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.91228070175438%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABvUlEQVQoz3WPX0sUURjGB/+kjjOzc86ZmfecM2f+njM7k7os5moKK1GIRV6tW22bU1DdpN4IgmC34ZewQrwJUwQLEqGb6DNEn6APEut6EVTw8PLC+/x4n0czEZgIBg1Pt8FCYCAY6u3esOUZNvSv/5NWIaxC2L0pEXM+jhhx2d0pIQUvGyF2mIGYfWn4pzQLUwvTo0eqWRUDJnBgRx3VzMVpV63UAhPRkQqYmI7ZtO/8U1fw25acz8SgCQzYu5a6If3TrvpSZkXIX87HMecTkW+Tv+B+gPerciETAxbllB+01WIhPq1lZ0+yhhQHbTmdiv2WdD1m4qsWNmG2wzQdUfPyc0OKYQssTD88VF+fVb+/qJ48VvXUP3yg3iwnh21FnB7cq4CojulQxdN8oIjQjx11XmbHHdmdCS9K9XMj/7GeXzxV9YR/e5792so/ryniUN0G8BindFZEr+t17f60lGFQziV7K8XuUrZ9W+4s5b15R23eqiaB2FyUu8vFq2aax6HLomYRrs5EN9N8pzGrCTnpsGgU+SSaMLx4BPlufF13glESQDKJPDHuhCBrY9gHHsu8hlzfckOeFtcw+w0+KVZQgadyBgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;commit记录&quot;
+        title=&quot;commit记录&quot;
+        src=&quot;/static/cbb94753edc6ba0bccb798532e18b695/d660c/yaarxiv.png&quot;
+        srcset=&quot;/static/cbb94753edc6ba0bccb798532e18b695/5459c/yaarxiv.png 285w,
+/static/cbb94753edc6ba0bccb798532e18b695/2cee3/yaarxiv.png 570w,
+/static/cbb94753edc6ba0bccb798532e18b695/d660c/yaarxiv.png 815w&quot;
+        sizes=&quot;(max-width: 815px) 100vw, 815px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;commit记录&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这是我今年最后悔的一个选择。&lt;/p&gt;
+&lt;p&gt;这个项目的主要功能2020年9月就已经完工，可是这一年多时间了，一点推进的迹象都没有。上个学期整整三个月，这个项目就发生了这三个变化：加了个logo，注册了个域名，上了个HTTPS，没了。&lt;/p&gt;
+&lt;p&gt;我本应该从上个学年这个项目的情况推测出这个项目完全没有前途，结果仍然把宝贵的暑假时间投入到这个巨坑中，结果在开学之后发现认识的同学个个要么实习、要么学生工作、要么论文在投，各种方向做得有声有色（至少能往简历上写），感到十分后悔。后悔归后悔，想着赶紧推动另一个实验室项目，结果在整整一个月的时间内项目（又）一点的动静都没有，连个会都拉不起来，连个需求都理不出来，焦虑感直接拉满。那段时间找各种事情来做，做leetcode、做tidb的实验、各种看新技术，但是由于是焦虑驱动的，根本无法坚持下来（leetcode刷了几天没刷了），而且碰到难题无法静下来debug（比如tidb实验的一个bug到现在都没de出来），所以那段时间也可以说是一无所获。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 193px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.7720207253886%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAIAAABPIytRAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVklEQVQ4y6VTu24UQRDcACc44R8IICAi4AsQIIFEQAABSPwAQrJsiJFAjvkAZCwwJISYCPCRYSEBxg6MOD+A1flx0zPdPa+d271btDene1nYSHQ0W9s7XV1Vm5T/UcnwQ95qSSlDCN770God7A6ZB4Asy5iplRejH+chTX/XNzfq9Y2dnd3hV51OpyxLRLW/t5umaaPRcD4kox1t73wI1Xzv/cHJ7XZhrI3UiqKdIKLWmogym31cX7746Mrl2asrm9+Cy4hJa42IxhhmJiJjLTMbY6y1RJQIIRARALz2r5cXk2sTx64ff/d1ybIFCUopIQQRyW4RUbPZVEohVnhS3WcMa/bWr26tTT2dmZ6/v/7ru7NOa22MISLbHcjMcaDpVjVZShkpgQRnXO7z3OfWWACIeGxARKUUM8f58ZAAABFF5hUr0RRQ8QQA7Fa8RSkVb4l4bEgimSiJcxVVrbVzrsJNhROTddZo08ejYMzcEwwRx4SJuFRyb38PCcfw2J/ETSKxaAxR5VDEgw/BhcxnY3js7/nc9zOKEQ9IOD1/7/yDS0/ezrV8LiRoo4f7e7QP+gkAAsTZmXPJhWRqbqZsl6hQsxZCdH3Ggc8xZH0/e5Fifvhq9tbj289qC1uN7dXNNUDQzH3/j965LMrPP76cunvm5J3T71dqwQaFqrfz4WqDBMNmaaU2efPExI3JxU9vvPYgYYT232JYMdQm3U8XPrx8XnuxvfvTGjugPZywGLpIuJ8kIYQ1pvB50Y2tADFI2OE793GpJEj4V5/H8N7/PIofIdjh+B93tLvxh7zMzAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;为了缓解焦虑而做leetcode，无法坚持下来&quot;
+        title=&quot;为了缓解焦虑而做leetcode，无法坚持下来&quot;
+        src=&quot;/static/c845d8c61b84e75cb00c7c0bc0bf5d3c/c85ac/sept-leetcode.png&quot;
+        srcset=&quot;/static/c845d8c61b84e75cb00c7c0bc0bf5d3c/c85ac/sept-leetcode.png 193w&quot;
+        sizes=&quot;(max-width: 193px) 100vw, 193px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;为了缓解焦虑而做leetcode，无法坚持下来&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;直到项目终于开始之后，我像是抓到了一个救命稻草一样，把我研究生能否有任何值得一提的成果全部压到那个项目上去了，所以接下来几个月基本全身心投入到了那个项目的开发上去。做了2个月之后，项目终于初步可用并内部上线试用了。但是现在想起来，那个项目只是个业务逻辑稍微复杂、涉及外部系统有点多的CRUD，仍然只是个玩具，仍然不具有什么含金量，并不能拯救我的简历，焦虑如闪电般归来。&lt;/p&gt;
+&lt;h2&gt;工作和职业发展&lt;/h2&gt;
+&lt;p&gt;明年就要找工作了，上半年暑期实习，下半年秋招。最近刷校内的BBS，总能看到很多同学的求帮忙比较offer的帖子，现在大家一般都不会只看薪资，普遍更重视职业发展、稳定性等因素，这也造成选择一个比一个难。而我因为不愿意做行政工作，也不愿意加班，完全没有做过科研，选择面瞬间少了很多（比如本校同学热衷的选调对我来说就完全不是一个选项）而且我很讨厌（怕）面试，理想情况是面个1、2次、拿到不那么差的offer就停止了，所以从某种角度来说可能明年也不会那么纠结（当然这种拿着多个offer的纠结和拿着1、2较差的offer是两种纠结）。&lt;/p&gt;
+&lt;p&gt;在职业发展上，纯业务的发展路径是不可持续的：业务是可以复制的，而且目前互联网的发展明显出现了瓶颈，各种“优化”层出不穷就是一个证据。另外一条路是走纯技术路线，掌握并精通业界的实用技术，如分布式、数据库、UI等，虽然这才是做“技术人”的正途，但是其难度较大，门槛较高（比如应用规模必须大到一定程度才会遇到分布式的需求和对应的问题，但是做实验室的玩具项目基本就完全用不到这些问题；比如只有面向关注UI的用户才会对UI提出要求，才能倒逼去学习和实践CRUD之外的UI技术，但是一般内部的业务都不重视UI，能用就行了）。这种需求的培养的脱节已经被受到很多批评了，但是现实就是这样：工程确实不是学校的重点。&lt;/p&gt;
+&lt;p&gt;我之前的技术栈都在web上，但是受限于实验项目的需求和人力（毕竟只有一个人），而且我有种“用不上的东西就学不进去”的坏习惯，所以无法通过项目学习公司想要的高的技术难度上，而需要写没什么简单、但是量大的业务代码（写这些成果在找工作的时候基本没有用，面试官只会觉得没什么难度，大家都能做。其实到目前为止我手里的项目、比赛在找工作的时候基本没什么含金量）而如果换方向，因为我已经在这个方向上投入了这么多，现在距离找工作也只有几个月的时间了，贸然换方向存在极大的风险：很容易最后变成两边都是半吊子，两边的工作都找不到的问题。其实，我现在掌握的技能已经太过分散，什么都会一点=什么都不会，如果不背面经，连正经大厂实习都不好找。&lt;/p&gt;
+&lt;p&gt;除了开发，我仍然参与搭建和维护实验室的一些基础设施。我也认同管理、基础设施等看似和技术无关的东西对于软件项目同等重要。但是同样是因为当前手里的项目难度和规模上不去，这些管理和运维的经验在业界看来就是个笑话，还不如不写，省得到时候面试官想，就这？&lt;/p&gt;
+&lt;p&gt;说到底，这几年所做的工作基本对找工作没什么帮助。所以最后找工作，还是只能像本科生一样，靠算法题和八股文。算法题方面，由于我算法水平很差，所以在11月开始坚持每天一道LeetCode的每日一题，到现在能不能做出来另说，起码看到题不会慌了，也是一个好的进步吧。而八股文方面，还是在这个假期好好静下心来背，就当是一个更大的、更重要的期末考试了。&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1140px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.28070175438596%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfklEQVQoz42QS2sUURCF+yfr2lX8H4JEghCIuFSZxYgiSEQTsshMjEl3D92d6U73fVXd90PmdhIGV36ruufUrTpUwSidpklKGZ6I0VkM1jjvOeeIO8s7H/bwmWIYBkJISinGmDKEsqGrk9M+BCGED2HWH+xHYoxFePSeGMdx2/fOB++dcy6ltD7/fXNZXSyWi8O3PispbypC8Pvj8sQYY0gh5r+71uqm7rvhdPn55PBN2otRMGDOu1mxYgxWzZYFNFIBwDQRxplSSlv3T8aCZUAIACCUCiGMMVprKaVSChGFELmFM0olojZaaaWU1FoViEgziAAcOBfpf5hjW2u11labZmirbW2NBQC5A+cCEQGhvqudcUKylv5Zd8tPZ8eXzWlhjCGEMMpWm/Oqu+WMz8/+vl9XV4wySilnvGrLVbkqu/L79fG7Xy9efXv+c3NUSCk554KLxdmHezKAAM4ZAjZ922wbBMwXgXEab5vybmy/XJ28/vry4P2zH5uPfwE6UzYowF46qwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;LeetCode&quot;
+        title=&quot;LeetCode&quot;
+        src=&quot;/static/e186ee019ef60068086eff35bccf9dbc/267c0/leetcode.png&quot;
+        srcset=&quot;/static/e186ee019ef60068086eff35bccf9dbc/5459c/leetcode.png 285w,
+/static/e186ee019ef60068086eff35bccf9dbc/2cee3/leetcode.png 570w,
+/static/e186ee019ef60068086eff35bccf9dbc/267c0/leetcode.png 1140w,
+/static/e186ee019ef60068086eff35bccf9dbc/81753/leetcode.png 1396w&quot;
+        sizes=&quot;(max-width: 1140px) 100vw, 1140px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;LeetCode&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h1&gt;日常学习生活状态&lt;/h1&gt;
+&lt;p&gt;一个正常的学习路径是入门的时候先学习掌握基础、个人技能，之后通过项目学习多人合作以处理更复杂的问题，可是我到现在的路径是反过来的：本科特别推崇多人合作，基本所有项目都是多人合作完成的；结果上了研究生之后项目却都变成个人做了，甚至实验室都变成了甲乙方关系，实验室只管提需求，我把需求分析、设计、实现、测试、部署、运维等事情全部搞定，甚至还得去push甲方，否则东西做完了，又没人用，重蹈覆辙。&lt;/p&gt;
+&lt;p&gt;在这个学期之前，我其实一直在找能够一起做项目的同伴，最好还有大佬可以抱，还不用自己动脑想做什么了。但是现在已经完全放弃了，或许一个人做也挺好的，毕竟每个人都有自己的想法，不能强求，能依赖的都只有自己。换个角度看，读研和工作也没什么区别，研究生三年可真就完全变成了用三年经验和工资的差价换一个研究生学历了。&lt;/p&gt;
+&lt;p&gt;由于就是一个人做项目，加上课在研一都上完了，所以我的日常生活也基本变成了“一个人的狂欢”。白天在宿舍/实验室一个人写项目，有问题去微信上问问甲方，饭点到了吃饭，中午到了午睡，正常情况下白天一句话都不用说。实验室也能不去尽量不去：宿舍又方便又暖和（或者凉快，取决于拒绝），平时又没有人非常自由，不去实验室还可以避开早晚通勤高峰，宿舍还有配置比实验室高的电脑，因此除了老师要我去实验室，以及宿舍区的食堂实在太难吃了，有时候还得去学校改善下伙食之外，实验室基本都看不到我。每天最开心的时候还是晚上有时和新认识的其他同学打打球，晚上11点后舍友回来了和室友聊天的时候。&lt;/p&gt;
+&lt;p&gt;虽然最近几个月的生活似乎就是copy-paste，几乎没有什么变化，但是这种确定性还是挺让人心安的。要是以后我的生活也能够像这样，每天稳定地做着自己喜欢的事情，我也已经很满足了。&lt;/p&gt;
+&lt;h1&gt;又是一个转折点&lt;/h1&gt;
+&lt;p&gt;有时候我在想，要是两年前我选择了工作，现在是怎样的呢？现在是股票翻倍，升职加薪，还是被优化了，现在正忙着各种找下家呢？有没有后悔当时没有保研呢？要是当时加入了AI的浪潮，现在是在读博做学术，还是也是在考虑找工业界的工作呢？现在是在拿着几篇论文意气风发呢，还是idea想不出来、实验卡住了，和现在一样、甚至比现在更焦虑呢？在做出某个选择的时候没感觉那么重要，可只有回头看的时候才知道人生的轨迹被改变了。这也说明，没有最好的出路，只有适合自己的才是好的。希望明年结束的时候，能够找到一个满意的出路吧。&lt;/p&gt;
 &lt;style class=&quot;grvsc-styles&quot;&gt;
   .grvsc-container {
     overflow: auto;
