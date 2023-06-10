@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fabout\u002F[id]\u002F[[...lang]]","\u002Farticles\u002F[[...params]]","\u002Farticles\u002Fasset\u002F[...path]","\u002Fr\u002F[id]","\u002Fresume\u002F[[...lang]]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

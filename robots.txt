@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ddadaal.me
+
+# Sitemaps
+Sitemap: https://ddadaal.me/sitemap.xml
