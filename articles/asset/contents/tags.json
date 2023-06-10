@@ -1,0 +1,77 @@
+[
+  {
+    "tag": "problem-investigation",
+    "cn": "问题探究",
+    "en": "Problem Investigation"
+  },
+  {
+    "tag": "project",
+    "cn": "我的项目",
+    "en": "My Projects"
+  },
+  {
+    "tag": "code-trick",
+    "cn": "代码技巧",
+    "en": "Code Tricks"
+  },
+  {
+    "tag": "web-frontend",
+    "cn": "Web前端",
+    "en": "Web Front-end"
+  },
+  {
+    "tag": "thoughts",
+    "cn": "看法",
+    "en": "Thoughts"
+  },
+  {
+    "tag": "hands-on",
+    "cn": "上手",
+    "en": "Hands On"
+  },
+  {
+    "tag": "blog",
+    "cn": "博客",
+    "en": "Blog"
+  },
+  {
+    "tag": "math",
+    "cn": "数学",
+    "en": "Math"
+  },
+  {
+    "tag": "interview-experiences",
+    "cn": "面试经验",
+    "en": "Interview Experiences"
+  },
+  {
+    "tag": "annual-summary",
+    "cn": "年度总结",
+    "en": "Annual Summary"
+  },
+  {
+    "tag": "in-class",
+    "cn": "课内",
+    "en": "In Class"
+  },
+  {
+    "tag": "Microsoft",
+    "cn": "微软",
+    "en": "Microsoft"
+  },
+  {
+    "tag": "life",
+    "cn": "生活",
+    "en": "Life"
+  },
+  {
+    "tag": "editor",
+    "cn": "编辑器",
+    "en": "Editor"
+  },
+  {
+    "tag": "wearables",
+    "cn": "可穿戴设备",
+    "en": "Wearables"
+  }
+]
