@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-article-list-page-template-tsx",
-    "path": "/articles/8",
-    "result": {"pageContext":{"limit":5,"skip":35,"pageCount":9,"pageIndex":7,"ids":["ms-listen-to-docs-report","lexer-lalr1parser","gatsby-powered-vicblog-online","think-while-coding","summary-for-2017"]}},
-    "staticQueryHashes": ["3830103294"]}
