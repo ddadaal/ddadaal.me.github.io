@@ -9,15 +9,304 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 12 Jun 2023 04:27:02 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 17 Jun 2023 15:10:46 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 12 Jun 2023 04:26:42 GMT</pubDate>
+        <pubDate>Sat, 17 Jun 2023 15:10:24 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
         <category><![CDATA[Technology]]></category>
         <category><![CDATA[Programming]]></category>
         <category><![CDATA[Software]]></category>
+        <item>
+            <title><![CDATA[博客的发展2：重写，重生]]></title>
+            <description><![CDATA[<h1>鸽了4年的更新</h1>
+<p>4年前的<a href="/articles/blog-updates-1">博客的发展1</a>中，我提到了当时博客的几个问题。后来，我通过一个非常hack的方式解决了中文字数统计的问题（<a href="/articles/fix-gatsby-transformer-remark-chinese-word-count">修复gatsby-transformer-remark插件中文词数统计错误问题</a>，但是最重要的<strong>重构样式和完善UI设计</strong>的问题一直搁置，并且随着时间和技术的发展，项目也遇到了不少的问题，例如</p>
+<ol>
+<li>样式的混乱使得我一直使用老的bootstrap v4版本，无法升级到最新的bootstrap版本</li>
+<li>gatsby生态更新太快，很多组件我无法理解它们具体做了什么工作</li>
+</ol>
+<p>5月底研究生答辩完后，本来计划好的旅行，在我出发的前一天被我二阳直接推迟了。阳了后基本上也就只能在宿舍呆着。呆着也是呆着，我想起来博客这个”我的门面“。这三年博客本身基本没有任何更新，基本属于年久失修的状态。于是我决定给我的博客来个大手术。</p>
+<h1>新博客的亮点</h1>
+<ul>
+<li>完全使用Next.js编写</li>
+</ul>
+<p>由于研究生期间的项目（<a href="https://github.com/PKUHPC/SCOW">PKUHPC/SCOW</a>）是完全使用Next.js编写的，我对Next.js非常熟悉。而Next.js本身也是一个非常成熟的React框架，并且也支持<a href="https://nextjs.org/docs/app/building-your-application/deploying/static-exports">导出为静态网站</a>的功能，并且有很多网站均使用了Next.js来作为它们的主页、博客等信息发布平台，所以我在想是否能重用之前的经验，用Next.js来搭建新的网站。一顿操作下来，除了遇到了一些和Gatsby的思路不太一样的地方，整个体验还是挺不错的。</p>
+<ul>
+<li>完全兼容原有博客</li>
+</ul>
+<p>新的网站和原有博客在功能性、整体布局以及各个页面的URL方面都完全一致，原有的所有使用习惯和URL都可以直接使用，原来的所有功能现在都仍然支持，包括但不限于多语言页面、多语言文章、RSS等。这才是<strong>重写</strong>的真正含义吧：所有代码都完全重写了，但是不会影响任何已有的使用体验。</p>
+<ul>
+<li>使用Tailwind编写样式，去除CSS in JS方案</li>
+</ul>
+<p>这是本次重写最重要的地方。我原来是CSS in JS的狂热爱好者，认为使用JS编写网站的所有方便是网页开发的最终目标。现在，我虽然仍然认为CSS in JS方案带来的灵活性是所有其他方案都不可比拟的，但是我也认识到很多情况下样式并不需要那么高的灵活性。另外，由于样式最终还是要到达CSS的层次，在把CSS in JS和其他第三方样式解决方案（例如之前用的bootstrap）集成的过程中，需要大量代码来将两套完全独立的样式系统整合起来。这也是之前样式代码极度混乱的根本原因。</p>
+<p>例如，原来代码中的导航栏组件同时使用了bootstrap的<code>Navbar</code>组件，并通过styled-components在这个组件的基础上自定义了样式。在自定义样式时，还引用了TS中定义的样式变量。有的组件甚至为了使用bootstrap的定义在<code>SCSS</code>中的变量，故还引用了自定义的SCSS文件。而由于有的变量是定义在SCSS中，有的是在TS代码中的，所有很多变量（例如颜色）都需要定义两次。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="ts" data-theme="default"><code data-language="ts" data-theme="default"><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">Navbar</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">"reactstrap"</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">StyledNavbar</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">styled</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">Navbar</span><span style="color: #ABB2BF">)</span><span style="color: #98C379">`</span></span>
+<span class="line"><span style="color: #98C379">  &#x26;&#x26; {</span></span>
+<span class="line"><span style="color: #98C379">    max-width: </span><span style="color: #C678DD">${</span><span style="color: #E5C07B">widths</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">mainContent</span><span style="color: #C678DD">}</span><span style="color: #98C379">px;</span></span>
+<span class="line"><span style="color: #98C379">    margin-left: auto;</span></span>
+<span class="line"><span style="color: #98C379">    margin-right: auto;</span></span>
+<span class="line"><span style="color: #98C379">    padding: 4px 8px;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #98C379">    transition: width 0.2s ease-in-out;</span></span>
+<span class="line"><span style="color: #98C379">  }</span></span>
+<span class="line"><span style="color: #98C379">`</span><span style="color: #ABB2BF">;</span></span></code></pre></div>
+<p>另外，我也认识到以传统HTML/CSS来布局和样式的一些优势，例如将UI与具体的开发框架解耦、更好的性能、以及甚至能在不启用JS的环境下展示页面等。当前，以<a href="https://tailwindcss.com/">tailwind</a>为主的以传统的HTML/CSS为基础的样式方案非常火，这次我也直接采用tailwind以及基于tailwind的纯HTML/CSS组件库<a href="https://daisyui.com/">daisyui</a>来编写新的博客，并体验到了前所未有的开发效率和开发体验。直接写语义化的类型名，确实比写JS代码要方便太多了。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/tailwind.png" alt="tailwind自动完成体验"></p>
+<h1>实现</h1>
+<h2>完全采用Next.js App Router</h2>
+<p>Next.js的<a href="https://nextjs.org/docs/app">App Router</a>功能可谓是万众期待，虽说有评论说这个功能（以及后续的Server Actions）把Next.js<a href="https://www.youtube.com/watch?v=10Yt5vRimNI">变成了PHP</a>，但是不可否认的是，App Router极大地提高了开发体验和灵活度。</p>
+<p>在新的博客中，App Router带来的各种优势里，让我最受用的是以下两点：</p>
+<ul>
+<li>React Server Component （RSC，服务器端组件）</li>
+</ul>
+<p>React Server Component (RSC)实际上是React的概念，在2020年就提出来了（<a href="https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html">Introducing Zero-Bundle-Size React Server Components - React Blog</a>）。简单来说，原来的React的组件都是运行在客户端的。浏览器首先把项目代码下载下来，然后再浏览器中运行代码，这些代码将会通过浏览器端DOM API在浏览器上画出UI，并处理用户的交互。而React Server Component允许用户编写<strong>运行在服务器端的</strong>React组件。而Next.js 13第一次实现了这一概念。</p>
+<p>这颠覆了传统的前端开发模式。代码在服务器端运行的，这就意味着组件可以直接执行在服务器端才能执行的代码，例如访问数据库等，而不再需要单独的一套API来实现客户端和服务器端之间的交互。</p>
+<p>在新的博客中，所有博客的内容都是以本地文件的方式存放在<code>contents</code>目录下。所有的页面会去读取自己所需要的数据，之后将这些数据渲染出来。</p>
+<p>假设我们的网页不是一个静态网站，而是一个传统的React+后端的模式，那要实现这个功能，我们首先需要设计一个API来获取后端的数据，在后端，我们编写一个服务器实现这个API，然后在前端，我们通过<code>fetch</code>调用这个API，拿到数据后在UI上渲染出来。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="ts" data-theme="default"><code data-language="ts" data-theme="default"><span class="line"><span style="color: #7F848E; font-style: italic">// 后端，编写API</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">app</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">express</span><span style="color: #ABB2BF">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E5C07B">app</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">get</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">"/articles/:id"</span><span style="color: #ABB2BF">, </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75; font-style: italic">req</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">res</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">content</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">readContent</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">req</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">params</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">res</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">send</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">content</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E5C07B">app</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">listen</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">5000</span><span style="color: #ABB2BF">, () </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> {});</span></span></code></pre></div>
+<div data-rehype-pretty-code-fragment=""><pre data-language="tsx" data-theme="default"><code data-language="tsx" data-theme="default"><span class="line"><span style="color: #7F848E; font-style: italic">// 前端，通过fetch API获取数据</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">Page</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> ({ </span><span style="color: #E06C75; font-style: italic">id</span><span style="color: #ABB2BF"> }) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> [</span><span style="color: #E5C07B">data</span><span style="color: #ABB2BF">, </span><span style="color: #E5C07B">setData</span><span style="color: #ABB2BF">] </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">useState</span><span style="color: #ABB2BF">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #61AFEF">useEffect</span><span style="color: #ABB2BF">(() </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #61AFEF">fetch</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">"http://localhost:5000/articles/"</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">+</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">      .</span><span style="color: #61AFEF">then</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">x</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">x</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">json</span><span style="color: #ABB2BF">())</span></span>
+<span class="line"><span style="color: #ABB2BF">      .</span><span style="color: #61AFEF">then</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">x</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">setData</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">x</span><span style="color: #ABB2BF">));</span></span>
+<span class="line"><span style="color: #ABB2BF">  }, []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">?</span><span style="color: #ABB2BF"> (</span></span>
+<span class="line"><span style="color: #ABB2BF">    &#x3C;</span><span style="color: #E5C07B">ArticleContent</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">data</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">data</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF">/></span></span>
+<span class="line"><span style="color: #ABB2BF">  ) </span><span style="color: #C678DD">:</span><span style="color: #ABB2BF"> &#x3C;</span><span style="color: #E5C07B">Loading</span><span style="color: #ABB2BF"> />;</span></span></code></pre></div>
+<p>然后通过RSC，我们可以直接使用React来实现这个需求：</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="tsx" data-theme="default"><code data-language="tsx" data-theme="default"><span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">default</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> ({ </span><span style="color: #E06C75; font-style: italic">params</span><span style="color: #ABB2BF"> }: </span><span style="color: #E5C07B">Props</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">data</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">readContent</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">params</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> (</span></span>
+<span class="line"><span style="color: #ABB2BF">    &#x3C;</span><span style="color: #E5C07B">ArticleContent</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">data</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">data</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF"> /></span></span>
+<span class="line"><span style="color: #ABB2BF">  );</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span></code></pre></div>
+<p>这区别实在太大了。不再需要一个单独的后端项目，不再需要复杂的API设计、管理、调用、维护，从获取数据到渲染UI的过程非常直观。甚至说如果这个<code>ArticleContent</code>组件不需要用户交互的话，用户甚至不需要下载这个组件的代码，浏览器不启用JS就能访问网页。</p>
+<p>从某种角度来说，App Router确实是把React变成了PHP这类传统的服务器端渲染的方案。但是，毕竟Web前端是JS的世界，PHP等不能直接使用后端语言编写前端的交互逻辑，只能做一些简单的模板替换的功能，一旦涉及一些复杂的逻辑和交互，就不能不重新使用JS，而这就要求两套不同的语言，两套不同的工具链以及两套不同的生态，以及前后端之间的交互。而Next.js是以前端为基础，用一种非常自然的方式将前后端融合在一起，用同一套生态编写从前端交互到后端逻辑整个链条，实际上是一套和传统完全不一样的方案。</p>
+<ul>
+<li><a href="https://nextjs.org/docs/app/building-your-application/routing/colocation#safe-colocation-by-default">Colocation</a>，即<strong>把相似用处的文件放在相近的位置</strong>。</li>
+</ul>
+<p>在原来的<code>pages</code>目录下，每个文件定义了一个页面。例如<code>/pages/test.tsx</code>和<code>/pages/test/test2.tsx</code>就分别对应<code>/test</code>和<code>/test/test2</code>两个路径。但是，在绝大多数情况下，一个页面中的代码都不能在一个代码中完全写完。对于一些公用的组件，例如布局的header, footer等，我们可以把这些代码放在类似<code>layouts</code>、<code>components</code>的目录下，这些组件不涉及任何业务逻辑，可由具体的业务页面引用并组装。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/components.png" alt="现在博客下，会由多个页面使用的组件"></p>
+<p>但是还有一些组件，它只在某个特定的页面下有用，例如为了完成某个特定的业务逻辑的组件。这种组件一般来说又是过于复杂，不能把它直接写在页面文件中，但是如果把这些组件直接放在页面组件文件的旁边，那么它们会被当成一个新的页面。</p>
+<p>由于在原来的事件中，我会创建一个<code>pageComponents</code>目录用于存放这种位于真正的基础组件（<code>components</code>）和页面（<code>pages</code>）之间的组件。例如在下图中，<code>pageComponents/admin/AllUsersTable.tsx</code>就是一个比较复杂的、涉及到业务的组件，它只会在<code>pages/admin/users.tsx</code>中被使用。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/pageComponents.png" alt="pageComponents"></p>
+<p>除了这一方案，我也看到了一些项目采用的是和<code>Angular</code>类似的<code>Module</code>概念，把某个功能相关的代码都放在一个<code>modules/模块名</code>目录下，然后在<code>pages</code>目录下引用模块下的页面组件。</p>
+<p>但是不管是什么方案，实际上都是在为<strong>一个文件=一个路径</strong>这一概念打补丁。这一概念看着很美好，但是只要项目复杂度稍微高一点就会遇到上述的问题。同一个功能，有的代码在<code>pages</code>下，有的在<code>pageComponents</code>下，这会使得文件非常混乱。</p>
+<p>而<code>App Router</code>解决了这一个问题。在<code>App Router</code>下，路径由目录（而文件）定义。每个目录下，只有一些特殊的文件会被Next.js处理（例如<code>page.tsx</code>为这个页面的组件，<code>layout.tsx</code>为这个路径下的公共布局，其他文件Next.js直接忽略，都由自己组织。这就使得我们可以把一个页面所需要的组件拆分出来，放在和页面相同的目录下。</p>
+<p>例如在现在的项目中，<code>app/articles/[[...params]]</code>包括了文章列表页面的定义，其中就需要一个文件列表页面的布局的组件<code>ArticleList</code>。这个组件很明显需要被拆分出来。在原来的实践中，这种组件就应该被放在<code>pageComponents</code>或者<code>components</code>里。但是这个组件实际上只会在这个路径下被使用，所以使用<code>App Router</code>后，我们就可以把这个组件放在这个页面的文件（<code>page.tsx</code>）的旁边。这样，我们保证了所有这个页面相关的业务逻辑（公共组件不包含业务逻辑）都存放在这个路径下，这对代码后续维护、多人合作开发等方面都有非常多的好处。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/articles-dir.png" alt="现在博客下，文章列表页面布局"></p>
+<p>App Router所带来的优点远不止这两点。由于本博客是个静态的博客，且整体布局较为简单，所以并没有用上使用Next.js的动态功能，但是在我其他的项目中，App Router的<strong>嵌套布局</strong>（<a href="https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#nesting-layouts">Nested Layout</a>）、Server Actions带来的<strong>直接在前端代码中调用后端逻辑的能力</strong>都极大地提高了网站开发的效率。</p>
+<h2>Next.js静态生成</h2>
+<h3>静态网站</h3>
+<p>我之前使用Next.js的项目都是传统的前端应用，也就是编译为前端+一个提供服务器端渲染（SSR）能力的Express后端的传统的Next.js项目。但是Next.js一直还支持直接生成只包括HTML/CSS/JS的静态网站的能力。</p>
+<p>传统的单页应用（SPA）会把整个应用编译为一个（或者多个）JS bundle以及一个实际上并不包含真正UI的模板HTML。用户访问任何路径时，都会下载这个HTML。这个HTML的唯一作用就是提供一个根DOM组件以及引用编译好的JS Bundle。JS Bundle将会被自动下载，通过浏览器的History API在浏览器端实现路由功能，并负责通过DOM API渲染用户的UI。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/vite-build-output.png" alt="vite build构建出的项目"></p>
+<p>而Next.js生成的静态网站和Gatsby, Hugo等静态网站生成器相同，会在编译时对每个路径获取这个路径所需要的数据，并将这些数据渲染成HTML。渲染出的结果中，每个路径都有对应的HTML。比如在下图中，<code>about/me.html</code>就对应了<code>/about/me</code>路径，并且其中包含了在服务器端渲染后的UI。用户访问路径时，会直接获取这个HTML，并直接就能渲染出已经渲染好的内容，无需等待下载和执行JS Bundle的过程。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/next-export-output.png" alt="next build构建出的项目"></p>
+<h3>和Gatsby的区别</h3>
+<p>在我上次重写ddadaal.me时，我选用了Gatsby，因为当时Gatsby的生态更加的成熟，有大量现成的模板、插件和教程可供使用和参考。几年后的现在，Next.js的静态生成功能也是非常成熟了，并也提供了很多的API来实现静态网站渲染的功能。但是和Gatsby项目，Next.js提供静态网站渲染的API的思路有所不同。</p>
+<p>Gatsby主要通过<code>GraphQL</code>让开发者访问数据(<a href="https://www.gatsbyjs.com/docs/graphql/">Gatsby and GraphQL</a>)。开发者在页面中可以声明这个页面所需要的数据的GraphQL查询，并在页面中通过props访问读取到的数据以及渲染UI。在编译时，gatsby将会负责运行这些查询，并将数据传递给需要数据的组件。而可以访问到的数据，则可以通过插件或者自定义<code>gatsby-node.ts</code>脚本来向后端的GraphQL服务器中增加数据节点。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="ts" data-theme="default"><code data-language="ts" data-theme="default"><span class="line"><span style="color: #7F848E; font-style: italic">// https://github.com/ddadaal/ddadaal.me/blob/57fe926eb0/src/pages/slides.tsx</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// 声明需要的数据</span></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">query</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">graphql</span><span style="color: #98C379">`</span></span>
+<span class="line"><span style="color: #98C379">  query Slides {</span></span>
+<span class="line"><span style="color: #98C379">    allSlide(filter: {type: { eq: "dir" }}) {</span></span>
+<span class="line"><span style="color: #98C379">      nodes {</span></span>
+<span class="line"><span style="color: #98C379">        name</span></span>
+<span class="line"><span style="color: #98C379">        html_url</span></span>
+<span class="line"><span style="color: #98C379">        type</span></span>
+<span class="line"><span style="color: #98C379">      }</span></span>
+<span class="line"><span style="color: #98C379">    }</span></span>
+<span class="line"><span style="color: #98C379">  }</span></span>
+<span class="line"><span style="color: #98C379">`</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">interface</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">Props</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">allSlide</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">nodes</span><span style="color: #ABB2BF">: { </span><span style="color: #E06C75">name</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF">; </span><span style="color: #E06C75">html_url</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF"> }[];</span></span>
+<span class="line"><span style="color: #ABB2BF">    };</span></span>
+<span class="line"><span style="color: #ABB2BF">  };</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">Slides</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">React</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">FC</span><span style="color: #ABB2BF">&#x3C;</span><span style="color: #E5C07B">Props</span><span style="color: #ABB2BF">> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75; font-style: italic">props</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 通过Props读取获取到的数据</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">: { </span><span style="color: #E06C75">allSlide</span><span style="color: #ABB2BF">: { </span><span style="color: #E5C07B">nodes</span><span style="color: #ABB2BF"> } } } </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">props</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 使用这些数据渲染UI</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span></code></pre></div>
+<p>当然，要想更灵活地访问数据和创建页面，开发者还可以通过<code>gatsby-node.ts</code>编写编译时在node端执行的脚本。这个脚本是在编译器在Node.js中运行的，故可以访问任何本地数据。Gatsby还提供了大量<a href="https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/">Gatsby Node API</a>来帮助用户创建页面、GraphQL数据等。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="js" data-theme="default"><code data-language="js" data-theme="default"><span class="line"><span style="color: #61AFEF">createPage</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 生成页面的路径</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">path</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">"/articles/"</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">+</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">pageIndex</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 页面所对应的React组件</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">component</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">indexTemplate</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 组件所需要的数据</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">context</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">limit</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">pageSize</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">skip</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">pageIndex</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">*</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">pageSize</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">pageCount</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">pageIndex</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">pageIndex</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">ids</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">notIgnoredGroups</span></span>
+<span class="line"><span style="color: #ABB2BF">      .</span><span style="color: #61AFEF">slice</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">pageIndex</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">*</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">pageSize</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">pageIndex</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">*</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">pageSize</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">+</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">pageSize</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">      .</span><span style="color: #61AFEF">map</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">x</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">x</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">frontmatter</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">id</span><span style="color: #ABB2BF">),</span></span>
+<span class="line"><span style="color: #ABB2BF">  },</span></span>
+<span class="line"><span style="color: #ABB2BF">});</span></span></code></pre></div>
+<p>总的来说，Gatsby通过GraphQL和Gatsby Node API将<strong>UI</strong>和<strong>数据</strong>完全隔离开来。用户定义各个页面所需要的数据类型，一方面编写脚本或者插件将各类数据源转换为GraphQL等页面需要的数据，另一方面编写React代码将这些数据渲染成UI。</p>
+<p>而在当前使用App Router的Next.js项目中，获取数据以及渲染页面的方法有所不同。Next.js的路由一直是基于文件路径的，没有类似<code>Gatsby Node API</code>的API以及<code>gatsby-node.ts</code>的脚本可以用来手动创建各个页面。取而代之的，是</p>
+<ul>
+<li>通过文件路径定义路径</li>
+<li>通过<code>generateStaticParams</code>函数获取所有可能的路径参数</li>
+<li>通过RSC同时实现数据获取和渲染</li>
+</ul>
+<p>例如说，我的博客中<code>/about</code>路径下包含了<code>/about/me</code>、<code>/about/odyssey</code>和<code>/about/project</code>三个路径，分别对应3篇文章。要实现<code>/about</code>路径，我需要</p>
+<ul>
+<li>定义<code>app/about/[id]</code>目录</li>
+<li>在<code>generateStaticParams</code>中，返回<code>id</code>参数的所有可能值<span data-rehype-pretty-code-fragment=""><code data-language="ts" data-theme="default"><span class="line"><span style="color: #ABB2BF">[</span><span style="color: #98C379">"me"</span><span style="color: #ABB2BF">, </span><span style="color: #98C379">"odyssey"</span><span style="color: #ABB2BF">, </span><span style="color: #98C379">"project"</span><span style="color: #ABB2BF">]</span></span></code></span></li>
+<li>在<code>app/about/[id]/page.tsx</code>（实际上不是这个路径）中，定义一个RSC，获取到路径的ID的参数，之后获取到对应的文章内容，并同时根据文件内容渲染出UI</li>
+</ul>
+<p>可以看出，通过Next.js，我们不再需要GraphQL将数据和页面分割开来，而可以直接使用RSC同时完成读取数据和渲染UI的功能。通过<code>generateStaticParams</code>列举了所有可能的路径，然后对每个路径渲染它对应的RSC，生成了每个路径的页面，从而编译出了整个网页。</p>
+<h2>自定义的markdown渲染流程</h2>
+<p>在之前使用Gatsby时，我直接使用了一些现成的gatsby插件（如<a href="https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/"><code>gatsby-plugin-remark</code></a>）来帮助我完成把markdown渲染成HTML的过程，故我对markdown渲染的流程几乎没有了解。但是在Next.js中没有这些插件了，所以我就需要自己去学习markdown渲染的知识，并自己完成markdown渲染的工作。</p>
+<p>当前，项目中是使用<code>remark</code>和<code>rehype</code>生态实现markdown的渲染的。<a href="https://github.com/remarkjs/remark"><code>remark</code></a>是一套把分析并转换markdown的生态，包含由大量插件。它可以分析markdown文件并将其转换为AST，并支持通过各类插件对这个AST进行分析和转换。而<a href="https://github.com/rehypejs/rehype"><code>rehype</code></a>类似<code>remark</code>，只不过<code>rehype</code>是针对HTML的。整个渲染流程可以通过<a href="https://unifiedjs.com/"><code>unifiedjs</code></a>连接起来。</p>
+<p>现在，博客在渲染markdown时，经历了以下的步骤：</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/remark-parse">remark-parse</a>: 把markdown转换为remark AST</li>
+<li><a href="https://www.npmjs.com/package/remark-gfm">remark-gfm</a>: 以GitHub Flavored Markdown格式解析AST</li>
+<li><a href="https://www.npmjs.com/package/remark-rehype">remark-rehype</a>: 将remark AST转换为rehype AST</li>
+<li><a href="https://www.npmjs.com/package/rehype-raw">rehype-raw</a>: 使markdown中的裸HTML标签最后能正常显示</li>
+<li><a href="https://github.com/rehypejs/rehype-slug">rehype-slug</a>: 给各个标题标签加上对应的id</li>
+<li><a href="https://www.npmjs.com/package/@stefanprobst/rehype-extract-toc">@stefanprobst/rehype-extract-toc</a>: 分析HTML中的各个标题标签，并生成对应的树状结构</li>
+<li><a href="https://github.com/rehypejs/rehype-react">rehype-react</a>: 根据rehype AST生成对应的React组件树</li>
+<li><a href="https://rehype-pretty-code.netlify.app/">rehype-pretty-code</a>: 美化代码风格，增加代码高亮等</li>
+</ul>
+<p>了解了markdown的渲染过程给我带来了几个好处：</p>
+<p>第一，我可以自己自定义渲染的流程了</p>
+<p>之前，对于一些已有插件不支持的功能，我是通过一些比较hack的方式完成的。例如文章的Table of Contents，我是通过在渲染后通过DOM API分析页面中各个<code>h1/h2/h3</code>等元素来动态生成的。而现在，我可以自己去寻找可以解析TOC的插件（@stefanprobst/rehype-extract-toc），并将它插入到渲染的流程中，并在最后得到结果并自己完成渲染的过程。又比如，我想给渲染出的标题的前面增加一个图标，点击这个图标就获取到跳转到这个标题的URL。通过<code>rehype-react</code>，我可以很简单的实现这一点。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="tsx" data-theme="default"><code data-language="tsx" data-theme="default"><span class="line"><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">use</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">rehypeReact</span><span style="color: #ABB2BF">, {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">components</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// 使用自定义的React组件渲染h1/h2/h3组件</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">h1</span><span style="color: #ABB2BF">: ((</span><span style="color: #E06C75; font-style: italic">props</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> &#x3C;</span><span style="color: #E5C07B">HeadingWithLink</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">element</span><span style="color: #56B6C2">=</span><span style="color: #98C379">"h1"</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">props</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">props</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF"> />) </span><span style="color: #C678DD">satisfies</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">ComponentType</span><span style="color: #56B6C2">&#x3C;</span><span style="color: #E5C07B">JSX</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">IntrinsicElements</span><span style="color: #ABB2BF">[</span><span style="color: #98C379">"h1"</span><span style="color: #ABB2BF">]</span><span style="color: #56B6C2">></span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">h2</span><span style="color: #ABB2BF">: ((</span><span style="color: #E06C75; font-style: italic">props</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> &#x3C;</span><span style="color: #E5C07B">HeadingWithLink</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">element</span><span style="color: #56B6C2">=</span><span style="color: #98C379">"h2"</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">props</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">props</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF"> />) </span><span style="color: #C678DD">satisfies</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">ComponentType</span><span style="color: #56B6C2">&#x3C;</span><span style="color: #E5C07B">JSX</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">IntrinsicElements</span><span style="color: #ABB2BF">[</span><span style="color: #98C379">"h2"</span><span style="color: #ABB2BF">]</span><span style="color: #56B6C2">></span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">h3</span><span style="color: #ABB2BF">: ((</span><span style="color: #E06C75; font-style: italic">props</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> &#x3C;</span><span style="color: #E5C07B">HeadingWithLink</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">element</span><span style="color: #56B6C2">=</span><span style="color: #98C379">"h3"</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">props</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">props</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF"> />) </span><span style="color: #C678DD">satisfies</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">ComponentType</span><span style="color: #56B6C2">&#x3C;</span><span style="color: #E5C07B">JSX</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">IntrinsicElements</span><span style="color: #ABB2BF">[</span><span style="color: #98C379">"h3"</span><span style="color: #ABB2BF">]</span><span style="color: #56B6C2">></span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">  },</span></span>
+<span class="line"><span style="color: #ABB2BF">})</span></span></code></pre></div>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/md-heading-link.png" alt="标题链接"></p>
+<p>第二，我可以完全自己控制RSS的渲染过程了</p>
+<p>之前我采用的是<a href="https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-feed"><code>gatsby-plugin-feed</code></a>插件，通过定义GraphQL以及一些自定义的参数来生成RSS流。由于当时无法控制markdown的渲染结果，所以在生成RSS的时候感觉非常不自然。另外这个插件还不支持在开发时运行，所以我在开发时不能测试RSS的编译结果。现在，我可以自己创建一个<code>app/rss.xml/route.ts</code>的Route Handler，并和渲染文章页面一样，手动创建RSS的信息，以及各篇文章在RSS中的渲染结果。</p>
+<h2>静态生成图片</h2>
+<p>在编写整个网站的过程中，最大的挑战是<strong>如何生成博客内容所需要的图片</strong>。</p>
+<p>在所有能查找到的使用Next.js编写博客网站的文章和项目中（如<a href="https://github.com/vercel/next.js/tree/canary/examples/blog-starter">Next.js官方blog-starter模板</a>），都是通过<a href="https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets"><code>public</code>目录</a>来引用图片等静态文件的。在编译时，<code>public</code>目录下的文件将会直接复制到构建目录下，在部署后，这些文件将可以直接通过<code>/</code>访问。</p>
+<p>但是这并不能满足我的需求。因为我的博客中，博客文章和图片都是放在<code>contents</code>下的同一个目录下的。而<code>contents</code>目录不能被公开访问。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/blog-article-dir.png" alt="博客文章和图片存放在同一个目录下"></p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="md" data-theme="default"><code data-language="md" data-theme="default"><span class="line"><span style="color: #7F848E; font-style: italic">&#x3C;!-- 在Markdown中通过和md文件的相对路径访问 --></span></span>
+<span class="line"><span style="color: #ABB2BF">![</span><span style="color: #61AFEF">图片注释</span><span style="color: #ABB2BF">]</span><span style="color: #E06C75">(</span><span style="color: #C678DD; text-decoration: underline">./decompile.png</span><span style="color: #E06C75">)</span></span></code></pre></div>
+<p>一个简单粗暴的解决方案是编写一个脚本，在编译后把所有静态文件从<code>contents</code>复制到<code>public</code>下，并在编译markdown时，修改所有的图片路径到编译后的路径中。但是这个做法也太不优雅了，有没有什么更好的、不需要自定义编译流程的方案呢？</p>
+<p>答案是<a href="https://nextjs.org/docs/app/building-your-application/routing/router-handlers">Route Handler</a>。</p>
+<p>Route Handler可以使开发者对某个路径编写自定义的处理逻辑。通过Route Handler，我可以定义一个专门用于获取静态文件的路径。我定义了一个<code>/articles/asset/[...path]</code>的route handler，当使用<code>GET</code>方法访问这个路径的时，handler将会去读取这个路径的对应的文件的内容，并以流的形式返回。Route handler同样支持<code>generateStaticParams</code>。通过这个方法，我遍历<code>contents</code>下的所有静态文件。这样，在编译时，Next.js将会把<code>contents</code>下所有文件的路径都传入这个Route Handler并运行，并将handler的结果（也就是文件内容）存放在<code>/articles/asset/contents/{文件相对于contents的路径}</code>下，发布后可以通过<code>/articles/asset/contents/{相对路径}</code>这个URL访问到图片。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="ts" data-theme="default"><code data-language="ts" data-theme="default"><span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">GET</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">request</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">NextRequest</span><span style="color: #ABB2BF">, { </span><span style="color: #E06C75; font-style: italic">params</span><span style="color: #ABB2BF"> }: { </span><span style="color: #E06C75">params</span><span style="color: #ABB2BF">: { </span><span style="color: #E06C75">path</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF">[] }}) {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">fullPath</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">params</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">path</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">join</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">"/"</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">fileStat</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">stat</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">fullPath</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 读取文件流并返回</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">stream</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">createReadStream</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">fullPath</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// @ts-ignore</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">NextResponse</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">Readable</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">toWeb</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">stream</span><span style="color: #ABB2BF">), {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">headers</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #98C379">"Content-Type"</span><span style="color: #ABB2BF">: </span><span style="color: #61AFEF">lookup</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">fullPath</span><span style="color: #ABB2BF">) </span><span style="color: #56B6C2">??</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">"application/octet-stream"</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #98C379">"Content-Length"</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">fileStat</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">size</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">    },</span></span>
+<span class="line"><span style="color: #ABB2BF">  });</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">generateStaticParams</span><span style="color: #ABB2BF">() {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 遍历所有路径</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">paths</span><span style="color: #ABB2BF">: { </span><span style="color: #E06C75">path</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF">[] }[] </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">rec</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">dir</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">string</span><span style="color: #ABB2BF">[]) {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">dirents</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">readdir</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">dir</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">join</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">"/"</span><span style="color: #ABB2BF">), { </span><span style="color: #E06C75">withFileTypes</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">true</span><span style="color: #ABB2BF"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">for</span><span style="color: #ABB2BF"> (</span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">dirent</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">of</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">dirents</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E5C07B">dirent</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">isDirectory</span><span style="color: #ABB2BF">()) {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">rec</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">dir</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">concat</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">dirent</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">name</span><span style="color: #ABB2BF">));</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #C678DD">continue</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">paths</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">push</span><span style="color: #ABB2BF">({ </span><span style="color: #E06C75">path</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">dir</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">concat</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">dirent</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">name</span><span style="color: #ABB2BF">) });</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">rec</span><span style="color: #ABB2BF">([</span><span style="color: #98C379">"contents"</span><span style="color: #ABB2BF">]);</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">paths</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre></div>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/articles-assets.png" alt="编译后的articles/asset路径，包含有所有的静态文件"></p>
+<p>现在图片有了，下一步是将markdown中对图片的引用地址修改到真实的编译后的地址。这实际上很简单，通过<code>rehype-react</code>将HTML的<code>&#x3C;img></code>使用自己的组件渲染，然后在自己的组件中把<code>src</code>属性修改为真正的图片路径即可。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="tsx" data-theme="default"><code data-language="tsx" data-theme="default"><span class="line"><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">use</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">rehypeReact</span><span style="color: #ABB2BF">, {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ..</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">components</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// 使用自己的Image组件渲染HTML中的&#x3C;img></span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">img</span><span style="color: #ABB2BF">: ((</span><span style="color: #E06C75; font-style: italic">props</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=></span><span style="color: #ABB2BF"> &#x3C;</span><span style="color: #E5C07B">ArticleImageServer</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">article</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">article</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">props</span><span style="color: #56B6C2">=</span><span style="color: #C678DD">{</span><span style="color: #E06C75">props</span><span style="color: #C678DD">}</span><span style="color: #ABB2BF"> />) </span><span style="color: #C678DD">satisfies</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">ComponentType</span><span style="color: #56B6C2">&#x3C;</span><span style="color: #E5C07B">JSX</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">IntrinsicElements</span><span style="color: #ABB2BF">[</span><span style="color: #98C379">"img"</span><span style="color: #ABB2BF">]</span><span style="color: #56B6C2">></span><span style="color: #ABB2BF">,</span></span></code></pre></div>
+<p>我们使用了Next.js自带的<code>&#x3C;Image></code>组件来显示图片（在<code>ArticleImage</code>中）。这个组件有很多友好的功能，例如通过指定图片大小防止Layout Shift，在支持的环境下支持先加载更小的图片以更快的显示界面等。通过把<code>&#x3C;Image></code>和自定义的markdown流程相结合，我们就实现了显示图片的需求。</p>
+<h2>多主题</h2>
+<p>本次更新在样式方面最大的可见的更新就是支持了<strong>多主题</strong>。目前网站已经开放了12个主题可供选择，当然，我的美学能力远远不够自己设计这么多的主题，所有主题都是由<a href="https://daisyui.com/docs/themes/">daisyui提供的</a>。</p>
+<p>daisyui首先定义了一些固定的<a href="https://daisyui.com/docs/colors/#-2">颜色变量</a>，这样在编码时，所有元素的颜色都可以通过颜色变量，而不是写死的颜色值，来指定。例如下面的代码就指定了一个背景颜色为<code>base-200</code>、文本颜色为<code>text-content</code>的<code>ul</code>组件。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="tsx" data-theme="default"><code data-language="tsx" data-theme="default"><span class="line"><span style="color: #ABB2BF">&#x3C;</span><span style="color: #E06C75">ul</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66; font-style: italic">className</span><span style="color: #56B6C2">=</span><span style="color: #98C379">"bg-base-200 text-base-content"</span><span style="color: #ABB2BF">></span></span>
+<span class="line"><span style="color: #ABB2BF">&#x3C;/</span><span style="color: #E06C75">ul</span><span style="color: #ABB2BF">></span></span></code></pre></div>
+<p>之后，daisyui通过识别<code>&#x3C;html></code>组件的<code>data-theme</code>数据属性来获取到当前用户所选择的主题，并通过CSS选择器将对应的颜色的CSS变量修改为对应的主题的对应颜色变量的值。要想切换主题，只需要修改<code>&#x3C;html></code>组件的<code>data-theme</code>数据属性即可。</p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20230617-blog-updates-2/daisyui-data-theme.png" alt="data-theme"></p>
+<p>由于各个主题的颜色风格大相径庭，我原来博客的代码背景就不可以使用了。新的主页背景必须得能够自适应完全不同的颜色风格。要想实现这一点，新的背景必须是使用CSS动态生成的。</p>
+<p>于是我在网上找到了一个<a href="https://alvarotrigo.com/blog/animated-backgrounds-css">绝妙的网站</a>，这个页面中提供了数十种纯用CSS实现的背景动画。我选中了其中的第三个Floating Squares。这个动画的背景色、以及各个方块的颜色都是由CSS的定义的，我需要做的，就是把其中的基础颜色替换为当前所使用的主题的CSS变量，这样，新的背景就能自动和当前所使用的主题相匹配了。</p>
+<div data-rehype-pretty-code-fragment=""><pre data-language="css" data-theme="default"><code data-language="css" data-theme="default"><span class="line"><span style="color: #D19A66">.area</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">/* 使用daisyui的颜色变量 */</span></span>
+<span class="line"><span style="color: #ABB2BF">  background: </span><span style="color: #56B6C2">linear-gradient</span><span style="color: #ABB2BF">(to </span><span style="color: #D19A66">bottom</span><span style="color: #ABB2BF">, </span><span style="color: #56B6C2">hsl</span><span style="color: #ABB2BF">(</span><span style="color: #56B6C2">var</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">--p</span><span style="color: #ABB2BF">)), </span><span style="color: #56B6C2">hsl</span><span style="color: #ABB2BF">(</span><span style="color: #56B6C2">var</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">--pf</span><span style="color: #ABB2BF">)));</span></span>
+<span class="line"><span style="color: #ABB2BF">  width: </span><span style="color: #D19A66">100</span><span style="color: #E06C75">%</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  height: </span><span style="color: #D19A66">100</span><span style="color: #E06C75">vh</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D19A66">.circles</span><span style="color: #C678DD"> </span><span style="color: #E06C75">li</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  position: </span><span style="color: #D19A66">absolute</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  display: </span><span style="color: #D19A66">block</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  list-style: </span><span style="color: #D19A66">none</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  width: </span><span style="color: #D19A66">20</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  height: </span><span style="color: #D19A66">20</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">/* 使用daisyui的颜色变量 */</span></span>
+<span class="line"><span style="color: #ABB2BF">  background: </span><span style="color: #56B6C2">hsl</span><span style="color: #ABB2BF">(</span><span style="color: #56B6C2">var</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">--a</span><span style="color: #ABB2BF">));</span></span>
+<span class="line"><span style="color: #ABB2BF">  animation: animate </span><span style="color: #D19A66">25</span><span style="color: #E06C75">s</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">linear</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">infinite</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">  bottom: </span><span style="color: #D19A66">-150</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span></code></pre></div>
+<h1>总结</h1>
+<p>本来我一开始并没有打算完全重写整个项目，而是打算在已有的代码上做一些小修小补。但是当我真的打开了代码开始准备修改时，就发现了原来的代码中各个组件之间的依赖像是形成了蜘蛛网一样，完全无法下手。随便改任何一处已有的代码，都会涉及到巨量的其他代码，可谓牵一发而动全身。想起来2018年开始写Gatsby的ddadaal.me的时候，一大驱动力就是原有的屎山实在无法维护了。而5年后，当年的新代码变成了新的屎山，而被更新的代码取代之。果然，和世间其他万物一样，技术在发展，代码也是常用常新，需要不停地跟上时代的步伐。重写后的博客功能和以往一致，但是更轻、更快、更易维护，也算是一次成功的重构实践。</p>]]></description>
+            <link>https://ddadaal.me/articles/blog-updates-2/cn</link>
+            <guid isPermaLink="true">https://ddadaal.me/articles/blog-updates-2/cn</guid>
+            <category><![CDATA[博客]]></category>
+            <pubDate>Sat, 17 Jun 2023 14:10:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[2022年总结]]></title>
             <description><![CDATA[<h1>转折点</h1>
