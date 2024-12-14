@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 07 Jul 2024 02:44:17 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 14 Dec 2024 14:51:26 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 07 Jul 2024 02:44:04 GMT</pubDate>
+        <pubDate>Sat, 14 Dec 2024 14:51:22 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -5995,7 +5995,7 @@ Sun Mon Tue Wed Thu Fri Sat
 <span data-line=""><span style="color:#7F848E;font-style:italic">  // key as the Java Class object and value as its corresponding singleton instance</span></span>
 <span data-line=""><span style="color:#C678DD">  private</span><span style="color:#C678DD"> val</span><span style="color:#ABB2BF"> map </span><span style="color:#56B6C2">=</span><span style="color:#61AFEF"> mutableMapOf</span><span style="color:#ABB2BF">&#x3C;</span><span style="color:#E5C07B">Class</span><span style="color:#ABB2BF">&#x3C;*>, </span><span style="color:#E5C07B">Any</span><span style="color:#ABB2BF">?>()</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#61AFEF">  init</span><span style="color:#ABB2BF"> {</span></span>
+<span data-line=""><span style="color:#C678DD">  init</span><span style="color:#ABB2BF"> {</span></span>
 <span data-line=""><span style="color:#7F848E;font-style:italic">    // scan specified package</span></span>
 <span data-line=""><span style="color:#61AFEF">    ClassGraph</span><span style="color:#ABB2BF">()</span></span>
 <span data-line=""><span style="color:#ABB2BF">      .</span><span style="color:#61AFEF">enableAllInfo</span><span style="color:#ABB2BF">()</span></span>
