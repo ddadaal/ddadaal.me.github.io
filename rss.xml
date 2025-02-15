@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 15 Feb 2025 02:54:45 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 15 Feb 2025 02:55:29 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 15 Feb 2025 02:54:40 GMT</pubDate>
+        <pubDate>Sat, 15 Feb 2025 02:55:26 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -19,7 +19,7 @@
         <category><![CDATA[Programming]]></category>
         <category><![CDATA[Software]]></category>
         <item>
-            <title><![CDATA[用大模型总结文章：玄学，但是效果很好]]></title>
+            <title><![CDATA[用大模型总结文章：效果很好，但是玄学]]></title>
             <description><![CDATA[<h1>Azure AI Language Service的结果太差了</h1>
 <p>去年我给我的文章增加了AI文章总结功能。在<a href="/articles/ai-article-summary">介绍此功能的文章</a>，我提到当时这个功能是通过<a href="https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=text-summarization">Azure AI Language Service Text Summarization</a>的功能实现的。</p>
 <p>当时我已经发现，这个功能在英文文章上效果还行，但是在中文文章上就基本不可用。</p>
