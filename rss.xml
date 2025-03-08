@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 08 Mar 2025 04:07:55 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Mar 2025 04:55:51 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 08 Mar 2025 04:07:51 GMT</pubDate>
+        <pubDate>Sat, 08 Mar 2025 04:55:47 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -19,7 +19,7 @@
         <category><![CDATA[Programming]]></category>
         <category><![CDATA[Software]]></category>
         <item>
-            <title><![CDATA[Node是并发性能的绊脚石吗？研究Express服务器的基准并发能力]]></title>
+            <title><![CDATA[Node是并发性能的绊脚石吗？测试Express服务器的基准并发能力]]></title>
             <description><![CDATA[<h1>问题发现</h1>
 <p>最近在一个项目中，我遇到了一个使用Node.js编写的请求转发服务的性能瓶颈问题。这个服务的主要工作看似非常简单：获取用户的请求，将请求体(body)转发到后端的服务器，然后将服务器的响应原样返回给客户端。</p>
 <p>然而，在进行压力测试时，我们发现当并发请求达到约2000时，系统表现出了明显的性能问题：</p>
