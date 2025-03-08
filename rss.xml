@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 08 Mar 2025 04:55:51 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Mar 2025 06:59:48 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 08 Mar 2025 04:55:47 GMT</pubDate>
+        <pubDate>Sat, 08 Mar 2025 06:59:45 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -551,7 +551,7 @@
 
 
 
-<table><thead><tr><th>连接数</th><th>服务器</th><th>直接返回-延迟</th><th>延迟-延迟</th><th>输出日志-延迟</th><th>直接返回-超时率</th><th>延迟-超时率</th><th>输出日志-超时率</th><th>直接返回-错误率</th><th>延迟-错误率</th><th>输出日志-错误率</th></tr></thead><tbody><tr><td>50</td><td>后端</td><td>6.03ms</td><td>503.92ms</td><td>9.17ms</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td></tr><tr><td>50</td><td>代理</td><td>74.76ms</td><td>519.05ms</td><td>54.27ms</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td></tr><tr><td>500</td><td>后端</td><td>163.54ms</td><td>506.11ms</td><td>132.43ms</td><td>0.14%</td><td>0.00%</td><td>0.13%</td><td>0.14%</td><td>0.00%</td><td>0.13%</td></tr><tr><td>500</td><td>代理</td><td>192.97ms</td><td>717.28ms</td><td>208.93ms</td><td>0.29%</td><td>0.00%</td><td>0.29%</td><td>0.29%</td><td>0.00%</td><td>0.29%</td></tr><tr><td>2000</td><td>后端</td><td>102.43ms</td><td>533.43ms</td><td>105.53ms</td><td>0.06%</td><td>0.00%</td><td>0.08%</td><td>0.06%</td><td>0.00%</td><td>0.15%</td></tr><tr><td>2000</td><td>代理</td><td>326.00ms</td><td>726.51ms</td><td>417.52ms</td><td>0.13%</td><td>2.03%</td><td>0.21%</td><td>0.13%</td><td>2.03%</td><td>0.21%</td></tr><tr><td>5000</td><td>后端</td><td>248.05ms</td><td>529.92ms</td><td>358.23ms</td><td>0.03%</td><td>0.00%</td><td>0.05%</td><td>1.45%</td><td>7.73%</td><td>2.23%</td></tr><tr><td>5000</td><td>代理</td><td>326.11ms</td><td>892.77ms</td><td>434.87ms</td><td>2.64%</td><td>1.35%</td><td>2.87%</td><td>9.80%</td><td>13.92%</td><td>10.33%</td></tr><tr><td>10000</td><td>后端</td><td>453.61ms</td><td>607.15ms</td><td>641.06ms</td><td>0.02%</td><td>0.00%</td><td>0.00%</td><td>8.12%</td><td>9.89%</td><td>12.64%</td></tr><tr><td>10000</td><td>代理</td><td>78.55ms</td><td>788.52ms</td><td>89.68ms</td><td>0.05%</td><td>2.90%</td><td>0.01%</td><td>31.04%</td><td>36.76%</td><td>36.39%</td></tr><tr><td>20000</td><td>后端</td><td>414.19ms</td><td>610.10ms</td><td>375.80ms</td><td>0.02%</td><td>0.00%</td><td>0.00%</td><td>23.96%</td><td>30.43%</td><td>35.20%</td></tr><tr><td>20000</td><td>代理</td><td>3.40ms</td><td>777.70ms</td><td>94.90ms</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>115.66%</td><td>232.21%</td><td>107.78%</td></tr></tbody></table>
+<table><thead><tr><th>连接数</th><th>服务器</th><th>直接返回-延迟</th><th>延迟-延迟</th><th>输出日志-延迟</th><th>直接返回-超时率</th><th>延迟-超时率</th><th>输出日志-超时率</th><th>直接返回-错误率</th><th>延迟-错误率</th><th>输出日志-错误率</th></tr></thead><tbody><tr><td>50</td><td>后端</td><td>6.03ms</td><td>503.92ms</td><td>9.17ms</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td></tr><tr><td>500</td><td>后端</td><td>163.54ms</td><td>506.11ms</td><td>132.43ms</td><td>0.14%</td><td>0.00%</td><td>0.13%</td><td>0.14%</td><td>0.00%</td><td>0.13%</td></tr><tr><td>2000</td><td>后端</td><td>102.43ms</td><td>533.43ms</td><td>105.53ms</td><td>0.06%</td><td>0.00%</td><td>0.08%</td><td>0.06%</td><td>0.00%</td><td>0.15%</td></tr><tr><td>5000</td><td>后端</td><td>248.05ms</td><td>529.92ms</td><td>358.23ms</td><td>0.03%</td><td>0.00%</td><td>0.05%</td><td>1.45%</td><td>7.73%</td><td>2.23%</td></tr><tr><td>10000</td><td>后端</td><td>453.61ms</td><td>607.15ms</td><td>641.06ms</td><td>0.02%</td><td>0.00%</td><td>0.00%</td><td>8.12%</td><td>9.89%</td><td>12.64%</td></tr><tr><td>20000</td><td>后端</td><td>414.19ms</td><td>610.10ms</td><td>375.80ms</td><td>0.02%</td><td>0.00%</td><td>0.00%</td><td>23.96%</td><td>30.43%</td><td>35.20%</td></tr><tr><td>50</td><td>代理</td><td>74.76ms</td><td>519.05ms</td><td>54.27ms</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>0.00%</td></tr><tr><td>500</td><td>代理</td><td>192.97ms</td><td>717.28ms</td><td>208.93ms</td><td>0.29%</td><td>0.00%</td><td>0.29%</td><td>0.29%</td><td>0.00%</td><td>0.29%</td></tr><tr><td>2000</td><td>代理</td><td>326.00ms</td><td>726.51ms</td><td>417.52ms</td><td>0.13%</td><td>2.03%</td><td>0.21%</td><td>0.13%</td><td>2.03%</td><td>0.21%</td></tr><tr><td>5000</td><td>代理</td><td>326.11ms</td><td>892.77ms</td><td>434.87ms</td><td>2.64%</td><td>1.35%</td><td>2.87%</td><td>9.80%</td><td>13.92%</td><td>10.33%</td></tr><tr><td>10000</td><td>代理</td><td>78.55ms</td><td>788.52ms</td><td>89.68ms</td><td>0.05%</td><td>2.90%</td><td>0.01%</td><td>31.04%</td><td>36.76%</td><td>36.39%</td></tr><tr><td>20000</td><td>代理</td><td>3.40ms</td><td>777.70ms</td><td>94.90ms</td><td>0.00%</td><td>0.00%</td><td>0.00%</td><td>115.66%</td><td>232.21%</td><td>107.78%</td></tr></tbody></table>
 <p>从这个对比表格中，我们可以得出几个重要观察：</p>
 <ol>
 <li>
@@ -570,18 +570,110 @@
 <p><strong>极端高并发下的异常</strong>：在20000连接的极端情况下，所有配置都表现出较高的错误率，但代理服务的延迟反而下降，这可能是因为大量请求被直接拒绝，导致成功请求的平均延迟降低</p>
 </li>
 </ol>
+<h1>Go</h1>
+<p>为了对比，我又准备了用Go使用标准库<code>net/http</code>编写的相同功能的两个程序，并在后端500ms延迟、不打log的情况下，测出go的成绩如下（未列出的连接数并未发生错误）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Server</th><th>Connections</th><th>Requests/sec</th><th>Avg Latency</th><th>Max Latency</th><th>Total Requests</th><th>Timeouts</th><th>Timeout %</th><th>Total Errors</th><th>Error %</th></tr></thead><tbody><tr><td>5001</td><td>5000</td><td>7310.92</td><td>501.39ms</td><td>516.91ms</td><td>73728</td><td>0</td><td>0.00%</td><td>902</td><td>1.22%</td></tr><tr><td>5001</td><td>10000</td><td>7060.75</td><td>501.72ms</td><td>517.20ms</td><td>71154</td><td>0</td><td>0.00%</td><td>5900</td><td>8.29%</td></tr><tr><td>5001</td><td>20000</td><td>6493.01</td><td>501.33ms</td><td>512.36ms</td><td>65536</td><td>0</td><td>0.00%</td><td>15902</td><td>24.26%</td></tr><tr><td>5000</td><td>5000</td><td>5910.59</td><td>636.54ms</td><td>3.46s</td><td>59611</td><td>0</td><td>0.00%</td><td>903</td><td>1.51%</td></tr><tr><td>5000</td><td>10000</td><td>5441.54</td><td>657.59ms</td><td>1.25s</td><td>54953</td><td>0</td><td>0.00%</td><td>5900</td><td>10.74%</td></tr><tr><td>5000</td><td>20000</td><td>4857.47</td><td>663.12ms</td><td>2.11s</td><td>48912</td><td>0</td><td>0.00%</td><td>15902</td><td>32.51%</td></tr></tbody></table>
+<p>二者的差距还是在预期的，go从来没有发生过超时，整体延迟、错误率数据也比node好很多。如在5000个连接下，代理程序出现1.51%的错误，node版本出现9.08%的错误，差距在6倍左右。</p>
 <h1>结论</h1>
 <p>通过这些简单数据，我们发现</p>
 <ul>
 <li>Node本身的单线程模型无法利用所有CPU的能力，即使在纯网络IO任务中也可能成为性能瓶颈</li>
-<li>在这次实验中，<strong>2000</strong>连接数是个门槛，在此之上，超时率、错误率会迅速增加
+<li>在这次实验中，express在<strong>2000</strong>连接数是个门槛，在此之上，超时率、错误率会迅速增加
 <ul>
 <li>并且，我的测试机器是消费级CPU，而一般服务器CPU并不能达到如此的单核性能，所以在生产环境中的性能表现会更差</li>
 </ul>
 </li>
 </ul>
 <p>要想解决这个问题，在代码中做出一定的优化，例如减少日志打印、简化Node中的逻辑等，也会有一定的效果。如果优化代码的效果不佳，唯一的办法是运行多个node进程，可以考虑的方法主要是启动多个node服务并增加负载均衡，或者使用node cluster让node可以启动多个worker process。</p>
-<p>我们得出了2000这个数字，但是这个数字意味着什么呢？后续我可能还会和Node的其他HTTP框架以及Go等其他语言做对比，看看Express和其他竞争对手的对比。</p>
 <p>本实验中的代码和结果均在 <a href="https://github.com/ddadaal/node-express-concurrency-baseline-test">https://github.com/ddadaal/node-express-concurrency-baseline-test</a> 中可用。</p>
 <h1>Acknowledgements</h1>
 <p>整个测试项目、测试脚本甚至本篇文章基本都是直接使用Copilot + Claude 3.7 Sonnet模型生成的，不得不说，让AI生成大框架、自己再来完善细节的做法确实能提高不少效率。这种实验的大多数工作实际上是框架代码，代码本身逻辑简单，但是需要使用大量API、编写繁琐的测试逻辑、数据分析以及做表，手写非常耗费精力，让AI来做这些繁琐的工作实在是再合适不过了。写文章也可以让AI帮忙做，我之前写篇文章至少需要花一整天，这一次居然一个上午就搞定了。</p>
