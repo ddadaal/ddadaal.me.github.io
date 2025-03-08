@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 08 Mar 2025 03:43:15 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Mar 2025 04:07:55 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 08 Mar 2025 03:43:11 GMT</pubDate>
+        <pubDate>Sat, 08 Mar 2025 04:07:51 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -19,7 +19,7 @@
         <category><![CDATA[Programming]]></category>
         <category><![CDATA[Software]]></category>
         <item>
-            <title><![CDATA[Node是并发性能的绊脚石吗？研究Node Web服务器的基准并发能力]]></title>
+            <title><![CDATA[Node是并发性能的绊脚石吗？研究Express服务器的基准并发能力]]></title>
             <description><![CDATA[<h1>问题发现</h1>
 <p>最近在一个项目中，我遇到了一个使用Node.js编写的请求转发服务的性能瓶颈问题。这个服务的主要工作看似非常简单：获取用户的请求，将请求体(body)转发到后端的服务器，然后将服务器的响应原样返回给客户端。</p>
 <p>然而，在进行压力测试时，我们发现当并发请求达到约2000时，系统表现出了明显的性能问题：</p>
@@ -580,14 +580,14 @@
 </ul>
 </li>
 </ul>
-<p>要想解决这个问题，在代码中做出一定的优化，例如减少日志打印等，也会有一定的效果。如果优化代码的效果不佳，唯一的办法是运行多个node进程，可以考虑的方法主要是启动多个node服务并增加负载均衡，或者使用node cluster让node可以启动多个worker process。</p>
-<p>我们得出了2000这个数字，但是这个数字意味着什么呢？后续我可能还会和Go等其他语言做对比，看看Node和其他竞争对手的对比。</p>
-<p>本实验中的代码和结果均在 <a href="https://github.com/ddadaal/node-web-performance-baseline-test">https://github.com/ddadaal/node-web-performance-baseline-test</a> 中可用。</p>
-<h1>Bonus</h1>
+<p>要想解决这个问题，在代码中做出一定的优化，例如减少日志打印、简化Node中的逻辑等，也会有一定的效果。如果优化代码的效果不佳，唯一的办法是运行多个node进程，可以考虑的方法主要是启动多个node服务并增加负载均衡，或者使用node cluster让node可以启动多个worker process。</p>
+<p>我们得出了2000这个数字，但是这个数字意味着什么呢？后续我可能还会和Node的其他HTTP框架以及Go等其他语言做对比，看看Express和其他竞争对手的对比。</p>
+<p>本实验中的代码和结果均在 <a href="https://github.com/ddadaal/node-express-concurrency-baseline-test">https://github.com/ddadaal/node-express-concurrency-baseline-test</a> 中可用。</p>
+<h1>Acknowledgements</h1>
 <p>整个测试项目、测试脚本甚至本篇文章基本都是直接使用Copilot + Claude 3.7 Sonnet模型生成的，不得不说，让AI生成大框架、自己再来完善细节的做法确实能提高不少效率。这种实验的大多数工作实际上是框架代码，代码本身逻辑简单，但是需要使用大量API、编写繁琐的测试逻辑、数据分析以及做表，手写非常耗费精力，让AI来做这些繁琐的工作实在是再合适不过了。写文章也可以让AI帮忙做，我之前写篇文章至少需要花一整天，这一次居然一个上午就搞定了。</p>
 <p>哦，上面这一句话不是AI写的😀</p>]]></description>
-            <link>https://ddadaal.me/articles/node-web-concurrency-performance-baseline/cn</link>
-            <guid isPermaLink="true">https://ddadaal.me/articles/node-web-concurrency-performance-baseline/cn</guid>
+            <link>https://ddadaal.me/articles/node-express-concurrency-baseline/cn</link>
+            <guid isPermaLink="true">https://ddadaal.me/articles/node-express-concurrency-baseline/cn</guid>
             <category><![CDATA[web]]></category>
             <category><![CDATA[我的项目]]></category>
             <category><![CDATA[node.js]]></category>
