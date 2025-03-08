@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 08 Mar 2025 06:59:48 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Mar 2025 12:06:57 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 08 Mar 2025 06:59:45 GMT</pubDate>
+        <pubDate>Sat, 08 Mar 2025 12:06:54 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -662,7 +662,7 @@
 
 
 <table><thead><tr><th>Server</th><th>Connections</th><th>Requests/sec</th><th>Avg Latency</th><th>Max Latency</th><th>Total Requests</th><th>Timeouts</th><th>Timeout %</th><th>Total Errors</th><th>Error %</th></tr></thead><tbody><tr><td>5001</td><td>5000</td><td>7310.92</td><td>501.39ms</td><td>516.91ms</td><td>73728</td><td>0</td><td>0.00%</td><td>902</td><td>1.22%</td></tr><tr><td>5001</td><td>10000</td><td>7060.75</td><td>501.72ms</td><td>517.20ms</td><td>71154</td><td>0</td><td>0.00%</td><td>5900</td><td>8.29%</td></tr><tr><td>5001</td><td>20000</td><td>6493.01</td><td>501.33ms</td><td>512.36ms</td><td>65536</td><td>0</td><td>0.00%</td><td>15902</td><td>24.26%</td></tr><tr><td>5000</td><td>5000</td><td>5910.59</td><td>636.54ms</td><td>3.46s</td><td>59611</td><td>0</td><td>0.00%</td><td>903</td><td>1.51%</td></tr><tr><td>5000</td><td>10000</td><td>5441.54</td><td>657.59ms</td><td>1.25s</td><td>54953</td><td>0</td><td>0.00%</td><td>5900</td><td>10.74%</td></tr><tr><td>5000</td><td>20000</td><td>4857.47</td><td>663.12ms</td><td>2.11s</td><td>48912</td><td>0</td><td>0.00%</td><td>15902</td><td>32.51%</td></tr></tbody></table>
-<p>二者的差距还是在预期的，go从来没有发生过超时，整体延迟、错误率数据也比node好很多。如在5000个连接下，代理程序出现1.51%的错误，node版本出现9.08%的错误，差距在6倍左右。</p>
+<p>二者的差距还是在预期的，go从来没有发生过超时，整体延迟、错误率数据也比node好很多。如在5000个连接下，代理程序出现1.51%的错误，node版本出现9.08%的错误，差距在6倍左右。但是需要注意的是，go可以利用全部CPU核心，而node的js线程只能利用一个核心，如果启动多个node并进行负载均衡，最终结果不一定有很大的差别。</p>
 <h1>结论</h1>
 <p>通过这些简单数据，我们发现</p>
 <ul>
