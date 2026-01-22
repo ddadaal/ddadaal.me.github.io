@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[88459,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/4ec1bf7a32b70f87.js"],"Localized"]
+3:I[23491,["/_next/static/chunks/2caa33a942c5f527.js","/_next/static/chunks/59983278a34fd25c.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+:HL["/_next/static/chunks/b59bad6ea4f112f2.css","style"]
+0:{"buildId":"x-o6oom0-eYUQFwPypfzU","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"max-w-xl mx-auto py-8 px-4","children":[["$","h1",null,{"className":"text-2xl font-bold mb-6","children":["$","$L2",null,{"id":"sparksPage.title"}]}],["$","div",null,{"className":"flex flex-col gap-4","children":[["$","div","0",{"className":"card bg-base-100 shadow-md","children":["$","div",null,{"className":"card-body p-4","children":[["$","div",null,{"className":"flex-shrink-0","children":["$","span",null,{"className":"text-sm text-base-content/60 font-medium","children":"2025-08-07 10:00:00 UTC+8"}]}],["$","div",null,{"className":"flex-1 text-base leading-relaxed","children":[["$","p","p-0",{"children":"发布了 sparks 页面！有时候我想到的一些小点子，会被直接记录到这里。"}]]}]]}]}]]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/b59bad6ea4f112f2.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/4ec1bf7a32b70f87.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null

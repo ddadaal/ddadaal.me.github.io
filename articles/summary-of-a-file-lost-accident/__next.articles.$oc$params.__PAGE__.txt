@@ -1,0 +1,306 @@
+1:"$Sreact.fragment"
+2:I[28979,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleFrontmatter"]
+c:I[21753,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleSummarization"]
+d:I[79817,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"Gallery"]
+55:I[23491,["/_next/static/chunks/2caa33a942c5f527.js","/_next/static/chunks/59983278a34fd25c.js"],"OutletBoundary"]
+56:"$Sreact.suspense"
+5a:I[72053,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleImage"]
+5f:I[14620,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleToc"]
+60:I[39182,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"RelatedArticles"]
+61:I[42449,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"CommentPanelWithCurrentLanguage"]
+:HL["/_next/static/chunks/44d2e091595b3eca.css","style"]
+:HL["/_next/static/chunks/5e55d74f3211c796.css","style"]
+:HL["/_next/static/chunks/b59bad6ea4f112f2.css","style"]
+3:T2ef5,
+# 生产事故
+
+我最近负责了一个比赛后台网站的开发和维护，在比赛临近结束、正在接受用户提交成果文件的时候出了一场生产事故，造成了丢失了一段时间内用户上传的文件。本文主要讲讲生产事故从发现到确定影响范围到确定原因的过程。在整个过程中，后台程序记录的日志起到了巨大的作用。
+
+关于这个项目的总结，可以查看这篇文章：[我的第一个真实项目：总结和经验](/articles/summary-of-my-first-real-project)。
+
+# TL;DR
+
+| 要素     | 内容                                                                                                   |
+| -------- | ------------------------------------------------------------------------------------------------------ |
+| 表现     | 丢失`2021-07-16 09:00:10`至`2021-07-17 18:00:57`期间所上传的文件                                       |
+| 原因     | 7月16日的一次提交，使得之后文件上传到了一个容器内部的、没有mount出来的目录，容器重启后，这些文件丢失了 |
+| 补救     | 进入容器，找回了最后一次容器重启后到问题发生期间上传的文件                                             |
+| 后续处理 | 通过log、数据库数据等找到了受到影响的用户，通过邮箱、电话和短信提醒他们重新上传文件                    |
+| 经验     | 实现依赖业务，而非业务依赖实现；重视测试细节；log中记录尽可能多的信息                                  |
+
+# 问题发现
+
+项目基本情况是这样的。用户可以注册团队，一个团队有一个队长，队长可以提交一个团队的成果文件。管理员可以看到各个队伍的提交情况，以及也可以直接下载团队提交的文件。
+
+19日下午4点左右，我用管理员登录了系统，本来只是在随便看看有哪些团队提交了成果，结果突然发现有的团队的成果点击下载下不下来。
+
+![点击下载提交的团队的成果发现出错](download-error.png)
+
+赶紧上服务器上看是怎么回事。打开服务器存放上传的文件的目录，grep一下发现对应的ID发现没有这个文件。
+
+上传文件的逻辑是这样的：
+
+1. 获取上传的文件
+2. 把文件保存到`upload/{团队ID}/文件名`
+   1. 保存之前，打日志`Received file {文件名} from {用户ID}. Saving it to {完整路径}.`
+   2. 保存完成后，打日志`${完整路径} saved successfully.`
+3. 更新数据库，记录文件名(列名为`filename`)和上传时间（`last_update_time`）
+
+如果第二步失败，就不能进行第三步，不会出现保存文件失败但是写了数据库的情况。但是如果没有写数据库，我在后台就不会看到这个团队有成果，就不会能够点击下载了。
+
+后端程序运行在docker中，但是`upload`是一个mounted volume，其中的文件和容器外的一个目录是进行了共享的，所以不管容器怎么重启，这里面的文件是不会掉的。
+
+```yaml
+# docker-compose相关部分, /dist是容器中存放程序文件的根目录
+backend:
+  volumes:
+    - "./backend/upload:/dist/upload"
+```
+
+马上翻了下日志，按上面说的格式搜一下日志（下面的队伍ID为实际的团队ID）：
+
+```logql
+{container_name="backend"}|="Saving it to upload/队伍ID"
+```
+
+发现**没有结果**。
+
+这就奇怪了，于是把`upload/队伍ID`从查询语句中删除，直接看有哪些保存的日志，这一看就出事了。我看到了一堆这样的日志：
+
+```
+{"level":30,"time":1626528267191,"pid":36,"hostname":"2358983e224d","reqId":"req-29","msg":"Received file 文件名.zip from 用户ID.\n    Saving it to 团队ID/文件名.zip."}
+```
+
+文件被保存到`{团队ID}/文件名`下了！而`{团队ID}`这些目录是没有被mount的，容器重启就重启了，没了！
+
+马上进入容器里运行`ls`，果然在容器根目录看到了一堆`{团队ID}`的目录。
+
+# 确定影响范围和补救
+
+首先，我把容器里已有的这些文件复制了出来，并定时检查有没有新的文件。还好，在排查问题的整个过程中都没有新的文件名上传。这些文件应该是在上一次容器重启之后才上传的。
+
+之后，是找到哪些队伍的文件仍然丢失了，也就是数据库中`filename`不是NULL，但是`upload`下面没有这个队伍。这些队伍的文件应该是在上一次重启之前就上传了，上一次重启使得这些文件丢失了，应该是无法找回了。
+
+通过各种查找资料，写出来以下的bash脚本：
+
+```bash
+# 查询filename不是NULL的团队的ID，写入db.txt
+query="""
+use data_competition_prod;
+select id from team where filename is not null;
+"""
+echo $query | mysql -u root -h 127.0.0.1 -P 3306 -p密码 | sed '1d' | sort -n > db.txt
+
+# 查询upload下的所有目录名，写入folder.txt
+ls -d */ | cut -f1 -d'/' | sort -n > folder.txt
+
+# diff两个文件
+diff db.txt folder.txt
+```
+
+这个bash脚本得出filename不是NULL的、但是upload下没有对应的目录有**11**个。所以这11个团队的文件是丢失了。
+
+但是除了丢失文件的情况，还有在出现问题之前就上传了版本，但是在这问题发生后更新了文件。这样，虽然在系统上有他们的问题，但是这些文件版本不是最终的版本。
+
+为了找到这些团队，首先需要找到最近几次重启的时间，以及问题开始时的时间。容器重启的时候之前的容器会被强制退出，会打出有`npm ERR`的日志，通过这个ERR可以找到最近几次重启的时间。
+
+```logql
+{container_name="backend"}|="npm ERR"
+```
+
+![最近几次重启的时间](reboot-logs.png)
+
+可以看到图上有三次重启：
+
+- `2021-07-16 09:00:10` (`t1`)
+- `2021-07-16 15:50:07`
+- `2021-07-17 18:00:57` (`t3`)
+
+最后一次重启（19日的）是后面修改代码中的bug引发的重启，此时文件能恢复的文件已经恢复。而查询时间段之前的代码我知道是没有问题的。所以可以确定，`t1`-`t3`之间的数据是丢失了，而我之前从容器中补救出的文件是`t3`之后的数据。
+
+为了确定事情是不是`t1`这次重启后发生，我又进行了一次确认。问题的原因是没有保存到`upload/团队ID/`下，而是直接保存到`团队ID/`下，可以通过正则表达式匹配`Saving it to 数字`的log，查看第一次出现这样的log的时间为`2021-07-16 09:24:28`，是在`t1`之后，所以可以确定原来的时间段是正确的，或者说，更详细的说是9点24-15点50之间的数据丢失了。
+
+```logql
+{container_name="backend"}|~"Saving it to [0-9]+"
+```
+
+![第一次保存错目录的log](first-bad-log.png)
+
+把查询时间设置在`t1`到`t3`之间，运行以下语句，通过正则表达式，提取在这期间上传的团队的ID，获得了一个团队ID的列表。那么这些就是受到本次影响的团队了。
+
+```logql
+{container_name="backend"}|~"Saving it to [0-9]+" | regexp "Saving it to (?P<id>[0-9]+)" | line_format "{{.id}}"
+```
+
+# 后续处理
+
+第一步当然是恢复还能恢复的文件并火速修改bug，并确认了一下在修改bug发布之前没有团队上传了新的文件。
+
+由于这些文件无法被恢复，只能麻烦组委会其他人去通过电话、短信和邮件联系对应参赛队员，让他们重新交一份文件。
+
+# 出错原因
+
+这次项目我给后端项目写了测试，覆盖率已经达到了94.3%，对文件上传这部分也进行了重点的测试，但是为什么还是没有发现这个问题呢？
+
+![后端测试覆盖](test-coverage.png)
+
+因为之前我之前都是通过以下代码，将配置中的`config.upload.path`（取值为`upload`，就是之前根目录）和团队ID和文件名拼接起来，来获得一个团队的上传的文件的实际路径。
+
+
+```diff
+diff --git a/backend/src/entities/Team.ts b/backend/src/entities/Team.ts
+index 38c381b..cf2957a 100644
+--- a/backend/src/entities/Team.ts
++++ b/backend/src/entities/Team.ts
+@@ -1,4 +1,3 @@
+-import { config } from "@/utils/config";
+ import { EntityOrRef, toRef } from "@/utils/orm";
+ import {
+   ArrayType, Collection, Entity, IdentifiedReference,
+@@ -66,7 +65,7 @@ export class Team {
+
+   get filePath() {
+     return this.filename
+-      ? urljoin(config.upload.path, this.id + "", this.filename)
++      ? urljoin(this.id + "", this.filename)
+       : undefined;
+   }
+```
+
+这次错误的commit为了重构**下载**的相关代码，修改了这个地方的计算逻辑，把拼接`config.upload.path`的代码移到了处理下载请求的代码中，而忘记了**上传**时确定文件保存的路径时也使用了这个`filePath` getter，造成了上传时使用的路径不包含顶级的`config.upload.path`，而是直接就是`{团队ID}/文件名`。
+
+而在测试中，判断上传之后的文件是否存在时，仍然是使了`filePath` getter获得路径，这使得其实不管`filePath`怎么写，测试肯定都能通过，因为测试代码和业务代码所使用的计算路径的代码是相同的，所以并没有发现目录计算错误这个问题。
+
+```ts
+// 测试文件是否存在
+expect(path.basename(t.filePath!)).toBe(newFileName);
+```
+
+# 教训
+
+1. 实现依赖业务，而非业务依赖实现
+
+之前把计算文件真实路径的代码放在业务模型里（`filePath`属性）这样的设计是有问题的。
+
+按照DDD的思想，**业务逻辑**（保存用户上传的文件）不应该直接依赖**实现逻辑**（通过`config.upload.path`计算实际路径，然后使用`fs`直接操作文件系统），而是应该反过来，实现层面依赖业务逻辑。也就是说，应该
+
+> 提供一个保存用户文件的方法，这个方法接受保存文件所需要参数（比如操作用户、文件名、文件流），这个方法来负责进行实际保存文件的工作。
+
+用传统的OO和DI的说法，就是定义一个保存文件的接口，实现层实现实际的保存文件的逻辑，并通过DI注入给用户逻辑。业务逻辑通过这个接口完成保存文件的工作。
+
+这样，既可以避免本文这种问题，还有利于以后进行扩展，比如不保存到本地，而是保存到云端的存储。
+
+2. 重视测试细节
+
+虽然这次写的测试并没有发现这个问题，但是现在复盘发现，如果在运行测试的时候能够留意并重视一个细节的话，仍然也可以发现这个错误。
+
+测试结束后的运行的代码（`afterEach`）中，指定了删除`config.upload.path`的目录。
+
+```ts
+afterEach(async () => {
+  await server.close();
+  // delete the test upload path
+  await fs.promises.rmdir(config.upload.path, { recursive: true });
+  // ...
+});
+```
+
+但是由于错误的代码没有写到这个目录中，删除`config.upload.path`并不能删除测试上传所创建的文件，那么跑完测试将会有新的文件生成，就像下面这样：
+
+```bash
+➜  git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        10/
+```
+
+现在我想起来，当时确实发现了这个问题，但是并没有引起重视。
+
+3. log中记录尽可能多的信息
+
+从上面的发现问题的过程中可以发现，log相当重要。要是log中没有记录真实的完整路径，我可能需要花更多时间才能明白问题的原因。要是没有对每次文件保存都打log，我甚至都不能知道哪些队伍受到了影响。log记录了系统运行的整个流程，是分析系统的运行流程的最准确的工具。如果log打得好的话，能够从log中提取出很多没有记录到数据库中的数据。
+
+所以应该在log里尽可能记录更多的信息。最基本的，错误必须打到log中，不能直接吞掉。而且在进行一些容易出错的行为时，也应该尽可能把相关上下文打到log里，以供后续查找。
+0:{"buildId":"x-o6oom0-eYUQFwPypfzU","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","div",null,{"className":"bg-neutral px-4 py-8","children":["$","div",null,{"className":"max-w-7xl mx-auto min-h-[256px] flex justify-center text-center text-neutral-content","children":["$","div",null,{"className":"flex flex-col justify-center animate-slide-up","children":[["$","h1",null,{"className":"text-4xl my-2","children":"一次生产环境的文件丢失事故：复盘和教训"}],["$","$L2",null,{"className":"justify-center","articleId":"summary-of-a-file-lost-accident","info":{"content":"$3","title":"一次生产环境的文件丢失事故：复盘和教训","date":"2021-07-21 13:13","id":"summary-of-a-file-lost-accident","lang":"cn","tags":["problem-investigation","project"],"related":["summary-of-my-first-real-project"],"wordCount":3034,"readingTime":15.17,"filePath":"contents/20210721-summary-of-a-file-lost-accident/cn.md","summary":{"articleId":"summary-of-a-file-lost-accident","lang":"cn","hash":"75da6a262c2b444b63811ae59ac1240511b2ed8b168507518e6fadee711aaf06","summaries":[{"metadata":{"summarizer":"azure-ai","model":"DeepSeek-R1"},"summaries":["本文总结了作者在维护比赛后台网站时遭遇的生产事故：因代码提交错误导致2021-07-16至07-17期间用户上传文件存储至未挂载的容器目录，重启后文件丢失。通过日志分析和数据库对比，确定影响范围并找回部分文件，最终联系受影响的用户重新提交。事故原因为重构代码时路径拼接错误，且测试逻辑未覆盖实际路径验证。教训包括：业务逻辑应与实现解耦、重视测试细节完整性、日志需记录关键上下文以提升排查效率。"],"startTime":"2025-02-14T13:39:43.774Z","endTime":"2025-02-14T13:40:08.230Z"},{"metadata":{"summarizer":"ollama","model":"deepseek-r1:8b"},"summaries":["### 项目问题总结与教训\n\n#### 1. 项目背景\n在一个Node.js项目中，开发者在进行代码重构时，错误地将文件路径计算的逻辑从业务模型移动到下载模块的实现。结果导致用户上传的文件被保存在错误的目录下，而不是预期的配置路径所指向的地方。\n\n#### 2. 问题分析\n- **核心问题**：由于重构过程中误移了文件路径计算的逻辑，导致`filePath`属性不再包含`config.upload.path`，从而使得实际上传路径错误。\n- **测试缺陷**：虽然测试未能发现问题，但后续代码审查和`git status`异常提示了潜在的问题。\n- **日志不足**：若有更完善的日志记录，可能能够提前发现问题。\n\n#### 3. 教训总结\n1. **依赖实现而非业务逻辑**\n   - 将文件路径计算从业务模型中移除，导致上传错误。应遵循DDD原则，将实现层依赖业务逻辑，而非相反。\n   \n2. **重视测试细节**\n   - 测试未能发现问题，但通过后续检查发现异常，需加强对测试覆盖率的关注。\n   \n3. **记录详尽的日志信息**\n   - 若有更完善的日志记录，将有助于快速定位问题。建议在关键操作前后打印相关上下文。\n\n#### 4. 改进建议\n- **模块化设计**：将文件保存逻辑独立为一个模块，避免业务逻辑直接依赖实现。\n- **完善测试用例**：增加更多自动化测试，特别是边界条件和容易出错的场景。\n- **优化日志记录**：确保所有关键操作都有详尽的日志打印，便于问题排查。\n\n#### 5. 总结\n通过这次错误，深刻认识到代码设计、测试以及日志记录等多个方面的重要性。未来需更加注重模块化设计和细节管理，以确保项目稳定运行并及时发现问题。"]}]}},"langVersions":["cn"]}]]}]}]}],"$L4"]}],["$L5","$L6","$L7","$L8","$L9","$La"],"$Lb"]}],"loading":null,"isPartial":false}
+e:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z4:["$","div",null,{"className":"animate-slide-up","children":[["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","div",null,{"className":"flex flex-row space-x-4","children":[["$","div",null,{"className":"prose max-w-full lg:w-[75%]","children":[["$","$Lc",null,{"summaries":[{"metadata":{"summarizer":"azure-ai","model":"DeepSeek-R1"},"children":[["$","p","p-0",{"children":"本文总结了作者在维护比赛后台网站时遭遇的生产事故：因代码提交错误导致2021-07-16至07-17期间用户上传文件存储至未挂载的容器目录，重启后文件丢失。通过日志分析和数据库对比，确定影响范围并找回部分文件，最终联系受影响的用户重新提交。事故原因为重构代码时路径拼接错误，且测试逻辑未覆盖实际路径验证。教训包括：业务逻辑应与实现解耦、重视测试细节完整性、日志需记录关键上下文以提升排查效率。"}]]},{"metadata":{"summarizer":"ollama","model":"deepseek-r1:8b"},"children":[["$","h3","h3-0",{"children":"项目问题总结与教训"}],"\n",["$","h4","h4-0",{"children":"1. 项目背景"}],"\n",["$","p","p-0",{"children":"在一个Node.js项目中，开发者在进行代码重构时，错误地将文件路径计算的逻辑从业务模型移动到下载模块的实现。结果导致用户上传的文件被保存在错误的目录下，而不是预期的配置路径所指向的地方。"}],"\n",["$","h4","h4-1",{"children":"2. 问题分析"}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":[["$","strong","strong-0",{"children":"核心问题"}],"：由于重构过程中误移了文件路径计算的逻辑，导致",["$","code","code-0",{"children":"filePath"}],"属性不再包含",["$","code","code-1",{"children":"config.upload.path"}],"，从而使得实际上传路径错误。"]}],"\n",["$","li","li-1",{"children":[["$","strong","strong-0",{"children":"测试缺陷"}],"：虽然测试未能发现问题，但后续代码审查和",["$","code","code-0",{"children":"git status"}],"异常提示了潜在的问题。"]}],"\n",["$","li","li-2",{"children":[["$","strong","strong-0",{"children":"日志不足"}],"：若有更完善的日志记录，可能能够提前发现问题。"]}],"\n"]}],"\n",["$","h4","h4-2",{"children":"3. 教训总结"}],"\n",["$","ol","ol-0",{"children":["\n",["$","li","li-0",{"children":["\n",["$","p","p-0",{"children":["$","strong","strong-0",{"children":"依赖实现而非业务逻辑"}]}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"将文件路径计算从业务模型中移除，导致上传错误。应遵循DDD原则，将实现层依赖业务逻辑，而非相反。"}],"\n"]}],"\n"]}],"\n",["$","li","li-1",{"children":["\n",["$","p","p-0",{"children":["$","strong","strong-0",{"children":"重视测试细节"}]}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"测试未能发现问题，但通过后续检查发现异常，需加强对测试覆盖率的关注。"}],"\n"]}],"\n"]}],"\n",["$","li","li-2",{"children":["\n",["$","p","p-0",{"children":["$","strong","strong-0",{"children":"记录详尽的日志信息"}]}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"若有更完善的日志记录，将有助于快速定位问题。建议在关键操作前后打印相关上下文。"}],"\n"]}],"\n"]}],"\n"]}],"\n",["$","h4","h4-3",{"children":"4. 改进建议"}],"\n",["$","ul","ul-1",{"children":["\n",["$","li","li-0",{"children":[["$","strong","strong-0",{"children":"模块化设计"}],"：将文件保存逻辑独立为一个模块，避免业务逻辑直接依赖实现。"]}],"\n",["$","li","li-1",{"children":[["$","strong","strong-0",{"children":"完善测试用例"}],"：增加更多自动化测试，特别是边界条件和容易出错的场景。"]}],"\n",["$","li","li-2",{"children":[["$","strong","strong-0",{"children":"优化日志记录"}],"：确保所有关键操作都有详尽的日志打印，便于问题排查。"]}],"\n"]}],"\n",["$","h4","h4-4",{"children":"5. 总结"}],"\n",["$","p","p-1",{"children":"通过这次错误，深刻认识到代码设计、测试以及日志记录等多个方面的重要性。未来需更加注重模块化设计和细节管理，以确保项目稳定运行并及时发现问题。"}]]}]}],["$","$Ld",null,{"withCaption":true,"id":"summary-of-a-file-lost-accident","children":[["$","h1","h1-0",{"id":"生产事故","children":[["$","a","生产事故",{"href":"#生产事故","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$e","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"生产事故"]}],"\n","$Lf","\n","$L10","\n","$L11","\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46","\n","$L47","\n","$L48","\n","$L49","\n","$L4a","\n","$L4b","\n","$L4c","\n","$L4d","\n","$L4e","\n","$L4f","\n","$L50","\n","$L51"]}]]}],"$L52"]}]}],"$L53","$L54"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/44d2e091595b3eca.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/5e55d74f3211c796.css","precedence":"next"}]
+7:["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/b59bad6ea4f112f2.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0a1497ca0a1721ad.js","async":true}]
+9:["$","script","script-1",{"src":"/_next/static/chunks/4ec1bf7a32b70f87.js","async":true}]
+a:["$","script","script-2",{"src":"/_next/static/chunks/276b22541034e0ea.js","async":true}]
+b:["$","$L55",null,{"children":["$","$56",null,{"name":"Next.MetadataOutlet","children":"$@57"}]}]
+f:["$","p","p-0",{"children":"我最近负责了一个比赛后台网站的开发和维护，在比赛临近结束、正在接受用户提交成果文件的时候出了一场生产事故，造成了丢失了一段时间内用户上传的文件。本文主要讲讲生产事故从发现到确定影响范围到确定原因的过程。在整个过程中，后台程序记录的日志起到了巨大的作用。"}]
+10:["$","p","p-1",{"children":["关于这个项目的总结，可以查看这篇文章：",["$","a","a-0",{"href":"/articles/summary-of-my-first-real-project","children":"我的第一个真实项目：总结和经验"}],"。"]}]
+58:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z11:["$","h1","h1-1",{"id":"tldr","children":[["$","a","tldr",{"href":"#tldr","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$58","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"TL;DR"]}]
+12:["$","table","table-0",{"children":[["$","thead","thead-0",{"children":["$","tr","tr-0",{"children":[["$","th","th-0",{"children":"要素"}],["$","th","th-1",{"children":"内容"}]]}]}],["$","tbody","tbody-0",{"children":[["$","tr","tr-0",{"children":[["$","td","td-0",{"children":"表现"}],["$","td","td-1",{"children":["丢失",["$","code","code-0",{"children":"2021-07-16 09:00:10"}],"至",["$","code","code-1",{"children":"2021-07-17 18:00:57"}],"期间所上传的文件"]}]]}],["$","tr","tr-1",{"children":[["$","td","td-0",{"children":"原因"}],["$","td","td-1",{"children":"7月16日的一次提交，使得之后文件上传到了一个容器内部的、没有mount出来的目录，容器重启后，这些文件丢失了"}]]}],["$","tr","tr-2",{"children":[["$","td","td-0",{"children":"补救"}],["$","td","td-1",{"children":"进入容器，找回了最后一次容器重启后到问题发生期间上传的文件"}]]}],["$","tr","tr-3",{"children":[["$","td","td-0",{"children":"后续处理"}],["$","td","td-1",{"children":"通过log、数据库数据等找到了受到影响的用户，通过邮箱、电话和短信提醒他们重新上传文件"}]]}],["$","tr","tr-4",{"children":[["$","td","td-0",{"children":"经验"}],["$","td","td-1",{"children":"实现依赖业务，而非业务依赖实现；重视测试细节；log中记录尽可能多的信息"}]]}]]}]]}]
+59:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z13:["$","h1","h1-2",{"id":"问题发现","children":[["$","a","问题发现",{"href":"#问题发现","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$59","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"问题发现"]}]
+14:["$","p","p-2",{"children":"项目基本情况是这样的。用户可以注册团队，一个团队有一个队长，队长可以提交一个团队的成果文件。管理员可以看到各个队伍的提交情况，以及也可以直接下载团队提交的文件。"}]
+15:["$","p","p-3",{"children":"19日下午4点左右，我用管理员登录了系统，本来只是在随便看看有哪些团队提交了成果，结果突然发现有的团队的成果点击下载下不下来。"}]
+16:["$","p","p-4",{"children":["$","$L5a","img-0",{"src":"/articles/asset/contents/20210721-summary-of-a-file-lost-accident/download-error.png","imageSize":{"height":135,"width":435},"imageProps":{"src":"download-error.png","alt":"点击下载提交的团队的成果发现出错"}}]}]
+17:["$","p","p-5",{"children":"赶紧上服务器上看是怎么回事。打开服务器存放上传的文件的目录，grep一下发现对应的ID发现没有这个文件。"}]
+18:["$","p","p-6",{"children":"上传文件的逻辑是这样的："}]
+19:["$","ol","ol-0",{"children":["\n",["$","li","li-0",{"children":"获取上传的文件"}],"\n",["$","li","li-1",{"children":["把文件保存到",["$","code","code-0",{"children":"upload/{团队ID}/文件名"}],"\n",["$","ol","ol-0",{"children":["\n",["$","li","li-0",{"children":["保存之前，打日志",["$","code","code-0",{"children":"Received file {文件名} from {用户ID}. Saving it to {完整路径}."}]]}],"\n",["$","li","li-1",{"children":["保存完成后，打日志",["$","code","code-0",{"children":"$${完整路径} saved successfully."}]]}],"\n"]}],"\n"]}],"\n",["$","li","li-2",{"children":["更新数据库，记录文件名(列名为",["$","code","code-0",{"children":"filename"}],")和上传时间（",["$","code","code-1",{"children":"last_update_time"}],"）"]}],"\n"]}]
+1a:["$","p","p-7",{"children":"如果第二步失败，就不能进行第三步，不会出现保存文件失败但是写了数据库的情况。但是如果没有写数据库，我在后台就不会看到这个团队有成果，就不会能够点击下载了。"}]
+1b:["$","p","p-8",{"children":["后端程序运行在docker中，但是",["$","code","code-0",{"children":"upload"}],"是一个mounted volume，其中的文件和容器外的一个目录是进行了共享的，所以不管容器怎么重启，这里面的文件是不会掉的。"]}]
+1c:["$","figure","figure-0",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"yaml","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"yaml","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"# docker-compose相关部分, /dist是容器中存放程序文件的根目录"}]}],"\n",["$","span","span-1",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"backend"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":":"}]]}],"\n",["$","span","span-2",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"  volumes"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":":"}]]}],"\n",["$","span","span-3",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"    - "}],["$","span","span-1",{"style":{"color":"#98C379"},"children":"\"./backend/upload:/dist/upload\""}]]}]]}]}]}]
+1d:["$","p","p-9",{"children":"马上翻了下日志，按上面说的格式搜一下日志（下面的队伍ID为实际的团队ID）："}]
+1e:["$","figure","figure-1",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"logql","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"logql","data-theme":"one-dark-pro","style":{"display":"grid"},"children":["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"children":"{container_name=\"backend\"}|=\"Saving it to upload/队伍ID\""}]}]}]}]}]
+1f:["$","p","p-10",{"children":["发现",["$","strong","strong-0",{"children":"没有结果"}],"。"]}]
+20:["$","p","p-11",{"children":["这就奇怪了，于是把",["$","code","code-0",{"children":"upload/队伍ID"}],"从查询语句中删除，直接看有哪些保存的日志，这一看就出事了。我看到了一堆这样的日志："]}]
+21:["$","pre","pre-0",{"children":["$","code","code-0",{"children":"{\"level\":30,\"time\":1626528267191,\"pid\":36,\"hostname\":\"2358983e224d\",\"reqId\":\"req-29\",\"msg\":\"Received file 文件名.zip from 用户ID.\\n    Saving it to 团队ID/文件名.zip.\"}\n"}]}]
+22:["$","p","p-12",{"children":["文件被保存到",["$","code","code-0",{"children":"{团队ID}/文件名"}],"下了！而",["$","code","code-1",{"children":"{团队ID}"}],"这些目录是没有被mount的，容器重启就重启了，没了！"]}]
+23:["$","p","p-13",{"children":["马上进入容器里运行",["$","code","code-0",{"children":"ls"}],"，果然在容器根目录看到了一堆",["$","code","code-1",{"children":"{团队ID}"}],"的目录。"]}]
+5b:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z24:["$","h1","h1-3",{"id":"确定影响范围和补救","children":[["$","a","确定影响范围和补救",{"href":"#确定影响范围和补救","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$5b","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"确定影响范围和补救"]}]
+25:["$","p","p-14",{"children":"首先，我把容器里已有的这些文件复制了出来，并定时检查有没有新的文件。还好，在排查问题的整个过程中都没有新的文件名上传。这些文件应该是在上一次容器重启之后才上传的。"}]
+26:["$","p","p-15",{"children":["之后，是找到哪些队伍的文件仍然丢失了，也就是数据库中",["$","code","code-0",{"children":"filename"}],"不是NULL，但是",["$","code","code-1",{"children":"upload"}],"下面没有这个队伍。这些队伍的文件应该是在上一次重启之前就上传了，上一次重启使得这些文件丢失了，应该是无法找回了。"]}]
+27:["$","p","p-16",{"children":"通过各种查找资料，写出来以下的bash脚本："}]
+28:["$","figure","figure-2",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"bash","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"bash","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"# 查询filename不是NULL的团队的ID，写入db.txt"}]}],"\n",["$","span","span-1",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"query"}],["$","span","span-1",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-2",{"style":{"color":"#98C379"},"children":"\"\"\""}]]}],"\n",["$","span","span-2",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#98C379"},"children":"use data_competition_prod;"}]}],"\n",["$","span","span-3",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#98C379"},"children":"select id from team where filename is not null;"}]}],"\n",["$","span","span-4",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#98C379"},"children":"\"\"\""}]}],"\n",["$","span","span-5",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#56B6C2"},"children":"echo"}],["$","span","span-1",{"style":{"color":"#E06C75"},"children":" $query"}],["$","span","span-2",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-3",{"style":{"color":"#61AFEF"},"children":"mysql"}],["$","span","span-4",{"style":{"color":"#D19A66"},"children":" -u"}],["$","span","span-5",{"style":{"color":"#98C379"},"children":" root"}],["$","span","span-6",{"style":{"color":"#D19A66"},"children":" -h"}],["$","span","span-7",{"style":{"color":"#D19A66"},"children":" 127.0.0.1"}],["$","span","span-8",{"style":{"color":"#D19A66"},"children":" -P"}],["$","span","span-9",{"style":{"color":"#D19A66"},"children":" 3306"}],["$","span","span-10",{"style":{"color":"#D19A66"},"children":" -p密码"}],["$","span","span-11",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-12",{"style":{"color":"#61AFEF"},"children":"sed"}],["$","span","span-13",{"style":{"color":"#98C379"},"children":" '1d'"}],["$","span","span-14",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-15",{"style":{"color":"#61AFEF"},"children":"sort"}],["$","span","span-16",{"style":{"color":"#D19A66"},"children":" -n"}],["$","span","span-17",{"style":{"color":"#ABB2BF"},"children":" > "}],["$","span","span-18",{"style":{"color":"#98C379"},"children":"db.txt"}]]}],"\n",["$","span","span-6",{"data-line":"","children":" "}],"\n",["$","span","span-7",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"# 查询upload下的所有目录名，写入folder.txt"}]}],"\n",["$","span","span-8",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"ls"}],["$","span","span-1",{"style":{"color":"#D19A66"},"children":" -d"}],["$","span","span-2",{"style":{"color":"#E5C07B"},"children":" *"}],["$","span","span-3",{"style":{"color":"#98C379"},"children":"/"}],["$","span","span-4",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-5",{"style":{"color":"#61AFEF"},"children":"cut"}],["$","span","span-6",{"style":{"color":"#D19A66"},"children":" -f1"}],["$","span","span-7",{"style":{"color":"#D19A66"},"children":" -d"}],["$","span","span-8",{"style":{"color":"#98C379"},"children":"'/'"}],["$","span","span-9",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-10",{"style":{"color":"#61AFEF"},"children":"sort"}],["$","span","span-11",{"style":{"color":"#D19A66"},"children":" -n"}],["$","span","span-12",{"style":{"color":"#ABB2BF"},"children":" > "}],["$","span","span-13",{"style":{"color":"#98C379"},"children":"folder.txt"}]]}],"\n",["$","span","span-9",{"data-line":"","children":" "}],"\n",["$","span","span-10",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"# diff两个文件"}]}],"\n",["$","span","span-11",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"diff"}],["$","span","span-1",{"style":{"color":"#98C379"},"children":" db.txt"}],["$","span","span-2",{"style":{"color":"#98C379"},"children":" folder.txt"}]]}]]}]}]}]
+29:["$","p","p-17",{"children":["这个bash脚本得出filename不是NULL的、但是upload下没有对应的目录有",["$","strong","strong-0",{"children":"11"}],"个。所以这11个团队的文件是丢失了。"]}]
+2a:["$","p","p-18",{"children":"但是除了丢失文件的情况，还有在出现问题之前就上传了版本，但是在这问题发生后更新了文件。这样，虽然在系统上有他们的问题，但是这些文件版本不是最终的版本。"}]
+2b:["$","p","p-19",{"children":["为了找到这些团队，首先需要找到最近几次重启的时间，以及问题开始时的时间。容器重启的时候之前的容器会被强制退出，会打出有",["$","code","code-0",{"children":"npm ERR"}],"的日志，通过这个ERR可以找到最近几次重启的时间。"]}]
+2c:["$","figure","figure-3",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"logql","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"logql","data-theme":"one-dark-pro","style":{"display":"grid"},"children":["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"children":"{container_name=\"backend\"}|=\"npm ERR\""}]}]}]}]}]
+2d:["$","p","p-20",{"children":["$","$L5a","img-0",{"src":"/articles/asset/contents/20210721-summary-of-a-file-lost-accident/reboot-logs.png","imageSize":{"height":588,"width":1579},"imageProps":{"src":"reboot-logs.png","alt":"最近几次重启的时间"}}]}]
+2e:["$","p","p-21",{"children":"可以看到图上有三次重启："}]
+2f:["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":[["$","code","code-0",{"children":"2021-07-16 09:00:10"}]," (",["$","code","code-1",{"children":"t1"}],")"]}],"\n",["$","li","li-1",{"children":["$","code","code-0",{"children":"2021-07-16 15:50:07"}]}],"\n",["$","li","li-2",{"children":[["$","code","code-0",{"children":"2021-07-17 18:00:57"}]," (",["$","code","code-1",{"children":"t3"}],")"]}],"\n"]}]
+30:["$","p","p-22",{"children":["最后一次重启（19日的）是后面修改代码中的bug引发的重启，此时文件能恢复的文件已经恢复。而查询时间段之前的代码我知道是没有问题的。所以可以确定，",["$","code","code-0",{"children":"t1"}],"-",["$","code","code-1",{"children":"t3"}],"之间的数据是丢失了，而我之前从容器中补救出的文件是",["$","code","code-2",{"children":"t3"}],"之后的数据。"]}]
+31:["$","p","p-23",{"children":["为了确定事情是不是",["$","code","code-0",{"children":"t1"}],"这次重启后发生，我又进行了一次确认。问题的原因是没有保存到",["$","code","code-1",{"children":"upload/团队ID/"}],"下，而是直接保存到",["$","code","code-2",{"children":"团队ID/"}],"下，可以通过正则表达式匹配",["$","code","code-3",{"children":"Saving it to 数字"}],"的log，查看第一次出现这样的log的时间为",["$","code","code-4",{"children":"2021-07-16 09:24:28"}],"，是在",["$","code","code-5",{"children":"t1"}],"之后，所以可以确定原来的时间段是正确的，或者说，更详细的说是9点24-15点50之间的数据丢失了。"]}]
+32:["$","figure","figure-4",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"logql","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"logql","data-theme":"one-dark-pro","style":{"display":"grid"},"children":["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"children":"{container_name=\"backend\"}|~\"Saving it to [0-9]+\""}]}]}]}]}]
+33:["$","p","p-24",{"children":["$","$L5a","img-0",{"src":"/articles/asset/contents/20210721-summary-of-a-file-lost-accident/first-bad-log.png","imageSize":{"height":797,"width":1581},"imageProps":{"src":"first-bad-log.png","alt":"第一次保存错目录的log"}}]}]
+34:["$","p","p-25",{"children":["把查询时间设置在",["$","code","code-0",{"children":"t1"}],"到",["$","code","code-1",{"children":"t3"}],"之间，运行以下语句，通过正则表达式，提取在这期间上传的团队的ID，获得了一个团队ID的列表。那么这些就是受到本次影响的团队了。"]}]
+35:["$","figure","figure-5",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"logql","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"logql","data-theme":"one-dark-pro","style":{"display":"grid"},"children":["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"children":"{container_name=\"backend\"}|~\"Saving it to [0-9]+\" | regexp \"Saving it to (?P<id>[0-9]+)\" | line_format \"{{.id}}\""}]}]}]}]}]
+5c:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z36:["$","h1","h1-4",{"id":"后续处理","children":[["$","a","后续处理",{"href":"#后续处理","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$5c","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"后续处理"]}]
+37:["$","p","p-26",{"children":"第一步当然是恢复还能恢复的文件并火速修改bug，并确认了一下在修改bug发布之前没有团队上传了新的文件。"}]
+38:["$","p","p-27",{"children":"由于这些文件无法被恢复，只能麻烦组委会其他人去通过电话、短信和邮件联系对应参赛队员，让他们重新交一份文件。"}]
+5d:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z39:["$","h1","h1-5",{"id":"出错原因","children":[["$","a","出错原因",{"href":"#出错原因","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$5d","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"出错原因"]}]
+3a:["$","p","p-28",{"children":"这次项目我给后端项目写了测试，覆盖率已经达到了94.3%，对文件上传这部分也进行了重点的测试，但是为什么还是没有发现这个问题呢？"}]
+3b:["$","p","p-29",{"children":["$","$L5a","img-0",{"src":"/articles/asset/contents/20210721-summary-of-a-file-lost-accident/test-coverage.png","imageSize":{"height":84,"width":679},"imageProps":{"src":"test-coverage.png","alt":"后端测试覆盖"}}]}]
+3c:["$","p","p-30",{"children":["因为之前我之前都是通过以下代码，将配置中的",["$","code","code-0",{"children":"config.upload.path"}],"（取值为",["$","code","code-1",{"children":"upload"}],"，就是之前根目录）和团队ID和文件名拼接起来，来获得一个团队的上传的文件的实际路径。"]}]
+3d:["$","figure","figure-6",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"diff","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"diff","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"diff --git a/backend/src/entities/Team.ts b/backend/src/entities/Team.ts"}]}],"\n",["$","span","span-1",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"index 38c381b..cf2957a 100644"}]}],"\n",["$","span","span-2",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"--- a/backend/src/entities/Team.ts"}]}],"\n",["$","span","span-3",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"+++ b/backend/src/entities/Team.ts"}]}],"\n",["$","span","span-4",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"@@ -1,4 +1,3 @@"}]}],"\n",["$","span","span-5",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#E06C75"},"children":"-import { config } from \"@/utils/config\";"}]}],"\n",["$","span","span-6",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":" import { EntityOrRef, toRef } from \"@/utils/orm\";"}]}],"\n",["$","span","span-7",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":" import {"}]}],"\n",["$","span","span-8",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"   ArrayType, Collection, Entity, IdentifiedReference,"}]}],"\n",["$","span","span-9",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"@@ -66,7 +65,7 @@ export class Team {"}]}],"\n",["$","span","span-10",{"data-line":"","children":" "}],"\n",["$","span","span-11",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"   get filePath() {"}]}],"\n",["$","span","span-12",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"     return this.filename"}]}],"\n",["$","span","span-13",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#E06C75"},"children":"-      ? urljoin(config.upload.path, this.id + \"\", this.filename)"}]}],"\n",["$","span","span-14",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#98C379"},"children":"+      ? urljoin(this.id + \"\", this.filename)"}]}],"\n",["$","span","span-15",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"       : undefined;"}]}],"\n",["$","span","span-16",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"   }"}]}]]}]}]}]
+3e:["$","p","p-31",{"children":["这次错误的commit为了重构",["$","strong","strong-0",{"children":"下载"}],"的相关代码，修改了这个地方的计算逻辑，把拼接",["$","code","code-0",{"children":"config.upload.path"}],"的代码移到了处理下载请求的代码中，而忘记了",["$","strong","strong-1",{"children":"上传"}],"时确定文件保存的路径时也使用了这个",["$","code","code-1",{"children":"filePath"}]," getter，造成了上传时使用的路径不包含顶级的",["$","code","code-2",{"children":"config.upload.path"}],"，而是直接就是",["$","code","code-3",{"children":"{团队ID}/文件名"}],"。"]}]
+3f:["$","p","p-32",{"children":["而在测试中，判断上传之后的文件是否存在时，仍然是使了",["$","code","code-0",{"children":"filePath"}]," getter获得路径，这使得其实不管",["$","code","code-1",{"children":"filePath"}],"怎么写，测试肯定都能通过，因为测试代码和业务代码所使用的计算路径的代码是相同的，所以并没有发现目录计算错误这个问题。"]}]
+40:["$","figure","figure-7",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"ts","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"ts","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"// 测试文件是否存在"}]}],"\n",["$","span","span-1",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"expect"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-2",{"style":{"color":"#E5C07B"},"children":"path"}],["$","span","span-3",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-4",{"style":{"color":"#61AFEF"},"children":"basename"}],["$","span","span-5",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-6",{"style":{"color":"#E5C07B"},"children":"t"}],["$","span","span-7",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-8",{"style":{"color":"#E06C75"},"children":"filePath"}],["$","span","span-9",{"style":{"color":"#56B6C2"},"children":"!"}],["$","span","span-10",{"style":{"color":"#ABB2BF"},"children":"))."}],["$","span","span-11",{"style":{"color":"#61AFEF"},"children":"toBe"}],["$","span","span-12",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-13",{"style":{"color":"#E06C75"},"children":"newFileName"}],["$","span","span-14",{"style":{"color":"#ABB2BF"},"children":");"}]]}]]}]}]}]
+5e:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z41:["$","h1","h1-6",{"id":"教训","children":[["$","a","教训",{"href":"#教训","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$5e","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"教训"]}]
+42:["$","ol","ol-1",{"children":["\n",["$","li","li-0",{"children":"实现依赖业务，而非业务依赖实现"}],"\n"]}]
+43:["$","p","p-33",{"children":["之前把计算文件真实路径的代码放在业务模型里（",["$","code","code-0",{"children":"filePath"}],"属性）这样的设计是有问题的。"]}]
+44:["$","p","p-34",{"children":["按照DDD的思想，",["$","strong","strong-0",{"children":"业务逻辑"}],"（保存用户上传的文件）不应该直接依赖",["$","strong","strong-1",{"children":"实现逻辑"}],"（通过",["$","code","code-0",{"children":"config.upload.path"}],"计算实际路径，然后使用",["$","code","code-1",{"children":"fs"}],"直接操作文件系统），而是应该反过来，实现层面依赖业务逻辑。也就是说，应该"]}]
+45:["$","blockquote","blockquote-0",{"children":["\n",["$","p","p-0",{"children":"提供一个保存用户文件的方法，这个方法接受保存文件所需要参数（比如操作用户、文件名、文件流），这个方法来负责进行实际保存文件的工作。"}],"\n"]}]
+46:["$","p","p-35",{"children":"用传统的OO和DI的说法，就是定义一个保存文件的接口，实现层实现实际的保存文件的逻辑，并通过DI注入给用户逻辑。业务逻辑通过这个接口完成保存文件的工作。"}]
+47:["$","p","p-36",{"children":"这样，既可以避免本文这种问题，还有利于以后进行扩展，比如不保存到本地，而是保存到云端的存储。"}]
+48:["$","ol","ol-2",{"start":2,"children":["\n",["$","li","li-0",{"children":"重视测试细节"}],"\n"]}]
+49:["$","p","p-37",{"children":"虽然这次写的测试并没有发现这个问题，但是现在复盘发现，如果在运行测试的时候能够留意并重视一个细节的话，仍然也可以发现这个错误。"}]
+4a:["$","p","p-38",{"children":["测试结束后的运行的代码（",["$","code","code-0",{"children":"afterEach"}],"）中，指定了删除",["$","code","code-1",{"children":"config.upload.path"}],"的目录。"]}]
+4b:["$","figure","figure-8",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"ts","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"ts","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"afterEach"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-2",{"style":{"color":"#C678DD"},"children":"async"}],["$","span","span-3",{"style":{"color":"#ABB2BF"},"children":" () "}],["$","span","span-4",{"style":{"color":"#C678DD"},"children":"=>"}],["$","span","span-5",{"style":{"color":"#ABB2BF"},"children":" {"}]]}],"\n",["$","span","span-1",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#C678DD"},"children":"  await"}],["$","span","span-1",{"style":{"color":"#E5C07B"},"children":" server"}],["$","span","span-2",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-3",{"style":{"color":"#61AFEF"},"children":"close"}],["$","span","span-4",{"style":{"color":"#ABB2BF"},"children":"();"}]]}],"\n",["$","span","span-2",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"  // delete the test upload path"}]}],"\n",["$","span","span-3",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#C678DD"},"children":"  await"}],["$","span","span-1",{"style":{"color":"#E5C07B"},"children":" fs"}],["$","span","span-2",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-3",{"style":{"color":"#E5C07B"},"children":"promises"}],["$","span","span-4",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-5",{"style":{"color":"#61AFEF"},"children":"rmdir"}],["$","span","span-6",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-7",{"style":{"color":"#E5C07B"},"children":"config"}],["$","span","span-8",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-9",{"style":{"color":"#E5C07B"},"children":"upload"}],["$","span","span-10",{"style":{"color":"#ABB2BF"},"children":"."}],["$","span","span-11",{"style":{"color":"#E06C75"},"children":"path"}],["$","span","span-12",{"style":{"color":"#ABB2BF"},"children":", { "}],["$","span","span-13",{"style":{"color":"#E06C75"},"children":"recursive"}],["$","span","span-14",{"style":{"color":"#ABB2BF"},"children":": "}],["$","span","span-15",{"style":{"color":"#D19A66"},"children":"true"}],["$","span","span-16",{"style":{"color":"#ABB2BF"},"children":" });"}]]}],"\n",["$","span","span-4",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"  // ..."}]}],"\n",["$","span","span-5",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"});"}]}]]}]}]}]
+4c:["$","p","p-39",{"children":["但是由于错误的代码没有写到这个目录中，删除",["$","code","code-0",{"children":"config.upload.path"}],"并不能删除测试上传所创建的文件，那么跑完测试将会有新的文件生成，就像下面这样："]}]
+4d:["$","figure","figure-9",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"bash","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"bash","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"➜"}],["$","span","span-1",{"style":{"color":"#98C379"},"children":"  git"}],["$","span","span-2",{"style":{"color":"#98C379"},"children":" status"}]]}],"\n",["$","span","span-1",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"On"}],["$","span","span-1",{"style":{"color":"#98C379"},"children":" branch"}],["$","span","span-2",{"style":{"color":"#98C379"},"children":" master"}]]}],"\n",["$","span","span-2",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"Your"}],["$","span","span-1",{"style":{"color":"#98C379"},"children":" branch"}],["$","span","span-2",{"style":{"color":"#98C379"},"children":" is"}],["$","span","span-3",{"style":{"color":"#98C379"},"children":" up"}],["$","span","span-4",{"style":{"color":"#98C379"},"children":" to"}],["$","span","span-5",{"style":{"color":"#98C379"},"children":" date"}],["$","span","span-6",{"style":{"color":"#98C379"},"children":" with"}],["$","span","span-7",{"style":{"color":"#98C379"},"children":" 'origin/master'."}]]}],"\n",["$","span","span-3",{"data-line":"","children":" "}],"\n",["$","span","span-4",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"Untracked"}],["$","span","span-1",{"style":{"color":"#98C379"},"children":" files:"}]]}],"\n",["$","span","span-5",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"  ("}],["$","span","span-1",{"style":{"color":"#61AFEF"},"children":"use"}],["$","span","span-2",{"style":{"color":"#98C379"},"children":" \"git add <file>...\""}],["$","span","span-3",{"style":{"color":"#98C379"},"children":" to"}],["$","span","span-4",{"style":{"color":"#98C379"},"children":" include"}],["$","span","span-5",{"style":{"color":"#98C379"},"children":" in"}],["$","span","span-6",{"style":{"color":"#98C379"},"children":" what"}],["$","span","span-7",{"style":{"color":"#98C379"},"children":" will"}],["$","span","span-8",{"style":{"color":"#98C379"},"children":" be"}],["$","span","span-9",{"style":{"color":"#98C379"},"children":" committed"}],["$","span","span-10",{"style":{"color":"#ABB2BF"},"children":")"}]]}],"\n",["$","span","span-6",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#61AFEF"},"children":"        10/"}]}]]}]}]}]
+4e:["$","p","p-40",{"children":"现在我想起来，当时确实发现了这个问题，但是并没有引起重视。"}]
+4f:["$","ol","ol-3",{"start":3,"children":["\n",["$","li","li-0",{"children":"log中记录尽可能多的信息"}],"\n"]}]
+50:["$","p","p-41",{"children":"从上面的发现问题的过程中可以发现，log相当重要。要是log中没有记录真实的完整路径，我可能需要花更多时间才能明白问题的原因。要是没有对每次文件保存都打log，我甚至都不能知道哪些队伍受到了影响。log记录了系统运行的整个流程，是分析系统的运行流程的最准确的工具。如果log打得好的话，能够从log中提取出很多没有记录到数据库中的数据。"}]
+51:["$","p","p-42",{"children":"所以应该在log里尽可能记录更多的信息。最基本的，错误必须打到log中，不能直接吞掉。而且在进行一些容易出错的行为时，也应该尽可能把相关上下文打到log里，以供后续查找。"}]
+52:["$","div",null,{"className":"hidden lg:block lg:w-[25%]","children":["$","$L5f",null,{"toc":[{"depth":1,"value":"生产事故","id":"生产事故"},{"depth":1,"value":"TL;DR","id":"tldr"},{"depth":1,"value":"问题发现","id":"问题发现"},{"depth":1,"value":"确定影响范围和补救","id":"确定影响范围和补救"},{"depth":1,"value":"后续处理","id":"后续处理"},{"depth":1,"value":"出错原因","id":"出错原因"},{"depth":1,"value":"教训","id":"教训"}],"hasSummary":true}]}]
+53:["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","$L60",null,{"relatedArticles":[{"id":"summary-of-my-first-real-project","langVersions":[{"excerpt":"\n# 我的第一个真实项目\n\n终于，从3月15日开始，我自己独立承担了一个完整的、真实的项目的开发和整个软件生命周期的维护工作：https://data-competition.pku.edu.cn ，","lang":"cn","time":"2021-07-21 16:34:00 UTC+8","title":"我的第一个真实项目：总结和经验"}]}]}]}]
+54:["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","$L61",null,{"articleId":"summary-of-a-file-lost-accident","articleTitle":"一次生产环境的文件丢失事故：复盘和教训"}]}]
+57:null

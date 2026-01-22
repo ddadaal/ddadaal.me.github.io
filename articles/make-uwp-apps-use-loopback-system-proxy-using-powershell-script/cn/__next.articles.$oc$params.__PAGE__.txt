@@ -1,0 +1,192 @@
+1:"$Sreact.fragment"
+2:I[28979,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleFrontmatter"]
+c:I[21753,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleSummarization"]
+d:I[79817,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"Gallery"]
+30:I[23491,["/_next/static/chunks/2caa33a942c5f527.js","/_next/static/chunks/59983278a34fd25c.js"],"OutletBoundary"]
+31:"$Sreact.suspense"
+3b:I[14620,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleToc"]
+3c:I[39182,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"RelatedArticles"]
+3d:I[42449,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"CommentPanelWithCurrentLanguage"]
+:HL["/_next/static/chunks/44d2e091595b3eca.css","style"]
+:HL["/_next/static/chunks/5e55d74f3211c796.css","style"]
+:HL["/_next/static/chunks/b59bad6ea4f112f2.css","style"]
+3:T1846,
+# 问题
+
+众所周知，国内微软服务的连接性很成问题，并且这个问题越来越严重了，所以必须要让这些应用通过梯子才能正常使用微软服务。
+
+梯子一般都会设置系统代理，其原理是在本机localhost的某个端口上监听网络请求，并将请求发送到服务器。绝大部分普通的Win32应用都会遵循系统代理的设置，包括OneDrive桌面应用等，所以这些以Win32应用形式存在的应用程序可以很简单的解决。
+
+但是微软的很多应用，例如自带的Windows商店、邮件、照片等，都是UWP应用，而UWP应用禁止了将网络流量发送到本机(localhost)，所以UWP应用是不能直接使用这种系统代理的。
+
+# 手动解决方案
+
+微软同样自带了一个工具`CheckNetIsolation.exe`（可以直接在powershell里运行），可以允许选定的UWP应用解除网络隔离，使用localhost的系统代理。
+
+听起来问题解决了？
+
+如果查看这个工具的帮助界面的话，会发现这个工具需要应用的名称(`-n`)或者ID(`-p`)，但是这些信息需要从注册表中获取，非常的麻烦。想要这样进行操作的用户可以尝试少数派的[这篇文章](https://sspai.com/post/41137)。
+
+```
+➜ CheckNetIsolation.exe LoopbackExempt -?
+
+用法:
+   CheckNetIsolation LoopbackExempt [operation] [-n=] [-p=]
+      操作列表:
+          -a  -  向环回免除列表中添加 AppContainer 或程序包系列。
+          -d  -  从环回免除列表中删除 AppContainer 或程序包系列。
+          -c  -  清除环回免除的 AppContainer 和程序包系列的列表。
+          -s  -  显示环回免除的 AppContainer 和程序包系列的列表。
+
+      参数列表:
+          -n= - AppContainer 名称或程序包系列名称。
+          -p= - AppContainer 或程序包系列安全标识符(SID)。
+          -?  - 显示 LoopbackExempt 模块的此帮助消息。
+
+完成。
+```
+
+# 自动化方案
+
+## 巨人的肩膀
+
+我们作为一个合格的程序员，看到这种事情的第一反应，应该是：我太懒了，我们需要自动化！
+
+所以第一件事就是去网上找，果不其然找到一个dalao的[文章](https://yuan.ga/enable-win10-uwp-use-system-proxy/)，里面给出了一个Python脚本，可以自动做这个事情。
+
+但是反正这个工具都是在Windows上用，为什么要用Python？用PowerShell，什么依赖都不要，它不香嘛？
+
+进入这个大佬的GitHub，可以在它的[这个仓库](https://github.com/yearliny/myscript)中发现原来这个大佬也写了一份PowerShell脚本用来做这个事情。
+
+但是当我尝试使用这个PowerShell时，发现了一些问题：
+
+- 没有系统自带的应用
+- 选择应用后会报`错误: 参数无效`错误
+
+## 站在巨人的肩膀上
+
+不能就这么放弃了！
+
+于是我检查了一下这个PowerShell工具，解决了这两个问题：
+
+- 没有系统自带的应用是因为dalao过滤了以`${`开头的应用，而这些应用正好就是邮箱、商店等系统应用
+- 选择应用后报错应该是因为工具在后期改了API，所以原来直接使用`Moniker`键值的方法不能使用了
+
+针对这两个问题，我对脚本做出了改进，并加入了一个根据名字进行筛选应用的功能，以方便让用户应用列表中中快速找到想要设置的应用。
+
+改进后的脚本如下：
+
+```powershell
+param(
+    [string] $Contain
+)
+
+$BASE_PATH = 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Mappings\'
+# 获取相关注册表信息，并进行筛选和排序
+$mapping = Get-ChildItem -Pat $BASE_PATH | Where-Object {$Contain -Eq "" -or $_.GetValue('DisplayName').Contains($Contain)} | Sort-Object {$_.GetValue('DisplayName')}
+
+if ($mapping.Length -eq 0) {
+    Write-Output "没有包含字符 $Contain 的软件包，请重试。"
+    exit
+}
+# 格式化打印 APP List
+$mapping | Format-Table @{label='Num'; expression={$mapping.IndexOf($_)}}, @{label='DisplayName'; expression={$_.GetValue('DisplayName')}}
+$input = Read-Host '回复序号并回车提交（若只有一项，输入0），添加指定应用到排除列表中'
+$id = $mapping[$input].Name.Split("\") | Select-Object -Last 1
+Write-Output $id
+CheckNetIsolation LoopbackExempt -a -p="$id"
+```
+
+将这段代码复制粘贴到本地一个以`ps1`为扩展名的文件中，假设这个文件名字为`check.ps1`：
+
+- 使用`PowerShell`直接运行这个脚本，不需要管理员权限。系统将会列出系统中所有的UWP应用的名称，输入编号，系统将会输入应用的ID，然后调用`CheckNetIsolation.exe`工具将这个应用解除网络隔离，允许使用系统代理。
+
+```
+-> .\check.ps1
+
+Num DisplayName
+--- -----------
+ ...
+ 54 @{microsoft.windowscommunicationsapps_16005.12624.20368.0_x64__8wekyb3d8bbwe?ms-resource://microsoft.windowscommun…
+ ...
+
+回复序号并回车提交（若只有一项，输入0），添加指定应用到排除列表中: 54
+S-1-15-2-...（剩下的ID）
+完成。
+```
+
+- 使用`PowerShell`运行这个脚本，并加入参数`-Contain {字符串}`，工具将会筛选名称中含有这个字符串的应用。之后，和上面一样，输入编号回车即可。
+
+```
+-> .\check.ps1 -Contain communicationsapps
+
+Num DisplayName
+--- -----------
+    @{microsoft.windowscommunicationsapps_16005.12624.20368.0_x64__8wekyb3d8bbwe?ms-resource://microsoft.windowscommun…
+
+回复序号并回车提交（若只有一项，输入0），添加指定应用到排除列表中: 0
+S-1-15-2-...（剩下的ID）
+完成。
+```
+
+另外，这里给出可以用来筛选几个常见的需要进行代理的MS自带应用的筛选参数，方便大家直接复制运行（直接作为`-Contain`参数的值，运行脚本时输入0回车即可）：
+
+| 软件 | 筛选参数 |
+| --  | -- |
+| 应用商店 | `WindowsStore` |
+| 邮件 | `communicationsapps` |
+| OneNote | `OneNote` |
+| 照片 | `Windows.Photos` （注意不要选择后面有DLC的那一项）|
+
+运行完脚本之后，关闭重启对应应用即可。
+
+终于可以愉快地使用MS应用和服务了！
+
+最后非常感谢这份PowerShell脚本的原作者！
+0:{"buildId":"x-o6oom0-eYUQFwPypfzU","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","div",null,{"className":"bg-neutral px-4 py-8","children":["$","div",null,{"className":"max-w-7xl mx-auto min-h-[256px] flex justify-center text-center text-neutral-content","children":["$","div",null,{"className":"flex flex-col justify-center animate-slide-up","children":[["$","h1",null,{"className":"text-4xl my-2","children":"使用PowerShell脚本让UWP应用使用localhost上的系统代理"}],["$","$L2",null,{"className":"justify-center","articleId":"make-uwp-apps-use-loopback-system-proxy-using-powershell-script","info":{"content":"$3","title":"使用PowerShell脚本让UWP应用使用localhost上的系统代理","date":"2020-04-25 23:40","id":"make-uwp-apps-use-loopback-system-proxy-using-powershell-script","lang":"cn","tags":["Windows","problem-investigation"],"wordCount":1420,"readingTime":7.1,"filePath":"contents/20200425-make-uwp-apps-use-loopback-system-proxy-using-powershell-script/cn.md","summary":{"articleId":"make-uwp-apps-use-loopback-system-proxy-using-powershell-script","lang":"cn","hash":"c0e7b34cbe677d04f80a60678163b96d9b9ce636f7185ef59b6c4d696e339b86","summaries":[{"metadata":{"summarizer":"azure-ai","model":"DeepSeek-R1"},"summaries":["国内微软服务连接问题严重，尤其UWP应用因禁止localhost流量无法使用系统代理。微软工具CheckNetIsolation.exe可解除限制，但需手动获取应用ID操作繁琐。原有PowerShell脚本存在过滤系统应用和接口失效问题。改进方案修复了注册表路径读取逻辑，新增名称筛选参数，支持快速定位邮件/商店/OneNote/照片等系统应用。用户运行脚本后选择序号即可自动注入应用ID到代理白名单，无需管理员权限。该方案通过简化注册表查询和参数化过滤，显著提升了UWP应用代理配置效率。"],"startTime":"2025-02-14T13:36:06.391Z","endTime":"2025-02-14T13:36:32.466Z"},{"metadata":{"summarizer":"ollama","model":"deepseek-r1:8b"},"summaries":["这篇文章讨论了国内微软服务网络连接性问题，特别是针对无法通过系统代理使用UWP应用的解决方案。手动可用`CheckNetIsolation.exe`工具，自动化则开发了一个PowerShell脚本来筛选和添加应用到排除列表，从而绕过网络隔离限制。"]}]}},"langVersions":["cn"]}]]}]}]}],"$L4"]}],["$L5","$L6","$L7","$L8","$L9","$La"],"$Lb"]}],"loading":null,"isPartial":false}
+e:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959zf:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z4:["$","div",null,{"className":"animate-slide-up","children":[["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","div",null,{"className":"flex flex-row space-x-4","children":[["$","div",null,{"className":"prose max-w-full lg:w-[75%]","children":[["$","$Lc",null,{"summaries":[{"metadata":{"summarizer":"azure-ai","model":"DeepSeek-R1"},"children":[["$","p","p-0",{"children":"国内微软服务连接问题严重，尤其UWP应用因禁止localhost流量无法使用系统代理。微软工具CheckNetIsolation.exe可解除限制，但需手动获取应用ID操作繁琐。原有PowerShell脚本存在过滤系统应用和接口失效问题。改进方案修复了注册表路径读取逻辑，新增名称筛选参数，支持快速定位邮件/商店/OneNote/照片等系统应用。用户运行脚本后选择序号即可自动注入应用ID到代理白名单，无需管理员权限。该方案通过简化注册表查询和参数化过滤，显著提升了UWP应用代理配置效率。"}]]},{"metadata":{"summarizer":"ollama","model":"deepseek-r1:8b"},"children":[["$","p","p-0",{"children":["这篇文章讨论了国内微软服务网络连接性问题，特别是针对无法通过系统代理使用UWP应用的解决方案。手动可用",["$","code","code-0",{"children":"CheckNetIsolation.exe"}],"工具，自动化则开发了一个PowerShell脚本来筛选和添加应用到排除列表，从而绕过网络隔离限制。"]}]]}]}],["$","$Ld",null,{"withCaption":true,"id":"make-uwp-apps-use-loopback-system-proxy-using-powershell-script","children":[["$","h1","h1-0",{"id":"问题","children":[["$","a","问题",{"href":"#问题","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$e","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"问题"]}],"\n",["$","p","p-0",{"children":"众所周知，国内微软服务的连接性很成问题，并且这个问题越来越严重了，所以必须要让这些应用通过梯子才能正常使用微软服务。"}],"\n",["$","p","p-1",{"children":"梯子一般都会设置系统代理，其原理是在本机localhost的某个端口上监听网络请求，并将请求发送到服务器。绝大部分普通的Win32应用都会遵循系统代理的设置，包括OneDrive桌面应用等，所以这些以Win32应用形式存在的应用程序可以很简单的解决。"}],"\n",["$","p","p-2",{"children":"但是微软的很多应用，例如自带的Windows商店、邮件、照片等，都是UWP应用，而UWP应用禁止了将网络流量发送到本机(localhost)，所以UWP应用是不能直接使用这种系统代理的。"}],"\n",["$","h1","h1-1",{"id":"手动解决方案","children":[["$","a","手动解决方案",{"href":"#手动解决方案","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$f","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"手动解决方案"]}],"\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c"]}]]}],"$L2d"]}]}],"$L2e","$L2f"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/44d2e091595b3eca.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/5e55d74f3211c796.css","precedence":"next"}]
+7:["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/b59bad6ea4f112f2.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0a1497ca0a1721ad.js","async":true}]
+9:["$","script","script-1",{"src":"/_next/static/chunks/4ec1bf7a32b70f87.js","async":true}]
+a:["$","script","script-2",{"src":"/_next/static/chunks/276b22541034e0ea.js","async":true}]
+b:["$","$L30",null,{"children":["$","$31",null,{"name":"Next.MetadataOutlet","children":"$@32"}]}]
+10:["$","p","p-3",{"children":["微软同样自带了一个工具",["$","code","code-0",{"children":"CheckNetIsolation.exe"}],"（可以直接在powershell里运行），可以允许选定的UWP应用解除网络隔离，使用localhost的系统代理。"]}]
+11:["$","p","p-4",{"children":"听起来问题解决了？"}]
+12:["$","p","p-5",{"children":["如果查看这个工具的帮助界面的话，会发现这个工具需要应用的名称(",["$","code","code-0",{"children":"-n"}],")或者ID(",["$","code","code-1",{"children":"-p"}],")，但是这些信息需要从注册表中获取，非常的麻烦。想要这样进行操作的用户可以尝试少数派的",["$","a","a-0",{"href":"https://sspai.com/post/41137","children":"这篇文章"}],"。"]}]
+13:["$","pre","pre-0",{"children":["$","code","code-0",{"children":"➜ CheckNetIsolation.exe LoopbackExempt -?\n\n用法:\n   CheckNetIsolation LoopbackExempt [operation] [-n=] [-p=]\n      操作列表:\n          -a  -  向环回免除列表中添加 AppContainer 或程序包系列。\n          -d  -  从环回免除列表中删除 AppContainer 或程序包系列。\n          -c  -  清除环回免除的 AppContainer 和程序包系列的列表。\n          -s  -  显示环回免除的 AppContainer 和程序包系列的列表。\n\n      参数列表:\n          -n= - AppContainer 名称或程序包系列名称。\n          -p= - AppContainer 或程序包系列安全标识符(SID)。\n          -?  - 显示 LoopbackExempt 模块的此帮助消息。\n\n完成。\n"}]}]
+33:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z14:["$","h1","h1-2",{"id":"自动化方案","children":[["$","a","自动化方案",{"href":"#自动化方案","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$33","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"自动化方案"]}]
+34:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z15:["$","h2","h2-0",{"id":"巨人的肩膀","children":[["$","a","巨人的肩膀",{"href":"#巨人的肩膀","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$34","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"巨人的肩膀"]}]
+16:["$","p","p-6",{"children":"我们作为一个合格的程序员，看到这种事情的第一反应，应该是：我太懒了，我们需要自动化！"}]
+17:["$","p","p-7",{"children":["所以第一件事就是去网上找，果不其然找到一个dalao的",["$","a","a-0",{"href":"https://yuan.ga/enable-win10-uwp-use-system-proxy/","children":"文章"}],"，里面给出了一个Python脚本，可以自动做这个事情。"]}]
+18:["$","p","p-8",{"children":"但是反正这个工具都是在Windows上用，为什么要用Python？用PowerShell，什么依赖都不要，它不香嘛？"}]
+19:["$","p","p-9",{"children":["进入这个大佬的GitHub，可以在它的",["$","a","a-0",{"href":"https://github.com/yearliny/myscript","children":"这个仓库"}],"中发现原来这个大佬也写了一份PowerShell脚本用来做这个事情。"]}]
+1a:["$","p","p-10",{"children":"但是当我尝试使用这个PowerShell时，发现了一些问题："}]
+1b:["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"没有系统自带的应用"}],"\n",["$","li","li-1",{"children":["选择应用后会报",["$","code","code-0",{"children":"错误: 参数无效"}],"错误"]}],"\n"]}]
+35:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z1c:["$","h2","h2-1",{"id":"站在巨人的肩膀上","children":[["$","a","站在巨人的肩膀上",{"href":"#站在巨人的肩膀上","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$35","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"站在巨人的肩膀上"]}]
+1d:["$","p","p-11",{"children":"不能就这么放弃了！"}]
+1e:["$","p","p-12",{"children":"于是我检查了一下这个PowerShell工具，解决了这两个问题："}]
+1f:["$","ul","ul-1",{"children":["\n",["$","li","li-0",{"children":["没有系统自带的应用是因为dalao过滤了以",["$","code","code-0",{"children":"$${"}],"开头的应用，而这些应用正好就是邮箱、商店等系统应用"]}],"\n",["$","li","li-1",{"children":["选择应用后报错应该是因为工具在后期改了API，所以原来直接使用",["$","code","code-0",{"children":"Moniker"}],"键值的方法不能使用了"]}],"\n"]}]
+20:["$","p","p-13",{"children":"针对这两个问题，我对脚本做出了改进，并加入了一个根据名字进行筛选应用的功能，以方便让用户应用列表中中快速找到想要设置的应用。"}]
+21:["$","p","p-14",{"children":"改进后的脚本如下："}]
+22:["$","figure","figure-0",{"data-rehype-pretty-code-figure":"","children":["$","pre","pre-0",{"style":{"backgroundColor":"#282c34","color":"#abb2bf"},"tabIndex":0,"data-language":"powershell","data-theme":"one-dark-pro","children":["$","code","code-0",{"data-language":"powershell","data-theme":"one-dark-pro","style":{"display":"grid"},"children":[["$","span","span-0",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#C678DD"},"children":"param"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":"("}]]}],"\n",["$","span","span-1",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"    ["}],["$","span","span-1",{"style":{"color":"#C678DD"},"children":"string"}],["$","span","span-2",{"style":{"color":"#ABB2BF"},"children":"] "}],["$","span","span-3",{"style":{"color":"#E06C75"},"children":"$$Contain"}]]}],"\n",["$","span","span-2",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":")"}]}],"\n",["$","span","span-3",{"data-line":"","children":" "}],"\n",["$","span","span-4",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"$$BASE_PATH"}],["$","span","span-1",{"style":{"color":"#56B6C2"},"children":" ="}],["$","span","span-2",{"style":{"color":"#98C379"},"children":" 'HKCU:\\Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Mappings\\'"}]]}],"\n",["$","span","span-5",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"# 获取相关注册表信息，并进行筛选和排序"}]}],"\n",["$","span","span-6",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"$$mapping"}],["$","span","span-1",{"style":{"color":"#56B6C2"},"children":" ="}],["$","span","span-2",{"style":{"color":"#56B6C2"},"children":" Get-ChildItem"}],["$","span","span-3",{"style":{"color":"#56B6C2"},"children":" -"}],["$","span","span-4",{"style":{"color":"#ABB2BF"},"children":"Pat "}],["$","span","span-5",{"style":{"color":"#E06C75"},"children":"$$BASE_PATH"}],["$","span","span-6",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-7",{"style":{"color":"#56B6C2"},"children":"Where-Object"}],["$","span","span-8",{"style":{"color":"#ABB2BF"},"children":" {"}],["$","span","span-9",{"style":{"color":"#E06C75"},"children":"$$Contain"}],["$","span","span-10",{"style":{"color":"#56B6C2"},"children":" -Eq"}],["$","span","span-11",{"style":{"color":"#98C379"},"children":" \"\""}],["$","span","span-12",{"style":{"color":"#56B6C2"},"children":" -or"}],["$","span","span-13",{"style":{"color":"#ABB2BF"},"children":" $_"}],["$","span","span-14",{"style":{"color":"#E06C75"},"children":".GetValue"}],["$","span","span-15",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-16",{"style":{"color":"#98C379"},"children":"'DisplayName'"}],["$","span","span-17",{"style":{"color":"#ABB2BF"},"children":").Contains("}],["$","span","span-18",{"style":{"color":"#E06C75"},"children":"$$Contain"}],["$","span","span-19",{"style":{"color":"#ABB2BF"},"children":")} | "}],["$","span","span-20",{"style":{"color":"#56B6C2"},"children":"Sort-Object"}],["$","span","span-21",{"style":{"color":"#ABB2BF"},"children":" {$_"}],["$","span","span-22",{"style":{"color":"#E06C75"},"children":".GetValue"}],["$","span","span-23",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-24",{"style":{"color":"#98C379"},"children":"'DisplayName'"}],["$","span","span-25",{"style":{"color":"#ABB2BF"},"children":")}"}]]}],"\n",["$","span","span-7",{"data-line":"","children":" "}],"\n",["$","span","span-8",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#C678DD"},"children":"if"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":" ("}],["$","span","span-2",{"style":{"color":"#E06C75"},"children":"$$mapping.Length"}],["$","span","span-3",{"style":{"color":"#56B6C2"},"children":" -eq"}],["$","span","span-4",{"style":{"color":"#D19A66"},"children":" 0"}],["$","span","span-5",{"style":{"color":"#ABB2BF"},"children":") {"}]]}],"\n",["$","span","span-9",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#56B6C2"},"children":"    Write-Output"}],["$","span","span-1",{"style":{"color":"#98C379"},"children":" \"没有包含字符 "}],["$","span","span-2",{"style":{"color":"#E06C75"},"children":"$$Contain"}],["$","span","span-3",{"style":{"color":"#98C379"},"children":" 的软件包，请重试。\""}]]}],"\n",["$","span","span-10",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#C678DD"},"children":"    exit"}]}],"\n",["$","span","span-11",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"}"}]}],"\n",["$","span","span-12",{"data-line":"","children":["$","span","span-0",{"style":{"color":"#7F848E","fontStyle":"italic"},"children":"# 格式化打印 APP List"}]}],"\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a"]}]}]}]
+23:["$","p","p-15",{"children":["将这段代码复制粘贴到本地一个以",["$","code","code-0",{"children":"ps1"}],"为扩展名的文件中，假设这个文件名字为",["$","code","code-1",{"children":"check.ps1"}],"："]}]
+24:["$","ul","ul-2",{"children":["\n",["$","li","li-0",{"children":["使用",["$","code","code-0",{"children":"PowerShell"}],"直接运行这个脚本，不需要管理员权限。系统将会列出系统中所有的UWP应用的名称，输入编号，系统将会输入应用的ID，然后调用",["$","code","code-1",{"children":"CheckNetIsolation.exe"}],"工具将这个应用解除网络隔离，允许使用系统代理。"]}],"\n"]}]
+25:["$","pre","pre-1",{"children":["$","code","code-0",{"children":"-> .\\check.ps1\n\nNum DisplayName\n--- -----------\n ...\n 54 @{microsoft.windowscommunicationsapps_16005.12624.20368.0_x64__8wekyb3d8bbwe?ms-resource://microsoft.windowscommun…\n ...\n\n回复序号并回车提交（若只有一项，输入0），添加指定应用到排除列表中: 54\nS-1-15-2-...（剩下的ID）\n完成。\n"}]}]
+26:["$","ul","ul-3",{"children":["\n",["$","li","li-0",{"children":["使用",["$","code","code-0",{"children":"PowerShell"}],"运行这个脚本，并加入参数",["$","code","code-1",{"children":"-Contain {字符串}"}],"，工具将会筛选名称中含有这个字符串的应用。之后，和上面一样，输入编号回车即可。"]}],"\n"]}]
+27:["$","pre","pre-2",{"children":["$","code","code-0",{"children":"-> .\\check.ps1 -Contain communicationsapps\n\nNum DisplayName\n--- -----------\n    @{microsoft.windowscommunicationsapps_16005.12624.20368.0_x64__8wekyb3d8bbwe?ms-resource://microsoft.windowscommun…\n\n回复序号并回车提交（若只有一项，输入0），添加指定应用到排除列表中: 0\nS-1-15-2-...（剩下的ID）\n完成。\n"}]}]
+28:["$","p","p-16",{"children":["另外，这里给出可以用来筛选几个常见的需要进行代理的MS自带应用的筛选参数，方便大家直接复制运行（直接作为",["$","code","code-0",{"children":"-Contain"}],"参数的值，运行脚本时输入0回车即可）："]}]
+29:["$","table","table-0",{"children":[["$","thead","thead-0",{"children":["$","tr","tr-0",{"children":[["$","th","th-0",{"children":"软件"}],["$","th","th-1",{"children":"筛选参数"}]]}]}],["$","tbody","tbody-0",{"children":[["$","tr","tr-0",{"children":[["$","td","td-0",{"children":"应用商店"}],["$","td","td-1",{"children":["$","code","code-0",{"children":"WindowsStore"}]}]]}],["$","tr","tr-1",{"children":[["$","td","td-0",{"children":"邮件"}],["$","td","td-1",{"children":["$","code","code-0",{"children":"communicationsapps"}]}]]}],["$","tr","tr-2",{"children":[["$","td","td-0",{"children":"OneNote"}],["$","td","td-1",{"children":["$","code","code-0",{"children":"OneNote"}]}]]}],["$","tr","tr-3",{"children":[["$","td","td-0",{"children":"照片"}],["$","td","td-1",{"children":[["$","code","code-0",{"children":"Windows.Photos"}]," （注意不要选择后面有DLC的那一项）"]}]]}]]}]]}]
+2a:["$","p","p-17",{"children":"运行完脚本之后，关闭重启对应应用即可。"}]
+2b:["$","p","p-18",{"children":"终于可以愉快地使用MS应用和服务了！"}]
+2c:["$","p","p-19",{"children":"最后非常感谢这份PowerShell脚本的原作者！"}]
+2d:["$","div",null,{"className":"hidden lg:block lg:w-[25%]","children":["$","$L3b",null,{"toc":[{"depth":1,"value":"问题","id":"问题"},{"depth":1,"value":"手动解决方案","id":"手动解决方案"},{"depth":1,"value":"自动化方案","id":"自动化方案","children":[{"depth":2,"value":"巨人的肩膀","id":"巨人的肩膀"},{"depth":2,"value":"站在巨人的肩膀上","id":"站在巨人的肩膀上"}]}],"hasSummary":true}]}]
+2e:["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","$L3c",null,{"relatedArticles":[]}]}]
+2f:["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","$L3d",null,{"articleId":"make-uwp-apps-use-loopback-system-proxy-using-powershell-script","articleTitle":"使用PowerShell脚本让UWP应用使用localhost上的系统代理"}]}]
+32:null
+36:["$","span","span-13",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"$$mapping"}],["$","span","span-1",{"style":{"color":"#ABB2BF"},"children":" | "}],["$","span","span-2",{"style":{"color":"#56B6C2"},"children":"Format-Table"}],["$","span","span-3",{"style":{"color":"#C678DD"},"children":" @"}],["$","span","span-4",{"style":{"color":"#ABB2BF"},"children":"{"}],["$","span","span-5",{"style":{"color":"#E06C75"},"children":"label"}],["$","span","span-6",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-7",{"style":{"color":"#98C379"},"children":"'Num'"}],["$","span","span-8",{"style":{"color":"#ABB2BF"},"children":"; "}],["$","span","span-9",{"style":{"color":"#E06C75"},"children":"expression"}],["$","span","span-10",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-11",{"style":{"color":"#ABB2BF"},"children":"{"}],["$","span","span-12",{"style":{"color":"#E06C75"},"children":"$$mapping.IndexOf"}],["$","span","span-13",{"style":{"color":"#ABB2BF"},"children":"($_)}}, "}],["$","span","span-14",{"style":{"color":"#C678DD"},"children":"@"}],["$","span","span-15",{"style":{"color":"#ABB2BF"},"children":"{"}],["$","span","span-16",{"style":{"color":"#E06C75"},"children":"label"}],["$","span","span-17",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-18",{"style":{"color":"#98C379"},"children":"'DisplayName'"}],["$","span","span-19",{"style":{"color":"#ABB2BF"},"children":"; "}],["$","span","span-20",{"style":{"color":"#E06C75"},"children":"expression"}],["$","span","span-21",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-22",{"style":{"color":"#ABB2BF"},"children":"{$_"}],["$","span","span-23",{"style":{"color":"#E06C75"},"children":".GetValue"}],["$","span","span-24",{"style":{"color":"#ABB2BF"},"children":"("}],["$","span","span-25",{"style":{"color":"#98C379"},"children":"'DisplayName'"}],["$","span","span-26",{"style":{"color":"#ABB2BF"},"children":")}}"}]]}]
+37:["$","span","span-14",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"$$input "}],["$","span","span-1",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-2",{"style":{"color":"#56B6C2"},"children":" Read-Host"}],["$","span","span-3",{"style":{"color":"#98C379"},"children":" '回复序号并回车提交（若只有一项，输入0），添加指定应用到排除列表中'"}]]}]
+38:["$","span","span-15",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#E06C75"},"children":"$$id"}],["$","span","span-1",{"style":{"color":"#56B6C2"},"children":" ="}],["$","span","span-2",{"style":{"color":"#E06C75"},"children":" $mapping"}],["$","span","span-3",{"style":{"color":"#ABB2BF"},"children":"[$input].Name.Split("}],["$","span","span-4",{"style":{"color":"#98C379"},"children":"\"\\\""}],["$","span","span-5",{"style":{"color":"#ABB2BF"},"children":") | "}],["$","span","span-6",{"style":{"color":"#56B6C2"},"children":"Select-Object"}],["$","span","span-7",{"style":{"color":"#56B6C2"},"children":" -"}],["$","span","span-8",{"style":{"color":"#ABB2BF"},"children":"Last "}],["$","span","span-9",{"style":{"color":"#D19A66"},"children":"1"}]]}]
+39:["$","span","span-16",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#56B6C2"},"children":"Write-Output"}],["$","span","span-1",{"style":{"color":"#E06C75"},"children":" $id"}]]}]
+3a:["$","span","span-17",{"data-line":"","children":[["$","span","span-0",{"style":{"color":"#ABB2BF"},"children":"CheckNetIsolation LoopbackExempt "}],["$","span","span-1",{"style":{"color":"#56B6C2"},"children":"-"}],["$","span","span-2",{"style":{"color":"#ABB2BF"},"children":"a "}],["$","span","span-3",{"style":{"color":"#56B6C2"},"children":"-"}],["$","span","span-4",{"style":{"color":"#ABB2BF"},"children":"p"}],["$","span","span-5",{"style":{"color":"#56B6C2"},"children":"="}],["$","span","span-6",{"style":{"color":"#98C379"},"children":"\""}],["$","span","span-7",{"style":{"color":"#E06C75"},"children":"$$id"}],["$","span","span-8",{"style":{"color":"#98C379"},"children":"\""}]]}]

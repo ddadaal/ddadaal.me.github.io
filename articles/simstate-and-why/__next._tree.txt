@@ -1,0 +1,9 @@
+:HL["/_next/static/chunks/a705e43fee9b0e0d.css","style"]
+:HL["/_next/static/chunks/44d2e091595b3eca.css","style"]
+:HL["/_next/static/chunks/5e55d74f3211c796.css","style"]
+:HL["/_next/static/chunks/b59bad6ea4f112f2.css","style"]
+:HL["https://img.shields.io/npm/v/simstate.svg?style=flat-square","image"]
+:HL["https://img.shields.io/npm/types/simstate.svg?style=flat-square","image"]
+:HL["https://img.shields.io/travis/ddadaal/simstate.svg?style=flat-square","image"]
+:HL["https://img.shields.io/coveralls/github/ddadaal/simstate.svg?style=flat-square","image"]
+0:{"buildId":"x-o6oom0-eYUQFwPypfzU","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"articles","paramType":null,"paramKey":"articles","hasRuntimePrefetch":false,"slots":{"children":{"name":"params","paramType":"oc","paramKey":"simstate-and-why","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

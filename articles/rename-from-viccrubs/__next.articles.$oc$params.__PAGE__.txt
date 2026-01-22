@@ -1,0 +1,135 @@
+1:"$Sreact.fragment"
+2:I[28979,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleFrontmatter"]
+c:I[21753,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleSummarization"]
+d:I[79817,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"Gallery"]
+2e:I[23491,["/_next/static/chunks/2caa33a942c5f527.js","/_next/static/chunks/59983278a34fd25c.js"],"OutletBoundary"]
+2f:"$Sreact.suspense"
+34:I[14620,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"ArticleToc"]
+35:I[39182,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"RelatedArticles"]
+36:I[42449,["/_next/static/chunks/8d29a04bcfe27c24.js","/_next/static/chunks/3dff3d4c63cf346e.js","/_next/static/chunks/b3af52d5d180873a.js","/_next/static/chunks/86b442c1397f7351.js","/_next/static/chunks/0a1497ca0a1721ad.js","/_next/static/chunks/4ec1bf7a32b70f87.js","/_next/static/chunks/276b22541034e0ea.js"],"CommentPanelWithCurrentLanguage"]
+:HL["/_next/static/chunks/44d2e091595b3eca.css","style"]
+:HL["/_next/static/chunks/5e55d74f3211c796.css","style"]
+:HL["/_next/static/chunks/b59bad6ea4f112f2.css","style"]
+3:T14ad,
+# 改名
+
+标题越短，事情越大！
+
+我决定将我在网络上的用户名从`viccrubs`这个至少用了5年的名称，以及`daacheen`这个用了半个月的名称（捂脸），改到`ddadaal`。
+
+# 原因
+
+改名的原因有以下几个：
+
+- 统一网络身份标识
+
+目前，在网络上我主要使用以下两个名字：`smallda`，`viccrubs`。
+
+前者是我最早使用的一个名字，其是我最早使用的中文网名`小达`的英文翻译。这个名字不能继续使用的原因很明显：我长大了 :joy:。这个名字在Steam和邮箱上仍然存在，所以有时候给其他人共享Steam账号和邮箱时都有点羞耻的感觉 :persevere:
+
+第二个名字是我意识到前一个名字问题后（我觉得应该是14年开始用的）拍脑袋拍出来的另一个生造的名字`Victor Crubs`的缩写。这个生造的名字的姓甚至根本没有这个词！但是这么多年来也一直没找到一个好用的方案，于是在后来新的地方（例如GitHub等）都使用了这个新的缩写。但是由于一直对这个名字有点不太满意，所以最重要的**邮箱**没有改，仍然维持了`smallda`的名字。
+
+这就造成了一些割裂感，虽然在绝大多数地方都是使用`viccrubs`，但是就像上面所说，邮箱没有改，对于强迫症来说这很不爽呀！使用一个统一的名字能够减少这种割裂感。
+
+- 替换奇怪的`viccrubs`
+
+这个缩写主要有以下几个问题：
+
+- 读起来不方便（6个音节）甚至我自己都不愿意读这个词
+- 其和我的现实中的名字完全没有关系
+- 词本身长得很奇怪，不是嘛？
+
+10月15日开始，我正式启用`daacheen`。为什么当时选`daacheen`而不是其他名字呢？
+
+- 取名很难啊！！能想出来一个都不错了 :sob:
+- 好记，这个名字就是从真名造过来的
+    - 根据我的观察似乎很多大佬（尤其是欧美的）都是直接使用自己的真名或者其变体
+    - 适合懒得想名字的人，也容易将名字和人联系起来
+- 好读，两个音节，拼音和英文都方便读
+    - 我从大一英语听说课助教Mr Adams以及不久前来苏州的美帝visitor中发现，他们读`jun`音时似乎不太容易，读出来也不准，所以在取这个名的时候刻意避开了`jun`
+- 新名字的GitHub、邮箱、域名等没有被占用，可以注册
+- 这个名字比较得体，尤其是以后上研究生和工作后，可能和外面的接触就会更多，有个这样的名字给别人介绍起来也不会有羞耻的感觉（~~smallda~~）
+- 这个名字不像拼音不像英文，有种不明觉厉的感觉（？）
+
+但是呢，经过这半个月的使用，我发现这个名称有几个问题，最终促使我使用`ddadaal`来代替：
+
+- 读音不合我意。`cheen`这个词所有人第一反应是读`chin`而不是`chen`
+- 太长。`daacheen`有8个字节，而`ddadaal`是7个（其实我理想中的是`daddal`的，但是这个名字已经被人使用了，所以只好再加一个字符）
+- `daacheen`确实不像拼音不像英文，看上去确实挺奇怪的
+
+而`ddadaal`这个词呢，是`达达`的魔改，正好我更喜欢用达来表示自己（以及初中高中的时候大家都是这么叫我的）；同时这个词具有上面所说的所有特征，所以感觉用`ddadaal`可能更加合适。
+
+# 改名遇到的问题
+
+就像在现实中改名一样，在网络空间更改一个使用多年的名字是比较麻烦的事情，但是反正要改，**早改的影响总比晚改好**。
+
+- 很多网站不支持更改用户名
+
+还好，最重要的GitHub和微软账号是可以改的，而且可以无缝切换，减少了很多迁移的成本。
+
+- 影响自己标识的影响力
+
+由于之前一直都外面都是用`viccrubs`来表示的自己的，可能会有人对这个名字产生了印象。突然改名字可能会让已经记住我原来名字的人和第一次看到新名字的人感觉迷惑，影响ID的影响力。
+
+对于这个的问题呢，我的看法是：
+
+1. 讲道理我的影响力应该不值一提，根本就没人记得我原来的名字；
+2. 我有一个**非常有代表性的、仅此一家别无分店的头像**，修改名字对我的影响力应该不大，从头像也能认出来
+3. 就像一开始所说，早改总比晚改好，越晚改，就有更多人对我原来的名字有印象，改名的影响就越大
+
+# 改名所涉及的方面
+
+改名将包括以下方面：
+
+- [x] 邮箱从`smallda@outlook.com`改为`ddadaal@outlook.com`
+    - 原有的邮箱继续生效
+- [x] GitHub用户名从`viccrubs`改为[`ddadaal`](https://github.com/ddadaal)
+    - GitHub能改用户名简直要感动哭了
+- [x] QQ、微信昵称从`VicCrubs`改为`ddadaal`
+- [x] 注册并使用域名`ddadaal.me`。原域名直接跳转到新域名。
+- [x] 修改博客名称~~到`DaBlog`或者`DaaBlog`~~`daadaal.me`
+- [x] 其他所有使用`viccrubs`作为标识的账号（Steam, Origin, Epic, Uplay, 知乎，Quora，Facebook，Instagram，Twitter，StackOverflow，豆瓣等）均尽力改名为`ddadaal`
+
+# 最后
+
+如果没有什么大的特殊情况（10月31日：特殊情况），这个名字应该会用一辈子了。希望大家能早点适应我的新名字 :smile:
+0:{"buildId":"x-o6oom0-eYUQFwPypfzU","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","div",null,{"className":"bg-neutral px-4 py-8","children":["$","div",null,{"className":"max-w-7xl mx-auto min-h-[256px] flex justify-center text-center text-neutral-content","children":["$","div",null,{"className":"flex flex-col justify-center animate-slide-up","children":[["$","h1",null,{"className":"text-4xl my-2","children":"从viccrubs改名为ddadaal"}],["$","$L2",null,{"className":"justify-center","articleId":"rename-from-viccrubs","info":{"content":"$3","title":"从viccrubs改名为ddadaal","date":"2019-10-31 14:28","id":"rename-from-viccrubs","lang":"cn","tags":["life"],"wordCount":1463,"readingTime":7.315,"filePath":"contents/20191031-rename-from-viccrubs/cn.md","summary":{"articleId":"rename-from-viccrubs","lang":"cn","hash":"6e8cbead2f42551a2a0116ae4cf519336bd5ae1cd8eedef27f5d7ff07e05a756","summaries":[{"metadata":{"summarizer":"azure-ai","model":"DeepSeek-R1"},"summaries":["作者决定将多年使用的网络用户名统一更改为“ddadaal”，以解决此前多个ID导致的身份割裂问题。旧名“viccrubs”发音复杂且与真名无关，短暂试用的“daacheen”也因读音偏差和长度被弃用。新名源于昵称“达达”，兼顾简洁性、易读性及与真名的关联性，同时避免文化差异导致的发音障碍。改名涉及邮箱、GitHub、社交平台及域名等全方位调整，尽管面临网站限制和影响力重置的挑战，作者仍认为尽早统一身份标识更利于长期使用。最终目标是建立稳定且专业的网络形象。"],"startTime":"2025-02-14T13:31:59.425Z","endTime":"2025-02-14T13:32:27.839Z"},{"metadata":{"summarizer":"ollama","model":"deepseek-r1:8b"},"summaries":["用户决定将网络用户名从`viccrubs`和`daacheen`改为`ddadaal`，主要原因是统一身份、解决割裂感以及不喜欢旧名字。新名字方便记忆且读音顺口，适合未来使用。已修改邮箱、GitHub及多个社交平台账号，强调早改的重要性以减少影响。"]}]}},"langVersions":["cn"]}]]}]}]}],"$L4"]}],["$L5","$L6","$L7","$L8","$L9","$La"],"$Lb"]}],"loading":null,"isPartial":false}
+e:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959zf:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z4:["$","div",null,{"className":"animate-slide-up","children":[["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","div",null,{"className":"flex flex-row space-x-4","children":[["$","div",null,{"className":"prose max-w-full lg:w-[75%]","children":[["$","$Lc",null,{"summaries":[{"metadata":{"summarizer":"azure-ai","model":"DeepSeek-R1"},"children":[["$","p","p-0",{"children":"作者决定将多年使用的网络用户名统一更改为“ddadaal”，以解决此前多个ID导致的身份割裂问题。旧名“viccrubs”发音复杂且与真名无关，短暂试用的“daacheen”也因读音偏差和长度被弃用。新名源于昵称“达达”，兼顾简洁性、易读性及与真名的关联性，同时避免文化差异导致的发音障碍。改名涉及邮箱、GitHub、社交平台及域名等全方位调整，尽管面临网站限制和影响力重置的挑战，作者仍认为尽早统一身份标识更利于长期使用。最终目标是建立稳定且专业的网络形象。"}]]},{"metadata":{"summarizer":"ollama","model":"deepseek-r1:8b"},"children":[["$","p","p-0",{"children":["用户决定将网络用户名从",["$","code","code-0",{"children":"viccrubs"}],"和",["$","code","code-1",{"children":"daacheen"}],"改为",["$","code","code-2",{"children":"ddadaal"}],"，主要原因是统一身份、解决割裂感以及不喜欢旧名字。新名字方便记忆且读音顺口，适合未来使用。已修改邮箱、GitHub及多个社交平台账号，强调早改的重要性以减少影响。"]}]]}]}],["$","$Ld",null,{"withCaption":true,"id":"rename-from-viccrubs","children":[["$","h1","h1-0",{"id":"改名","children":[["$","a","改名",{"href":"#改名","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$e","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"改名"]}],"\n",["$","p","p-0",{"children":"标题越短，事情越大！"}],"\n",["$","p","p-1",{"children":["我决定将我在网络上的用户名从",["$","code","code-0",{"children":"viccrubs"}],"这个至少用了5年的名称，以及",["$","code","code-1",{"children":"daacheen"}],"这个用了半个月的名称（捂脸），改到",["$","code","code-2",{"children":"ddadaal"}],"。"]}],"\n",["$","h1","h1-1",{"id":"原因","children":[["$","a","原因",{"href":"#原因","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$f","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"原因"]}],"\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a"]}]]}],"$L2b"]}]}],"$L2c","$L2d"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/44d2e091595b3eca.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/5e55d74f3211c796.css","precedence":"next"}]
+7:["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/b59bad6ea4f112f2.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0a1497ca0a1721ad.js","async":true}]
+9:["$","script","script-1",{"src":"/_next/static/chunks/4ec1bf7a32b70f87.js","async":true}]
+a:["$","script","script-2",{"src":"/_next/static/chunks/276b22541034e0ea.js","async":true}]
+b:["$","$L2e",null,{"children":["$","$2f",null,{"name":"Next.MetadataOutlet","children":"$@30"}]}]
+10:["$","p","p-2",{"children":"改名的原因有以下几个："}]
+11:["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"统一网络身份标识"}],"\n"]}]
+12:["$","p","p-3",{"children":["目前，在网络上我主要使用以下两个名字：",["$","code","code-0",{"children":"smallda"}],"，",["$","code","code-1",{"children":"viccrubs"}],"。"]}]
+13:["$","p","p-4",{"children":["前者是我最早使用的一个名字，其是我最早使用的中文网名",["$","code","code-0",{"children":"小达"}],"的英文翻译。这个名字不能继续使用的原因很明显：我长大了 :joy:。这个名字在Steam和邮箱上仍然存在，所以有时候给其他人共享Steam账号和邮箱时都有点羞耻的感觉 :persevere:"]}]
+14:["$","p","p-5",{"children":["第二个名字是我意识到前一个名字问题后（我觉得应该是14年开始用的）拍脑袋拍出来的另一个生造的名字",["$","code","code-0",{"children":"Victor Crubs"}],"的缩写。这个生造的名字的姓甚至根本没有这个词！但是这么多年来也一直没找到一个好用的方案，于是在后来新的地方（例如GitHub等）都使用了这个新的缩写。但是由于一直对这个名字有点不太满意，所以最重要的",["$","strong","strong-0",{"children":"邮箱"}],"没有改，仍然维持了",["$","code","code-1",{"children":"smallda"}],"的名字。"]}]
+15:["$","p","p-6",{"children":["这就造成了一些割裂感，虽然在绝大多数地方都是使用",["$","code","code-0",{"children":"viccrubs"}],"，但是就像上面所说，邮箱没有改，对于强迫症来说这很不爽呀！使用一个统一的名字能够减少这种割裂感。"]}]
+16:["$","ul","ul-1",{"children":["\n",["$","li","li-0",{"children":["替换奇怪的",["$","code","code-0",{"children":"viccrubs"}]]}],"\n"]}]
+17:["$","p","p-7",{"children":"这个缩写主要有以下几个问题："}]
+18:["$","ul","ul-2",{"children":["\n",["$","li","li-0",{"children":"读起来不方便（6个音节）甚至我自己都不愿意读这个词"}],"\n",["$","li","li-1",{"children":"其和我的现实中的名字完全没有关系"}],"\n",["$","li","li-2",{"children":"词本身长得很奇怪，不是嘛？"}],"\n"]}]
+19:["$","p","p-8",{"children":["10月15日开始，我正式启用",["$","code","code-0",{"children":"daacheen"}],"。为什么当时选",["$","code","code-1",{"children":"daacheen"}],"而不是其他名字呢？"]}]
+1a:["$","ul","ul-3",{"children":["\n",["$","li","li-0",{"children":"取名很难啊！！能想出来一个都不错了 :sob:"}],"\n",["$","li","li-1",{"children":["好记，这个名字就是从真名造过来的\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"根据我的观察似乎很多大佬（尤其是欧美的）都是直接使用自己的真名或者其变体"}],"\n",["$","li","li-1",{"children":"适合懒得想名字的人，也容易将名字和人联系起来"}],"\n"]}],"\n"]}],"\n",["$","li","li-2",{"children":["好读，两个音节，拼音和英文都方便读\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":["我从大一英语听说课助教Mr Adams以及不久前来苏州的美帝visitor中发现，他们读",["$","code","code-0",{"children":"jun"}],"音时似乎不太容易，读出来也不准，所以在取这个名的时候刻意避开了",["$","code","code-1",{"children":"jun"}]]}],"\n"]}],"\n"]}],"\n",["$","li","li-3",{"children":"新名字的GitHub、邮箱、域名等没有被占用，可以注册"}],"\n",["$","li","li-4",{"children":["这个名字比较得体，尤其是以后上研究生和工作后，可能和外面的接触就会更多，有个这样的名字给别人介绍起来也不会有羞耻的感觉（",["$","del","del-0",{"children":"smallda"}],"）"]}],"\n",["$","li","li-5",{"children":"这个名字不像拼音不像英文，有种不明觉厉的感觉（？）"}],"\n"]}]
+1b:["$","p","p-9",{"children":["但是呢，经过这半个月的使用，我发现这个名称有几个问题，最终促使我使用",["$","code","code-0",{"children":"ddadaal"}],"来代替："]}]
+1c:["$","ul","ul-4",{"children":["\n",["$","li","li-0",{"children":["读音不合我意。",["$","code","code-0",{"children":"cheen"}],"这个词所有人第一反应是读",["$","code","code-1",{"children":"chin"}],"而不是",["$","code","code-2",{"children":"chen"}]]}],"\n",["$","li","li-1",{"children":["太长。",["$","code","code-0",{"children":"daacheen"}],"有8个字节，而",["$","code","code-1",{"children":"ddadaal"}],"是7个（其实我理想中的是",["$","code","code-2",{"children":"daddal"}],"的，但是这个名字已经被人使用了，所以只好再加一个字符）"]}],"\n",["$","li","li-2",{"children":[["$","code","code-0",{"children":"daacheen"}],"确实不像拼音不像英文，看上去确实挺奇怪的"]}],"\n"]}]
+1d:["$","p","p-10",{"children":["而",["$","code","code-0",{"children":"ddadaal"}],"这个词呢，是",["$","code","code-1",{"children":"达达"}],"的魔改，正好我更喜欢用达来表示自己（以及初中高中的时候大家都是这么叫我的）；同时这个词具有上面所说的所有特征，所以感觉用",["$","code","code-2",{"children":"ddadaal"}],"可能更加合适。"]}]
+31:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z1e:["$","h1","h1-2",{"id":"改名遇到的问题","children":[["$","a","改名遇到的问题",{"href":"#改名遇到的问题","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$31","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"改名遇到的问题"]}]
+1f:["$","p","p-11",{"children":["就像在现实中改名一样，在网络空间更改一个使用多年的名字是比较麻烦的事情，但是反正要改，",["$","strong","strong-0",{"children":"早改的影响总比晚改好"}],"。"]}]
+20:["$","ul","ul-5",{"children":["\n",["$","li","li-0",{"children":"很多网站不支持更改用户名"}],"\n"]}]
+21:["$","p","p-12",{"children":"还好，最重要的GitHub和微软账号是可以改的，而且可以无缝切换，减少了很多迁移的成本。"}]
+22:["$","ul","ul-6",{"children":["\n",["$","li","li-0",{"children":"影响自己标识的影响力"}],"\n"]}]
+23:["$","p","p-13",{"children":["由于之前一直都外面都是用",["$","code","code-0",{"children":"viccrubs"}],"来表示的自己的，可能会有人对这个名字产生了印象。突然改名字可能会让已经记住我原来名字的人和第一次看到新名字的人感觉迷惑，影响ID的影响力。"]}]
+24:["$","p","p-14",{"children":"对于这个的问题呢，我的看法是："}]
+25:["$","ol","ol-0",{"children":["\n",["$","li","li-0",{"children":"讲道理我的影响力应该不值一提，根本就没人记得我原来的名字；"}],"\n",["$","li","li-1",{"children":["我有一个",["$","strong","strong-0",{"children":"非常有代表性的、仅此一家别无分店的头像"}],"，修改名字对我的影响力应该不大，从头像也能认出来"]}],"\n",["$","li","li-2",{"children":"就像一开始所说，早改总比晚改好，越晚改，就有更多人对我原来的名字有印象，改名的影响就越大"}],"\n"]}]
+32:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z26:["$","h1","h1-3",{"id":"改名所涉及的方面","children":[["$","a","改名所涉及的方面",{"href":"#改名所涉及的方面","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$32","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"改名所涉及的方面"]}]
+27:["$","p","p-15",{"children":"改名将包括以下方面："}]
+28:["$","ul","ul-7",{"className":"contains-task-list","children":["\n",["$","li","li-0",{"className":"task-list-item","children":[["$","input","input-0",{"type":"checkbox","checked":true,"disabled":true}]," 邮箱从",["$","code","code-0",{"children":"smallda@outlook.com"}],"改为",["$","code","code-1",{"children":"ddadaal@outlook.com"}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"原有的邮箱继续生效"}],"\n"]}],"\n"]}],"\n",["$","li","li-1",{"className":"task-list-item","children":[["$","input","input-0",{"type":"checkbox","checked":true,"disabled":true}]," GitHub用户名从",["$","code","code-0",{"children":"viccrubs"}],"改为",["$","a","a-0",{"href":"https://github.com/ddadaal","children":["$","code","code-0",{"children":"ddadaal"}]}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":"GitHub能改用户名简直要感动哭了"}],"\n"]}],"\n"]}],"\n",["$","li","li-2",{"className":"task-list-item","children":[["$","input","input-0",{"type":"checkbox","checked":true,"disabled":true}]," QQ、微信昵称从",["$","code","code-0",{"children":"VicCrubs"}],"改为",["$","code","code-1",{"children":"ddadaal"}]]}],"\n",["$","li","li-3",{"className":"task-list-item","children":[["$","input","input-0",{"type":"checkbox","checked":true,"disabled":true}]," 注册并使用域名",["$","code","code-0",{"children":"ddadaal.me"}],"。原域名直接跳转到新域名。"]}],"\n",["$","li","li-4",{"className":"task-list-item","children":[["$","input","input-0",{"type":"checkbox","checked":true,"disabled":true}]," 修改博客名称",["$","del","del-0",{"children":["到",["$","code","code-0",{"children":"DaBlog"}],"或者",["$","code","code-1",{"children":"DaaBlog"}]]}],["$","code","code-0",{"children":"daadaal.me"}]]}],"\n",["$","li","li-5",{"className":"task-list-item","children":[["$","input","input-0",{"type":"checkbox","checked":true,"disabled":true}]," 其他所有使用",["$","code","code-0",{"children":"viccrubs"}],"作为标识的账号（Steam, Origin, Epic, Uplay, 知乎，Quora，Facebook，Instagram，Twitter，StackOverflow，豆瓣等）均尽力改名为",["$","code","code-1",{"children":"ddadaal"}]]}],"\n"]}]
+33:T4df,M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z29:["$","h1","h1-4",{"id":"最后","children":[["$","a","最后",{"href":"#最后","className":"mr-1","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 512 512","className":"inline-block opacity-20 hover:opacity-60","children":["$undefined",[["$","path","0",{"d":"$33","children":[]}]]],"style":{},"height":16,"width":16,"xmlns":"http://www.w3.org/2000/svg"}]}],"最后"]}]
+2a:["$","p","p-16",{"children":"如果没有什么大的特殊情况（10月31日：特殊情况），这个名字应该会用一辈子了。希望大家能早点适应我的新名字 :smile:"}]
+2b:["$","div",null,{"className":"hidden lg:block lg:w-[25%]","children":["$","$L34",null,{"toc":[{"depth":1,"value":"改名","id":"改名"},{"depth":1,"value":"原因","id":"原因"},{"depth":1,"value":"改名遇到的问题","id":"改名遇到的问题"},{"depth":1,"value":"改名所涉及的方面","id":"改名所涉及的方面"},{"depth":1,"value":"最后","id":"最后"}],"hasSummary":true}]}]
+2c:["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","$L35",null,{"relatedArticles":[]}]}]
+2d:["$","div",null,{"className":"max-w-7xl mx-auto p-4","children":["$","$L36",null,{"articleId":"rename-from-viccrubs","articleTitle":"从viccrubs改名为ddadaal"}]}]
+30:null
