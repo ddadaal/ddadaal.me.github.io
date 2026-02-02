@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 02 Feb 2026 12:36:04 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Feb 2026 13:07:11 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 02 Feb 2026 12:35:59 GMT</pubDate>
+        <pubDate>Mon, 02 Feb 2026 13:07:06 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -58,13 +58,14 @@
 </ul>
 <p><strong>重要区别</strong>：AI Max+ 395使用可划分显存架构，需要静态分配部分内存给GPU使用；而统一内存无需显式分配，灵活性更高。</p>
 <h1>AI推理测试数据</h1>
-<p>为了方便，本次测试均使用LM Studio运行。LM Studio中对AMD显卡有两种Runtime：Vulkan和ROCm。我本以为两种Runtime不会有什么很大的区别，但是实际测试下来却axm并非如此。</p>
+<p>为了方便，以及因为我至今没能在WSL下成功运行<code>rocminfo</code>也就没办法跑vllm等主流推理引擎方案（就离谱），本次测试均在Windows下使用LM Studio运行。</p>
 <h2>GLM 4.7 Flash</h2>
 <p>这是个MoE模型，总参数量30B激活3B的规模，主要测试<code>Q4_K_M</code>量化的情况。在这个量化等级下，在模型大小为<code>18.13GB</code>。</p>
 <p>以下的给出Prompt为：</p>
 <blockquote>
 <p>编写一个科技公司的官网的HTML</p>
 </blockquote>
+<p>另外值得一提的是，LM Studio中对AMD显卡有两种Runtime：Vulkan和ROCm。我本以为两种Runtime不会有什么很大的区别，但是实际测试下来却axm并非如此。</p>
 <p>在16K上下文下：</p>
 
 
@@ -125,10 +126,10 @@
 </ul>
 <p>再次看到了不知道该说是Vulkan逆天还是ROCm的成绩！ROCm作为AMD官方的方案，居然被Vulkan拉开了如此大的差距。</p>
 <p>在不开启思考的情况下，10 token/s的速度还是可以应付日常使用的。</p>
-<h2>Qwen3 VL 32B Q4_K_M</h2>
+<h2>Qwen3 VL 32B</h2>
 <p>稠密模型的情况就不一样了。这一部分我选择了Qwen 3 VL 32B来测试。</p>
 <p>这是个支持图像输入的模型，于是我去stackoverflow上截了如下这一张图，</p>
-<p><img src="https://ddadaal.me/articles/asset/contents/20260202-aimaxplus395-ai-inference/reproduce.png" alt="Stackover截图"></p>
+<p><img src="https://ddadaal.me/articles/asset/contents/20260202-aimaxplus395-ai-inference/reproduce.png" alt="Stack Overflow截图"></p>
 <p>并给出prompt：</p>
 <blockquote>
 <p>使用html和css重现这个HTML页面</p>
@@ -175,8 +176,8 @@
 
 
 
-<table><thead><tr><th>专用显存</th><th>512M 16K</th><th>512M 24K</th><th>32G 16K</th></tr></thead><tbody><tr><td>显存占用</td><td>25.8G</td><td>28.3G</td><td></td></tr><tr><td>Vulkan速度、总数(token/s)</td><td>3.74 (4059)</td><td>3.51 (3676)</td><td></td></tr><tr><td>Vulkan 首token (s)</td><td>36.67</td><td>39.29</td><td></td></tr><tr><td>ROCm速度、总数（token/s）</td><td>4.15 (3723)</td><td>3.10 (3713)</td><td></td></tr><tr><td>ROCm 首token (s)</td><td>24.59</td><td>26.56</td><td></td></tr></tbody></table>
-<p>可以看到，在24K上下文已经到32G显存的极限了（28G）。</p>
+<table><thead><tr><th>专用显存</th><th>512M 16K</th><th>512M 24K</th><th>32G 16K</th></tr></thead><tbody><tr><td>显存占用</td><td>25.8G</td><td>28.3G</td><td>27.5G</td></tr><tr><td>Vulkan速度、总数(token/s)</td><td>3.74 (4059)</td><td>3.51 (3676)</td><td>9.41 (6801)</td></tr><tr><td>Vulkan 首token (s)</td><td>36.67</td><td>39.29</td><td>18.32</td></tr><tr><td>ROCm速度、总数（token/s）</td><td>4.15 (3723)</td><td>3.10 (3713)</td><td>9.42 (4198)</td></tr><tr><td>ROCm 首token (s)</td><td>24.59</td><td>26.56</td><td>9.46s</td></tr></tbody></table>
+<p>可以看到，在24K上下文已经到32G显存的极限了（28G）。但不管有没有独立显存，这个推理速度用起来已经是比较难受的级别了。</p>
 <h1>分配48G给显存？</h1>
 <p>395的另一个宣传点是可以将75%的内存划给显存，在64G的型号上，BIOS中最高可以将48G的内存划给显存。</p>
 <p>听起来很美？48G显存甚至可以高量化跑32B模型了！</p>
@@ -225,7 +226,7 @@
 <ul>
 <li>这类主机在分配96G显存的情况下还有32G可以用于日常场景，比64G=48G+16G实用太多</li>
 <li>这类主机的性能释放普遍超过100W，也有更完善的散热方案，可以更完美地发挥CPU和GPU的性能</li>
-<li>和395刚出来的时候AMD更羸弱的AI生态相比，至少现在主流的推理场景（LM Studio，Ollama、ComfyUI）都已经可以用了</li>
+<li>和395刚出来的时候AMD更羸弱的AI生态相比，至少现在主流的推理场景（LM Studio，Ollama、ComfyUI）都已经可以用了（至少我在搜索了包括AMD官网的无数地方后，终于还是找到了AMD官方支持的<code>pytorch</code>）</li>
 </ul>
 <p>甚至小主机的价格也比笔记本形态的设备（64G 19999）便宜太多（128G普遍15000，希望还没开始涨）。在这个内存价格疯涨的年代，能以这个价格有一台可以跑大模型的机器已经很不容易了。</p>]]></description>
             <link>https://ddadaal.me/articles/aimaxplus395-ai-inference/cn</link>
