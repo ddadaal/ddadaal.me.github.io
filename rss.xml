@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 06 Mar 2026 11:11:57 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Mar 2026 11:18:49 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 06 Mar 2026 11:11:52 GMT</pubDate>
+        <pubDate>Fri, 06 Mar 2026 11:18:44 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -19,10 +19,9 @@
         <category><![CDATA[Programming]]></category>
         <category><![CDATA[Software]]></category>
         <item>
-            <title><![CDATA[让docker中的nanobot可以访问浏览器]]></title>
-            <description><![CDATA[<p>实在不太放心把 nanobot 这类可以直接操作本地电脑的程序直接装在操作系统上，所以我选择把 nanobot 放在容器里运行。</p>
-<p>在这个前提下，我希望让运行在 Docker 里的 nanobot，稳定地操控一个可复用的浏览器实例，并通过 CDP（Chrome DevTools Protocol）连接。</p>
-<p>核心做法是在 <code>nanobot</code> 目录下新增 <code>docker-compose.override.yaml</code>，内容如下：</p>
+            <title><![CDATA[把nanobot关进Docker后，如何同时保留浏览器可视化与自动化]]></title>
+            <description><![CDATA[<p>实在不太放心把 nanobot 这类可以直接操作本地电脑的程序直接装在操作系统上，所以我选择把 nanobot 放在容器里运行。但是nanobot很多有意义的工作又需要和宿主机上的环境（例如浏览器）交互，而浏览器上很多网站需要我们先去登录才可以正常使用，这就需要一个既可以由 nanobot操作、也可以由我们自己的操作的浏览器</p>
+<p>经过一番查找，终于找一个不影响 nanobot 本身的方法，操作是在部署 nanobot的 <code>docker-compose.yaml</code> 目录下再创建一个 <code>docker-compose.override.yaml</code>，内容如下：</p>
 <figure data-rehype-pretty-code-figure=""><pre style="background-color:#282c34;color:#abb2bf" tabindex="0" data-language="yaml" data-theme="one-dark-pro"><code data-language="yaml" data-theme="one-dark-pro" style="display: grid;"><span data-line=""><span style="color:#E06C75">services</span><span style="color:#ABB2BF">:</span></span>
 <span data-line=""><span style="color:#E06C75">  chromium-vnc-cdp</span><span style="color:#ABB2BF">:</span></span>
 <span data-line=""><span style="color:#E06C75">    image</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">linuxserver/chromium:latest</span></span>
@@ -47,7 +46,7 @@
 <p>之后都使用 <code>chromium-vnc-cdp:9222</code> 这个 CDP 端口操作浏览器。</p>
 </blockquote>
 <h2>为什么是两个容器</h2>
-<p><code>chromium-vnc-cdp</code> 的职责是提供浏览器本体和 Web 访问界面（3000 端口）。</p>
+<p><code>chromium-vnc-cdp</code> 的职责是提供浏览器本体和 Web 访问界面（3000 端口），这样我们可以直接使用<code>localhost:3000</code>访问这个浏览器。</p>
 <p><code>chromium-cdp-proxy</code> 的职责是把 Chromium 容器里只监听 <code>127.0.0.1:9222</code> 的 CDP 端口，转发成同网络命名空间下可访问的入口。</p>
 <p>这里有一个关键限制：根据 pyppeteer 相关讨论中的实践结论，<code>--remote-debugging-address=0.0.0.0</code> 往往需要和 <code>--remote-debugging-port</code>、<code>--headless</code> 一起使用；但一旦使用 <code>--headless</code>，就无法达到“实时查看浏览器界面”的目标。</p>
 <p>来源：<a href="https://github.com/pyppeteer/pyppeteer/pull/379#issuecomment-2072215518">https://github.com/pyppeteer/pyppeteer/pull/379#issuecomment-2072215518</a></p>
@@ -65,8 +64,8 @@
 <li>nanobot 可以通过约定好的 CDP 地址持续复用同一个浏览器环境。</li>
 <li>浏览器自动化和人工观察（VNC/Web）可以并行进行，排障体验更好。</li>
 </ol>]]></description>
-            <link>https://ddadaal.me/articles/access-browser-from-nanobot-in-docker/cn</link>
-            <guid isPermaLink="true">https://ddadaal.me/articles/access-browser-from-nanobot-in-docker/cn</guid>
+            <link>https://ddadaal.me/articles/vnc-browser-from-nanobot-in-docker/cn</link>
+            <guid isPermaLink="true">https://ddadaal.me/articles/vnc-browser-from-nanobot-in-docker/cn</guid>
             <category><![CDATA[ai]]></category>
             <category><![CDATA[nanobot]]></category>
             <pubDate>Fri, 06 Mar 2026 10:50:00 GMT</pubDate>
