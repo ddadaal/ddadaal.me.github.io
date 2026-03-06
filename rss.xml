@@ -9,9 +9,9 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 06 Mar 2026 11:18:49 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Mar 2026 11:22:11 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 06 Mar 2026 11:18:44 GMT</pubDate>
+        <pubDate>Fri, 06 Mar 2026 11:22:07 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
@@ -43,7 +43,7 @@
 <span data-line=""><span style="color:#E06C75">    command</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">"TCP-LISTEN:19222,fork,bind=0.0.0.0,reuseaddr TCP:localhost:9222"</span></span></code></pre></figure>
 <p>启动后，给 nanobot 一条明确指令：</p>
 <blockquote>
-<p>之后都使用 <code>chromium-vnc-cdp:9222</code> 这个 CDP 端口操作浏览器。</p>
+<p>之后都使用 <code>chromium-vnc-cdp:19222</code> 这个 CDP 端口操作浏览器。</p>
 </blockquote>
 <h2>为什么是两个容器</h2>
 <p><code>chromium-vnc-cdp</code> 的职责是提供浏览器本体和 Web 访问界面（3000 端口），这样我们可以直接使用<code>localhost:3000</code>访问这个浏览器。</p>
