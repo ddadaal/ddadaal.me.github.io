@@ -9,15 +9,68 @@
             <link>https://ddadaal.me</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 02 Feb 2026 13:07:11 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Mar 2026 11:11:57 GMT</lastBuildDate>
         <atom:link href="https://ddadaal.me/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 02 Feb 2026 13:07:06 GMT</pubDate>
+        <pubDate>Fri, 06 Mar 2026 11:11:52 GMT</pubDate>
         <copyright><![CDATA[CC BY-SA 4.0]]></copyright>
         <webMaster><![CDATA[ddadaal@outlook.com]]></webMaster>
         <category><![CDATA[Life]]></category>
         <category><![CDATA[Technology]]></category>
         <category><![CDATA[Programming]]></category>
         <category><![CDATA[Software]]></category>
+        <item>
+            <title><![CDATA[让docker中的nanobot可以访问浏览器]]></title>
+            <description><![CDATA[<p>实在不太放心把 nanobot 这类可以直接操作本地电脑的程序直接装在操作系统上，所以我选择把 nanobot 放在容器里运行。</p>
+<p>在这个前提下，我希望让运行在 Docker 里的 nanobot，稳定地操控一个可复用的浏览器实例，并通过 CDP（Chrome DevTools Protocol）连接。</p>
+<p>核心做法是在 <code>nanobot</code> 目录下新增 <code>docker-compose.override.yaml</code>，内容如下：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#282c34;color:#abb2bf" tabindex="0" data-language="yaml" data-theme="one-dark-pro"><code data-language="yaml" data-theme="one-dark-pro" style="display: grid;"><span data-line=""><span style="color:#E06C75">services</span><span style="color:#ABB2BF">:</span></span>
+<span data-line=""><span style="color:#E06C75">  chromium-vnc-cdp</span><span style="color:#ABB2BF">:</span></span>
+<span data-line=""><span style="color:#E06C75">    image</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">linuxserver/chromium:latest</span></span>
+<span data-line=""><span style="color:#E06C75">    container_name</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">chromium-vnc-cdp</span></span>
+<span data-line=""><span style="color:#E06C75">    ports</span><span style="color:#ABB2BF">:</span></span>
+<span data-line=""><span style="color:#ABB2BF">      - </span><span style="color:#98C379">"3000:3000"</span><span style="color:#7F848E;font-style:italic"> # Web 界面</span></span>
+<span data-line=""><span style="color:#E06C75">    shm_size</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">"2gb"</span></span>
+<span data-line=""><span style="color:#E06C75">    environment</span><span style="color:#ABB2BF">:</span></span>
+<span data-line=""><span style="color:#ABB2BF">      - </span><span style="color:#98C379">PUID=1000</span></span>
+<span data-line=""><span style="color:#ABB2BF">      - </span><span style="color:#98C379">PGID=1000</span></span>
+<span data-line=""><span style="color:#ABB2BF">      - </span><span style="color:#98C379">TZ=Asia/Shanghai</span></span>
+<span data-line=""><span style="color:#ABB2BF">      - </span><span style="color:#98C379">CHROME_CLI=--remote-debugging-address=127.0.0.1 --remote-debugging-port=9222</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E06C75">  chromium-cdp-proxy</span><span style="color:#ABB2BF">:</span></span>
+<span data-line=""><span style="color:#E06C75">    image</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">alpine/socat</span></span>
+<span data-line=""><span style="color:#E06C75">    container_name</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">chromium-cdp-proxy</span></span>
+<span data-line=""><span style="color:#E06C75">    restart</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">unless-stopped</span></span>
+<span data-line=""><span style="color:#E06C75">    network_mode</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">"service:chromium-vnc-cdp"</span></span>
+<span data-line=""><span style="color:#E06C75">    command</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">"TCP-LISTEN:19222,fork,bind=0.0.0.0,reuseaddr TCP:localhost:9222"</span></span></code></pre></figure>
+<p>启动后，给 nanobot 一条明确指令：</p>
+<blockquote>
+<p>之后都使用 <code>chromium-vnc-cdp:9222</code> 这个 CDP 端口操作浏览器。</p>
+</blockquote>
+<h2>为什么是两个容器</h2>
+<p><code>chromium-vnc-cdp</code> 的职责是提供浏览器本体和 Web 访问界面（3000 端口）。</p>
+<p><code>chromium-cdp-proxy</code> 的职责是把 Chromium 容器里只监听 <code>127.0.0.1:9222</code> 的 CDP 端口，转发成同网络命名空间下可访问的入口。</p>
+<p>这里有一个关键限制：根据 pyppeteer 相关讨论中的实践结论，<code>--remote-debugging-address=0.0.0.0</code> 往往需要和 <code>--remote-debugging-port</code>、<code>--headless</code> 一起使用；但一旦使用 <code>--headless</code>，就无法达到“实时查看浏览器界面”的目标。</p>
+<p>来源：<a href="https://github.com/pyppeteer/pyppeteer/pull/379#issuecomment-2072215518">https://github.com/pyppeteer/pyppeteer/pull/379#issuecomment-2072215518</a></p>
+<p>因此我不走“浏览器直接对外暴露 CDP”的路线，而是保留有界面的 Chromium，再通过独立的 <code>socat</code> proxy 容器做端口转发。</p>
+<p>这样拆分有三个好处：</p>
+<ol>
+<li>浏览器容器保持默认安全策略，CDP 仍然只在本地监听。</li>
+<li>通过 <code>socat</code> 单独做代理，不需要改 Chromium 镜像或启动脚本。</li>
+<li>nanobot 只需要记住一个固定地址（<code>chromium-vnc-cdp:9222</code>），配置简单且稳定。</li>
+</ol>
+<h2>实际效果</h2>
+<p>这套配置完成后：</p>
+<ol>
+<li>你可以在 <code>3000</code> 端口看到浏览器 Web 界面。</li>
+<li>nanobot 可以通过约定好的 CDP 地址持续复用同一个浏览器环境。</li>
+<li>浏览器自动化和人工观察（VNC/Web）可以并行进行，排障体验更好。</li>
+</ol>]]></description>
+            <link>https://ddadaal.me/articles/access-browser-from-nanobot-in-docker/cn</link>
+            <guid isPermaLink="true">https://ddadaal.me/articles/access-browser-from-nanobot-in-docker/cn</guid>
+            <category><![CDATA[ai]]></category>
+            <category><![CDATA[nanobot]]></category>
+            <pubDate>Fri, 06 Mar 2026 10:50:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[可划分显存 != 统一内存：AI Max+ 395 64G AI推理性能]]></title>
             <description><![CDATA[<h1>前言</h1>
